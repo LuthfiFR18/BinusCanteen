@@ -1,10 +1,10 @@
 
-import '../Style/Dashboard.css';
 
-function Dashboard(){
+import '../Style/Header.css';
+
+function Header(){
     return(
-        <div className='dashboard'>
-        <div class="navbar1">
+        <div class="header">
             <nav>
                 {/* <!--Logo--> */}
                 <a href="#" class="logo">
@@ -56,34 +56,7 @@ function Dashboard(){
             </nav>
         </div>
 
-<nav>
-    <div class="menu">
-        <ul>
-            <li>
-                <a href="#">
-                    <i class="ri-restaurant-line"></i>
-                    Meals
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ri-drinks-fill"></i>
-        
-                    Drink
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="ri-cake-3-fill"></i>
-                                        
-                    Dessert
-                </a>
-            </li>
-        </ul>
-    </div>
-</nav>
-</div>
     );
 }
 
-export default Dashboard;
+export default Header;
