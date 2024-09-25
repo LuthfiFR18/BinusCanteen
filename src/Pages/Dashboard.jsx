@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import img1 from '../img/nasigoreng.png';
+import img1 from '../Img/nasigoreng.png';
 
 function Dashboard(){
     const navigate = useNavigate();

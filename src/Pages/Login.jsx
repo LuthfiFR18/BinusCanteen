@@ -11,14 +11,14 @@ function Login(){
                 <form action="#">
                     <h5 className='Logintext'>Email:</h5>
                     <input type="email" placeholder="Email"></input>
-                    <a className="greyText" href="#" onClick={()=> navigate('/register')}>
-                        Dont Have Account?</a>
                     <h5 className='Logintext'>Password:</h5>
                     <input type="password" placeholder="Password"></input>
                     <a className="greyText" href="#" onClick={()=> navigate('/ResetPassword')}>
                         Reset Password?</a>
                     <button className="button" onClick={()=> navigate('/dashboard')}>Login</button>
+                    
                 </form>
+                <a className='askTxt'>Don't have account yet?<span className='Register' onClick={()=> navigate('/register')}>Register Here</span></a>
             </div>
     );
 }
