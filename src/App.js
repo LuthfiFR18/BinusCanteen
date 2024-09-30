@@ -1,9 +1,13 @@
 
 import './App.css';
-import Register from './Pages/Register';
-import Login from './Pages/Login';
-import Dashboard from './Pages/Dashboard';
-import ResetPassword from './Pages/ResetPassword';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Dashboard from './pages/Dashboard';
+import ResetPassword from './pages/ResetPassword';
+import Meals from './pages/Meals';
+import Drink from './pages/Drink';
+import Dessert from './pages/Dessert';
+import Cart from './pages/Cart';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
   return (
@@ -12,7 +16,11 @@ function App() {
         <Route path='/'element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/ResetPassword' element={<ResetPassword/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>
+        <Route path='/dashboard' element={<Dashboard/>}/>    
+        <Route path='/meals' element={<Meals/>}/>    
+        <Route path='/drink' element={<Drink/>}/>    
+        <Route path='/dessert' element={<Dessert/>}/>    
+        <Route path='/cart' element={<Cart/>}/>    
       </Routes>
     </Router>
   );

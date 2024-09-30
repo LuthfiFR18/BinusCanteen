@@ -1,10 +1,10 @@
 import React from 'react';
-import '../Style/Dashboard.css';
+import '../style/Dashboard.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
-import img1 from '../Img/nasigoreng.png';
+import img1 from '../img/nasigoreng.png';
 
 function Dashboard(){
     const navigate = useNavigate();
@@ -17,20 +17,20 @@ function Dashboard(){
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="#" onClick={()=>navigate('/meals')}>
                                     <i class="ri-restaurant-line"></i>
                                     Meals
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" onClick={()=>navigate('/drink')}>
                                     <i class="ri-drinks-fill"></i>
                         
                                     Drink
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
+                                <a href="#" onClick={()=>navigate('/dessert')}>
                                     <i class="ri-cake-3-fill"></i>          
                                     Dessert
                                 </a>

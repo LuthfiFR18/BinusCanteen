@@ -1,0 +1,32 @@
+:root{
+    --main-color: #4FC0FD;
+    --text-color: #ffff;
+    --bg-color: #000000;
+    --btn-color:#FF9D00;
+}
+
+
+.slider-container{
+    padding-top: 50px;
+}
+
+.carousel-todayoffer img{
+    margin-left: 15%;
+    width: 283px;
+    height: 180px;
+}
+.carousel-todayoffer-text{
+    width: fit-content;
+    text-align: center;
+    padding-top: 15px;
+    margin-left: 28%;
+}
+
+
+.carousel-todayoffer-text button{
+    background-color: var(--btn-color);
+    color: var(--text-color);
+    border-radius: 15px;
+    width: 181px;
+    height: 33px;
+}

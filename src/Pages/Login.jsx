@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import '../Style/Login.css';
+import '../style/Login.css';
 // import Loginwrap from '../Components/Loginwrap';
 function Login(){
     const navigate = useNavigate();
