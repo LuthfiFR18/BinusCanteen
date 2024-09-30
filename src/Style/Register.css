@@ -76,6 +76,33 @@ a{
     cursor: pointer;
 }
 
+.role-options {
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Jarak antar elemen */
+    justify-content: space-between; /* Menempatkan item secara merata */
+    align-items: center
+  }
+  
+  .role-options label {
+    font-size: 16px;
+    margin-left: -1.6cm;
+    margin-right: 0.5cm;
+    letter-spacing: -1px;
+    
+  }
+
+  #registerButton {
+    background-color: #4CAF50; /* Warna hijau */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+
 
 /* .select-menu{
     width: 421px;
