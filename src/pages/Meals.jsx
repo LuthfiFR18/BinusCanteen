@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import '../style/Meals.css';
 import Mealsmenu from '../Components/Mealsmenu';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -32,6 +33,10 @@ function Meals() {
         </nav>
 <Mealsmenu/>
 <Mealsmenu/>
+<Mealsmenu/>
+<Mealsmenu/>
+
+<Footer/>
     </div>
   )
 }

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import '../style/Cart.css';
+import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import img1 from '../img/nasigoreng.png'
 
 const Cart = () => {
@@ -34,6 +36,7 @@ const Cart = () => {
 
   return (
     <div className="cart">
+          <Header/>
       <h2>FOOD CART</h2>
       <table className="cart-table">
         <thead>
@@ -106,6 +109,7 @@ const Cart = () => {
       <button className="checkout" onClick={checkout}>
         CHECKOUT
       </button>
+      <Footer/>
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import '../style/Drink.css';
 import Drinkmenu from '../Components/Drinkmenu';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -30,6 +31,12 @@ function Drink() {
             </div>
         </nav>
         <Drinkmenu/>
+        <Drinkmenu/>
+        <Drinkmenu/>
+        <Drinkmenu/>
+        <Drinkmenu/>
+
+        <Footer/>
     </div>
   )
 }

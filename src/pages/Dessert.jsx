@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from '../Components/Header';
+import Footer from '../Components/Footer';
 import '../style/Dessert.css';
 import Dessertmenu from '../Components/Dessertmenu';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
@@ -30,6 +31,13 @@ function Dessert() {
             </div>
         </nav>
         <Dessertmenu/>
+        <Dessertmenu/>
+        <Dessertmenu/>
+        <Dessertmenu/>
+        <Dessertmenu/>
+        <Dessertmenu/>
+
+        <Footer/>
     </div>
   )
 }

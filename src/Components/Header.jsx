@@ -1,12 +1,15 @@
-
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../style/Header.css';
 function Header(){
+
+    const navigate = useNavigate();
+
     return(
         <div class="header">
             <nav>
                 {/* <!--Logo--> */}
-                <a href="#" class="logo">
+                <a href="#" class="logo" onClick={()=>navigate('/dashboard')}>
                     <h4>BINUS <span>Canteen</span></h4>
                 </a>
                 {/* <!--search bar--> */}
