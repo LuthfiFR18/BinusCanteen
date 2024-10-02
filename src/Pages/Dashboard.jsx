@@ -2,8 +2,8 @@ import React from 'react';
 import '../style/Dashboard.css';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import img1 from '../img/nasigoreng.png';
 
 function Dashboard(){

@@ -8,6 +8,7 @@ import Meals from './pages/Meals';
 import Drink from './pages/Drink';
 import Dessert from './pages/Dessert';
 import Cart from './pages/Cart';
+import Payment from './pages/Payment';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
         <Route path='/drink' element={<Drink/>}/>    
         <Route path='/dessert' element={<Dessert/>}/>    
         <Route path='/cart' element={<Cart/>}/>    
+        <Route path='/payment' element={<Payment/>}/>    
       </Routes>
     </Router>
   );

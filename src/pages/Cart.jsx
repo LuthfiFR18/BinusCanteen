@@ -1,10 +1,15 @@
 import React, { useState } from 'react';
 import '../style/Cart.css';
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import img1 from '../img/nasigoreng.png'
 
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+
 const Cart = () => {
+  const navigate = useNavigate();
+
   const [quantities, setQuantities] = useState({
     ayam: 1,
     tea: 1
@@ -30,14 +35,14 @@ const Cart = () => {
   const subtotal = calculateSubtotal();
   const total = subtotal + tax;
 
-  const checkout = () => {
-    alert('Proceeding to checkout...');
-  };
+  // const checkout = () => {
+  //   alert('Proceeding to checkout...');
+  // };
 
   return (
     <div className="cart">
           <Header/>
-      <h2>FOOD CART</h2>
+      <h2 className='cart-title'>FOOD CART</h2>
       <table className="cart-table">
         <thead>
           <tr>
@@ -49,38 +54,38 @@ const Cart = () => {
         </thead>
         <tbody>
           <tr>
-            <td className="item-cell">
+            <td className="cart-item-cell">
               <img src={img1}/>
               Ayam Geprek
             </td>
             <td>
-              <div className="quantity-control">
-                <button onClick={() => updateQuantity('ayam', -1)}>-</button>
+              <div className="cart-quantity-control">
+                <button  onClick={() => updateQuantity('ayam', -1)}>-</button>
                 <span>{quantities.ayam}</span>
                 <button onClick={() => updateQuantity('ayam', 1)}>+</button>
               </div>
             </td>
             <td>
-              <input className="description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+              <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
             </td>
             <td>
               {prices.ayam}
             </td>
           </tr>
           <tr>
-            <td className="item-cell">
+            <td className="cart-item-cell">
               <img src={img1}/>
               Es Teh Manis
             </td>
             <td>
-              <div className="quantity-control">
+              <div className="cart-quantity-control">
                 <button onClick={() => updateQuantity('tea', -1)}>-</button>
                 <span>{quantities.tea}</span>
                 <button onClick={() => updateQuantity('tea', 1)}>+</button>
               </div>
             </td>
             <td>
-              <input className="description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+              <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
             </td>
             <td>
               {prices.tea}
@@ -106,7 +111,7 @@ const Cart = () => {
         </div>
       </div>
 
-      <button className="checkout" onClick={checkout}>
+      <button className="checkout" onClick={()=>navigate('/payment')}>
         CHECKOUT
       </button>
       <Footer/>

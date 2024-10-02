@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCartShopping, faUser, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
+
 import '../style/Header.css';
 function Header(){
 
@@ -17,25 +20,28 @@ function Header(){
                     <div class="row">
                         <input type="text" id="input-box" placeholder="Search"
                         autocomplete="off"></input>
-                        <button>
-                            <i class='bx bx-search'></i>
+                        <button className='search-icon'>
+                        <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
                     <div class="result-box"></div>
                 </div>
                 
                 {/* <!--Logo Cart--> */}
-                <div class="logo-cart">
+                <div class="logo-cart" onClick={()=>navigate('/cart')}>
                     <a href="#">
-                    <i class='bx bxs-cart-alt'></i>
-                    </a>
+                    <FontAwesomeIcon icon={faCartShopping} />
+                </a>
                 </div>
                 {/* <!--Profile--> */}
-                <a href="#">
-                    <div class="profile" onclick="toggleMenu()">
-                        <i class='bx bxs-user'></i>
-                    </div>
+                <div className="profile-box">
+                <a href="#" className="profile-icon" onclick="toggleMenu()">
+                    {/* <div class="profile" onclick="toggleMenu()"> */}
+                    <FontAwesomeIcon icon={faUser} size='2x' />
+                    {/* </div> */}
                 </a>
+                </div>
+
                 <div class="sub-menu-warp" id="subMenu">
                     <div class="sub-menu">
                         <div class="user-info">

@@ -1,5 +1,5 @@
 import React from 'react';
-import '../Style/Register.css';
+import '../style/Register.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom';
 import { useState } from 'react';
@@ -24,7 +24,7 @@ function Register(){
       };
 
     return(
-        <div className='register'>
+        <div className='bodyloginregister'>
             <section className="wrapperRegister">
                 <h1>Registration</h1>
                 {/* <input className='radio' type="radio"checked={true}/>

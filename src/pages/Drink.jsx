@@ -1,8 +1,8 @@
 import React from 'react'
-import Header from '../Components/Header';
-import Footer from '../Components/Footer';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
 import '../style/Drink.css';
-import Drinkmenu from '../Components/Drinkmenu';
+import Drinkmenu from '../components/Drinkmenu';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
