@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Products from "./ProductsModel.js";
-import Users from "./UserModel.js";
+import Cart from "./CartModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -17,25 +16,17 @@ const Order = db.define('order', {
         allowNull: false,
         defaultValue: DataTypes.NOW
     },
-    userId: {
+    cartId: {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    boothId: {
-        type: DataTypes.STRING,
-        allowNull: false,
-    },
-    quantity: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        defaultValue: 1,
-    }
-}, {
-    freezeTableName: true
+},{
+
+    freezeTableName: true,
 });
 
 // Relationships
-Order.belongsTo(Users, { foreignKey: 'userId' });
-Order.belongsTo(Products, { foreignKey: 'productId' });
+Order.belongsTo(Cart, { foreignKey: 'cartId' });
+// Order.belongsTo(Products, { foreignKey: 'productId' });
 
 export default Order;

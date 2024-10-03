@@ -69,4 +69,5 @@ const Users = db.define('user',{
 Roles.hasMany(Users);
 Users.belongsTo(Roles, {foreignKey: 'roleId'});
 
+
 export default Users;

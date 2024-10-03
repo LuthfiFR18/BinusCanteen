@@ -12,7 +12,7 @@ const Cart = db.define('cart', {
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
     },
-    productDescription: {
+    note: {
         type: DataTypes.STRING,
         allowNull: true,
     },
@@ -35,6 +35,12 @@ const Cart = db.define('cart', {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 1,
+    },
+
+    paymentAmount: {
+        type: DataTypes.FLOAT,
+        allowNull: false,
+        
     }
     
 }, {
