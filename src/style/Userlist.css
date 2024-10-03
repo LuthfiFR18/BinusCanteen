@@ -29,15 +29,32 @@
   padding: 8px;
 }
 
-.button-admin{
+.button-admin-update{
   padding: 5px 10px;
   background-color: #007bff;
   color: white;
   border: none;
   cursor: pointer;
   border-radius: 4px;
+  margin-right: 20px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.button-admin-delete{
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+
+
+.button-admin-update:hover {
+  background-color: #024388;
+}
+
+.button-admin-delete:hover {
+  background-color: rgb(163, 3, 3);
 }

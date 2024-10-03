@@ -24,7 +24,8 @@ const Userlist = () => {
           <td>081112233445522</td>
           <td>Seller</td>
           <td>
-            <button className='button-admin' onClick={() => alert('Action for Mamat')}>Action</button>
+            <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
+            <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
           </td>
         </tr>
         <tr>
@@ -35,7 +36,8 @@ const Userlist = () => {
           <td>081112233445522</td>
           <td>Seller</td>
           <td>
-            <button className='button-admin' onClick={() => alert('Action for Mamat')}>Action</button>
+          <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
+          <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
           </td>
         </tr>
         <tr>
@@ -46,7 +48,8 @@ const Userlist = () => {
           <td>081112233445522</td>
           <td>Seller</td>
           <td>
-            <button className='button-admin' onClick={() => alert('Action for Mamat')}>Action</button>
+          <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
+          <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
           </td>
         </tr>
         <tr>
@@ -57,7 +60,8 @@ const Userlist = () => {
           <td>081112233445522</td>
           <td>Seller</td>
           <td>
-            <button className='button-admin' onClick={() => alert('Action for Mamat')}>Action</button>
+          <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
+          <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
           </td>
         </tr>
         {/* Tambahkan lebih banyak baris di sini jika diperlukan */}
