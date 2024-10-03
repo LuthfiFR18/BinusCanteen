@@ -1,0 +1,170 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root{
+    --main-color: #4FC0FD;
+    --text-color: #ffff;
+    --bg-color: #000000;
+    --btn-color:#FF9D00;
+}
+
+body{
+    background-image: linear-gradient(180deg, var(--main-color), #2E7ADD);
+}
+
+
+.wrapperRegister{
+    
+    width: 468px;
+    height:fit-content;
+    background-color: var(--text-color);
+    border-radius: 25px;
+    align-items: center;
+    text-align: center;
+    margin: 5px auto;
+    padding: 30px 30px 15px 25px;
+}
+
+.regis-title{
+    margin-top: -4px;
+}
+
+/* .radio{
+margin-left: 20px;
+} */
+
+/* .labelRadio{
+    font-size: 14px;
+    text-align: center;
+    padding-left: 5px;
+    padding-right: 30px;
+} */
+.regisform{
+    text-align: left;    
+}
+
+form input{
+    outline: 0;
+    width: 360px;
+    height: 38px;
+    border-radius: 25px;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+    border-style: none;
+    padding-left: 30px;
+    margin-top: -10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+.button{
+    position: relative;
+    display: inline-block;
+    border-radius: 25px;
+    width: 184px;
+    height: 41px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background-color: var(--btn-color);
+    color: var(--text-color);
+    font-weight: 600;
+    border-style: none;
+    cursor: pointer;
+}
+
+.role-options {
+    font-size: 15px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /*Jarak antar elemen */
+    justify-content: space-between; /* Menempatkan item secara merata */
+    align-items: center;
+    margin-bottom: 5px;
+    font-weight: 600;
+
+  }
+  
+  .role-options label {
+    /* font-size: 16px; */
+    margin-left: -1.6cm;
+    margin-right: 0.5cm;
+    letter-spacing: 1px;
+    
+  }
+
+  #registerButton {
+    background-color: #4CAF50; /* Warna hijau */
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+  }
+
+
+
+/* .select-menu{
+    width: 421px;
+    margin: auto;
+}
+
+.select-menu span{
+    color:#635d5d;
+    font-size: 16px;
+    font-weight: 300;
+    padding-left: 15px;
+}
+
+.select-menu .select-btn{
+    display: flex;
+    height: 38px;
+    padding: 20px;
+    border-radius: 25px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+}
+
+.select-btn i{
+    font-size: 25px;
+    transition: 0.2s;
+}
+.select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+.select-menu .options{
+    display: none;
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 25px;
+    background: #fff;
+    box-shadow: 0 0 5px;
+    display: none;
+}
+
+.select-menu.active .options{
+    display: block;
+}
+
+.options .option{
+    display: flex;
+    height: 38px;
+    cursor: pointer;
+    padding: 0 16px;
+    align-items: center;
+    border-radius: 25px;
+    background: #fff;
+}
+
+.options .option:hover{
+    background: #2E7ADD;
+}
+
+.option .option-text{
+    font-size: 18px;
+    color: #000000;
+} */
