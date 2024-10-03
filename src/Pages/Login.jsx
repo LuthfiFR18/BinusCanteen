@@ -7,7 +7,7 @@ function Login(){
     const navigate = useNavigate();
     return(
             <div className="wrapperLogin">
-                <h1>Login</h1>
+                <h1 className='login-title'>Login</h1>
                 <form action="#">
                     <h5 className='Logintext'>Email:</h5>
                     <input type="email" placeholder="Email"></input>

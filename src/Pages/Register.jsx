@@ -26,7 +26,7 @@ function Register(){
     return(
         <div className='bodyloginregister'>
             <section className="wrapperRegister">
-                <h1>Registration</h1>
+                <h1 className='regis-title'>Registration</h1>
                 {/* <input className='radio' type="radio"checked={true}/>
                 <label className='labelRadio'>User</label>
                 <input className='radio' type="radio"checked={false}/>
@@ -61,8 +61,8 @@ function Register(){
             <label htmlFor="delivery">Delivery</label>
         </div>      
                 <form action="#">
-                    <h5 className='regisform'>Name:</h5>
-                    <input type="text" placeholder="First Name"></input>
+                    <h5 className='regisform'>{selectedRole === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
+                    <input type="text" placeholder="Name"></input>
                     
                     <h5 className='regisform'>Phone Number:</h5>
                     <input type="text" placeholder="Phone Number"></input>
