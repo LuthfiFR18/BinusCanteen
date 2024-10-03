@@ -7,7 +7,6 @@ import CartRoute from "./routes/CartRoute.js";
 import OrderRoute from "./routes/OrderRoute.js";
 import PaymentRoute from "./routes/PaymentRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
-import SellerRoute from "./routes/SellerRoute.js";
 import UserRoute from "./routes/UserRoute.js";
 
 
@@ -37,7 +36,7 @@ app.use(express.json());
 
 app.use(UserRoute);
 app.use(ProductRoute);
-app.use(SellerRoute);
+// app.use(SellerRoute);
 app.use(OrderRoute);
 app.use(CartRoute);
 app.use(PaymentRoute);

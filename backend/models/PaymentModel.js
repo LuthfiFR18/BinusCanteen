@@ -1,7 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import Order from "./OrderModel.js";
-import Users from "./UserModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -18,11 +17,13 @@ const Payment = db.define('payment', {
         allowNull: false,
         
     },
-    paymentAmount: {
-        type: DataTypes.FLOAT,
+
+    deliveryLocation: {
+        type: DataTypes.STRING,
         allowNull: false,
         
     },
+
     paymentMethod: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -45,6 +46,6 @@ const Payment = db.define('payment', {
 
 // Relationships
 Payment.belongsTo(Order, { foreignKey: 'orderId' });
-Payment.belongsTo(Users, { foreignKey: 'userId' });
+// Payment.belongsTo(Users, { foreignKey: 'userId' });
 
 export default Payment;
