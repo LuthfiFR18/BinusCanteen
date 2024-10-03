@@ -58,7 +58,7 @@ function Carouselbestoffer() {
       const navigate = useNavigate();
 
   return (
-    <div className="slider-container">
+    <div className="slider-bestoffer-container">
         <h4>Best Offer</h4>
     <Slider {...settings}>
       <div className="carousel-bestoffer">

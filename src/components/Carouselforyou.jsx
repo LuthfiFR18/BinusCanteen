@@ -56,7 +56,7 @@ function Carouselforyou() {
       };
     
   return (
-    <div className="slider-container">
+    <div className="slider-foryou-container">
         <h4>For You</h4>
     <Slider {...settings}>
       <div className="carousel-foryou">

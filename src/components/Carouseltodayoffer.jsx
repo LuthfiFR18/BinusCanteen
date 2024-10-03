@@ -56,7 +56,7 @@ function Carouseltodayoffer() {
       };
     
   return (
-    <div className="slider-container">
+    <div className="slider-todayoffer-container">
         <h4>Today Offer</h4>
     <Slider {...settings}>
       <div className="carousel-todayoffer">
