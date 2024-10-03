@@ -1,17 +1,15 @@
+import { faGlassWater, faIceCream, faUtensils, } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
-import '../style/Dashboard.css';
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
 import Carouselbestoffer from '../components/Carouselbestoffer';
 import Carouselforyou from '../components/Carouselforyou';
 import Carouseltodayoffer from '../components/Carouseltodayoffer';
-import img1 from '../img/nasigoreng.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
+import Footer from '../components/Footer';
+import Header from '../components/Header';
+import '../style/Dashboard.css';
 
 function Dashboard(){
     const navigate = useNavigate();
