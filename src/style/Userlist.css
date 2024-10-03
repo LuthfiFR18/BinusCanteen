@@ -1,0 +1,60 @@
+/* .user-table{
+    width: 60%;
+    margin-left: 6%;
+    /* border-style: solid;
+}
+
+.user-table th{
+    text-align: center;
+    padding: 10px 75px 10px 65px;
+    vertical-align: middle;
+    border-bottom: 1px solid #ccc; 
+} */
+
+.user-table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+
+}
+
+.user-table th {
+  border-bottom: 2px solid black;
+  text-align: center;
+  padding: 8px;
+}
+
+.user-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+
+.button-admin-update{
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+.button-admin-delete{
+  padding: 5px 10px;
+  background-color: red;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 20px;
+}
+
+
+
+.button-admin-update:hover {
+  background-color: #024388;
+}
+
+.button-admin-delete:hover {
+  background-color: rgb(163, 3, 3);
+}
