@@ -30,7 +30,7 @@ function Dashboard(){
                             <li>
                                 <a href="#" onClick={()=>navigate('/drink')}>
                                 <FontAwesomeIcon icon={faGlassWater} size='4x' />
-                                <p className='namenavbar'>Drink</p>
+                                <p className='namenavbar'>Drinkz</p>
 
                                 </a>
                             </li>
