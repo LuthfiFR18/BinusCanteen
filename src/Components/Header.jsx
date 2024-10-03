@@ -37,7 +37,7 @@ function Header(){
                 <div className="profile-box">
                 <a href="#" className="profile-icon" onclick="toggleMenu()">
                     {/* <div class="profile" onclick="toggleMenu()"> */}
-                    <FontAwesomeIcon icon={faUser} size='2x' />
+                    <FontAwesomeIcon icon={faUser} size='2x'/>
                     {/* </div> */}
                 </a>
                 </div>

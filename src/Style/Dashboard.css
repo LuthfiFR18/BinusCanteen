@@ -118,13 +118,13 @@ button .bx-search{
     background-color: var(--text-color);
 }
 
-.profile i{
+/* .profile i{
     padding-top: 4.5px;
     padding-left: 4.5px;
     color: var(--btn-color);
     font-size: 30px;
     cursor: pointer;
-}
+} */
 
 .sub-menu-warp{
     position: absolute;
@@ -202,13 +202,13 @@ button .bx-search{
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
 
-.menu ul li i{
+/* .menu ul li i{
     width: 248px;
     height: 280px;
     padding-bottom: 1000px;
     font-size: 75px;
     font-weight: 600;
-}
+} */
 
 .menu ul li a{
     padding-top: 70px;

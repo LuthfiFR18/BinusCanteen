@@ -1,8 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import img1 from '../img/nasigoreng.png';
-import img2 from '../img/image 1.png';
-import img3 from '../img/image 2.png';
+
 import '../style/Carouselforyou.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -69,7 +68,7 @@ function Carouselforyou() {
         </div>
       </div>
       <div className="carousel-foryou">
-        <img src={img2}/>
+        <img src={img1}/>
         <div className="carousel-foryou-text">
         <h6>Nasi Goreng</h6>
         <h6>Rp17.000</h6>
@@ -85,7 +84,7 @@ function Carouselforyou() {
         </div>
       </div>
       <div className="carousel-foryou">
-        <img src={img2}/>
+        <img src={img1}/>
         <div className="carousel-foryou-text">
         <h6>Nasi Goreng</h6>
         <h6>Rp17.000</h6>
@@ -93,7 +92,7 @@ function Carouselforyou() {
         </div>
       </div>
       <div className="carousel-foryou">
-        <img src={img3}/>
+        <img src={img1}/>
         <div className="carousel-foryou-text">
         <h6>Nasi Goreng</h6>
         <h6>Rp17.000</h6>

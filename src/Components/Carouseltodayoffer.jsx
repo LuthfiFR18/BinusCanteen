@@ -1,8 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import img1 from '../img/nasigoreng.png';
-import img2 from '../img/image 1.png';
-import img3 from '../img/image 2.png';
+
 import '../style/Carouseltodayoffer.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";

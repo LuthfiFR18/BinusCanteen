@@ -5,6 +5,8 @@ import '../style/Meals.css';
 import Mealsmenu from '../components/Mealsmenu';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
 
 function Meals() {
     
@@ -16,18 +18,24 @@ function Meals() {
             <nav>
             <div class="menu">
                 <ul>
-                    <li>
+                <li>
                     <a href="#" className='mealsnav'>
-                    <i class="ri-restaurant-line"></i>Meals</a>
-                    </li>
-                    <li>
-                        <a href="#" onClick={()=>navigate('/drink')}>
-                        <i class="ri-drinks-fill"></i>Drink</a>
-                    </li>
-                    <li>
-                        <a href="#" onClick={()=>navigate('/dessert')}>
-                        <i class="ri-cake-3-fill"></i>Dessert</a>
-                    </li>
+                    <FontAwesomeIcon icon={faUtensils} size='4x' />
+                    <p className='namenavbar'>Meals</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onClick={()=>navigate('/drink')}>
+                    <FontAwesomeIcon icon={faGlassWater} size='4x' />
+                    <p className='namenavbar'>Drink</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" onClick={()=>navigate('/dessert')}>
+                    <FontAwesomeIcon icon={faIceCream} size='4x'/>
+                    <p className='namenavbar'>Dessert</p>
+                    </a>
+                </li>
                 </ul>
             </div>
         </nav>

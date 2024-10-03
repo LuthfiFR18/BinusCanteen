@@ -1,11 +1,11 @@
 import React from "react";
 import Slider from "react-slick";
 import img1 from '../img/nasigoreng.png';
-import img2 from '../img/image 1.png';
-import img3 from '../img/image 2.png';
 import '../style/Carouselbestoffer.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Arrow(props) {
   const { className, style, onClick } = props;
@@ -55,7 +55,8 @@ function Carouselbestoffer() {
           // }
         ]
       };
-    
+      const navigate = useNavigate();
+
   return (
     <div className="slider-container">
         <h4>Best Offer</h4>
@@ -65,15 +66,7 @@ function Carouselbestoffer() {
         <div className="carousel-bestoffer-text">
         <h6>Nasi Goreng</h6>
         <h6>Rp17.000</h6>
-        <button>Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-bestoffer">
-        <img src={img2}/>
-        <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <button onClick={()=>navigate('/adminbuyer')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
@@ -93,7 +86,15 @@ function Carouselbestoffer() {
         </div>
       </div>
       <div className="carousel-bestoffer">
-        <img src={img3}/>
+        <img src={img1}/>
+        <div className="carousel-bestoffer-text">
+        <h6>Nasi Goreng</h6>
+        <h6>Rp17.000</h6>
+        <button>Pesan</button>
+        </div>
+      </div>
+      <div className="carousel-bestoffer">
+        <img src={img1}/>
         <div className="carousel-bestoffer-text">
         <h6>Nasi Goreng</h6>
         <h6>Rp17.000</h6>

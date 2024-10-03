@@ -9,6 +9,9 @@ import Drink from './pages/Drink';
 import Dessert from './pages/Dessert';
 import Cart from './pages/Cart';
 import Payment from './pages/Payment';
+import Adminpage from './pages/Adminbuyerpage';
+import Adminsellerpage from './pages/Adminsellerpage';
+import Admindeliverypage from './pages/Admindeliverypage';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
   return (
@@ -23,6 +26,9 @@ function App() {
         <Route path='/dessert' element={<Dessert/>}/>    
         <Route path='/cart' element={<Cart/>}/>    
         <Route path='/payment' element={<Payment/>}/>    
+        <Route path='/adminbuyer' element={<Adminpage/>}/>    
+        <Route path='/adminseller' element={<Adminsellerpage/>}/>    
+        <Route path='/admindelivery' element={<Admindeliverypage/>}/>    
       </Routes>
     </Router>
   );

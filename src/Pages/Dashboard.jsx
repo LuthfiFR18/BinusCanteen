@@ -1,10 +1,17 @@
 import React from 'react';
 import '../style/Dashboard.css';
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import Carouselbestoffer from '../components/Carouselbestoffer';
+import Carouselforyou from '../components/Carouselforyou';
+import Carouseltodayoffer from '../components/Carouseltodayoffer';
 import img1 from '../img/nasigoreng.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
 
 function Dashboard(){
     const navigate = useNavigate();
@@ -18,186 +25,30 @@ function Dashboard(){
                         <ul>
                             <li>
                                 <a href="#" onClick={()=>navigate('/meals')}>
-                                    <i class="ri-restaurant-line"></i>
-                                    Meals
+                                <FontAwesomeIcon icon={faUtensils} size='4x' />
+                                <p className='namenavbar'>Meals</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#" onClick={()=>navigate('/drink')}>
-                                    <i class="ri-drinks-fill"></i>
-                        
-                                    Drink
+                                <FontAwesomeIcon icon={faGlassWater} size='4x' />
+                                <p className='namenavbar'>Drink</p>
+
                                 </a>
                             </li>
                             <li>
                                 <a href="#" onClick={()=>navigate('/dessert')}>
-                                    <i class="ri-cake-3-fill"></i>          
-                                    Dessert
+                                <FontAwesomeIcon icon={faIceCream} size='4x'/>
+                                <p className='namenavbar'>Dessert</p>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </nav>
             </div>
-            <section className='sectionbestoffer'>
-
-            <h3 className='bestofferforyoufavoriteText'>Best Offer</h3>
-            <ul>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/')}>Pesan</button>
-                    </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>                </li>   
-               
-            </ul>
-        </section>
-        <section className='sectionfavorite'>
-            <h3 className='bestofferforyoufavoriteText'>Favorite</h3>
-            <ul>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>   
-               
-            </ul>
-        </section>
-        <section className='sectionforyou'>
-            <h3 className='bestofferforyoufavoriteText'>For You</h3>
-            <ul>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>  
-                <li>
-                    <img src={img1}/>
-                    <h6>Nasi Goreng</h6>
-                    <h6>Rp17.000</h6>
-                    <button className="buttonorder" onClick={()=> navigate('/dashboard')}>Pesan</button>
-                </li>   
-               
-            </ul>
-        </section>
+            <Carouselbestoffer/>
+            <Carouselforyou/>
+            <Carouseltodayoffer/>
 
             <Footer/>
         </div>

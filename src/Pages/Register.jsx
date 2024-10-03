@@ -61,10 +61,8 @@ function Register(){
             <label htmlFor="delivery">Delivery</label>
         </div>      
                 <form action="#">
-                    <h5 className='regisform'>First Name:</h5>
+                    <h5 className='regisform'>Name:</h5>
                     <input type="text" placeholder="First Name"></input>
-                    <h5 className='regisform'>Last Name:</h5>
-                    <input type="text" placeholder="Last Name"></input>
                     
                     <h5 className='regisform'>Phone Number:</h5>
                     <input type="text" placeholder="Phone Number"></input>
