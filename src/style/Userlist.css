@@ -31,7 +31,7 @@
 
 .button-admin-update{
   padding: 5px 10px;
-  background-color: #007bff;
+  background-color: #2E7ADD;
   color: white;
   border: none;
   cursor: pointer;
@@ -52,7 +52,7 @@
 
 
 .button-admin-update:hover {
-  background-color: #024388;
+  background-color: rgb(2, 57, 116);
 }
 
 .button-admin-delete:hover {

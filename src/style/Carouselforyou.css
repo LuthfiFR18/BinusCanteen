@@ -5,28 +5,40 @@
     --btn-color:#FF9D00;
 }
 
+.forYouText{
+    padding-left: 15px;
+}
 
 .slider-foryou-container{
+    width: 100%;
     padding-top: 50px;
+    /* padding-left: 30px; */
+}
+.carousel-foryou{
+    margin-left: 10%;
+    /* border-style: solid; */
+    padding-right: 20px;
 }
 
 .carousel-foryou img{
-    margin-left: 15%;
-    width: 283px;
     height: 180px;
+    justify-content: center;
 }
 .carousel-foryou-text{
+    font-size: 20px;
     width: fit-content;
     text-align: center;
-    padding-top: 15px;
-    margin-left: 28%;
+    /* padding-top: 15px; */
+    margin-left: 10%;
 }
 
 
-.carousel-foryou-text button{
+.button-foryou{
+    border-style: none;
     background-color: var(--btn-color);
     color: var(--text-color);
     border-radius: 15px;
     width: 181px;
     height: 33px;
+    cursor: pointer;
 }

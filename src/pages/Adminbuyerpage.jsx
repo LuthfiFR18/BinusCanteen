@@ -23,7 +23,7 @@ function Adminbuyerpage() {
                   <li>
                       <a href="#" className='buyernav'>
                       <FontAwesomeIcon icon={faUtensils} size='4x' />
-                      <p className='namenavbar'>Buyer</p>
+                      <p className='namenavbar'>Customer</p>
                       </a>
                   </li>
                   <li>

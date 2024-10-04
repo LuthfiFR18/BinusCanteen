@@ -27,14 +27,14 @@ function Register(){
         <div className='bodyloginregister'>
             <section className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>
-                {/* <input className='radio' type="radio"checked={true}/>
-                <label className='labelRadio'>User</label>
-                <input className='radio' type="radio"checked={false}/>
+                <input className='radio' type="radio" value="Customer" checked={selectedRole==='Customer'} onChange={handleRoleChange} id="customer" />
+                <label className='labelRadio'>Customer</label>
+                <input className='radio' type="radio" value="Seller" checked={selectedRole==='Seller'} onChange={handleRoleChange} id="seller" />
                 <label className='labelRadio'>Seller</label>
-                <input className='radio' type="radio"checked={false}/>
-                <label className='labelRadio'>Delivery</label> */}
+                <input className='radio' type="radio" value="Delivery" checked={selectedRole==='Delivery'} onChange={handleRoleChange} id="Delivery" />
+                <label className='labelRadio'>Delivery</label>
                 
-        <div className="role-options">
+        {/* <div className="role-options">
             <input
                 type="radio"
                 value="User"
@@ -59,7 +59,7 @@ function Register(){
                 id="delivery"
             />
             <label htmlFor="delivery">Delivery</label>
-        </div>      
+        </div>       */}
                 <form action="#">
                     <h5 className='regisform'>{selectedRole === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
                     <input type="text" placeholder="Name"></input>

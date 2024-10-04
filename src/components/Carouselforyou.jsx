@@ -6,16 +6,16 @@ import '../style/Carouselforyou.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Arrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "white" }}
-      onClick={onClick}
-    />
-  );
-}
+// function Arrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "block", background: "white" }}
+//       onClick={onClick}
+//     />
+//   );
+// }
 
 function Carouselforyou() {
     var settings = {
@@ -24,8 +24,7 @@ function Carouselforyou() {
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 3,
-        nextArrow: <Arrow />,
-        prevArrow: <Arrow />,
+        arrows: false,
         initialSlide: 0,
         responsive: [
           {
@@ -57,70 +56,70 @@ function Carouselforyou() {
     
   return (
     <div className="slider-foryou-container">
-        <h4>For You</h4>
+        <h4 className="forYouText">For You</h4>
     <Slider {...settings}>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6 >Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
         <img src={img1}/>
         <div className="carousel-foryou-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-foryou">Pesan</button>
         </div>
       </div>
     </Slider>

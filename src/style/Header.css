@@ -30,8 +30,11 @@ h4 span{
 .search-box{
     width: 527px;
     background: #ffff;
-    margin: 12.5px;
+    margin-left: 180px;
+    margin-top: 12.5px;
+    margin-bottom: 12.5px;
     border-radius: 25px;
+
 }
 
 .row{
@@ -40,19 +43,17 @@ h4 span{
     padding: 5px 10px;
 }
 
-input{
-    padding-left: 20px;
+#input-box{
+    margin-top: 5px;
+    padding-left: 25px;
     flex: 1;
     border-style: none;
     outline: 0;
 }
 
-button{
+.search-icon{
     background: transparent;
     border-style: none;
-}
-
-.search-icon{
     padding-top: 5px;
     align-items: center;
     cursor: pointer;
@@ -60,88 +61,51 @@ button{
     font-size: 16px;
 }
 
-.result-box ul{
+/* .result-box ul{
     border-top: 1 solid #999;
     padding: 15px 10px;
 }
 
-/* .result-box ul{
+.result-box ul{
     list-style: none;
     border-radius: 3px;
+
     padding: 15px 10px;
     cursor: pointer;
 } */
 
+.logo-cart-box{
+    border-style: none;
+    margin-left: 15%;
+    padding-top: 10px;
+}
 .logo-cart{
     width: 34px;
     height: 35px;
-    margin: 10px;
     font-size: 30px;
     cursor: pointer;
 }
 
-.logo-cart a{
+.logo-cart{
     color: var(--text-color);
 }
 
-.logo-cart a:hover{
+.logo-cart:hover{
     color: var(--btn-color);
 }
 
 .profile-box{
-    margin-top: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--text-color);
-    text-decoration: none;
-}
-
-.sub-menu-warp{
-    position: absolute;
-    top: 10%;
-    left: 78%;
-    width: 320px;
-    max-height: 0px;
-    border-radius: 25px;
-    overflow: hidden;
-    transition: max-height 0.5s;
-    background-image: linear-gradient(180deg, #ffff, #D0CECE);
+    position: relative;
+    object-fit: cover;
+    background: #fff;
+    display: inline-block;
+    justify-content: center;
 
 }
-
-.sub-menu-warp.open-menu{
-    box-shadow: 0 0 0.02rem 0.03rem #999;
-    max-height: 400px;
-}
-.sub-menu{
-    text-align: center;
-    padding-top: 30px;
-    height: 60vh;
-}
-.user-info img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-.user-info h6{
-  font-weight: 400;
-}
-
-.sub-menu a{
-
-    text-decoration: none;
-    color: var(--bg-color);
-    margin: 12px 0;
-    transition: transform 0.3s;
-}
-
-.sub-menu p{
-    font-weight: 300;
-}
-
-.sub-menu a:hover p{
-    transform: translateY(-5px);
-    font-weight: 500;
+.profile-icon{
+    width: 25px;
+    height: 35px;
+    padding-left: 7px;
+    padding-top: 3px;
+    color: #FF9D00;
 }

@@ -7,16 +7,16 @@ import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-function Arrow(props) {
-  const { className, style, onClick } = props;
-  return (
-    <div
-      className={className}
-      style={{ ...style, display: "block", background: "white" }}
-      onClick={onClick}
-    />
-  );
-}
+// function Arrow(props) {
+//   const { className, style, onClick } = props;
+//   return (
+//     <div
+//       className={className}
+//       style={{ ...style, display: "block", background: "white" }}
+//       onClick={onClick}
+//     />
+//   );
+// }
 
 function Carouselbestoffer() {
     var settings = {
@@ -25,8 +25,9 @@ function Carouselbestoffer() {
         speed: 500,
         slidesToShow: 5,
         slidesToScroll: 3,
-        nextArrow: <Arrow />,
-        prevArrow: <Arrow />,
+        arrows: false,
+        // nextArrow: false,
+        // prevArrow: false,
         initialSlide: 0,
         responsive: [
           {
@@ -59,70 +60,70 @@ function Carouselbestoffer() {
 
   return (
     <div className="slider-bestoffer-container">
-        <h4>Best Offer</h4>
+        <h4 className="bestofferText">Best Offer</h4>
     <Slider {...settings}>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button onClick={()=>navigate('/adminbuyer')}>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer" onClick={()=>navigate('/adminbuyer')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer" onClick={()=>navigate('/')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer" onClick={()=>navigate('/adminbuyer')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer" onClick={()=>navigate('/adminbuyer')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer" onClick={()=>navigate('/adminbuyer')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6 >Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer">Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer">Pesan</button>
         </div>
       </div>
       <div className="carousel-bestoffer">
         <img src={img1}/>
         <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng</h6>
-        <h6>Rp17.000</h6>
-        <button>Pesan</button>
+        <h6>Nasi Goreng
+        <br/><br/> Rp.17.000</h6>
+        <button className="button-bestoffer">Pesan</button>
         </div>
       </div>
     </Slider>

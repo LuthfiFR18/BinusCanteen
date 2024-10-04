@@ -5,30 +5,39 @@
     --btn-color:#FF9D00;
 }
 
+.bestofferText{
+    padding-left: 15px;
+}
 
 .slider-bestoffer-container{
     width: 100%;
-    padding-top: 50px;
+    padding-top: 25px;
+}
+.carousel-bestoffer{
+    margin-left: 10%;
+    padding-right: 20px;
 }
 
 .carousel-bestoffer img{
-  
-    margin-left: 15%;
-    width: 283px;
     height: 180px;
-}
-.carousel-bestoffer-text{
-    width: fit-content;
-    text-align: center;
-    padding-top: 15px;
-    margin-left: 28%;
+    justify-content: center;
 }
 
-.carousel-bestoffer-text button{
+.carousel-bestoffer-text{
+    font-size: 20px;
+    width: fit-content;
+    text-align: center;
+    margin-left: 10%;
+}
+
+
+
+.button-bestoffer{
+    border-style: none;
     background-color: var(--btn-color);
     color: var(--text-color);
     border-radius: 15px;
     width: 181px;
     height: 33px;
+    cursor: pointer;
 }
-

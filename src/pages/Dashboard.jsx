@@ -20,6 +20,7 @@ function Dashboard(){
         <div className='dashboard'>
             <div class="navbar1">
                 <Header/>
+                
                 <nav className='navmenu'>
                     <div class="menu">
                         <ul>
@@ -49,7 +50,6 @@ function Dashboard(){
             <Carouselbestoffer/>
             <Carouselforyou/>
             <Carouseltodayoffer/>
-
             <Footer/>
         </div>
     );
