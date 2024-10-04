@@ -1,3 +1,5 @@
+
+import argon2  from "argon2";
 import Users from "../models/UserModel.js";
 
 export const getUser = async(req, res) => {
@@ -20,9 +22,12 @@ export const getUserById = async(req, res) => {
 }
 
 export const createUser = async(req, res) => {
-    const { uuid, name, email, password,phonenumber,roleId } = req.body; 
+    
+    const { uuid, name, email, password,phonenumber,roleId } = req.body;
+    //const hashPassword = await argon2.hash(password)
+
     try {
-        const newUser = await Users.create({ uuid, name, email, password,phonenumber,roleId }); 
+        const newUser = await Users.create({ uuid, name, email, password, phonenumber,  roleId }); 
         res.status(201).json(newUser);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -38,7 +43,9 @@ export const updateUser = async(req, res) => {
         const { name, email, password,phonenumber,roleId } = req.body;
         user.name = name || user.name;
         user.email = email || user.email;
-        user.password = password || user.password;
+        // if (password) {
+        //     user.password = await argon2.hash(password);
+        // }
         user.phonenumber = phonenumber || user.phonenumber;
         user.roleId = roleId || user.roleId;
 

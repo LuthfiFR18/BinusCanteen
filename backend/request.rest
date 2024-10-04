@@ -1,0 +1,13 @@
+POST http://localhost:5000/user
+Content-Type: application/json
+
+# {
+#     "name" : "luthfi",
+#     "email" : "lfr18@gmail.com",
+#     "password" : "lfr18",
+#     "phoneNumber" : "81122",
+#     "role" : "admin"
+# }
+
+###
+GET http://localhost:5000/user

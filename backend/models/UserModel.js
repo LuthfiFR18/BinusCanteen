@@ -43,7 +43,7 @@ const Users = db.define('user',{
    
 
     phonenumber:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate:{
             notEmpty: true

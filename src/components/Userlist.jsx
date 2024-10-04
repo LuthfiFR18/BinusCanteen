@@ -1,7 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import '../style/Userlist.css'; // Impor file CSS eksternal
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
 
 const Userlist = () => {
+
+  const [user, setUser ] = useState([]);
+
+  useEffect(()=>{
+    getUser();
+  }, []);
+
+  const getUser = async () => {
+    const response = await axios.get("http://localhost:5000/user");
+    setUser(response.data);
+  };
+
+  const deleteUser = async (userId) => {
+    await axios.delete(`http://localhost:5000/user/${userId}`);
+    getUser();
+  }
+
+
   return (
     <table className='user-table'>
       <thead>
@@ -16,55 +37,23 @@ const Userlist = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>01</td>
-          <td>Mamat</td>
-          <td>mamat123@gmail.com</td>
-          <td>abah2314</td>
-          <td>081112233445522</td>
-          <td>Seller</td>
+
+      {user.map((user, index) => (
+
+        <tr key={user.uuid}>
+          <td>{index + 1}</td>
+          <td>{user.name}</td>
+          <td>{user.email}</td>
+          <td>{user.password}</td>
+          <td>{user.phonenumber}</td>
+          <td>{user.roleId}</td>
           <td>
             <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
             <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
           </td>
         </tr>
-        <tr>
-          <td>01</td>
-          <td>Mamat</td>
-          <td>mamat123@gmail.com</td>
-          <td>abah2314</td>
-          <td>081112233445522</td>
-          <td>Seller</td>
-          <td>
-          <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
-          <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>01</td>
-          <td>Mamat</td>
-          <td>mamat123@gmail.com</td>
-          <td>abah2314</td>
-          <td>081112233445522</td>
-          <td>Seller</td>
-          <td>
-          <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
-          <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
-          </td>
-        </tr>
-        <tr>
-          <td>01</td>
-          <td>Mamat</td>
-          <td>mamat123@gmail.com</td>
-          <td>abah2314</td>
-          <td>081112233445522</td>
-          <td>Seller</td>
-          <td>
-          <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
-          <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
-          </td>
-        </tr>
-        {/* Tambahkan lebih banyak baris di sini jika diperlukan */}
+      ))}
+  
       </tbody>
     </table>
   );
