@@ -3,10 +3,12 @@ import '../style/Register.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import {useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+
 function Register(){
     const navigate = useNavigate();
 
     const [selectedRole, setSelectedRole] = useState('user');
+    const [selectedCategory, setSelectedCategory] = useState('');
 
     const handleRoleChange = (event) => {
         setSelectedRole(event.target.value);
@@ -15,64 +17,116 @@ function Register(){
     const sellerRadio = document.getElementById('seller');
     const registerButton = document.getElementById('registerButton');
 
+    const handleCategoryChange = (event) => {
+        setSelectedCategory(event.target.value);
+    }
+
     const handleRegisterClick = () => {
         if (selectedRole === 'Seller') {
           navigate('/register-booth'); // Replace with the actual path to your booth registration page
         } else {
           navigate('/');
         }
-      };
+    };
 
     return(
         <div className='bodyloginregister'>
             <section className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>
-                <input className='radio' type="radio" value="Customer" checked={selectedRole==='Customer'} onChange={handleRoleChange} id="customer" />
-                <label className='labelRadio'>Customer</label>
-                <input className='radio' type="radio" value="Seller" checked={selectedRole==='Seller'} onChange={handleRoleChange} id="seller" />
+                {/* <input className='radio' type="radio"checked={true}/>
+                <label className='labelRadio'>User</label>
+                <input className='radio' type="radio"checked={false}/>
                 <label className='labelRadio'>Seller</label>
-                <input className='radio' type="radio" value="Delivery" checked={selectedRole==='Delivery'} onChange={handleRoleChange} id="Delivery" />
-                <label className='labelRadio'>Delivery</label>
-                
-        {/* <div className="role-options">
-            <input
-                type="radio"
-                value="User"
-                checked={selectedRole === 'User'}
-                onChange={handleRoleChange}
-                id="user"
-            />
-            <label htmlFor="user">User</label>
-            <input
-                type="radio"
-                value="Seller"
-                checked={selectedRole === 'Seller'}
-                onChange={handleRoleChange}
-                id="seller"
-            />
-            <label htmlFor="seller">Seller</label>
-            <input
-                type="radio"
-                value="Delivery"
-                checked={selectedRole === 'Delivery'}
-                onChange={handleRoleChange}
-                id="delivery"
-            />
-            <label htmlFor="delivery">Delivery</label>
-        </div>       */}
+                <input className='radio' type="radio"checked={false}/>
+                <label className='labelRadio'>Delivery</label> */}      
+                <div className="role-options">
+                    <input
+                        type="radio"
+                        value="User"
+                        checked={selectedRole === 'User'}
+                        onChange={handleRoleChange}
+                        id="user"
+                    />
+                    <label htmlFor="user">User</label>
+                    <input
+                        type="radio"
+                        value="Seller"
+                        checked={selectedRole === 'Seller'}
+                        onChange={handleRoleChange}
+                        id="seller"
+                    />
+                    <label htmlFor="seller">Seller</label>
+                    <input
+                        type="radio"
+                        value="Delivery"
+                        checked={selectedRole === 'Delivery'}
+                        onChange={handleRoleChange}
+                        id="delivery"
+                    />
+                    <label htmlFor="delivery">Delivery</label>
+                </div> 
+
+                {selectedRole === 'Seller' && (
+                    <div className="category-options">
+                        <h5>Select Category:</h5>
+                        <div className="category-radios">
+                            <div className="radio">
+                                <input
+                                    type="radio"
+                                    value="Food"
+                                    checked={selectedCategory === 'Food'}
+                                    onChange={handleCategoryChange}
+                                    id="food"
+                                />
+                                <label htmlFor="food">Food</label>
+                            </div>
+                            <div className="radio">
+                                <input
+                                    type="radio"
+                                    value="Drink"
+                                    checked={selectedCategory === 'Drink'}
+                                    onChange={handleCategoryChange}
+                                    id="drink"
+                                />
+                                <label htmlFor="drink">Drink</label>
+                            </div>
+                            <div className="radio">
+                                <input
+                                    type="radio"
+                                    value="Dessert"
+                                    checked={selectedCategory === 'Dessert'}
+                                    onChange={handleCategoryChange}
+                                    id="dessert"
+                                />
+                                <label htmlFor="dessert">Dessert</label>
+                            </div>
+                            <div className="radio">
+                                <input
+                                    type="radio"
+                                    value="All Type"
+                                    checked={selectedCategory === 'All Type'}
+                                    onChange={handleCategoryChange}
+                                    id="AllType"
+                                />
+                                <label htmlFor="AllType">All Type</label>
+                            </div>
+                        </div>
+                    </div>
+                )}
+
                 <form action="#">
                     <h5 className='regisform'>{selectedRole === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
                     <input type="text" placeholder="Name"></input>
-                    
+                        
                     <h5 className='regisform'>Phone Number:</h5>
                     <input type="text" placeholder="Phone Number"></input>
 
                     <h5 className='regisform'>Email:</h5>
                     <input type="email" placeholder="Email"></input>
-                    
+                        
                     <h5 className='regisform'>Password:</h5>
                     <input type="password" placeholder="Password"></input>
-                    
+                        
                     <h5 className='regisform'>Confirm Password:</h5>
                     <input type="password" placeholder="Confirm Password"></input>
                     
@@ -96,12 +150,14 @@ function Register(){
                     </div> */}
         
         
-            </form>
+                </form>
             {/* <button className='button' onClick={()=>navigate('/')}>Register</button> */}
-            <button className="button" onClick={handleRegisterClick}>{selectedRole === 'Seller' ? 'Register Your Booth' : 'Register'}</button>
+                <button className="button" onClick={handleRegisterClick}>
+                    {selectedRole === 'Seller' ? 'Register Your Booth' : 'Register'}
+                </button>
             </section>
-    </div>
-    )
+        </div>
+    );
 }
 
 export default Register;

@@ -10,53 +10,54 @@
 
 body{
     background-image: linear-gradient(180deg, var(--main-color), #2E7ADD);
+
 }
+/* .register{
+    width: 100%;
+    height: 100vh;
+} */
 
 
 .wrapperRegister{
-    
     width: 468px;
     height:fit-content;
+    margin: 25px auto;
     background-color: var(--text-color);
     border-radius: 25px;
     align-items: center;
     text-align: center;
-    margin: 5px auto;
-    padding: 30px 30px 15px 25px;
+    padding: 30px 30px 18px 25px;
 }
 
-.regis-title{
-    margin-top: -4px;
+h1{
+    padding: 20px;
 }
 
 .radio{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
     margin-left: 20px;
-    color: blue;
 }
-
 .labelRadio{
     font-size: 14px;
     text-align: center;
-    /* padding-left: 5px; */
-    padding-right: 25px;
-    font-weight: 600;
+    padding-left: 5px;
+    padding-right: 30px;
 }
-
 .regisform{
-    text-align: left; 
-    margin-left: 20px;
-    margin-bottom: 10px;   
+    text-align: left;
+    padding-top: 18px;
 }
 
 form input{
     outline: 0;
-    width: 400px;
+    width: 360px;
     height: 38px;
     border-radius: 25px;
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+    border-style: none;
     padding-left: 30px;
-    /* margin-top: -10px; */
-    /* border-style: solid; */
 }
 
 a{
@@ -79,26 +80,110 @@ a{
 }
 
 .role-options {
-    font-size: 15px;
     display: flex;
     flex-direction: row;
-    gap: 20px; /*Jarak antar elemen */
-    justify-content: space-between; /* Menempatkan item secara merata */
+    gap: 20px; /* Jarak antar elemen */
+    justify-content: space-around; /* Menempatkan item secara merata */
     align-items: center;
-    margin-bottom: 5px;
-    font-weight: 600;
-
-  }
+    padding: 10px 90;
+}
   
-  .role-options label {
-    /* font-size: 16px; */
+.role-options label {
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 10px;
     margin-left: -1.6cm;
-    margin-right: 0.5cm;
-    letter-spacing: 1px;
+    margin-right: 1cm;
+    letter-spacing: -1px;
     
-  }
+}
 
-  #registerButton {
+.radio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 30px;
+    
+}
+
+.radio input[type="radio"]{
+    margin-right: 5px;
+}
+
+.radio label{
+    margin: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.category-options {
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Atur jarak antar radio button */
+    justify-content: space-around;
+    align-items: center;
+}
+
+.category-radios{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.category-radios .radio{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    overflow: visible;
+}
+
+.category-radios label{
+    font-size: 14px;
+    margin-left: 5px;
+    margin: 0;
+}
+  
+.category-options label {
+    font-size: 14px;
+    margin-right: 10px; /* Jarak antara radio button dan label */
+}
+  
+
+#user + label {
+    margin-left: -50px;
+}
+
+#seller + label {
+    margin-left: -50px;
+}
+
+#delivery + label {
+    margin-left: -50px;
+}
+
+#AllType + label{
+    margin-left: 30px;
+}
+
+#food + label{
+    margin-left: 20px;
+}
+
+#drink + label{
+    margin-left: 48px;
+}
+
+#registerButton {
     background-color: #4CAF50; /* Warna hijau */
     color: white;
     padding: 15px 32px;
@@ -106,8 +191,7 @@ a{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  }
-
+}
 
 
 /* .select-menu{
