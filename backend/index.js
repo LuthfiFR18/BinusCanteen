@@ -39,13 +39,12 @@ app.use(session({
 
 app.use(cors({
     credentials: true,
-    origin: 'http://localhost:3000'
+    origin: ['http://localhost:3000', 'http://localhost:3001']
 }));
 
 app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
-// app.use(SellerRoute);
 app.use(OrderRoute);
 app.use(CartRoute);
 app.use(PaymentRoute);
