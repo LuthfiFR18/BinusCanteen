@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils, faStore, faTruck} from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping, faStore, faTruck} from '@fortawesome/free-solid-svg-icons'
 import Mealsmenu from '../components/Mealsmenu';
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
@@ -22,7 +22,7 @@ function Adminbuyerpage() {
                   <ul>
                   <li>
                       <a href="#" className='buyernav'>
-                      <FontAwesomeIcon icon={faUtensils} size='4x' />
+                      <FontAwesomeIcon icon={faCartShopping} size='4x' />
                       <p className='namenavbar'>Customer</p>
                       </a>
                   </li>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser} from '@fortawesome/free-solid-svg-icons'
 import '../style/Headeradmin.css';
-
+import ProfileDropdown from './ProfileDropdown';
 import '../style/Header.css';
 function Headeradmin(){
 
@@ -16,15 +16,10 @@ function Headeradmin(){
                 <a href="#" class="logo-admin" onClick={()=>navigate('/dashboard')}>
                     <h4>BINUS <span>Canteen</span></h4>
                 </a>
-                 
-                <div className="profile-box">
-                <a href="#" className="profile-icon" onclick="toggleMenu()">
-                    <FontAwesomeIcon icon={faUser} size='2x'/>
-                </a>
-                </div>
+                <ProfileDropdown/>
+
                 </nav>
         </div>
-
     );
 }
 

@@ -161,8 +161,9 @@ const Payment = () => {
               </option>
             ))}
           </select>
-          <button className="-payment-dropdown-submit-btn" onClick={handleSubmit}>
-          </button>
+          {/* <button className="-payment-dropdown-submit-btn" onClick={handleSubmit}>
+            sumbit
+          </button> */}
         </div>
       </div>
 
