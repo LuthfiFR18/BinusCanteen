@@ -58,12 +58,12 @@ const ProfileDropdown = () => {
                 <hr />
                 <ul>
                     <li>
-                        <button className='changepassword-btn' onClick={() => alert('Change Password Clicked')}>
+                        <button className='changepassword-btn' onClick={() => navigate('/resetpassword')}>
                         Change Password
                         </button>
                     </li>
                     <li>
-                    <button className='history-btn'onClick={() => alert('History Clicked')}>History</button>
+                    <button className='history-btn'onClick={() => navigate('/historybuyer')}>History</button>
                     </li>
                     <li>
                     <button className="logOut-btn" onClick={() => navigate('/')}>Log Out</button>

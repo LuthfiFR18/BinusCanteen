@@ -16,22 +16,20 @@
 }
 .carousel-todayoffer{
     margin-left: 10%;
-    /* border-style: solid; */
     padding-right: 20px;
 }
 
 .carousel-todayoffer img{
     height: 180px;
-    justify-content: center;
+    margin-left: 10%;
 }
+
 .carousel-todayoffer-text{
     font-size: 20px;
     width: fit-content;
     text-align: center;
-    /* padding-top: 15px; */
-    margin-left: 10%;
+    margin-left: 20%;
 }
-
 
 .button-todayoffer{
     border-style: none;

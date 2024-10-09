@@ -20,14 +20,14 @@
 
 .carousel-bestoffer img{
     height: 180px;
-    justify-content: center;
+    margin-left: 10%;
 }
 
 .carousel-bestoffer-text{
     font-size: 20px;
     width: fit-content;
     text-align: center;
-    margin-left: 10%;
+    margin-left: 20%;
 }
 
 

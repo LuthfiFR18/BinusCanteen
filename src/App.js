@@ -12,6 +12,9 @@ import Payment from './pages/Payment';
 import Adminpage from './pages/Adminbuyerpage';
 import Adminsellerpage from './pages/Adminsellerpage';
 import Admindeliverypage from './pages/Admindeliverypage';
+import HistoryBuyer from './pages/HistoryBuyer';
+import PaymentSuccess from './pages/PaymentSuccess';
+import PaymentFail from './pages/PaymentFail';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
         <Route path='/adminbuyer' element={<Adminpage/>}/>    
         <Route path='/adminseller' element={<Adminsellerpage/>}/>    
         <Route path='/admindelivery' element={<Admindeliverypage/>}/>    
+        <Route path='/historybuyer' element={<HistoryBuyer/>}/>    
+        <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>    
+        <Route path='/paymentfail' element={<PaymentFail/>}/>    
       </Routes>
     </Router>
   );

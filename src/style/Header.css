@@ -94,18 +94,3 @@ h4 span{
     color: var(--btn-color);
 }
 
-.profile-box{
-    position: relative;
-    object-fit: cover;
-    background: #fff;
-    display: inline-block;
-    justify-content: center;
-
-}
-.profile-icon{
-    width: 25px;
-    height: 35px;
-    padding-left: 7px;
-    padding-top: 3px;
-    color: #FF9D00;
-}

@@ -1,0 +1,79 @@
+.paymentsuccess-page{
+    width: 100%;
+    background: #ffff;
+}
+.paymentsuccess-title{
+    text-align: center;
+    padding-top: 4%;
+}
+
+.underline-paymentsuccess{
+    border-top: 2px solid gray;
+    height: 2px;
+    width: 20%;
+    margin-left: 40%;
+}
+
+.paymentsuccess-titlesummary{
+    text-align: center;
+    padding-top: 5%;
+}
+
+.underline-paymentsuccess-summary{
+    margin-top: 10px;
+    border-top: 3px solid green;
+    height: 2px;
+    width: 20%;
+    margin-left: 40%;
+}
+
+.paymentsuccess-summary {
+    display: flex;
+    justify-content: center;
+    font-size: 18px;
+    margin-top: 20px;
+}
+  
+.paymentsuccess-summary .paymentsuccess-summary-line {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    width: 300px;
+}
+
+.checkmark-done-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+    height: 80px;
+    margin-left: 47%;
+    margin-top: 3%;
+    background-color: #4CAF50;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.checkmark-done {
+    font-size: 48px;
+    color: white;
+}
+
+.paymentsuccess-btn{
+    background-color: orange;
+    padding: 15px;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-top: 4%;
+    margin-left: 40%;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    width: 20%;
+    border-style: none;
+  }
+  
+  .paymentsuccess-btn:hover {
+    background-color: darkorange;
+  }

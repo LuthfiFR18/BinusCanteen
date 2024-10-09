@@ -48,20 +48,20 @@ const Payment = () => {
     setIsError(false); // Remove error when a location is selected
   };
 
-  const handleSubmit = () => {
-    if (!location) {
-      setIsError(true); // Show error if no location is selected
-    } else {
-      // Process the order
-      alert(`Order processed for delivery to ${location}`);
-    }
-  };
+  // const handleSubmit = () => {
+  //   if (!location) {
+  //     setIsError(true); // Show error if no location is selected
+  //   } else {
+  //     // Process the order
+  //     alert(`Order processed for delivery to ${location}`);
+  //   }
+  // };
   return (
     <div className="payment-page">
       <Header />
       <h2 className='payment-title'>Payment Details</h2>
       <h5 className='countdown'>Segera melakukan pembayaran sebelum 01:59:58
-        <span className="status">Status:<span className='status-text'>Done</span></span>
+        <span className="status">Status:<span className='status-text'> Done</span></span>
       </h5>
 
       <table className="payment-table">
@@ -188,7 +188,7 @@ const Payment = () => {
       </div>
     </div>
 
-    <button className="payment-btn" onClick={()=>navigate('/payment')}>
+    <button className="payment-btn" onClick={()=>navigate('/paymentFail')}>
         PAY
       </button>
 
