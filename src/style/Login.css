@@ -37,6 +37,7 @@ h1{
 
 .greyText:hover{
     color: #FF9D00;
+    cursor: pointer;
 }
 .askTxt{
     color: #7b7b7b;
@@ -48,15 +49,6 @@ h1{
     flex-direction: row;
     font-size: 9px;
 }
-.Register {
-    cursor: pointer;
-    margin-left: 5px; 
-}
-
-.Register:hover{
-    color: #FF9D00;
-}
-
 
 form input{
     width: 421px;

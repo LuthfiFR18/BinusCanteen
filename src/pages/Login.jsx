@@ -18,7 +18,7 @@ function Login(){
                     <button className="button" onClick={()=> navigate('/dashboard')}>Login</button>
                     
                 </form>
-                <a className='askTxt'>Don't have account yet?<span className='Register' onClick={()=> navigate('/register')}>Register Here</span></a>
+                <a className='askTxt'>Don't have account yet?<span className='greyText' href="#" onClick={()=> navigate('/register')}>Register Here</span></a>
             </div>
     );
 }
