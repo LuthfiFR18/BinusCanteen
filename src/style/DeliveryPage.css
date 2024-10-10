@@ -1,0 +1,59 @@
+.dashboard-delivery{
+    width: 100%;
+    height: fit-content;
+    background-color: #ffff;
+}
+
+.toggle-navbar-delivery {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: 40%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    color: #0000;
+    background-color: #ffff;
+}
+
+.toggle-option-delivery {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0000;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+  
+.toggle-option-delivery.active {
+    background-color: #FF9D00;
+    color: #fff;
+}
+  
+.toggle-option-delivery:not(.active):hover {
+    background-color: #0000;
+}
+
+.filter-box{
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+}
+.filter-icon{
+    color: black;
+}
+
+.delivery-date{
+    text-align: center;
+    margin-top: 10px;
+    margin-right: 40%;
+    margin-bottom: 20px;
+}
+
+.time-date-delivery{
+    margin-bottom: 30px;
+}

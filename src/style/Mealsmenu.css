@@ -1,8 +1,7 @@
-.mealsmenu-list{
-    width: 100%;
-}
+
 
 .meals-item {
+    margin-top: 20%;
     border-radius: 25px;
     display: flex;
     align-items: center;

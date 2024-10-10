@@ -1,7 +1,8 @@
 import React from "react";
 import Slider from "react-slick";
 import img1 from '../img/nasigoreng.png';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import '../style/Carouselforyou.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -18,6 +19,9 @@ import "slick-carousel/slick/slick-theme.css";
 // }
 
 function Carouselforyou() {
+
+  const navigate = useNavigate();
+
     var settings = {
         dots: false,
         infinite: false,
@@ -63,7 +67,7 @@ function Carouselforyou() {
         <div className="carousel-foryou-text">
         <h6>Nasi Goreng
         <br/><br/> Rp.17.000</h6>
-        <button className="button-foryou">Pesan</button>
+        <button className="button-foryou" onClick={()=>navigate('/adminbuyer')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">
@@ -71,7 +75,7 @@ function Carouselforyou() {
         <div className="carousel-foryou-text">
         <h6>Nasi Goreng
         <br/><br/> Rp.17.000</h6>
-        <button className="button-foryou">Pesan</button>
+        <button className="button-foryou" onClick={()=>navigate('/deliverypage')}>Pesan</button>
         </div>
       </div>
       <div className="carousel-foryou">

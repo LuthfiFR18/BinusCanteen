@@ -20,7 +20,7 @@ h4{
 }
 
 h4 span{
-    color: var(--btn-color);
+    color: #FF9D00;
 }
 
 .logo{
@@ -87,10 +87,10 @@ h4 span{
 }
 
 .logo-cart{
-    color: var(--text-color);
+    color: white;
 }
 
 .logo-cart:hover{
-    color: var(--btn-color);
+    color: #FF9D00;
 }
 

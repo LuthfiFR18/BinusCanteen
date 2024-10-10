@@ -21,7 +21,6 @@
 
 .carousel-todayoffer img{
     height: 180px;
-    margin-left: 10%;
 }
 
 .carousel-todayoffer-text{
@@ -29,7 +28,7 @@
     width: fit-content;
     text-align: center;
     margin-top: 15px;
-    margin-left: 20%;
+    margin-left: 10%;
 }
 
 .button-todayoffer{

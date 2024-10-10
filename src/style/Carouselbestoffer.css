@@ -14,13 +14,13 @@
     padding-top: 25px;
 }
 .carousel-bestoffer{
+
     margin-left: 10%;
     padding-right: 20px;
 }
 
 .carousel-bestoffer img{
     height: 180px;
-    margin-left: 10%;
 }
 
 .carousel-bestoffer-text{
@@ -28,7 +28,7 @@
     width: fit-content;
     text-align: center;
     margin-top: 15px;
-    margin-left: 35%;
+    margin-left: 25%;
 }
 
 
@@ -39,7 +39,7 @@
     color: var(--text-color);
     border-radius: 15px;
     margin-top: 15px;
-    margin-left: 17%;
+    margin-left: 7%;
     width: 181px;
     height: 33px;
     cursor: pointer;

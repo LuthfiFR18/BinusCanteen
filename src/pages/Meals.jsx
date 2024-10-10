@@ -16,7 +16,7 @@ function Meals() {
     <div className='Mealspage'>
             <Header/>
             <nav>
-            <div class="menu">
+            <div class="menubar-meals">
                 <ul>
                 <li>
                     <a href="#" className='mealsnav'>

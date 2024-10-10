@@ -10,7 +10,7 @@ function Headeradmin(){
     const navigate = useNavigate();
 
     return(
-        <div className="header">
+        <div className="header-admin">
             <nav>
                 {/* <!--Logo--> */}
                 <a href="#" class="logo-admin" onClick={()=>navigate('/dashboard')}>

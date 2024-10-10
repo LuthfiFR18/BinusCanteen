@@ -11,22 +11,23 @@
     background-color: #ffff;
 }
 
-.menu{
+.menubar-meals{
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.menu ul{
+.menubar-meals ul{
     width: 248px;
     height: 238px;
     display: flex;
     justify-content: center;
     margin-top: 60px;
+    margin-bottom: 40px;
     gap: 20px;
 }
 
-.menu ul li{
+.menubar-meals ul li{
     display: flex;
     width: 248px;
     height: 230px;
@@ -34,12 +35,12 @@
     border-radius: 25px;
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
-.menu ul li .mealsnav{
+.menubar-meals ul li .mealsnav{
     border-radius: 25px;;
     border-style: solid;
     border-color: #FF9D00;
 }
-.menu ul li i{
+.menubar-meals ul li i{
     width: 248px;
     height: 280px;
     padding-bottom: 1000px;
@@ -47,7 +48,7 @@
     font-weight: 600;
 }
 
-.menu ul li a{
+.menubar-meals ul li a{
     padding-top: 70px;
     width: 248px;
     display: center;
@@ -59,10 +60,10 @@
     justify-content: center;
 }
 
-.menu ul li:hover{
+.menubar-meals ul li:hover{
     background-color: var(--btn-color);
 }
 
-.menu ul li a:hover{
+.menubar-meals ul li a:hover{
     color: var(--text-color);
 }

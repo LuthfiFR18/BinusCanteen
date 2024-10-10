@@ -15,7 +15,7 @@ function Dessert() {
     <div className='dessertpage'>
             <Header/>
             <nav>
-            <div class="menu">
+            <div class="menubar-dessert">
                 <ul>
                 <li>
                     <a href="#" onClick={()=>navigate('/meals')}>

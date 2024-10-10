@@ -1,17 +1,11 @@
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
-}
 
 .Footer{
-    position: bottom;
+    width: 100%;
     margin-top: 50px;
     align-items: center ;
     display: flex;
     justify-content: space-between;
-    height: 80px;
+    height: 90px;
     background: #2E7ADD;
     color: #ffff;
 }

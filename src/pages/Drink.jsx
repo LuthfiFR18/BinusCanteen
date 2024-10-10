@@ -15,7 +15,7 @@ function Drink() {
     <div className='drinkpage'>
             <Header/>
             <nav>
-            <div class="menu">
+            <div class="menubar-drink">
                 <ul>
                 <li>
                     <a href="#" onClick={()=>navigate('/meals')}>
