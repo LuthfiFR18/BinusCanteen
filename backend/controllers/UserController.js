@@ -36,7 +36,7 @@ export const createUser = async(req, res) => {
 
 export const updateUser = async(req, res) => {
     try {
-        const user = await Users.findByPk(req.params.id); 
+        const user = await Users.findOne({ where: { uuid: req.params.id } }); 
         if (!user) return res.status(404).json({ message: "User not found" }); 
 
         // Mengupdate data user
@@ -58,11 +58,11 @@ export const updateUser = async(req, res) => {
 
 export const deleteUser = async(req, res) => {
     try {
-        const user = await Users.findByPk(req.params.id); // Mencari user berdasarkan ID
-        if (!user) return res.status(404).json({ message: "User not found" }); // Menangani jika tidak ditemukan
+        const user = await Users.findOne({ where: { uuid: req.params.id } });
+        if (!user) return res.status(404).json({ message: "User not found" }); 
 
-        await user.destroy(); // Menghapus user
-        res.json({ message: "User deleted" }); // Mengirimkan respons bahwa user dihapus
+        await user.destroy();
+        res.json({ message: "User deleted" }); 
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

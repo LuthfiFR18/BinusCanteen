@@ -4,12 +4,15 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 
+
 const Userlist = () => {
 
-  const [user, setUser ] = useState([]);
+  const [users, setUser ] = useState([]);
+  // const [roles, setRoles] = useState([]);
 
   useEffect(()=>{
     getUser();
+    // getRole();
   }, []);
 
   const getUser = async () => {
@@ -17,11 +20,30 @@ const Userlist = () => {
     setUser(response.data);
   };
 
+
   const deleteUser = async (userId) => {
-    await axios.delete(`http://localhost:5000/user/${userId}`);
-    getUser();
+    try {
+      const url = `http://localhost:5000/user/${userId}`;
+      console.log("Deleting user at:", url); // Tambahkan log ini
+      const response = await axios.delete(url);
+      console.log("User deleted:", response.data);
+      getUser();
+    } catch (error) {
+      console.error("Error deleting user:", error);
+    }
   }
 
+  // const getRole = async () => {
+  //   const response = await axios.get("http://localhost:5000/role");
+  //   setRoles(response.data); // Store roles in the correct 'roles' state
+  // };
+
+  // const getRoleName = (roleId) => {
+  //   const role = roles.find(r => r.id === roleId);
+  //   return role ? role.name : 'Unknown'; // Return role name or 'Unknown' if not found
+  // }
+
+  //getRoleName(users.roleId)
 
   return (
     <table className='user-table'>
@@ -38,18 +60,18 @@ const Userlist = () => {
       </thead>
       <tbody>
 
-      {user.map((user, index) => (
+      {users.map((users, index) => (
 
-        <tr key={user.uuid}>
+        <tr key={users.uuid}>
           <td>{index + 1}</td>
-          <td>{user.name}</td>
-          <td>{user.email}</td>
-          <td>{user.password}</td>
-          <td>{user.phonenumber}</td>
-          <td>{user.roleId}</td>
+          <td>{users.name}</td>
+          <td>{users.email}</td>
+          <td>{users.password}</td>
+          <td>{users.phonenumber}</td>
+          <td>{users.role ? users.role.roletype : 'Unknown'}</td>
           <td>
-            <button className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</button>
-            <button className='button-admin-delete' onClick={() => alert('Delete for Mamat')}>Delete</button>
+            <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</Link>
+            <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
           </td>
         </tr>
       ))}
