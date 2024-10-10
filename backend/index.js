@@ -9,7 +9,6 @@ import OrderRoute from "./routes/OrderRoute.js";
 import PaymentRoute from "./routes/PaymentRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import UserRoute from "./routes/UserRoute.js";
-import AuthRoute from './routes/AuthRoute.js';
 
 
 dotenv.config();
@@ -43,19 +42,14 @@ app.use(cors({
     origin: ['http://localhost:3000', 'http://localhost:3001']
 }));
 
-app.listen(5001, () => {
-    console.log('Server running on port 5001');
-});
-
 app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(OrderRoute);
 app.use(CartRoute);
 app.use(PaymentRoute);
-app.use(AuthRoute);
 
-//store.sync();
+// store.sync();
 
 
 console.log('Session Secret:', process.env.SESSION_SECRET);
