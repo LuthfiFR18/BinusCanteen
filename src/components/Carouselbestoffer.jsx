@@ -19,13 +19,19 @@ function Carouselbestoffer (){
   };
 
   const handleQuantityChange = (amount) => {
-    setQuantity(prev => Math.max(1, prev + amount)); // Ensures quantity doesn't go below 1
+    setQuantity(prev => {
+      const newQuantity = prev + amount;
+      if(newQuantity<1){
+        setShowQuantity(false);
+      }
+      return Math.max(1, newQuantity); // Prevent going below 1
+    });
   };
 
   const handleConfirm = () => {
     setShowQuantity(false);
-    // Further actions like sending the order data can go here
   };
+
     var settings = {
         dots: false,
         infinite: false,
