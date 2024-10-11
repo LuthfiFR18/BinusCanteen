@@ -1,0 +1,79 @@
+/* SellerProfileDropdown.css */
+
+.profile-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .profile-button img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+  }
+  
+  .profile-icon{
+    margin-right: 5px;
+  }
+  
+  .dropdown-menu {
+    position: absolute;
+    width: 250px;
+    top: 50px;
+    right: 0;
+    background-color: hsl(231, 41%, 97%);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 10px;
+    z-index: 1;
+  }
+  
+  .dropdown-menu img {
+    width: 60px;
+    height: 50px;
+    border-radius: 50%;
+    margin-left: 90px;
+  }
+  
+  .dropdown-menu p {
+    margin: 0;
+    text-align: center;
+  }
+  
+  .dropdown-menu hr {
+    margin: 10px 0;
+  }
+  
+  .dropdown-menu ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .dropdown-menu li {
+    padding: 8px 0;
+    text-align: center;
+  }
+  
+  .dropdown-menu li button {
+    background: none;
+    border: none;
+    color: #000;
+    cursor: pointer;
+    text-align: center;
+  }   
+.changepassword-btn:hover {
+    color: #FF9D00; /* Optional hover effect */
+  }
+.history-btn:hover {
+    color: #FF9D00; /* Optional hover effect */
+  }
+
+  .logOut-btn:hover{
+    color: red;
+  }
+  
+  /* .dropdown-menu li button:last-child {
+    color: red;
+  } */
+  

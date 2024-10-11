@@ -1,0 +1,23 @@
+:root{
+    --main-color: #4FC0FD;
+    --text-color: #ffff;
+    --bg-color: #000000;
+    --btn-color:#FF9D00;
+}
+
+.Footer{
+    position: relative;
+    margin-top: 50px;
+    align-items: center ;
+    display: flex;
+    justify-content: space-between;
+    height: 80px;
+    background: #2E7ADD;
+    color: #ffff;
+}
+
+.footerText{
+    padding: 30px;
+    text-align: center;
+    font-size: 10px;
+}

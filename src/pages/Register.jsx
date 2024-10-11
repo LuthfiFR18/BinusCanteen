@@ -23,7 +23,7 @@ function Register(){
 
     const handleRegisterClick = () => {
         if (selectedRole === 'Seller') {
-          navigate('/register-booth'); // Replace with the actual path to your booth registration page
+          navigate('/Sellerpage'); // Replace with the actual path to your booth registration page
         } else {
           navigate('/');
         }
