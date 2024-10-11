@@ -16,7 +16,8 @@ import HistoryBuyer from './pages/HistoryBuyer';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFail from './pages/PaymentFail';
 import DeliveryPage from './pages/DeliveryPage';
-import InProgressDelivery from './pages/InProgressDelivery';
+import InProgress from './pages/InProgress';
+import UpdateAdmin from './pages/UpdateAdmin';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
   return (
@@ -38,7 +39,8 @@ function App() {
         <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>    
         <Route path='/paymentfail' element={<PaymentFail/>}/>    
         <Route path='/deliverypage' element={<DeliveryPage/>}/>    
-        <Route path='/inprogressdelivery' element={<InProgressDelivery/>}/>    
+        <Route path='/inprogress' element={<InProgress/>}/>    
+        <Route path='/adminupdatecustomer' element={<UpdateAdmin/>}/>    
       </Routes>
     </Router>
   );

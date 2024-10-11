@@ -1,0 +1,34 @@
+.wrapper-update-admin{
+    width: 468px;
+    height:fit-content;
+    margin: 25px auto;
+    background-color: var(--text-color);
+    border-radius: 25px;
+    align-items: center;
+    text-align: center;
+    padding: 30px 30px 18px 25px;
+}
+
+h1{
+    padding: 10px;
+}
+
+.updateform{
+    text-align: left;
+    padding-top: 18px;
+}
+
+.button-update{
+    position: relative;
+    display: inline-block;
+    border-radius: 25px;
+    width: 184px;
+    height: 41px;
+    margin-top: 50px;
+    margin-bottom: 20px;
+    background-color: var(--btn-color);
+    color: var(--text-color);
+    font-weight: 600;
+    border-style: none;
+    cursor: pointer;
+}

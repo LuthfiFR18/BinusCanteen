@@ -1,0 +1,59 @@
+.inprogress-delivery-container{
+    width: 100%;
+    height: fit-content;
+    background-color: #ffff;
+}
+
+.menu-name ul{
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-name li{
+    margin-right: 20px;
+    margin-top: 5%;
+    display: inline-block;
+}
+
+
+.toggle-navbar-delivery-inprogress {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: 40%;
+    margin-top: 5%;
+    color: #0000;
+    background-color: #ffff;
+}
+
+.toggle-option-delivery-inprogress {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0000;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+  
+.toggle-option-delivery-inprogress.active {
+    background-color: #FF9D00;
+    color: #fff;
+}
+  
+.toggle-option-delivery-inprogress:not(.active):hover {
+    background-color: #0000;
+}
+
+.filter-box{
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+}
+.filter-icon{
+    color: black;
+}

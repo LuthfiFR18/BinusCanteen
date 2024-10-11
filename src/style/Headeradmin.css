@@ -18,9 +18,13 @@ h4 span{
     color: #FF9D00;
 }
 
+.job-title{
+    color: white;
+}
+
 .logo-admin{
     text-decoration: none;
-    margin-right: 60%;
+    margin-right: 75%;
 }
 
 .profile-box{

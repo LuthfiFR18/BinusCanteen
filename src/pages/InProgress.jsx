@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import '../style/InProgressDelivery.css';
+import '../style/InProgress.css'
 import HeaderDelivery from '../components/HeaderDelivery';
+import InProgressDelivery from '../components/InProgressDelivery';
 import Footer from '../components/Footer';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
-function InProgressDelivery() {
+function InProgress() {
     const [activeTab, setActiveTab] = useState('In Progress');
 
     const navigate = useNavigate();
@@ -22,24 +23,18 @@ function InProgressDelivery() {
                 In Progress
             </div>
         </div>
-        <div className="menu-name">
-            <ul>
-                <li>Date&Time</li>
-                <li>No Pemesanan</li>
-                <li>Item</li>
-                <li>Item Description</li>
-                <li>Location</li>
-            </ul>
+        <InProgressDelivery/>
+        <InProgressDelivery/>
+        <InProgressDelivery/>
+        <InProgressDelivery/>
+        <InProgressDelivery/>
+        <InProgressDelivery/>
+        <InProgressDelivery/>
 
-        <div className="delivery-send-list">
-
-        </div>
-
-        </div>
-
+        
         <Footer/>
     </div>
   )
 }
 
-export default InProgressDelivery;
+export default InProgress;

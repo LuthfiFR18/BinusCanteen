@@ -1,81 +1,50 @@
-.inprogress-delivery-container{
-    width: 100%;
-    height: fit-content;
-    background-color: #ffff;
-}
-
-.menu-name ul{
-    display: flex;
-    justify-content: space-around;
-}
-
-.menu-name li{
-    margin-top: 5%;
-    display: inline-block;
-}
-
-
-.toggle-navbar-delivery-inprogress {
-    font-size: 16px;
-    font-weight: 600;
-    display: flex;
-    width: 300px;
-    border: 2px solid #ccc;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-left: 40%;
-    margin-top: 5%;
-    color: #0000;
-    background-color: #ffff;
-}
-
-.toggle-option-delivery-inprogress {
-    flex: 1;
+.order-table-delivery {
+    margin-top: 20px;
     padding: 10px;
-    text-align: center;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+tbody td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+td ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.order-table td {
+    vertical-align: top;
+}
+
+.button-status-delivery{
+    width: 70px;
+    height: 25px;
+    border-radius: 5px;
+    background: #FF9D00;
+    color: #ffff;
     cursor: pointer;
-    background-color: #0000;
-    transition: background-color 0.3s ease;
-    color: #000000;
-}
-  
-.toggle-option-delivery-inprogress.active {
-    background-color: #FF9D00;
-    color: #fff;
-}
-  
-.toggle-option-delivery-inprogress:not(.active):hover {
-    background-color: #0000;
 }
 
-.filter-box{
-    display: flex;
-    justify-content: center;
-    margin-left: 40%;
-}
-.filter-icon{
-    color: black;
-}
-
-.delivery-date{
-    text-align: center;
-    margin-top: 10px;
-    margin-right: 40%;
-    margin-bottom: 20px;
-}
-
-.time-date-delivery{
-    margin-bottom: 30px;
-}
-
-.delivery-send-list{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 20px auto;
-    width: 1400px;
-    height: 196px;
-    border-radius: 25px;
-    border: 2px solid #ddd;
-
+.button-status-delivery:hover{
+    background: darkorange;
 }
