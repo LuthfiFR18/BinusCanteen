@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import Slider from "react-slick";
 import img1 from '../img/nasigoreng.png';
 
@@ -6,18 +6,83 @@ import '../style/Carouseltodayoffer.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// function Arrow(props) {
-//   const { className, style, onClick } = props;
-//   return (
-//     <div
-//       className={className}
-//       style={{ ...style, display: "block", background: "white" }}
-//       onClick={onClick}
-//     />
-//   );
-// }
+const FoodAndDrinkCard = ({ id, name, price, imgSrc, activeCard, setActiveCard, quantities, setQuantities }) => {
+
+  const handlePesanClick = (id) => {
+    setActiveCard(id); // Set the current card as active
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] || 1, // Set default quantity to 1 if not set
+    }));
+  };
+
+  const handleQuantityChange = (id, amount) => {
+    setQuantities((prevQuantities) => {
+      const newQuantity = Math.max(0, (prevQuantities[id] || 1) + amount); // Allow quantity to be 0
+
+      if (newQuantity <= 0) {
+        // If quantity reaches 0, reset the active card and set the quantity to 0
+        setActiveCard(null); // Reset active card
+        return {
+          ...prevQuantities,
+          [id]: 0, // Set quantity to 0
+        };
+      }
+
+      return {
+        ...prevQuantities,
+        [id]: newQuantity,
+      };
+    });
+  };
+
+  const handleConfirm = () => {
+    setActiveCard(null); // Hide the selector after confirming
+    // Further actions like sending the order data can go here
+  };
+  return (
+    <div className="food-drink-card">
+      <div className="image-container">
+        <img 
+          src={imgSrc} 
+          className={`food-drink-image ${activeCard === id ? 'blur' : ''}`} 
+        />
+        {activeCard === id && (
+          <div className="quantity-selector">
+            <button className="quantity-button" onClick={() => handleQuantityChange(id, -1)}>-</button>
+            <span className="quantity-number">{quantities[id]}</span>
+            <button className="quantity-button" onClick={() => handleQuantityChange(id, 1)}>+</button>
+          </div>
+        )}
+      </div>
+      <div className="carousel-foryou-text">
+      <h6>{name}</h6>
+      <br />
+      <h6 className="price">Rp: {price}</h6>
+      </div>
+      {activeCard === id ? (
+        <button className="button-foryou" onClick={handleConfirm}>Confirm</button>
+      ) : (
+        <button className="button-foryou" onClick={() => handlePesanClick(id)}>Pesan</button>
+      )}
+    </div>
+  );
+}
 
 function Carouseltodayoffer() {
+
+  const [activeCard, setActiveCard] = useState(null);
+  const [quantities, setQuantities] = useState({}); // Store quantity for each card
+
+  const foods = [
+    { id: 1, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 2, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 3, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 4, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 5, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 6, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+  ];
+
     var settings = {
         dots: false,
         infinite: false,
@@ -56,74 +121,24 @@ function Carouseltodayoffer() {
     
   return (
     <div className="slider-todayoffer-container">
-        <h4 className="todayofferText">Today Offer</h4>
+    <h4 className="todayofferText">Today Offer</h4>
     <Slider {...settings}>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
-      <div className="carousel-todayoffer">
-        <img src={img1}/>
-        <div className="carousel-todayoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        <button className="button-todayoffer">Pesan</button>
-        </div>
-      </div>
+
+      {foods.map(food => (
+        <FoodAndDrinkCard 
+          key={food.id} 
+          id={food.id} 
+          name={food.name} 
+          price={food.price} 
+          imgSrc={food.imgSrc} 
+          activeCard={activeCard} 
+          setActiveCard={setActiveCard} 
+          quantities={quantities}
+          setQuantities={setQuantities}
+        />
+      ))}
     </Slider>
-  </div>     
+  </div>
   );
 }
 export default Carouseltodayoffer;

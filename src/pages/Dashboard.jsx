@@ -9,7 +9,6 @@ import Footer from '../components/Footer';
 import Carouselbestoffer from '../components/Carouselbestoffer';
 import Carouselforyou from '../components/Carouselforyou';
 import Carouseltodayoffer from '../components/Carouseltodayoffer';
-import img1 from '../img/nasigoreng.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
 

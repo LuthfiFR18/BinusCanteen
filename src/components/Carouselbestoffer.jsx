@@ -7,30 +7,83 @@ import "slick-carousel/slick/slick-theme.css";
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 
+const FoodAndDrinkCard = ({ id, name, price, imgSrc, activeCard, setActiveCard, quantities, setQuantities }) => {
 
-function Carouselbestoffer (){
-
-  
-  const [showQuantity, setShowQuantity] = useState(false);
-  const [quantity, setQuantity] = useState(1);
-
-  const handlePesanClick = () => {
-    setShowQuantity(true);
+  const handlePesanClick = (id) => {
+    setActiveCard(id); // Set the current card as active
+    setQuantities((prevQuantities) => ({
+      ...prevQuantities,
+      [id]: prevQuantities[id] || 1, // Set default quantity to 1 if not set
+    }));
   };
 
-  const handleQuantityChange = (amount) => {
-    setQuantity(prev => {
-      const newQuantity = prev + amount;
-      if(newQuantity<1){
-        setShowQuantity(false);
+  const handleQuantityChange = (id, amount) => {
+    setQuantities((prevQuantities) => {
+      const newQuantity = Math.max(0, (prevQuantities[id] || 1) + amount); // Allow quantity to be 0
+
+      if (newQuantity <= 0) {
+        // If quantity reaches 0, reset the active card and set the quantity to 0
+        setActiveCard(null); // Reset active card
+        return {
+          ...prevQuantities,
+          [id]: 0, // Set quantity to 0
+        };
       }
-      return Math.max(1, newQuantity); // Prevent going below 1
+
+      return {
+        ...prevQuantities,
+        [id]: newQuantity,
+      };
     });
   };
 
   const handleConfirm = () => {
-    setShowQuantity(false);
+    setActiveCard(null); // Hide the selector after confirming
+    // Further actions like sending the order data can go here
   };
+
+  return (
+    <div className="food-drink-card">
+      <div className="image-container">
+        <img 
+          src={imgSrc} 
+          className={`food-drink-image ${activeCard === id ? 'blur' : ''}`} 
+        />
+        {activeCard === id && (
+          <div className="quantity-selector">
+            <button className="quantity-button" onClick={() => handleQuantityChange(id, -1)}>-</button>
+            <span className="quantity-number">{quantities[id]}</span>
+            <button className="quantity-button" onClick={() => handleQuantityChange(id, 1)}>+</button>
+          </div>
+        )}
+      </div>
+      <div className="carousel-bestoffer-text">
+      <h6 className="name-product">{name}</h6>
+      <br />
+      <h6 className="price">Rp: {price}</h6>
+      </div>
+      {activeCard === id ? (
+        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
+      ) : (
+        <button className="button-bestoffer" onClick={() => handlePesanClick(id)}>Pesan</button>
+      )}
+    </div>
+  );
+}
+
+function Carouselbestoffer (){
+
+  const [activeCard, setActiveCard] = useState(null);
+  const [quantities, setQuantities] = useState({}); // Store quantity for each card
+
+  const foods = [
+    { id: 1, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 2, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 3, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 4, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 5, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+    { id: 6, name: 'Nasi Goreng', price: '17.000', imgSrc: img1 },
+  ];
 
     var settings = {
         dots: false,
@@ -46,7 +99,7 @@ function Carouselbestoffer (){
           {
             breakpoint: 1024,
             settings: {
-              slidesToShow: 2,
+              slidesToShow: 3,
               slidesToScroll: 1,
               infinite: true,
               dots: true
@@ -74,210 +127,22 @@ function Carouselbestoffer (){
     <div className="slider-bestoffer-container">
         <h4 className="bestofferText">Best Offer</h4>
     <Slider {...settings}>
-      <div className="carousel-bestoffer">
 
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity  ? 'blur' : ''}`} 
+    {foods.map(food => (
+        <FoodAndDrinkCard 
+          key={food.id} 
+          id={food.id} 
+          name={food.name} 
+          price={food.price} 
+          imgSrc={food.imgSrc} 
+          activeCard={activeCard} 
+          setActiveCard={setActiveCard} 
+          quantities={quantities}
+          setQuantities={setQuantities}
         />
-        {showQuantity &&  (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange( -1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange( 1)}>+</button>
-          </div>
-        )}
-        </div>
-
-        <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/>Rp.17.000</h6>
-        </div>
-
-        {showQuantity ?(
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={() => handlePesanClick()}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-      <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
-      <div className="carousel-bestoffer">
-       <div className="image-container">
-        <img 
-          src={img1} 
-          className={`food-image ${showQuantity ? 'blur' : ''}`}/>
-          
-
-        {showQuantity && (
-          <div className="quantity-selector">
-            <button className="quantity-button" onClick={() => handleQuantityChange(-1)}>-</button>
-            <span className="quantity-number">{quantity}</span>
-            <button className="quantity-button" onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
-      </div>
-      <div className="carousel-bestoffer-text">
-        <h6>Nasi Goreng
-        <br/><br/> Rp.17.000</h6>
-        </div>
-      {showQuantity ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={handlePesanClick}>Pesan</button>
-      )}
-      </div>
+      ))}
     </Slider>
-  </div>     
+    </div>
   );
 }
 export default Carouselbestoffer
