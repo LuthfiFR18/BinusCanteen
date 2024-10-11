@@ -1,3 +1,12 @@
+POST http://localhost:5000/roles
+Content-Type: application/json
+
+{
+    "name": "Delivery Person"
+}
+
+
+###
 POST http://localhost:5000/user
 Content-Type: application/json
 
