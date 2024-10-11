@@ -11,11 +11,11 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "name" : "luthfi",
-    "email" : "lfr1@gmail.com",
+    "name" : "luthfidel",
+    "email" : "lfrdel@gmail.com",
     "password" : "lfr18",
     "phonenumber" : "8112",
-    "roleId" : "1"
+    "roleId" : "4"
 }
 
 ###

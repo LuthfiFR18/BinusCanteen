@@ -17,7 +17,8 @@ const Userlist = () => {
 
   const getUser = async () => {
     const response = await axios.get("http://localhost:5000/user");
-    setUser(response.data);
+    const filteredUsers = response.data.filter(user => user.role && user.role.name === 'Customer');
+    setUser(filteredUsers);
   };
 
 
@@ -68,7 +69,7 @@ const Userlist = () => {
           <td>{users.email}</td>
           <td>{users.password}</td>
           <td>{users.phonenumber}</td>
-          <td>{users.role ? users.role.name : 'Unknown'}</td>
+          <td>{users.role && users.role.name === 'Customer' ? 'Customer' : 'Unknown'}</td>
           <td>
             <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</Link>
             <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
