@@ -9,6 +9,7 @@ import OrderRoute from "./routes/OrderRoute.js";
 import PaymentRoute from "./routes/PaymentRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import UserRoute from "./routes/UserRoute.js";
+import RoleRoute from "./routes/RoleRoute.js"
 
 
 dotenv.config();
@@ -48,6 +49,7 @@ app.use(ProductRoute);
 app.use(OrderRoute);
 app.use(CartRoute);
 app.use(PaymentRoute);
+app.use(RoleRoute);
 
 // store.sync();
 

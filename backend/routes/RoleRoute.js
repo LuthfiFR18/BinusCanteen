@@ -1,13 +1,14 @@
 import express from "express";
-import {
+import { createRole,
     getRoleById,
-    getRoles
-} from "../controllers/CartController.js";
+    getRoleName
+} from "../controllers/RoleController.js";
 
 const router = express.Router();
 
+router.post('/roles', createRole);
 router.get('/role/:id', getRoleById);
-router.post('/role', getRoles);
+router.post('/role', getRoleName);
 
 
 export default router;

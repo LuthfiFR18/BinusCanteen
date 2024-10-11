@@ -1,5 +1,5 @@
 import User from '../models/UserModel.js';
-import Role from '../models/RoleModel.js';
+import Roles from '../models/RolesModel.js';
 
 
 export const createRole = async (req, res) => {
@@ -15,11 +15,8 @@ export const createRole = async (req, res) => {
 export const getRoleName = async (req, res) => {
     try {
         const roles = await Roles.findAll({
-            include: [{
-                model : Roles,
-                attributes: ['name']
-            }]
-        }); // Mengambil semua peran dari database
+            attributes: ['uuid', 'name']
+        }); // Mengambil atribute dari database
         res.json(roles);
     } catch (error) {
         res.status(500).json({ message: error.message });
