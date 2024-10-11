@@ -68,7 +68,7 @@ const Userlist = () => {
           <td>{users.email}</td>
           <td>{users.password}</td>
           <td>{users.phonenumber}</td>
-          <td>{users.roleId}</td>
+          <td>{users.role ? users.role.name : 'Unknown'}</td>
           <td>
             <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</Link>
             <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
