@@ -1,0 +1,49 @@
+.product-table {
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+.product-table th {
+    border-bottom: 2px solid black;
+    text-align: center;
+    padding-left: 8%;
+    vertical-align: middle; /* Center vertically */
+}
+  
+.product-table td {
+    border-bottom: 1px solid #ddd;
+    padding-left: 8%;
+    text-align: center; /* Center horizontally */
+    vertical-align: middle; /* Center vertically */
+}
+  
+.button-admin-seller-update{
+    font-size: 13px;
+    padding: 5px 10px;
+    background-color: #2E7ADD;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+  
+.button-admin-seller-delete{
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 20px;
+ }
+  
+.button-admin-seller-update:hover {
+    background-color: rgb(2, 57, 116);
+}
+  
+.button-admin-seller-delete:hover {
+    background-color: rgb(163, 3, 3);
+}
+  

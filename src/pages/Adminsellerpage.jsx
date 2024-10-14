@@ -3,13 +3,10 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faCartShopping, faStore, faTruck} from '@fortawesome/free-solid-svg-icons'
-import Mealsmenu from '../components/Mealsmenu';
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
-import '../style/Adminsellerpage.css';
-import Userlist from '../components/Userlist';
-
-
+import '../style/Adminsellerpage.css'
+import ProductList from '../components/ProductList';
 
 function Adminsellerpage() {
     const navigate = useNavigate();
@@ -42,7 +39,7 @@ function Adminsellerpage() {
               </div>
           </nav>
 
-          <Userlist/>
+          <ProductList/>
 
 
   <Footer/>
