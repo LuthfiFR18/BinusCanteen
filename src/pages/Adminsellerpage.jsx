@@ -20,19 +20,13 @@ function Adminsellerpage() {
                   <li>
                       <a href="#" onClick={()=>navigate('/adminbuyer')}>
                       <FontAwesomeIcon icon={faCartShopping} size='4x' />
-                      <p className='namenavbar'>Customer</p>
+                      <p className='namenavbar'>All User</p>
                       </a>
                   </li>
                   <li>
-                      <a href="#" className='sellernav'>
+                      <a href="#" className='boothnav'>
                       <FontAwesomeIcon icon={faStore} size='4x'/>
-                        <p className='namenavbar'>Seller</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" onClick={()=>navigate('/admindelivery')}>
-                      <FontAwesomeIcon icon={faTruck} size='4x'/>
-                      <p className='namenavbar'>Delivery</p>
+                        <p className='namenavbar'>Booth</p>
                       </a>
                   </li>
                   </ul>

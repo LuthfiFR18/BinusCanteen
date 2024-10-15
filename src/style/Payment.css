@@ -181,14 +181,6 @@
   width: 400px;
 }
 
-.payment-dropdown-submit-btn {
-  margin-left: 10px;
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
 .payment-error-message {
   color: red;
   margin-bottom: 10px;

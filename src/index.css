@@ -5,11 +5,12 @@
   padding: 0;
   box-sizing: border-box;
   font-family: 'poppins', sans-serif;
-
 }
+
 body {
   width: 100%;
   min-height : 100vh;
+  background: #fff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
