@@ -1,7 +1,10 @@
 import React, {useState} from 'react'
 import '../style/ProductList.css';
 import PopupUpdateAdmin from './PopupUpdateAdmin';
-function ProductList() {
+
+
+
+const ProductList = () => {
 
   const [showPopup, setShowPopup] = useState(false);
     const [storeClosed, setStoreClosed] = useState(false);
