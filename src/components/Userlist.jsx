@@ -21,12 +21,15 @@ const Userlist = ({selectedLocation, search }) => {
     let filteredUsers = response.data;
 
     if (selectedLocation && selectedLocation !== 'All Users') {
-            filteredUsers = filteredUsers.filter(user => user.role && user.role.name === selectedLocation);
+            filteredUsers = filteredUsers.filter(users => users.role && users.role.name === selectedLocation);
         }
 
         // Filter berdasarkan pencarian (nama pengguna atau properti lainnya)
         if (search) {
-            filteredUsers = filteredUsers.filter(user => user.name.toLowerCase().includes(search.toLowerCase()));
+            filteredUsers = filteredUsers.filter(users => users.name.toLowerCase().includes(search.toLowerCase())||
+            users.email.toLowerCase().includes(search.toLowerCase())
+            );
+            
         }
     setUser(filteredUsers);
   };
