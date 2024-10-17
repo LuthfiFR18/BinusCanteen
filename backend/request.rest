@@ -15,7 +15,7 @@ Content-Type: application/json
     "email" : "lfrdel@gmail.com",
     "password" : "lfr18",
     "phonenumber" : "8112",
-    "roleId" : "4"
+    "roleId" : "1"
 }
 
 ###
