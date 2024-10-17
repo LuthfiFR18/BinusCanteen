@@ -8,9 +8,18 @@
     --btn-color:#FF9D00;
 }
 
+.loginpage{
+    display: flex;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    padding: 0;
+    margin: 0;
+}
+
 .wrapperLogin{
     width: fit-content;
-    height: fit-content;
     padding: 30px 30px 30px 30px;
     margin: 125px auto;
     background-color: var(--text-color);
@@ -25,13 +34,11 @@ h1{
 
 .Logintext{
     text-align: left;
-    /* padding-left: 5rem; */
     padding-top: 30px;
 }
 
 .greyText{
     text-align: left;
-    /* border-style: solid; */
     margin-left: 20px;
 }
 

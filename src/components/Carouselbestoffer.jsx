@@ -43,11 +43,11 @@ const FoodAndDrinkCard = ({ id, name, price, imgSrc, activeCard, setActiveCard, 
   };
 
   return (
-    <div className="food-drink-card">
+    <div className="food-drink-dessert-card">
       <div className="image-container">
         <img 
           src={imgSrc} 
-          className={`food-drink-image ${activeCard === id ? 'blur' : ''}`} 
+          className={`food-drink-dessert-image ${activeCard === id ? 'blur' : ''}`} 
         />
         {activeCard === id && (
           <div className="quantity-selector">
@@ -61,12 +61,13 @@ const FoodAndDrinkCard = ({ id, name, price, imgSrc, activeCard, setActiveCard, 
       <h6 className="name-product">{name}</h6>
       <br />
       <h6 className="price">Rp: {price}</h6>
-      </div>
       {activeCard === id ? (
         <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
       ) : (
         <button className="button-bestoffer" onClick={() => handlePesanClick(id)}>Pesan</button>
       )}
+      
+      </div>
     </div>
   );
 }
@@ -125,6 +126,7 @@ function Carouselbestoffer (){
 
   return (
     <div className="slider-bestoffer-container">
+      <div className="slider-bestoffer">
         <h4 className="bestofferText">Best Offer</h4>
     <Slider {...settings}>
 
@@ -142,6 +144,7 @@ function Carouselbestoffer (){
         />
       ))}
     </Slider>
+    </div>
     </div>
   );
 }

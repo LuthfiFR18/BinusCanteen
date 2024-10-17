@@ -42,7 +42,7 @@ const FoodAndDrinkCard = ({ id, name, price, imgSrc, activeCard, setActiveCard, 
     // Further actions like sending the order data can go here
   };
   return (
-    <div className="food-drink-card">
+    <div className="food-drink-dessert-card">
       <div className="image-container">
         <img 
           src={imgSrc} 
@@ -122,6 +122,7 @@ function Carouselforyou() {
     
   return (
     <div className="slider-foryou-container">
+      <div className="slider-foryou">
     <h4 className="foryouText">For You</h4>
     <Slider {...settings}>
 
@@ -139,6 +140,7 @@ function Carouselforyou() {
         />
       ))}
     </Slider>
+    </div>
   </div>
   );
 }

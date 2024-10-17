@@ -1,11 +1,10 @@
 
+
 .Footer{
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    position: relative;
+    bottom: 0;  
     width: 100%;
     margin-top: 50px;
-    align-items: center ;
     display: flex;
     justify-content: space-between;
     height: 90px;

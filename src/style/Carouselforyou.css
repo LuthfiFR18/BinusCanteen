@@ -1,21 +1,28 @@
 .foryouText{
     padding-left: 20px;
-  }
-.slider-foryou-container{
-    padding-top: 40px;
-    width: 100%;
-    padding-right: 30px;
-  }
-  
-.carousel-foryou-text{
-    font-size: 20px;
-    width: fit-content;
-    text-align: center;
-    margin-top: 15px;
-    margin-left: 37%;
 }
 
+.slider-foryou-container{
+    padding-top: 20px;
+    width: 100%;
+    align-items: center; 
+    justify-content: center;
+    padding-right: 20px;
+}
 
+.slider-bestoffer{
+    align-items: center;
+    justify-content: center;
+  }
+.carousel-bestoffer-text{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    font-size: 20px;
+    margin-top: 15px;
+}
 
 .button-foryou{
     border-style: none;
@@ -29,18 +36,28 @@
     cursor: pointer;
 }
 
+.food-drink-dessert-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 .image-container {
     position: relative;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
-.food-drink-image{
+.food-drink-dessert-image{
     margin-left: 10%;
     height: 180px;
     transition: filter 0.3s;
 }
 
-.food-drink-image.blur {
+.food-drink-dessert-image.blur {
     filter: blur(4px);
 }
 

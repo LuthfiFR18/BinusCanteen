@@ -16,7 +16,8 @@ function Dashboard(){
     const navigate = useNavigate();
 
     return(
-        <div className='dashboard'>
+        <div className='dashboard-container'>
+            <div className="dashboardpage">
             <div class="navbar1">
                 <Header/>
                 
@@ -50,6 +51,7 @@ function Dashboard(){
             <Carouselforyou/>
             <Carouseltodayoffer/>
             <Footer/>
+            </div>
         </div>
     );
 }

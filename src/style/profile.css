@@ -3,17 +3,17 @@
 
 .profile-box{
   position: relative;
-  object-fit: cover;
-  background: #fff;
-  display: inline-block;
+  display: flex;
   justify-content: center;
   cursor: pointer;
-
+  margin-left: 7%;
 }
+
 .profile-icon{
   width: 25px;
   height: 35px;
-  padding-left: 7px;
+  padding-left: 25px;
+  margin-right: 23px;
   padding-top: 3px;
   color: #FF9D00;
 }
