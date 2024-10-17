@@ -1,6 +1,6 @@
 // import React from 'react';
 import '../style/Register.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import axios from "axios";
 import React, { useState } from "react";
 import {useNavigate } from 'react-router-dom';
@@ -13,7 +13,7 @@ function Register(){
     const [password, setPassword] = useState("");
     const [confPassword, setConfPassword] = useState("");
     const [phoneNumber, setphoneNumber] = useState("");
-    const [role, setRole] = useState("");
+    const [roleId, setRoleId] = useState("");
     const [msg, setMsg] = useState("");
 
     const saveUser = async (e) => {
@@ -34,11 +34,18 @@ function Register(){
         }
     };
 
-    // const [selectedRole, setSelectedRole] = useState('user');
+    const [role, setSelectedRole] = useState('');
     // const [selectedCategory, setSelectedCategory] = useState('');
 
     const handleRoleChange = (event) => {
-        setRole(event.target.value);
+        const a = setSelectedRole(event.target.value);
+        if(a==="Admin"){
+            setRoleId(3)
+        }else if(a==="User"){
+            setRoleId(2)
+        }else{
+            setRoleId(1)
+        }
     }
 
     // const handleCategoryChange = (event) => {
@@ -171,7 +178,7 @@ function Register(){
         
                 </form>
             {/* <button className='button' onClick={()=>navigate('/')}>Register</button> */}
-                <button className="button">
+                <button className="button" type='submit'>
                     {role === 'Seller' ? 'Register Your Booth' : 'Register'}
                 </button>
             </section>
