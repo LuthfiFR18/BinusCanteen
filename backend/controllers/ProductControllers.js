@@ -20,14 +20,15 @@ export const getProductById = async(req, res) => {
 }
 
 export const createProduct = async(req, res) => {
-    const { uuid, name, email, password,phonenumber,roleId } = req.body; 
+    const { name, price, producttype, userId } = req.body; 
     try {
-        const newProduct = await Products.create({ uuid, name, price, productType,userId }); 
+        const newProduct = await Products.create({ name, price, producttype, userId }); 
         res.status(201).json(newProduct);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 }
+
 
 export const updateProduct = async(req, res) => {
     try {
@@ -35,10 +36,10 @@ export const updateProduct = async(req, res) => {
         if (!user) return res.status(404).json({ message: "Product not found" }); 
 
         // Mengupdate data user
-        const { name, price, productType,userId } = req.body;
+        const { name, price, producttype,userId } = req.body;
         product.name = name || product.name;
         product.price = price || product.price;
-        product.productType = productType || product.productType;
+        product.producttype = producttype || product.producttype;
         product.roleId = roleId || product.roleId;
 
         await product.save(); // Menyimpan perubahan

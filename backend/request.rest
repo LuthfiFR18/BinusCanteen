@@ -30,3 +30,16 @@ Content-Type: application/json
     "email" : "lfr18@gmail.com",
     "password" : "lfr18"
 }
+
+###
+//ADD Product
+POST http://localhost:5000/product
+Content-Type: application/json
+
+    {
+        "name": "Coca Cola",
+        "price": 5000,
+        "producttype": "Drink",
+        "userId": 7
+    }
+

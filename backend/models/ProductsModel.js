@@ -33,10 +33,10 @@ const Products = db.define('product',{
         }
     },
 
-    producttype:{
+    producttype: {
         type: DataTypes.STRING,
         allowNull: false,
-        validate:{
+        validate: {
             notEmpty: true
         }
     },
