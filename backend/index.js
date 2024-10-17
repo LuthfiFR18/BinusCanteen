@@ -53,7 +53,7 @@ app.use(PaymentRoute);
 app.use(RoleRoute);
 app.use(AuthRoute);
 
-// store.sync();
+store.sync();
 
 
 console.log('Session Secret:', process.env.SESSION_SECRET);

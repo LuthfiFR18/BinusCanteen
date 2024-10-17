@@ -1,49 +1,67 @@
-import React from 'react';
+// import React from 'react';
 import '../style/Register.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
 import {useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 
 function Register(){
     const navigate = useNavigate();
 
-    const [selectedRole, setSelectedRole] = useState('user');
-    const [selectedCategory, setSelectedCategory] = useState('');
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confPassword, setConfPassword] = useState("");
+    const [phoneNumber, setphoneNumber] = useState("");
+    const [role, setRole] = useState("");
+    const [msg, setMsg] = useState("");
 
-    const handleRoleChange = (event) => {
-        setSelectedRole(event.target.value);
-    }
-
-    const sellerRadio = document.getElementById('seller');
-    const registerButton = document.getElementById('registerButton');
-
-    const handleCategoryChange = (event) => {
-        setSelectedCategory(event.target.value);
-    }
-
-    const handleRegisterClick = () => {
-        if (selectedRole === 'Seller') {
-          navigate('/Sellerpage'); // Replace with the actual path to your booth registration page
-        } else {
-          navigate('/');
+    const saveUser = async (e) => {
+        e.preventDefault();
+        try {
+            await axios.post("http://localhost:5000/user", {
+            name: name,
+            email: email,
+            password: password,
+            phoneNumber: phoneNumber,
+            roleId: roleId,
+            });
+            navigate("/");
+        } catch (error) {
+            if (error.response) {
+            setMsg(error.response.data.msg);
+            }
         }
     };
+
+    // const [selectedRole, setSelectedRole] = useState('user');
+    // const [selectedCategory, setSelectedCategory] = useState('');
+
+    const handleRoleChange = (event) => {
+        setRole(event.target.value);
+    }
+
+    // const handleCategoryChange = (event) => {
+    //     setSelectedCategory(event.target.value);
+    // }
+
+    // const handleRegisterClick = () => {
+    //     if (role === 'Seller') {
+    //       navigate('/Sellerpage'); // Replace with the actual path to your booth registration page
+    //     } else {
+    //       navigate('/');
+    //     }
+    // };
 
     return(
         <div className='bodyloginregister'>
             <section className="wrapperRegister">
-                <h1 className='regis-title'>Registration</h1>
-                {/* <input className='radio' type="radio"checked={true}/>
-                <label className='labelRadio'>User</label>
-                <input className='radio' type="radio"checked={false}/>
-                <label className='labelRadio'>Seller</label>
-                <input className='radio' type="radio"checked={false}/>
-                <label className='labelRadio'>Delivery</label> */}      
+                <h1 className='regis-title'>Registration</h1>   
                 <div className="role-options">
                     <input
                         type="radio"
                         value="User"
-                        checked={selectedRole === 'User'}
+                        checked={role === 'User'}
                         onChange={handleRoleChange}
                         id="user"
                     />
@@ -51,7 +69,7 @@ function Register(){
                     <input
                         type="radio"
                         value="Seller"
-                        checked={selectedRole === 'Seller'}
+                        checked={role === 'Seller'}
                         onChange={handleRoleChange}
                         id="seller"
                     />
@@ -59,14 +77,14 @@ function Register(){
                     <input
                         type="radio"
                         value="Delivery"
-                        checked={selectedRole === 'Delivery'}
+                        checked={role === 'Delivery'}
                         onChange={handleRoleChange}
                         id="delivery"
                     />
                     <label htmlFor="delivery">Delivery</label>
                 </div> 
 
-                {selectedRole === 'Seller' && (
+                {/* {selectedRole === 'Seller' && (
                     <div className="category-options">
                         <h5>Select Category:</h5>
                         <div className="category-radios">
@@ -112,23 +130,24 @@ function Register(){
                             </div>
                         </div>
                     </div>
-                )}
+                )} */}
 
-                <form action="#">
-                    <h5 className='regisform'>{selectedRole === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
-                    <input type="text" placeholder="Name"></input>
+                <form onSubmit={saveUser}>
+                    <p className='errorMsg'>{msg}</p>
+                    <h5 className='regisform'>{role === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
+                    <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
                         
                     <h5 className='regisform'>Phone Number:</h5>
-                    <input type="text" placeholder="Phone Number"></input>
+                    <input type="text" value={phoneNumber} onChange={(e)=> setphoneNumber(e.target.value)} placeholder="Phone Number"></input>
 
                     <h5 className='regisform'>Email:</h5>
-                    <input type="email" placeholder="Email"></input>
+                    <input type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="Email"></input>
                         
                     <h5 className='regisform'>Password:</h5>
-                    <input type="password" placeholder="Password"></input>
+                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"></input>
                         
                     <h5 className='regisform'>Confirm Password:</h5>
-                    <input type="password" placeholder="Confirm Password"></input>
+                    <input type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
                     
                     {/* <h5>Role:</h5>
                     <div className="select-menu">
@@ -152,8 +171,8 @@ function Register(){
         
                 </form>
             {/* <button className='button' onClick={()=>navigate('/')}>Register</button> */}
-                <button className="button" onClick={handleRegisterClick}>
-                    {selectedRole === 'Seller' ? 'Register Your Booth' : 'Register'}
+                <button className="button">
+                    {role === 'Seller' ? 'Register Your Booth' : 'Register'}
                 </button>
             </section>
         </div>

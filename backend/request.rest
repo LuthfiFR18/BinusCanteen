@@ -2,7 +2,7 @@ POST http://localhost:5000/roles
 Content-Type: application/json
 
 {
-    "name": "Seller"
+    "name": "Admin"
 }
 
 
@@ -11,15 +11,29 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "name" : "luthfidel",
-    "email" : "lfrdel@gmail.com",
-    "password" : "lfr18",
+    "name" : "admin",
+    "email" : "admin@gmail.com",
+    "password" : "admin",
     "phonenumber" : "8112",
-    "roleId" : "4"
+    "roleId" : "3"
 }
 
 ###
+//get all user
 GET http://localhost:5000/user
+
+###
+GET http://localhost:5000/me
+
+###
+// login user admin
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "admin@gmail.com",
+    "password" : "admin"
+}
 
 ###
 // login user
@@ -27,6 +41,10 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email" : "lfr18@gmail.com",
+    "email" : "lfrdel@gmail.com",
     "password" : "lfr18"
 }
+
+###
+//logout user
+DELETE http://localhost:5000/logout
