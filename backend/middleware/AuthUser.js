@@ -32,7 +32,7 @@ export const adminOnly = async (req, res, next) => {
     
     });
     if (!user) return res.status(404).json({msg: "User tidak ditemukan"})
-    if (user.roleId !== 3) return res.status(403).json({msg: "Akses terlarang"});
+    if (user.roleId !== 1) return res.status(403).json({msg: "Akses terlarang"});
     
     next();
     

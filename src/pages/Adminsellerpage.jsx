@@ -6,7 +6,7 @@ import {faCartShopping, faStore, faTruck} from '@fortawesome/free-solid-svg-icon
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
-import ProductList from '../components/productlist';
+import ProductList from '../components/ProductList';
 
 function Adminsellerpage() {
     const navigate = useNavigate();
