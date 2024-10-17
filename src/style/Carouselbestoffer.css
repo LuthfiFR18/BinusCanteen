@@ -1,47 +1,62 @@
+.slider-bestoffer-container{
+  padding-top: 20px;
+  width: 100%;
+  align-items: center; /* Pusat secara vertikal */
+  justify-content: center; /* Pusat secara horizontal */
+  padding-right: 20px;
+}
+
+.slider-bestoffer{
+  align-items: center;
+  justify-content: center;
+}
+
 .bestofferText{
   padding-left: 20px;
 }
 
-.slider-bestoffer-container{
-  padding-top: 20px;
-  width: 100%;
-  padding-right: 20px;
-}
-
 .carousel-bestoffer-text{
+  display: flex;
   font-size: 20px;
-  width: fit-content;
-  text-align: center;
   margin-top: 15px;
-  margin-left: 37%;
 }
-
-
 
 .button-bestoffer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-style: none;
   background-color: #FF9D00;
   color: var(--text-color);
   border-radius: 15px;
   margin-top: 15px;
-  margin-left: 20%;
-  width: 181px;
+  width: 181px;  
   height: 33px;
   cursor: pointer;
+}
+
+.food-drink-dessert-card{
+  border-style: solid;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container {
   position: relative;
   width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
   
-.food-drink-image{
-  margin-left: 10%;
+.food-drink-dessert-image{
   height: 180px;
   transition: filter 0.3s;
 }
   
-.food-drink-image.blur {
+.food-drink-dessert-image.blur {
   filter: blur(4px);
 }
   
@@ -60,12 +75,15 @@
 }
 
 .quantity-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: #e5e5e5;
   border: none;
   width: 70px;
-  padding: 10px;
+  /* padding: 10px; */
   font-size: 1.2em;
-  margin: 0 5px;
+  /* margin: 0 5px; */  
   border-radius: 8px;
   cursor: pointer;
 }

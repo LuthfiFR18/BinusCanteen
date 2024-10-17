@@ -10,12 +10,12 @@ function Header(){
     const navigate = useNavigate();
 
     return(
-        <div class="header">
-            <nav>
+        <div class="header-container">
+            <div className="header">
                 {/* <!--Logo--> */}
                 <div className="logo-text">
                 <a href="#" class="logo" onClick={()=>navigate('/dashboard')}>
-                    <h4>BINUS <span>Canteen</span></h4>
+                    BINUS <span>Canteen</span>
                 </a>
                 </div>
                 {/* <!--search bar--> */}
@@ -38,13 +38,7 @@ function Header(){
                 </div>
                 {/* <!--Profile--> */}
                 <ProfileDropdown/>
-                    {/* <h6 className='profile-name'>Mamat<br/>
-                    <span className='profile-name-span'>Mamat.kencana@gmail.com</span></h6>
-                    <ul>
-                    </ul> */}
-
-                {/* </div> */}
-            </nav>
+                </div>
         </div>
 
     );

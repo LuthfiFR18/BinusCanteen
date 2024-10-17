@@ -18,6 +18,8 @@ import PaymentFail from './pages/PaymentFail';
 import DeliveryPage from './pages/DeliveryPage';
 import InProgress from './pages/InProgress';
 import UpdateAdmin from './pages/UpdateAdmin';
+import Sellerpage from './pages/Sellerpage';
+
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
   return (
@@ -40,6 +42,7 @@ function App() {
         <Route path='/paymentfail' element={<PaymentFail/>}/>    
         <Route path='/deliverypage' element={<DeliveryPage/>}/>    
         <Route path='/inprogress' element={<InProgress/>}/>    
+        <Route path='/sellerpage' element={<Sellerpage/>}/>    
         <Route path='/adminupdatecustomer' element={<UpdateAdmin/>}/>    
       </Routes>
     </Router>

@@ -8,16 +8,18 @@
     --btn-color:#FF9D00;
 }
 
-body{
-    background-image: linear-gradient(180deg, var(--main-color), #2E7ADD);
-
+.registerpage{
+    display: flex;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(to bottom, #1e90ff, #0073e6); /* Background gradasi */
+    padding: 0;
+    margin: 0;
 }
-
-
 
 .wrapperRegister{
     width: 468px;
-    min-height:fit-content;
     margin: 25px auto;
     background-color: var(--text-color);
     border-radius: 25px;
@@ -82,15 +84,16 @@ a{
     gap: 20px; /* Jarak antar elemen */
     justify-content: space-around; /* Menempatkan item secara merata */
     align-items: center;
-    padding: 10px 90;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7%;
 }
   
 .role-options label {
     font-size: 16px;
     margin: 0;
     padding: 5px 10px;
-    margin-left: -1.6cm;
-    margin-right: 1cm;
+    margin-right: 5%;
     letter-spacing: -1px;
     
 }

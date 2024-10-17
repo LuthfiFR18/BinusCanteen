@@ -41,7 +41,7 @@ const ProfileDropdown = () => {
 
   return (
     <div className="profile-box" onClick={toggleDropdown} ref={domNode}>
-        <FontAwesomeIcon icon={faUser} className='profile-icon' />
+        <FontAwesomeIcon icon={faUser} className='profile-icon' size='lg' />
 
         {/* Dropdown Menu */}
         {isOpen && (
