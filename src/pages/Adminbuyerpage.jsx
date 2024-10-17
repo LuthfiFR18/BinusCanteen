@@ -11,12 +11,13 @@ import Userlist from '../components/Userlist';
 
 function Adminbuyerpage() {
 
-    const [activeTab, setActiveTab] = useState('Mahasiswa');
+    //const [activeTab, setActiveTab] = useState('');
 
     const [location, setLocation] = useState('');
     const [isError, setIsError] = useState(false);
+    const [search, setSearch] = useState('');
   
-    const locations = ['Mahasiswa', 'Dosen', 'Seller', 'Delivery']; // Sample locations
+    const locations = ['All Users', 'Customer', 'Seller', 'Delivery Person']; // Sample locations
     const handleLocationChange = (event) => {
         setLocation(event.target.value);
         setIsError(false); // Remove error when a location is selected
@@ -25,7 +26,7 @@ function Adminbuyerpage() {
     const navigate = useNavigate();
     return (
       <div className='adminpage'>
-              <Headeradmin/>
+              <Headeradmin search={search} setSearch={setSearch}/>
               <nav>
               <div class="menu">
                   <ul>
@@ -51,7 +52,7 @@ function Adminbuyerpage() {
             value={location}
             onChange={handleLocationChange}
             className="admin-dropdown">
-            <option value="">All User</option>
+            {/* <option value="">All User</option> */}
             {locations.map((loc, index) => (
               <option key={index} value={loc}>
                 {loc}
@@ -73,9 +74,8 @@ function Adminbuyerpage() {
             </div>
         </div> */}
 
-          <Userlist/>
+          <Userlist selectedLocation={location} search={search}/>
  
-  
   <Footer/>
       </div>
     );
