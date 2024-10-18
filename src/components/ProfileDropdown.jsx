@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import '../style/profile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser} from '@fortawesome/free-solid-svg-icons'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+// import { LogOut, reset } from "../features/authSlice";
 import img1 from '../img/nasigoreng.png'
 
 let useClickOutside = (handler) =>{
@@ -29,8 +31,26 @@ useEffect(() =>{
 const ProfileDropdown = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
+    // const { user } = useSelector((state) => state.auth); // Get user from the auth state
 
-   
+    // useEffect(() => {
+    //     // Redirect to login if user is not logged in
+    //     if (!user) {
+    //         navigate("/");
+    //     }
+
+    //     // Reset auth state if needed (optional)
+    //     return () => {
+    //         dispatch(reset());
+    //     };
+    // }, [user, dispatch, navigate]);
+
+    // const handleLogout = () => {
+    //     dispatch(LogOut());
+    //     navigate("/"); // Redirect to the login page
+    // };
+
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
@@ -50,10 +70,10 @@ const ProfileDropdown = () => {
                     <img
                     src={img1}/>
 
-                    <p>Surya Kencana</p>
-                    <p style={{ fontSize: '12px', color: 'gray' }}>
-                    surya.kencana@example.com
-                    </p>
+                    {/* {user && <p>{user.name}</p>}
+                    {user && <p style={{ fontSize: '12px', color: 'gray' }}>
+                    {user.email}
+                    </p>} */}
                 </div>
                 <hr />
                 <ul>
