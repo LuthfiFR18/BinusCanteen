@@ -58,6 +58,52 @@ const Userlist = ({selectedLocation, search }) => {
   // }
 
   //getRoleName(users.roleId)
+  
+  //Pop Up Function
+
+  const [isPopupOpen, setIsPopupOpen] = useState(false);
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    password: "",
+    phonenumber: "",
+  });
+
+  // Function to open the popup
+  const openPopup = () => {
+    setIsPopupOpen(true);
+  };
+
+  // Function to close the popup
+  const closePopup = () => {
+    setIsPopupOpen(false);
+  };
+
+  // Handle form data change
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  // Function to handle form submission (you can add real update logic)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Updated Data:", formData);
+    closePopup(); // Close popup after submitting
+  };
+
+  // Function to handle cancel button click
+  const handleCancel = () => {
+    setFormData({
+      name: "",
+      email: "",
+      password: "",
+      phonenumber: "",
+    });
+    closePopup();
+  };
 
   return (
     <table className='user-table'>
@@ -84,7 +130,66 @@ const Userlist = ({selectedLocation, search }) => {
           <td>{users.phonenumber}</td>
           <td>{users.role ? users.role.name : 'Unknown'}</td>
           <td>
-            <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</Link>
+            <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={openPopup}>Update</Link>
+
+            {isPopupOpen && (
+              <div className="popup-overlay-update">
+                <div className="popup-content">
+                  <span className="close" onClick={closePopup}>
+                    &times;
+                  </span>
+                  <h2>Update Data</h2>
+                  <form onSubmit={handleSubmit}>
+                    <label htmlFor="name">Name:</label>
+                    <input className='input-update-admin'
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                    />
+
+                    <label htmlFor="email">Email:</label>
+                    <input className='input-update-admin'
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                    />
+
+                    <label htmlFor="password">Password:</label>
+                    <input className='input-update-admin'
+                      type="password"
+                      id="password"
+                      name="password"
+                      value={formData.password}
+                      onChange={handleChange}
+                      placeholder="Enter your password"
+                    />
+                    <label htmlFor="phone number">Phone Number:</label>
+                    <input className='input-update-admin'
+                      type="number"
+                      id="phonenumber"
+                      name="phonenumber"
+                      value={formData.phonenumber}
+                      onChange={handleChange}
+                      placeholder="Enter your phone number"
+                    />
+
+                    <div className="form-buttons">
+                      <button className='button-admin-seller-update' type="submit">Update</button>
+                      <button  className='button-admin-seller-delete' type="button" onClick={handleCancel}>
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            )}
+
             <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
           </td>
         </tr>

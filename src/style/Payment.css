@@ -1,12 +1,9 @@
-.payment-container{
-  width: 100%; /* Menggunakan lebar penuh layar */
-  position: relative;
-  justify-content: center;
-  display: flex;
-  align-items: center;
-}
 .payment-page{
   width: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 100px;
 }
 
 .payment-title {
