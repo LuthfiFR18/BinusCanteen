@@ -1,105 +1,97 @@
-
 .header-container{
-    width: 100%; /* Menggunakan lebar penuh layar */
-    position: relative;
-    justify-content: center;
     display: flex;
+    justify-content: center; /* Menjaga konten di tengah */
     align-items: center;
-    padding: 20px;
-    height: 65px;
+    padding: 10px 20px;
     background-color: #2E7ADD;
-    border-radius: 0 0 15px 15px;
+    box-sizing: border-box;
+    width: 100%;
 }
 
-.header{
+.header-user{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px; /* Kontainer dengan lebar maksimal agar elemen tidak menyebar */
 }
 
-nav{
-    display: flex;
-    justify-content: space-around;
-}
-
-
-.logo span{
-    color: #FF9D00;
+.logo-text{
+    cursor: pointer;
 }
 
 .logo{
-    margin-top: 15px;
-    display: flex;
-    font-size: 24px;
-    font-weight: 800;
-    color: #000000;
-    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: black;
 }
 
+.logo span{
+    border-style: solid;
+    color: #FF9D00;
+}
+
+.search-bar-container{
+    flex-grow: 1; /* Membuat search bar mengisi ruang kosong */
+    display: flex;
+    justify-content: center;
+}
 .search-box{
-    width: 527px;
-    background: #ffff;
-    margin-left: 45%;
-    margin-top: 12.5px;
-    margin-bottom: 12.5px;
-    border-radius: 25px;
-
+    position: relative;
+    width: 100%;
+    max-width: 500px; /* Membatasi lebar maksimum search bar */
 }
 
-.row{
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-}
 
-#input-box{
-    margin-top: 3px;
-    padding-left: 25px;
-    flex: 1;
-    border-style: none;
-    outline: 0;
+#input-search-box{
+    margin-left: 25%;
+    width: 100%;
+    padding: 5px;
+    padding-right: 40px;
+    padding-left: 20px;
+    font-size: 14px;
+    border-radius: 20px;
+    border: 1px solid #ccc;
+    outline: none;
 }
 
 .search-icon{
-    background: transparent;
-    border-style: none;
-    padding-top: 3px;
-    align-items: center;
+    position: absolute;
+    right: 10px;
+    top: 5%;
+    transform: translateY(-50%);
+    transform: translateX(400%);
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
     cursor: pointer;
-    padding-left: 140px;
-    font-size: 16px;
 }
 
-/* .result-box ul{
-    border-top: 1 solid #999;
-    padding: 15px 10px;
-}
-
-.result-box ul{
-    list-style: none;
-    border-radius: 3px;
-
-    padding: 15px 10px;
-    cursor: pointer;
-} */
+@media (max-width: 768px) {
+    .header-content {
+      width: 100%;
+      padding: 0 10px;
+    }
+  
+    .search-bar-container {
+      width: 80%;
+    }
+  }
 
 .logo-cart-box{
     display: flex;
-    border-style: none;
-    margin-left: 50%;
-    padding-top: 10px;
+    align-items: center;
+    justify-content: center;
 }
 .logo-cart{
-    width: 34px;
-    height: 35px;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-.logo-cart{
+    display: flex;
+    padding-right: 100px;
     color: white;
+
 }
 
 .logo-cart:hover{
     color: #FF9D00;
 }
+
 

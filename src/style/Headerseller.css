@@ -1,5 +1,5 @@
 
-.header{
+.header-seller{
     width: 100%;
     height: 65px;
     align-items: center;
@@ -47,7 +47,7 @@ h4 span{
     margin: 0;
 }
 
-.search-box{
+.search-box-seller{
     width: 527px;
     background: #ffff;
     margin-left: 180px;

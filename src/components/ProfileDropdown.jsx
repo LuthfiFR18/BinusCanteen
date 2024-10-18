@@ -60,8 +60,9 @@ const ProfileDropdown = () => {
     })
 
   return (
+    <div className="profile-dropdown">
     <div className="profile-box" onClick={toggleDropdown} ref={domNode}>
-        <FontAwesomeIcon icon={faUser} className='profile-icon' size='lg' />
+        <FontAwesomeIcon icon={faUser} className='profile-icon'/>
 
         {/* Dropdown Menu */}
         {isOpen && (
@@ -91,6 +92,7 @@ const ProfileDropdown = () => {
                 </ul>
             </div>
         )}
+    </div>
     </div>
     )
 };

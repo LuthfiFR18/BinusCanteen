@@ -10,7 +10,7 @@ function Headerseller(){
     const navigate = useNavigate();
 
     return(
-        <div class="header">
+        <div class="header-seller">
             <nav>
                 {/* <!--Logo--> */}
                 <div className="logo-text">

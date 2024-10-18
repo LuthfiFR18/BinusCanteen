@@ -44,14 +44,14 @@ h4 span{
 }
 
 #input-box-admin{
-    margin-top: 3px;
-    padding-left: 25px;
-    flex: 1;
-    border-style: none;
-    outline: 0;
+    padding: 5px;
+    padding-left: 20px;
+    font-size: 14px;
+    border-radius: 20px;
+    outline: none;
 }
 
-.search-icon{
+/* .search-icon{
     background: transparent;
     border-style: none;
     padding-top: 3px;
@@ -59,17 +59,4 @@ h4 span{
     cursor: pointer;
     padding-right: 1em;
     font-size: 16px;
-}
-
-/* .result-box ul{
-    border-top: 1 solid #999;
-    padding: 15px 10px;
-}
-
-.result-box ul{
-    list-style: none;
-    border-radius: 3px;
-
-    padding: 15px 10px;
-    cursor: pointer;
 } */

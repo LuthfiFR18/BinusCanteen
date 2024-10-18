@@ -16,8 +16,16 @@
 
 
 .dashboard-container{
+    display: flex;
+    flex-direction: column;
     background-color: var(--text-color);
     width: 100%;
+    min-height: 100vh;
+    margin-bottom: 150px;
+}
+
+.dashboardpage{
+    flex: 1;
 }
 
 .navmenu{

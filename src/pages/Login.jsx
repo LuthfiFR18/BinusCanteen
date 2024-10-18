@@ -48,6 +48,7 @@ function Login(){
     };
 
     return(
+        <div className="loginpage">
             <div className="wrapperLogin">
                 <h1 className='login-title'>Login</h1>
                 <form onSubmit={Auth}>
@@ -67,6 +68,7 @@ function Login(){
                 </form>
                 <a className='askTxt'>Don't have account yet?<span className='greyText' href="#" onClick={()=> navigate('/register')}>Register Here</span></a>
             </div>
+        </div>
     );
 }
 
