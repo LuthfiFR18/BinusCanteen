@@ -13,12 +13,30 @@ function Login(){
     const navigate = useNavigate();
     const {user, isError, isSuccess, isLoading, message} = useSelector((state)=>state.auth);
 
-    useEffect(()=>{
-        if(user || isSuccess){
-            navigate("/dashboard");
+    useEffect(() => {
+        console.log(user);
+        // Role mapping
+        const roleMap = {
+            1: "Seller",
+            2: "User",
+            3: "Admin"
+        };
+    
+        if (user || isSuccess) {
+            const roleName = roleMap[user?.roleId]; // Get role name based on roleId
+            
+            if (roleName === "Admin") {
+                console.log("Admin has logged in");
+                navigate("/adminbuyer");
+            } else {
+                console.log("User/Seller has logged in");
+                navigate("/dashboard");
+                
+            }
         }
         dispatch(reset());
     }, [user, isSuccess, dispatch, navigate]);
+    
 
     const Auth = (e)=>{
         e.preventDefault();
