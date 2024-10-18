@@ -13,11 +13,33 @@ function Login(){
     const navigate = useNavigate();
     const {user, isError, isSuccess, isLoading, message} = useSelector((state)=>state.auth);
 
-    useEffect(()=>{
-        if(user || isSuccess){
-            navigate("/dashboard");
+    useEffect(() => {
+        const roleMap = {
+            1: "Admin",
+            2: "User",
+            3: "Seller",
+            4: "Delivery"
+        };
+
+        if (user || isSuccess) {
+            const roleName = roleMap[user?.roleId]; // Get role name based on roleId
+
+            if (roleName === "Admin") {
+                console.log("Admin has logged in");
+                navigate("/adminbuyer");
+            } else if (roleName === "User") {
+                console.log("User has logged in");
+                navigate("/dashboard");
+            }else if(roleName === "Seller"){
+                console.log("Seller has logged in");
+                navigate("/sellerpage")
+            }else{
+                console.log("Delivery has logged in");
+                navigate("/deliverypage")
+            }
         }
-        dispatch(reset());
+
+        dispatch(reset()); // Reset auth state
     }, [user, isSuccess, dispatch, navigate]);
 
     const Auth = (e)=>{

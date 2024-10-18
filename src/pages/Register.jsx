@@ -1,4 +1,3 @@
-// import React from 'react';
 import '../style/Register.css';
 // import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import axios from "axios";
@@ -12,20 +11,36 @@ function Register(){
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confPassword, setConfPassword] = useState("");
-    const [phoneNumber, setphoneNumber] = useState("");
-    const [roleId, setRoleId] = useState("");
+    const [phonenumber, setphonenumber] = useState("");
+    const [roleId, setRoleId] = useState();
     const [msg, setMsg] = useState("");
 
     const saveUser = async (e) => {
         e.preventDefault();
+
+        console.log("saveUser called"); // To check if the function is being called
+
+        if (password !== confPassword) {
+            setMsg("Passwords do not match");
+            return;
+        }
+    
+        // Check if all fields are filled
+        if (!name || !email || !password || !phonenumber || !roleId) {
+            setMsg("Please fill in all the fields");
+            return;
+        }
+
         try {
-            await axios.post("http://localhost:5000/user", {
+            const response = await axios.post("http://localhost:5000/user", {
             name: name,
             email: email,
             password: password,
-            phoneNumber: phoneNumber,
+            phonenumber: phonenumber,
             roleId: roleId,
             });
+            console.log("Ready To be Submitted", response.data);
+            console.log("User saved successfully:", response.data);
             navigate("/");
         } catch (error) {
             if (error.response) {
@@ -36,17 +51,18 @@ function Register(){
 
     const [role, setSelectedRole] = useState('');
     // const [selectedCategory, setSelectedCategory] = useState('');
-
     const handleRoleChange = (event) => {
-        const a = setSelectedRole(event.target.value);
-        if(a==="Admin"){
-            setRoleId(3)
-        }else if(a==="User"){
-            setRoleId(2)
-        }else{
-            setRoleId(1)
+        const selectedRole = event.target.value;
+        setSelectedRole(selectedRole);
+    
+        if (selectedRole === "User") {
+            setRoleId(2); // Assuming 3 is for Seller
+        } else if (selectedRole === "Seller") {
+            setRoleId(3); // Assuming 2 is for User
+        } else if (selectedRole === "Delivery") {
+            setRoleId(4); // Assuming 1 is for Delivery
         }
-    }
+    };
 
     // const handleCategoryChange = (event) => {
     //     setSelectedCategory(event.target.value);
@@ -90,8 +106,8 @@ function Register(){
                     />
                     <label htmlFor="delivery">Delivery</label>
                 </div> 
-
-                {/* {selectedRole === 'Seller' && (
+                {/* <div>
+                 {selectedRole === 'Seller' && (
                     <div className="category-options">
                         <h5>Select Category:</h5>
                         <div className="category-radios">
@@ -137,25 +153,32 @@ function Register(){
                             </div>
                         </div>
                     </div>
-                )} */}
+                )}
+                </div> */}
+                
 
                 <form onSubmit={saveUser}>
                     <p className='errorMsg'>{msg}</p>
                     <h5 className='regisform'>{role === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
                     <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
-                        
+                    
                     <h5 className='regisform'>Phone Number:</h5>
-                    <input type="text" value={phoneNumber} onChange={(e)=> setphoneNumber(e.target.value)} placeholder="Phone Number"></input>
+                    <input type="text" value={phonenumber} onChange={(e)=> setphonenumber(e.target.value)} placeholder="Phone Number"></input>
 
                     <h5 className='regisform'>Email:</h5>
                     <input type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="Email"></input>
-                        
+                    
                     <h5 className='regisform'>Password:</h5>
                     <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"></input>
-                        
+                    
                     <h5 className='regisform'>Confirm Password:</h5>
                     <input type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
-                    
+
+                    <button className="button" type='submit'>
+                        {role === 'Seller' ? 'Register Your Booth' : 'Register'}
+                    </button>
+                </form>
+
                     {/* <h5>Role:</h5>
                     <div className="select-menu">
                         <div className="select-btn">
@@ -174,13 +197,6 @@ function Register(){
                             </li>
                         </ul>
                     </div> */}
-        
-        
-                </form>
-            {/* <button className='button' onClick={()=>navigate('/')}>Register</button> */}
-                <button className="button" type='submit'>
-                    {role === 'Seller' ? 'Register Your Booth' : 'Register'}
-                </button>
             </section>
         </div>
     );
