@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -8,12 +8,14 @@ import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
 import ProductList from '../components/ProductList';
 
+
 function Adminsellerpage() {
     const navigate = useNavigate();
+    const [search, setSearch] = useState('');
 
     return (
       <div className='sellerpage'>
-              <Headeradmin/>
+              <Headeradmin search={search} setSearch={setSearch}/>
               <nav>
               <div class="menu">
                   <ul>
@@ -33,7 +35,8 @@ function Adminsellerpage() {
               </div>
           </nav>
 
-          <ProductList/>
+          <ProductList search={search} />
+
 
 
   <Footer/>

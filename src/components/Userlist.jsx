@@ -84,7 +84,7 @@ const Userlist = ({selectedLocation, search }) => {
           <td>{users.phonenumber}</td>
           <td>{users.role ? users.role.name : 'Unknown'}</td>
           <td>
-            <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={() => alert('Update for Mamat')}>Update</Link>
+            <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={() => alert('Update')}>Update</Link>
             <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
           </td>
         </tr>

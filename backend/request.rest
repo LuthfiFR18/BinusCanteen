@@ -55,9 +55,10 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
     {
-        "name": "Coca Cola",
-        "price": 5000,
-        "producttype": "Drink",
-        "userId": 7
+        "name": "Es Teh Manis",
+        "price": 22000,
+        "producttype": "Food",
+        "userId": 2
     }
-
+###
+DELETE http://localhost:5000/product/70a7c6be-6622-4a2d-bc08-3a90fa2e069d

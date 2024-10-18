@@ -1,47 +1,66 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import '../style/ProductList.css';
 import PopupUpdateAdmin from './PopupUpdateAdmin';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+
+
+const ProductList = ({selectedLocation, search }) => {
 
 
 
-const ProductList = () => {
+    useEffect(()=>{
+      getProducts();
+      
+    }, [selectedLocation, search]);
 
-  const [showPopup, setShowPopup] = useState(false);
-    const [storeClosed, setStoreClosed] = useState(false);
-    const [popupMessage, setPopupMessage] = useState('');
-    const [isClosingStore, setIsClosingStore] = useState(false);
 
-    // const handleNavigate = (path) =>{
-    //     navigate(path);
-    // };
+    const [products, setProduct ] = useState([]);
 
-    const handleCloseStore = () => {
-        setStoreClosed(true);
-        setShowPopup(false);
-    };
+    const getProducts = async () => {
 
-    const handlePopup = () => {
-        // setPopupMassage(storeClosed ? 'Are you sure want to open your store?' : 'Are you sure want to close your store?');
-        // setIsClosingStore(!storeClosed);
-        // setShowPopup(true);
-        // if (storeClosed) {
-        //     setPopupMassage('Are you sure want to open your store?');
-        // } else{
-        //     setPopupMassage('Are you sure want to close your store?');
+      //const responseUsers = await axios.get("http://localhost:5000/user");
+      const response = await axios.get("http://localhost:5000/product");
+
+      //const filteredUsers = responseUsers.data;
+      let filteredProduct = response.data;
+  
+      // if (selectedLocation && selectedLocation !== 'All Products') {
+      //         filteredProduct = filteredProduct.filter(products => products.role && products.name === selectedLocation);
+      //     }
+  
+          // Filter berdasarkan pencarian
+          if (search) {
+            filteredProduct = filteredProduct.filter(product =>
+                product.name.toLowerCase().includes(search.toLowerCase())
+            );
+        }
+        //   if (search) {
+        //     filteredUsers = filteredUsers.filter(users => users.name.toLowerCase().includes(search.toLowerCase())||
+        //     users.email.toLowerCase().includes(search.toLowerCase())
+        //     );
+            
         // }
-        const message = storeClosed 
-            ? 'Are you sure want to open your store?' 
-            : 'Are you sure want to close your store?';
-        
-        setPopupMessage(message);
-        setIsClosingStore(!storeClosed);
-        setShowPopup(true);
+      setProduct(filteredProduct);
+
+
+      
     };
 
-    const handleOpenStore = () =>{
-        setStoreClosed(false);
-        setShowPopup(false);
-    }
+    const deleteProduct = async (productId) => {
+      try {
+          const url = `http://localhost:5000/product/${productId}`; // Pastikan productId adalah UUID yang sesuai
+          console.log("Deleting product at:", url); // Tambahkan log ini
+          const response = await axios.delete(url);
+          console.log("Product deleted:", response.data);
+          getProducts(); // Panggil kembali fungsi untuk memperbarui daftar produk
+      } catch (error) {
+          console.error("Error deleting product:", error);
+      }
+  };
+  
+
+
 
   return (
     <table className='product-table'>
@@ -56,29 +75,22 @@ const ProductList = () => {
       </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>01</td>
-            <td>Ayam Gulai</td>
-            <td>Rp.30.000</td>
-            <td>Food</td>
-            <td>Mamat Suryono Cahyadi</td>
-            <td>
-                <button className='button-admin-seller-update' onClick={(handlePopup)}>Update</button>
-                <button className='button-admin-seller-delete'>Delete</button>
 
-                {showPopup &&(
-                  <PopupUpdateAdmin
-                  //message="Are you sure you want to close the store?"
-                  // onConfirm={handleCloseStore}
-                  message={popupMessage}
-                  onConfirm={isClosingStore ? handleCloseStore : handleOpenStore}
-                  onCancel={() => setShowPopup(false)}
-                  isClosingStore={isClosingStore}
-                  // onClose={() => setStoreClosed(true)}
-                  />
-              )} 
-            </td>
-        </tr>
+    {products.map((product, index) => (
+
+    <tr key={product.uuid}>
+    <td>{index + 1}</td>
+    <td>{product.name}</td>
+    <td>{product.price}</td>
+    <td>{product.producttype}</td>
+    <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
+    <td>
+      <Link to={`/users/edit/${product.uuid}`} className='button-admin-update'>Update</Link>
+      <button className='button-admin-delete' onClick={() => deleteProduct(product.id)}>Delete</button>
+    </td>
+  </tr>
+))}
+        
     </tbody>
     </table>
   )

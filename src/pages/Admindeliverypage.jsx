@@ -15,7 +15,7 @@ function Admindeliverypage() {
 
     return (
       <div className='deliverypage'>
-              <Headeradmin/>
+              <Headeradmin />
               <nav>
               <div class="menu">
                   <ul>

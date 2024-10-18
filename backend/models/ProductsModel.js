@@ -6,6 +6,7 @@ import Users from "./UserModel.js";
 const {DataTypes} = Sequelize;
 
 const Products = db.define('product',{
+    
     uuid:{
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
@@ -66,7 +67,7 @@ const Products = db.define('product',{
     freezeTableName: true
 });
 
-Users.hasMany(Products, { foreignKey: 'userId' });
-Products.belongsTo(Users, { foreignKey: 'userId' });
+Users.hasMany(Products, { foreignKey: 'userId', as: 'products' });
+Products.belongsTo(Users, { foreignKey: 'userId', as: 'user' });
 
 export default Products;

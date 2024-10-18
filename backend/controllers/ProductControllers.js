@@ -1,8 +1,15 @@
 import Products from "../models/ProductsModel.js";
+import Users from "../models/UserModel.js";
 
 export const getProducts = async(req, res) => {
     try {
-        const product = await Products.findAll(); 
+        const product = await Products.findAll({
+            include: [{
+                model: Users,
+                as: 'user',
+                attributes: ['name']
+            }]
+        }); 
         res.json(product); 
     } catch (error) {
         res.status(500).json({ message: error.message }); 
@@ -11,7 +18,16 @@ export const getProducts = async(req, res) => {
 
 export const getProductById = async(req, res) => {
     try {
-        const product = await Products.findByPk(req.params.id); 
+        const product = await Products.findOne({
+            where: {
+                uuid: req.params.id
+            },
+            include: [{
+                model: Users,
+                as: 'user',
+                attributes: ['name']
+            }]
+        });
         if (!product) return res.status(404).json({ message: "Product not found" }); 
         res.json(product); 
     } catch (error) {
@@ -29,18 +45,21 @@ export const createProduct = async(req, res) => {
     }
 }
 
-
 export const updateProduct = async(req, res) => {
     try {
-        const product = await Products.findByPk(req.params.id); 
-        if (!user) return res.status(404).json({ message: "Product not found" }); 
+        const product = await Products.findOne({
+            where: {
+                uuid: req.params.id
+            }
+        });
+        if (!product) return res.status(404).json({ message: "Product not found" });
 
-        // Mengupdate data user
-        const { name, price, producttype,userId } = req.body;
+        // Mengupdate data product
+        const { name, price, producttype, userId } = req.body;
         product.name = name || product.name;
         product.price = price || product.price;
         product.producttype = producttype || product.producttype;
-        product.roleId = roleId || product.roleId;
+        product.userId = userId || product.userId;
 
         await product.save(); // Menyimpan perubahan
         res.json(product); // Mengirimkan data product yang diperbarui
@@ -49,14 +68,14 @@ export const updateProduct = async(req, res) => {
     }
 }
 
-export const deleteProduct = async(req, res) => {
+export const deleteProduct = async (req, res) => {
     try {
-        const product = await Products.findByPk(req.params.id); // Mencari product berdasarkan ID
-        if (!product) return res.status(404).json({ message: "User not found" }); // Menangani jika tidak ditemukan
+        const product = await Products.findOne({ where: { id: req.params.id } });
+        if (!product) return res.status(404).json({ message: "Product not found" });
 
-        await product.destroy(); // Menghapus procduct
-        res.json({ message: "Product deleted" }); // Mengirimkan respons bahwa user dihapus
+        await product.destroy();
+        res.json({ message: "Product deleted" });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
-}
+};
