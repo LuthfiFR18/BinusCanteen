@@ -12,7 +12,7 @@ function Register(){
     const [password, setPassword] = useState("");
     const [confPassword, setConfPassword] = useState("");
     const [phonenumber, setphonenumber] = useState("");
-    const [roleId, setRoleId] = useState(2);
+    const [roleId, setRoleId] = useState();
     const [msg, setMsg] = useState("");
 
     const saveUser = async (e) => {
@@ -55,12 +55,12 @@ function Register(){
         const selectedRole = event.target.value;
         setSelectedRole(selectedRole);
     
-        if (selectedRole === "Seller") {
-            setRoleId(1); // Assuming 3 is for Seller
-        } else if (selectedRole === "User") {
-            setRoleId(2); // Assuming 2 is for User
-        } else {
-            setRoleId(3); // Assuming 1 is for Delivery
+        if (selectedRole === "User") {
+            setRoleId(2); // Assuming 3 is for Seller
+        } else if (selectedRole === "Seller") {
+            setRoleId(3); // Assuming 2 is for User
+        } else if (selectedRole === "Delivery") {
+            setRoleId(4); // Assuming 1 is for Delivery
         }
     };
 
