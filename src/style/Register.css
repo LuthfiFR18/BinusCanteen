@@ -13,7 +13,7 @@
     align-items: center; /* Pusat secara vertikal */
     justify-content: center; /* Pusat secara horizontal */
     min-height: 100vh; /* Tinggi viewport penuh */
-    background: linear-gradient(to bottom, #1e90ff, #0073e6); /* Background gradasi */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
     padding: 0;
     margin: 0;
 }

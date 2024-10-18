@@ -1,20 +1,24 @@
 /* ProfileDropdown.css */
 
+.profile-dropdown{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .profile-box{
-  position: relative;
   display: flex;
-  justify-content: center;
-  cursor: pointer;
-  margin-left: 7%;
+  align-items: center;
+  justify-content: right;
+
 }
 
 .profile-icon{
-  width: 25px;
+  cursor: pointer;
+  width: 40px;
   height: 35px;
-  padding-left: 25px;
-  margin-right: 23px;
   padding-top: 3px;
+  margin-left: 3px;
   color: #FF9D00;
 }
 

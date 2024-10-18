@@ -57,9 +57,8 @@ const Payment = () => {
   //   }
   // };
   return (
-    <div className="payment-container">
       <div className="payment-page">
-      <Header />
+      <Header/>
       
       <h2 className='payment-title'>Payment Details</h2>
       <h5 className="countdown">Segera melakukan pembayaran sebelum 01:59:58</h5>
@@ -195,7 +194,6 @@ const Payment = () => {
 
       <Footer />
       </div>
-    </div>
   );
 };
 

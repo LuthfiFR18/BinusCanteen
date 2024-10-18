@@ -77,8 +77,8 @@ function Register(){
     // };
 
     return(
-        <div className='bodyloginregister'>
-            <section className="wrapperRegister">
+        <div className='registerpage'>
+            <div className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>   
                 <div className="role-options">
                     <input
@@ -197,7 +197,7 @@ function Register(){
                             </li>
                         </ul>
                     </div> */}
-            </section>
+            </div>
         </div>
     );
 }
