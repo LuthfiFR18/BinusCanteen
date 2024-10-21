@@ -1,5 +1,6 @@
 import Products from "../models/ProductsModel.js";
 import Users from "../models/UserModel.js";
+import Booth from "../models/BoothModel.js";
 
 export const getProducts = async(req, res) => {
     try {
@@ -12,7 +13,7 @@ export const getProducts = async(req, res) => {
         }); 
         res.json(product); 
     } catch (error) {
-        res.status(500).json({ message: error.message }); 
+        res.status(500).json({ message: "getProduct gagal" }); 
     }
 }
 
@@ -36,9 +37,9 @@ export const getProductById = async(req, res) => {
 }
 
 export const createProduct = async(req, res) => {
-    const { name, price, producttype, userId } = req.body; 
+    const { name, price, producttype, boothId, userId  } = req.body; 
     try {
-        const newProduct = await Products.create({ name, price, producttype, userId }); 
+        const newProduct = await Products.create({ name, price, producttype, boothId, userId }); 
         res.status(201).json(newProduct);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -59,6 +60,7 @@ export const updateProduct = async(req, res) => {
         product.name = name || product.name;
         product.price = price || product.price;
         product.producttype = producttype || product.producttype;
+        product.boothId = boothId || product.boothId;
         product.userId = userId || product.userId;
 
         await product.save(); // Menyimpan perubahan

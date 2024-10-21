@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../style/Userlist.css'; // Impor file CSS eksternal
-import { Link } from 'react-router-dom';
+
 import axios from 'axios';
 
 
@@ -13,6 +13,7 @@ const Userlist = ({selectedLocation, search }) => {
 
   useEffect(()=>{
     getUser();
+    
     
   }, [selectedLocation, search]);
 
@@ -27,12 +28,30 @@ const Userlist = ({selectedLocation, search }) => {
         // Filter berdasarkan pencarian (nama pengguna atau properti lainnya)
         if (search) {
             filteredUsers = filteredUsers.filter(users => users.name.toLowerCase().includes(search.toLowerCase())||
-            users.email.toLowerCase().includes(search.toLowerCase())
+            users.email.toLowerCase().includes(search.toLowerCase())||users.uuid.toLowerCase().includes(search.toLowerCase())
             );
             
         }
     setUser(filteredUsers);
   };
+
+  // const updateUser = async (userId) => {
+  //   try {
+  //     const responseUpdate = await axios.get(`http://localhost:5000/user/${userId}`);
+  //     setFormData(
+  //       name: responseUpdate.data.name,
+  //       email: responseUpdate.data.email,
+  //       password: responseUpdate.data.password,
+  //       phonenumber: responseUpdate.data.phonenumber
+        
+  //     )
+  //     console.log("Update Successful", responseUpdate.data)
+
+  //   } catch (error) {
+  //     console.error("Error Updating user:", error);
+  //   }
+   
+  // }
 
 
   const deleteUser = async (userId) => {
@@ -105,6 +124,9 @@ const Userlist = ({selectedLocation, search }) => {
     closePopup();
   };
 
+
+  
+
   return (
     <table className='user-table'>
       <thead>
@@ -123,14 +145,14 @@ const Userlist = ({selectedLocation, search }) => {
       {users.map((users, index) => (
 
         <tr key={users.uuid}>
-          <td>{index + 1}</td>
+          <td>{users.uuid}</td>
           <td>{users.name}</td>
           <td>{users.email}</td>
           <td>{users.password}</td>
           <td>{users.phonenumber}</td>
           <td>{users.role ? users.role.name : 'Unknown'}</td>
           <td>
-            <Link to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={openPopup}>Update</Link>
+            <button to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={openPopup}>Update</button>
 
             {isPopupOpen && (
               <div className="popup-overlay-update">

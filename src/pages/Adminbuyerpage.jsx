@@ -17,7 +17,7 @@ function Adminbuyerpage() {
     const [isError, setIsError] = useState(false);
     const [search, setSearch] = useState('');
   
-    const locations = ['All Users', 'Customer', 'Seller', 'Delivery Person']; // Sample locations
+    const locations = ['All Users', 'Customer', 'Seller', 'Delivery']; // Sample locations
     const handleLocationChange = (event) => {
         setLocation(event.target.value);
         setIsError(false); // Remove error when a location is selected

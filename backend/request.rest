@@ -2,7 +2,7 @@ POST http://localhost:5000/roles
 Content-Type: application/json
 
 {
-    "name": "Admin"
+    "name": "Delivery"
 }
 
 
@@ -11,11 +11,12 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "name" : "admin",
-    "email" : "admin@gmail.com",
-    "password" : "admin",
-    "phonenumber" : "8112",
-    "roleId" : "1"
+    "uuid" : "2502998701",
+    "name" : "Delivery",
+    "email" : "dlv@gmail.com",
+    "password" : "dlv",
+    "phonenumber" : "081234567890",
+    "roleId" : "3"
 }
 
 ###
@@ -55,10 +56,19 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
     {
-        "name": "Es Teh Manis",
-        "price": 22000,
-        "producttype": "Food",
-        "userId": 2
-    }
+  "name": "Mie Ayam",
+  "price": 15000,
+  "producttype": "Food",
+  "boothId": 1,
+  "userId": 4
+}
 ###
-DELETE http://localhost:5000/product/70a7c6be-6622-4a2d-bc08-3a90fa2e069d
+POST http://localhost:5000/Booth
+Content-Type: application/json
+
+    {
+  "name": "Booth A",
+  "openingTime": "2024-10-22T09:00:00.000Z",
+  "closingTime": "2024-10-22T18:00:00.000Z",
+  "userId": 1
+}

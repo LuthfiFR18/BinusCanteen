@@ -12,6 +12,7 @@ export const getUser = async(req, res) => {
                 attributes: ['name']
             }]
         }); 
+        
         res.json(user); 
     } catch (error) {
         res.status(500).json({ message: error.message }); 

@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import '../style/ProductList.css';
-import PopupUpdateAdmin from './PopupUpdateAdmin';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 
@@ -19,15 +18,12 @@ const ProductList = ({selectedLocation, search }) => {
 
     const getProducts = async () => {
 
-      //const responseUsers = await axios.get("http://localhost:5000/user");
+      
       const response = await axios.get("http://localhost:5000/product");
 
-      //const filteredUsers = responseUsers.data;
+      
       let filteredProduct = response.data;
   
-      // if (selectedLocation && selectedLocation !== 'All Products') {
-      //         filteredProduct = filteredProduct.filter(products => products.role && products.name === selectedLocation);
-      //     }
   
           // Filter berdasarkan pencarian
           if (search) {
@@ -35,16 +31,8 @@ const ProductList = ({selectedLocation, search }) => {
                 product.name.toLowerCase().includes(search.toLowerCase())
             );
         }
-        //   if (search) {
-        //     filteredUsers = filteredUsers.filter(users => users.name.toLowerCase().includes(search.toLowerCase())||
-        //     users.email.toLowerCase().includes(search.toLowerCase())
-        //     );
-            
-        // }
+        
       setProduct(filteredProduct);
-
-
-      
     };
 
     const deleteProduct = async (productId) => {
@@ -86,7 +74,7 @@ const ProductList = ({selectedLocation, search }) => {
     <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
     <td>
       <Link to={`/users/edit/${product.uuid}`} className='button-admin-update'>Update</Link>
-      <button className='button-admin-delete' onClick={() => deleteProduct(product.id)}>Delete</button>
+      <button className='button-admin-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
     </td>
   </tr>
 ))}

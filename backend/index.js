@@ -9,8 +9,9 @@ import OrderRoute from "./routes/OrderRoute.js";
 import PaymentRoute from "./routes/PaymentRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import UserRoute from "./routes/UserRoute.js";
-import RoleRoute from "./routes/RoleRoute.js"
-import AuthRoute from "./routes/AuthRoute.js"
+import RoleRoute from "./routes/RoleRoute.js";
+import AuthRoute from "./routes/AuthRoute.js";
+import BoothRoute from "./routes/BoothRoute.js";
 
 
 dotenv.config();
@@ -21,23 +22,23 @@ const app = express();
 
 const sessionStore = SequelizeStore(session.Store);
 
-const store = new sessionStore({
-    db: db
-})
+// const store = new sessionStore({
+//     db: db
+// })
 
-// (async()=>{
-//     await db.sync();
-// })();
+(async()=>{
+    await db.sync();
+})();
 
-app.use(session({
-    secret: process.env.SESSION_SECRET,
-    resave: false,
-    saveUninitialized: true,
-    store: store,
-    cookie: {
-        secure: 'auto'
-    }
-}));
+// app.use(session({
+//     secret: process.env.SESSION_SECRET,
+//     resave: false,
+//     saveUninitialized: true,
+//     store: store,
+//     cookie: {
+//         secure: 'auto'
+//     }
+// }));
 
 app.use(cors({
     credentials: true,
@@ -52,8 +53,9 @@ app.use(CartRoute);
 app.use(PaymentRoute);
 app.use(RoleRoute);
 app.use(AuthRoute);
+app.use(BoothRoute);
 
-store.sync();
+//store.sync();
 
 
 console.log('Session Secret:', process.env.SESSION_SECRET);
