@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import '../style/Sellerpage.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
@@ -10,16 +10,26 @@ import Carouselbestoffer from '../components/Carouselbestoffer';
 import Carouselforyou from '../components/Carouselforyou';
 import Carouseltodayoffer from '../components/Carouseltodayoffer';
 import Popup from '../components/PopUpCloseSellerStore';
-import img from '../img/nasigoreng.png';
+import imgDefault from '../img/nasigoreng.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
+import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
 
-function Sellerpage(){
+function Sellerpage() {
     const navigate = useNavigate();
     const [showPopup, setShowPopup] = useState(false);
     const [storeClosed, setStoreClosed] = useState(false);
     const [popupMessage, setPopupMessage] = useState('');
     const [isClosingStore, setIsClosingStore] = useState(false);
+    const [img, setImg] = useState(imgDefault);
+
+    useEffect(() => {
+        const savedImage = localStorage.getItem('savedImage');
+        if(savedImage){
+            setImg(savedImage);
+        } else{
+            setImg(imgDefault);
+        }
+    }, []);
 
     const handleNavigate = (path) =>{
         navigate(path);
@@ -53,6 +63,11 @@ function Sellerpage(){
         setShowPopup(false);
     }
 
+    const handleSaveImage = (newImage) => {
+        setImg(newImage);
+        localStorage.setItem('savedImage', newImage);
+    }
+
     const menus = [
         {
             name : 'Nasi Goreng Special',
@@ -70,6 +85,7 @@ function Sellerpage(){
             description : 'Nasi goreng dengan topping seafood dan telur dadar/mata sapi',
         }
     ]
+    
 
     return(
         <div className='dashboard'>
@@ -97,7 +113,7 @@ function Sellerpage(){
                 </nav>
             </div>
             <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
-                <img src={img} alt="Dish 1"/>
+                <img src={img} alt="Dish"/>
                 {/* <img src="https://via.placeholder.com/300" alt="Dish 2"/>
                 <img src="https://via.placeholder.com/300" alt="Dish 3"/> */}
                 <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>
