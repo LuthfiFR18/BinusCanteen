@@ -22,7 +22,7 @@ import UpdateAdmin from './pages/UpdateAdmin';
 import Sellerpage from './pages/Sellerpage';
 import EditPictureSeller from './pages/EditPictureSeller';
 import EditMenuSeller from './pages/EditMenuSeller';
-import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
+import { BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-dom';  
 function App() {
 
   // const [uploadedImage, setUploadedImage] = React.useState(null);
