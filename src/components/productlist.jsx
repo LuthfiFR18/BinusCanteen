@@ -74,7 +74,7 @@ const ProductList = ({selectedLocation, search }) => {
     <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
     <td>
       <Link to={`/users/edit/${product.uuid}`} className='button-admin-update'>Update</Link>
-      <button className='button-admin-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
+      <button className='button-admin-delete' onClick={() => deleteProduct(product.uuidd)}>Delete</button>
     </td>
   </tr>
 ))}
