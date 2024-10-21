@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Drink.css';
@@ -11,10 +11,54 @@ import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg
 function Drink() {
     const navigate = useNavigate();
 
+     // State untuk melacak tombol aktif
+     const [activeButton, setActiveButton] = useState("Drink");
+
+     // Fungsi untuk mengubah tombol aktif saat diklik
+     const handleButtonClick = (buttonName) => {
+     setActiveButton(buttonName);
+   };
+
   return (
     <div className='drinkpage'>
             <Header/>
-            <nav>
+
+        
+            <h3 className='booth-name'>Nara Kitchen</h3>
+
+        
+        <div className="selector-btn">
+
+            <button
+                className={`btn meals-btn ${activeButton === "Meals" ? "active" : ""}`}
+                onClick={() => {
+                    handleButtonClick("Meals");
+                    navigate('/meals');
+                }}>Meals
+            </button>
+
+            <button
+                className={`btn drink-btn ${activeButton === "Drink" ? "active" : ""}`}
+                onClick={() => handleButtonClick("Drink")}>Drink
+            </button>
+
+            <button
+                className={`btn dessert-btn ${
+                activeButton === "Dessert" ? "active" : ""}`}
+                onClick={() => {
+                    handleButtonClick("Dessert");
+                    navigate('/dessert');
+                }}>
+                Dessert
+            </button>
+
+            <div
+                className={`active-bg ${activeButton === "Meals" ? "meals-active" : ""} ${
+                activeButton === "Drink" ? "drink-active" : ""
+                } ${activeButton === "Dessert" ? "dessert-active" : ""}`}
+            ></div>
+        </div>
+            {/* <nav>
             <div class="menubar-drink">
                 <ul>
                 <li>
@@ -38,7 +82,7 @@ function Drink() {
                 </li>
                 </ul>
             </div>
-        </nav>
+        </nav> */}
         <Drinkmenu/>
         <Drinkmenu/>
         <Drinkmenu/>

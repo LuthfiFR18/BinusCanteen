@@ -34,7 +34,7 @@ function Headeradmin({search, setSearch}){
                 <ProfileDropdown/>
 
                 </nav>
-        </div>
+            </div>
     );
 }
 

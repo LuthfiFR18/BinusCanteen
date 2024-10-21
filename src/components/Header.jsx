@@ -10,7 +10,6 @@ function Header(){
 
     return(
         <div className="header-container">
-            <div className="header-user">
                 {/* <!--Logo--> */}
                 <div className="logo-text">
                 <a href="#" class="logo" onClick={()=>navigate('/dashboard')}>
@@ -36,7 +35,6 @@ function Header(){
                 </div>
 
                 {/* <!--Profile--> */}
-                </div>
                 <ProfileDropdown/>
                 </div>
     );

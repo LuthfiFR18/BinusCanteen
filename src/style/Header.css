@@ -1,6 +1,6 @@
 .header-container{
     display: flex;
-    justify-content: center; /* Menjaga konten di tengah */
+    justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     background-color: #2E7ADD;
@@ -10,7 +10,6 @@
 
 .header-user{
     display: flex;
-    justify-content: space-between;
     align-items: center;
     width: 100%;
     max-width: 1200px; /* Kontainer dengan lebar maksimal agar elemen tidak menyebar */
@@ -27,7 +26,6 @@
 }
 
 .logo span{
-    border-style: solid;
     color: #FF9D00;
 }
 
@@ -67,25 +65,10 @@
     cursor: pointer;
 }
 
-@media (max-width: 768px) {
-    .header-content {
-      width: 100%;
-      padding: 0 10px;
-    }
-  
-    .search-bar-container {
-      width: 80%;
-    }
-  }
-
 .logo-cart-box{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    /* object-fit: cover; */
 }
 .logo-cart{
-    display: flex;
-    padding-right: 100px;
     color: white;
 
 }

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Meals.css';
@@ -12,10 +12,57 @@ function Meals() {
     
     const navigate = useNavigate();
 
+     // State untuk melacak tombol aktif
+    const [activeButton, setActiveButton] = useState("Meals");
+
+    // Fungsi untuk mengubah tombol aktif saat diklik
+    const handleButtonClick = (buttonName) => {
+    setActiveButton(buttonName);
+  };
+
   return (
     <div className='Mealspage'>
             <Header/>
-            <nav>
+        
+            <h3 className='booth-name'>Nara Kitchen</h3>
+
+        
+        <div className="selector-btn">
+        
+            <button
+                className={`btn meals-btn ${activeButton === "Meals" ? "active" : ""}`}
+                onClick={() => {
+                    handleButtonClick("Meals");
+                    }}>Meals
+            </button>
+
+            <button
+                className={`btn drink-btn ${activeButton === "Drink" ? "active" : ""}`}
+                onClick={() => {
+                    handleButtonClick("Drink");
+                    navigate('/drink');
+                }}>Drink
+            </button>
+
+            <button
+                className={`btn dessert-btn ${
+                activeButton === "Dessert" ? "active" : ""
+                }`}
+                onClick={() => {
+                    handleButtonClick("Dessert");
+                    navigate('/dessert');
+                }}>
+                Dessert
+            </button>
+
+            <div
+                className={`active-bg ${activeButton === "Meals" ? "meals-active" : ""} ${
+                activeButton === "Drink" ? "drink-active" : ""
+                } ${activeButton === "Dessert" ? "dessert-active" : ""}`}
+            ></div>
+        </div>
+
+            {/* <nav>
             <div class="menubar-meals">
                 <ul>
                 <li>
@@ -38,7 +85,7 @@ function Meals() {
                 </li>
                 </ul>
             </div>
-        </nav>
+        </nav> */}
 <Mealsmenu/>
 <Mealsmenu/>
 <Mealsmenu/>
