@@ -59,21 +59,6 @@ const SellerProfileDropdown = () => {
                 <hr />
                 <ul>
                     <li>
-                        <button className='chatbuyer-btn'>
-                            Chat with Buyer
-                        </button>
-                    </li>
-                    <li>
-                        <button className='chatdelivery-btn'>
-                            Chat with Delivery
-                        </button>
-                    </li>
-                    <li>
-                        <button className='chatadmin-btn'>
-                            Chat with Admin
-                        </button>
-                    </li>
-                    <li>
                         <button className='changepassword-btn' onClick={() => alert('Change Password Clicked')}>
                         Change Password
                         </button>

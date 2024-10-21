@@ -1,5 +1,6 @@
 
 import './App.css';
+import React, { useState } from 'react';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -19,9 +20,57 @@ import DeliveryPage from './pages/DeliveryPage';
 import InProgress from './pages/InProgress';
 import UpdateAdmin from './pages/UpdateAdmin';
 import Sellerpage from './pages/Sellerpage';
-
+import EditPictureSeller from './pages/EditPictureSeller';
+import EditMenuSeller from './pages/EditMenuSeller';
 import { BrowserRouter as Router,Routes,Route } from 'react-router-dom';  
 function App() {
+
+  // const [uploadedImage, setUploadedImage] = React.useState(null);
+  const [img, setImg] = useState('/path/to/default/image.jpg');
+  
+  const [menus, setMenus] = useState([
+    {
+      name: 'Nasi Goreng Special',
+      price: 'Rp 20.000',
+      description: 'Nasi goreng dengan topping telur dadar/mata sapi',
+      image: ''
+    },
+    {
+      name: 'Nasi Goreng Seafood',
+      price: 'Rp 30.000',
+      description: 'Nasi goreng dengan aneka seafood segar',
+      image: ''
+    },
+    {
+      name: 'Nasi Goreng Komplit',
+      price: 'Rp 35.000',
+      description: 'Nasi goreng dengan topping seafood dan telur dadar/mata sapi',
+      image: ''
+    },
+
+  ]);
+
+  const [editingMenuIndex, setEditingMenuIndex] = useState(null);
+
+  const handleEditMenu = (index) => {
+    setEditingMenuIndex(index);
+  };
+
+  const handleSaveMenu = (updatedMenu) => {
+    const updatedMenus = [...menus];
+    updatedMenus[editingMenuIndex] = updatedMenu;
+    setMenus(updatedMenus);
+    setEditingMenuIndex(null);
+  };
+
+  // const handleSaveImage = (image) => {
+  //   const reader = new FileReader();
+  //   reader.onload = () => {
+  //     setImg(reader.result);
+  //   };
+  //   reader.readAsDataURL(image);
+  // };
+
   return (
     <Router>
       <Routes>
@@ -36,13 +85,16 @@ function App() {
         <Route path='/payment' element={<Payment/>}/>    
         <Route path='/adminbuyer' element={<Adminpage/>}/>    
         <Route path='/adminseller' element={<Adminsellerpage/>}/>    
-        <Route path='/admindelivery' element={<Admindeliverypage/>}/>    
+        <Route path='/admindelivery' element={<Admindeliverypage/>}/>  
+        <Route path='/Sellerpage' element={<Sellerpage img={img} />}/>
+        <Route path='/editpictureseller' element={<EditPictureSeller onSave={setImg}/>}/>
+        <Route path='/editmenuseller' element={<EditMenuSeller/>}/>
+        <Route path='/' element={<Navigate to='/Sellerpage'/>}/>  
         <Route path='/historybuyer' element={<HistoryBuyer/>}/>    
         <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>    
         <Route path='/paymentfail' element={<PaymentFail/>}/>    
         <Route path='/deliverypage' element={<DeliveryPage/>}/>    
-        <Route path='/inprogress' element={<InProgress/>}/>    
-        <Route path='/sellerpage' element={<Sellerpage/>}/>    
+        <Route path='/inprogress' element={<InProgress/>}/>       
         <Route path='/adminupdatecustomer' element={<UpdateAdmin/>}/>    
       </Routes>
     </Router>
