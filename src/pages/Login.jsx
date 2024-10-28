@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { LoginUser, reset } from "../features/authSlice.js"
+import { LoginUser } from "../features/authSlice.js"
 import '../style/Login.css';
 // import Loginwrap from '../Components/Loginwrap';
 
@@ -16,36 +16,41 @@ function Login(){
     useEffect(() => {
         const roleMap = {
             1: "Admin",
-            2: "User",
+            2: "Customer",
             3: "Seller",
             4: "Delivery"
         };
 
         if (user || isSuccess) {
             const roleName = roleMap[user?.roleId]; // Get role name based on roleId
+            console.log("Role name determined:", roleName);
 
             if (roleName === "Admin") {
                 console.log("Admin has logged in");
                 navigate("/adminbuyer");
-            } else if (roleName === "User") {
-                console.log("User has logged in");
+            } else if (roleName === "Customer") {
+                console.log("Customer has logged in");
                 navigate("/dashboard");
             }else if(roleName === "Seller"){
                 console.log("Seller has logged in");
                 navigate("/sellerpage")
-            }else{
+            }else if(roleName === "Delivery"){
                 console.log("Delivery has logged in");
                 navigate("/deliverypage")
             }
         }
 
-        dispatch(reset()); // Reset auth state
+        // dispatch(reset()); // Reset auth state
     }, [user, isSuccess, dispatch, navigate]);
 
     const Auth = (e)=>{
         e.preventDefault();
         dispatch(LoginUser({email, password}));
     };
+
+    // useEffect(() => {
+    //     console.log("User state after login attempt:", user); // Check user state after login
+    // }, [user]);
 
     return(
         <div className="loginpage">
