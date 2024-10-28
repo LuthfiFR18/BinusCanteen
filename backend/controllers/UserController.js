@@ -48,14 +48,15 @@ export const updateUser = async(req, res) => {
         if (!user) return res.status(404).json({ message: "User not found" }); 
 
         // Mengupdate data user
-        const { name, email, password,phonenumber,roleId } = req.body;
+        const { name, email, password,phonenumber,image } = req.body;
         user.name = name || user.name;
         user.email = email || user.email;
+        user.password = password||user.password;
+        user.phonenumber = phonenumber|| user.phonenumber;
+        user.image = image || user.image;
         // if (password) {
         //     user.password = await argon2.hash(password);
         // }
-        user.phonenumber = phonenumber || user.phonenumber;
-        user.roleId = roleId || user.roleId;
 
         await user.save(); // Menyimpan perubahan
         res.json(user); // Mengirimkan data user yang diperbarui

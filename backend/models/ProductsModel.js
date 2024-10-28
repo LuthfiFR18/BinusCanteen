@@ -42,6 +42,11 @@ const Products = db.define('product',{
         }
     },
 
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },    
+
     boothId:{
         type: DataTypes.INTEGER,
         allowNull: false,
