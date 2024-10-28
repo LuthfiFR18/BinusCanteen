@@ -11,14 +11,11 @@ function HeaderDelivery(){
 
     return(
         <div className="header-delivery">
-            <nav>
-                {/* <!--Logo--> */}
-                <a href="#" class="logo-delivery" onClick={()=>navigate('/dashboard')}>
-                    <h4>BINUS <span className='logo-text'>Canteen</span><span className='delivery-text'> Delivery</span></h4>
-                </a>
-                <ProfileDropdown/>
+        <div className="logo-delivery" onClick={()=>navigate('/dashboard')}>
+            Binus<span className='logo-text-span'>Canteen</span><span className='delivery-text'>Delivery</span>
+        </div>
 
-                </nav>
+        <ProfileDropdown/>
         </div>
     );
 }

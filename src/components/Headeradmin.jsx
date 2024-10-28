@@ -23,7 +23,7 @@ function Headeradmin({search, setSearch}){
                         <input type="text" id='input-box-admin' placeholder="Search"
                         autocomplete="off" onChange={(e)=> setSearch(e.target.value)} >
                         </input>
-                        <button className='search-icon'>
+                        <button className='search-icon-admin'>
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>

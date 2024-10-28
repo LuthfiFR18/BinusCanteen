@@ -11,12 +11,9 @@ function Headerseller(){
 
     return(
         <div class="header-seller">
-            <nav>
                 {/* <!--Logo--> */}
-                <div className="logo-text">
-                <a href="#" class="logo" onClick={()=>navigate('/Sellerpage')}>
-                    <h4>BINUS <span>Canteen</span><sub>Seller</sub></h4>
-                </a>
+                <div className="logo-text" onClick={()=>navigate('/sellerpage')}>
+                    <h4>BINUS <span className='logo-text-span'>Canteen</span><sub>Seller</sub></h4>
                 </div>
 
                 <div className="header-middle">
@@ -31,7 +28,6 @@ function Headerseller(){
                     </ul> */}
 
                 {/* </div> */}
-            </nav>
         </div>
 
     );
