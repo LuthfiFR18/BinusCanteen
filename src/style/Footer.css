@@ -1,16 +1,16 @@
 
 .Footer {
   margin-top: 100px;
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    background-color: #2E7ADD;
-    color: white;
-    text-align: center;
-  }
+  position: fixed;
+  display: flex;
+  justify-content: space-between;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #2E7ADD;
+  color: white;
+  text-align: center;
+}
 
 .footerText{
     padding: 30px;

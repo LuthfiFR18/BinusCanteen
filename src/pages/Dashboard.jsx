@@ -30,7 +30,7 @@ function Dashboard(){
             <div className="dashboard-container">
                 <Header/>
 
-                <h4>Welcome, {user?.name || 'Guest'}</h4>
+                <h4 className='greeting-dashboard'>Welcome, {user?.name || 'Guest'}</h4>
 
                 <Boothgrid/>
                 <Boothgrid/>
