@@ -38,13 +38,6 @@
     border-style: solid;
     border-color: #FF9D00;
 }
-.menu ul li i{
-    width: 248px;
-    height: 280px;
-    padding-bottom: 1000px;
-    font-size: 75px;
-    font-weight: 600;
-}
 
 .menu ul li a{
     padding-top: 70px;

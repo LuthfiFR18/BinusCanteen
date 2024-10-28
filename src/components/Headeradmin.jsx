@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Routes, Route, Form } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser, faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
+import { faMagnifyingGlass} from '@fortawesome/free-solid-svg-icons'
 import '../style/Headeradmin.css';
 import ProfileDropdown from './ProfileDropdown';
 import '../style/Header.css';
@@ -13,13 +13,11 @@ function Headeradmin({search, setSearch}){
     const navigate = useNavigate();
     
     return(
-        <div className="header-admin">
-            <nav>
-                {/* <!--Logo--> */}
-                <a href="#" class="logo-admin" onClick={()=>navigate('/dashboard')}>
-                    <h4>BINUS <span>Canteen</span></h4>
-                </a>
 
+        <div className="header-admin">
+            <div className="logo-admin" onClick={()=>navigate('/dashboard')}>
+                Binus<span className='logo-text-span'>Canteen</span>
+            </div>
                 <div class="search-box-admin">
                     <div class="row">
                         <input type="text" id='input-box-admin' placeholder="Search"
@@ -29,11 +27,9 @@ function Headeradmin({search, setSearch}){
                         <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                    <div class="result-box"></div>
                 </div>
                 <ProfileDropdown/>
 
-                </nav>
             </div>
     );
 }
