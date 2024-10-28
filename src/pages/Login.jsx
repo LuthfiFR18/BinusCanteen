@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 // import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { LoginUser } from "../features/authSlice.js"
+import { LoginUser,reset } from "../features/authSlice.js"
 import '../style/Login.css';
 // import Loginwrap from '../Components/Loginwrap';
 
@@ -40,7 +40,7 @@ function Login(){
             }
         }
 
-        // dispatch(reset()); // Reset auth state
+        dispatch(reset()); // Reset auth state
     }, [user, isSuccess, dispatch, navigate]);
 
     const Auth = (e)=>{
