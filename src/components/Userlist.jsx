@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import '../style/Userlist.css'; // Impor file CSS eksternal
-
+import { useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -8,14 +8,40 @@ import axios from 'axios';
 const Userlist = ({selectedLocation, search }) => {
 
   const [users, setUser ] = useState([]);
-  
+  const { id } = useParams();
+  const [name, setName] = useState(""); 
+  const [email, setEmail] = useState(""); 
+  const [password, setPassword] = useState(""); 
+  const [phonenumber, setPhoneNumber] = useState(""); 
+  const [image, setImage] = useState("");
 
+  const [msg, setMsg] = useState("");
+
+  const navigate = useNavigate();
 
   useEffect(()=>{
     getUser();
     
+  }, [selectedLocation, search, id]);
+
+  const getUserById = async () => {
+    if(id){
     
-  }, [selectedLocation, search]);
+    try{
+      const response = await axios.get(`http://localhost:5000/user${id}`)
+      setName(response.data.name)
+      setEmail(response.data.email)
+      setPassword(response.data.password)
+      setPhoneNumber(response.data.phonenumber)
+      setImage(response.data.image)
+    }catch (error){
+      if(error.console){
+        setMsg(error.response.data.msg);
+      }
+      
+    }
+    }
+  }
 
   const getUser = async () => {
     const response = await axios.get("http://localhost:5000/user");
@@ -35,24 +61,7 @@ const Userlist = ({selectedLocation, search }) => {
     setUser(filteredUsers);
   };
 
-  // const updateUser = async (userId) => {
-  //   try {
-  //     const responseUpdate = await axios.get(`http://localhost:5000/user/${userId}`);
-  //     setFormData(
-  //       name: responseUpdate.data.name,
-  //       email: responseUpdate.data.email,
-  //       password: responseUpdate.data.password,
-  //       phonenumber: responseUpdate.data.phonenumber
-        
-  //     )
-  //     console.log("Update Successful", responseUpdate.data)
-
-  //   } catch (error) {
-  //     console.error("Error Updating user:", error);
-  //   }
-   
-  // }
-
+ 
 
   const deleteUser = async (userId) => {
     try {
@@ -66,22 +75,13 @@ const Userlist = ({selectedLocation, search }) => {
     }
   }
 
-  // const getRole = async () => {
-  //   const response = await axios.get("http://localhost:5000/role");
-  //   setRoles(response.data); // Store roles in the correct 'roles' state
-  // };
-
-  // const getRoleName = (roleId) => {
-  //   const role = roles.find(r => r.id === roleId);
-  //   return role ? role.name : 'Unknown'; // Return role name or 'Unknown' if not found
-  // }
-
-  //getRoleName(users.roleId)
+  
   
   //Pop Up Function
 
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
+    uuid: "",
     name: "",
     email: "",
     password: "",
@@ -89,7 +89,14 @@ const Userlist = ({selectedLocation, search }) => {
   });
 
   // Function to open the popup
-  const openPopup = () => {
+  const openPopup = (user) => {
+    setFormData({
+      uuid: user.uuid || "", 
+      name: user.name || "",
+      email: user.email || "",
+      password: user.password || "",
+      phonenumber: user.phonenumber || "",
+    });
     setIsPopupOpen(true);
   };
 
@@ -106,21 +113,35 @@ const Userlist = ({selectedLocation, search }) => {
     });
   };
 
-  // Function to handle form submission (you can add real update logic)
-  const handleSubmit = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log("Updated Data:", formData);
-    closePopup(); // Close popup after submitting
+    try {
+      if (!formData.uuid) {
+        console.error('No user ID provided for update');
+        return;
+      }
+      await axios.patch(`http://localhost:5000/user/${formData.uuid}`, {
+        name: formData.name,
+        email: formData.email,
+        password: formData.password,
+        phonenumber: formData.phonenumber,
+        image: image
+      });
+      closePopup();
+      await getUser();
+    } catch (error) {
+      console.error('Error updating user:', error);
+    }
   };
 
   // Function to handle cancel button click
   const handleCancel = () => {
-    setFormData({
-      name: "",
-      email: "",
-      password: "",
-      phonenumber: "",
-    });
+    // setFormData({
+    //   name: "",
+    //   email: "",
+    //   password: "",
+    //   phonenumber: "",
+    // });
     closePopup();
   };
 
@@ -142,9 +163,9 @@ const Userlist = ({selectedLocation, search }) => {
       </thead>
       <tbody>
 
-      {users.map((users, index) => (
+      {users.map((users) => (
 
-        <tr key={users.uuid}>
+        <tr key={users.id}>
           <td>{users.uuid}</td>
           <td>{users.name}</td>
           <td>{users.email}</td>
@@ -152,7 +173,8 @@ const Userlist = ({selectedLocation, search }) => {
           <td>{users.phonenumber}</td>
           <td>{users.role ? users.role.name : 'Unknown'}</td>
           <td>
-            <button to = {`/users/edit/${users.uuid}`} className='button-admin-update' onClick={openPopup}>Update</button>
+          <button className='button-admin-update'  onClick={() => openPopup(users)}>Update</button>
+            <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
 
             {isPopupOpen && (
               <div className="popup-overlay-update">
@@ -161,7 +183,7 @@ const Userlist = ({selectedLocation, search }) => {
                     &times;
                   </span>
                   <h2>Update Data</h2>
-                  <form onSubmit={handleSubmit}>
+                  <form onSubmit={handleUpdate}>
                     <label htmlFor="name">Name:</label>
                     <input className='input-update-admin'
                       type="text"
@@ -202,7 +224,7 @@ const Userlist = ({selectedLocation, search }) => {
                     />
 
                     <div className="form-buttons">
-                      <button className='button-admin-seller-update' type="submit">Update</button>
+                    <button className='button-admin-update' type="submit">Save</button>
                       <button  className='button-admin-seller-delete' type="button" onClick={handleCancel}>
                         Cancel
                       </button>
@@ -212,7 +234,7 @@ const Userlist = ({selectedLocation, search }) => {
               </div>
             )}
 
-            <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
+            
           </td>
         </tr>
       ))}

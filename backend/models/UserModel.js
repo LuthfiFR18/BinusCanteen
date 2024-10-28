@@ -50,6 +50,11 @@ const Users = db.define('user',{
         }
     },
 
+    image:{
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+
     roleId:{
         type: DataTypes.INTEGER,
         allowNull: false,
