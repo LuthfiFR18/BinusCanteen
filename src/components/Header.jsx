@@ -10,33 +10,52 @@ function Header(){
 
     return(
         <div className="header-container">
-                {/* <!--Logo--> */}
-                <div className="logo-text">
-                <a href="#" class="logo" onClick={()=>navigate('/dashboard')}>
-                    BINUS<span>Canteen</span>
-                </a>
-                </div>
-                {/* <!--search bar--> */}
-                <div className="search-bar-container">
-                <div class="search-box">
-                         <input type="text" id='input-search-box' placeholder="Search"
-                        autocomplete="off"></input>
-                        <button className='search-icon'>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                </div>
-                </div>
+            <div className="logo-text" onClick={()=>navigate('/dashboard')}>
+                Binus<span className='logo-text-span'>Canteen</span>
+            </div>
 
-                {/* <!--Logo Cart--> */}
-                <div className='logo-cart-box'>
-                    <a href="#" className='logo-cart' onClick={()=>navigate('/cart')}>
+            <div className="search-bar">
+                <input type="text" className='search-bar-box' placeholder='Search'/>
+                <button className='search-icon'>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                </button>
+            </div>
+
+            <div className='logo-cart-box'>
+                <a href="#" className='logo-cart' onClick={()=>navigate('/cart')}>
                     <FontAwesomeIcon icon={faCartShopping} className="logo-icon" />
                 </a>
-                </div>
+            </div>
+            <ProfileDropdown/>
+        </div>
+        // <div className="header-container">
+        //         {/* <!--Logo--> */}
+        //         <div className="logo-text">
+        //         <a href="#" class="logo" onClick={()=>navigate('/dashboard')}>
+        //             BINUS<span>Canteen</span>
+        //         </a>
+        //         </div>
+        //         {/* <!--search bar--> */}
+        //         <div className="search-bar-container">
+        //         <div class="search-box">
+        //                  <input type="text" id='input-search-box' placeholder="Search"
+        //                 autocomplete="off"></input>
+        //                 <button className='search-icon'>
+        //                 <FontAwesomeIcon icon={faMagnifyingGlass} />
+        //                 </button>
+        //         </div>
+        //         </div>
 
-                {/* <!--Profile--> */}
-                <ProfileDropdown/>
-                </div>
+        //         {/* <!--Logo Cart--> */}
+        //         <div className='logo-cart-box'>
+        //             <a href="#" className='logo-cart' onClick={()=>navigate('/cart')}>
+        //             <FontAwesomeIcon icon={faCartShopping} className="logo-icon" />
+        //         </a>
+        //         </div>
+
+        //         {/* <!--Profile--> */}
+        //         <ProfileDropdown/>
+        //         </div>
     );
 }
 

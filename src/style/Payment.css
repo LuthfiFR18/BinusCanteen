@@ -1,6 +1,5 @@
 .payment-page{
   width: 100%;
-  position: relative;
   justify-content: center;
   align-items: center;
   margin-bottom: 100px;
@@ -16,10 +15,10 @@
 }
 
 .countdown{
-  border-style: solid;
+  /* border-style: solid; */
   margin-top: 20px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   text-align: center;
 }
 
@@ -28,12 +27,16 @@
 }
 
 .payment-table {
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
 .payment-table th {
+  justify-content: center;
+  align-items: center;
   padding: 10px 75px 10px 0;
   text-align: center;
   border-bottom: 1px solid #ccc;
@@ -41,6 +44,8 @@
 }
 
 .payment-table th {
+  justify-content: center;
+  align-items: center;
   background-color: #0099ff;
   color: white;
 }

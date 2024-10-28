@@ -22,23 +22,23 @@ const app = express();
 
 const sessionStore = SequelizeStore(session.Store);
 
-// const store = new sessionStore({
-//     db: db
-// })
+const store = new sessionStore({
+    db: db
+})
 
-(async()=>{
-    await db.sync();
-})();
+// (async()=>{
+//     await db.sync();
+// })();
 
-// app.use(session({
-//     secret: process.env.SESSION_SECRET,
-//     resave: false,
-//     saveUninitialized: true,
-//     store: store,
-//     cookie: {
-//         secure: 'auto'
-//     }
-// }));
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUninitialized: true,
+    store: store,
+    cookie: {
+        secure: 'auto'
+    }
+}));
 
 app.use(cors({
     credentials: true,
@@ -55,7 +55,7 @@ app.use(RoleRoute);
 app.use(AuthRoute);
 app.use(BoothRoute);
 
-//store.sync();
+// store.sync();
 
 
 console.log('Session Secret:', process.env.SESSION_SECRET);

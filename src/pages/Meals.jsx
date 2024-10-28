@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect } from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Meals.css';
@@ -8,90 +8,60 @@ import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
 
-function Meals() {
-    
+const ButtonStack = () => {
+    const [activeButton, setActiveButton] = useState(1);
     const navigate = useNavigate();
+  
+    const handleClick = (buttonNumber, path) => {
+      setActiveButton(buttonNumber);
+      navigate(path);
+    };
+  
+    return (
+      <div className="selector-btn">
+        <button
+        className={`menu-button meals-btn ${activeButton === 1 ? 'active' : 'menu-button'}`}
+        onClick={() => handleClick(1, '/meals')}
 
-     // State untuk melacak tombol aktif
-    const [activeButton, setActiveButton] = useState("Meals");
-
-    // Fungsi untuk mengubah tombol aktif saat diklik
-    const handleButtonClick = (buttonName) => {
-    setActiveButton(buttonName);
+        >
+          Meals
+        </button>
+        <button
+        className={`menu-button meals-btn ${activeButton === 2 ? 'active' : 'menu-button'}`}
+        onClick={() => handleClick(2, '/drink')}
+          
+        >
+          Drink
+        </button>
+        <button
+        className={`menu-button meals-btn ${activeButton === 3 ? 'active' : ''}`}
+        onClick={() => handleClick(3, '/dessert')}
+        
+        >
+          Dessert
+        </button>
+      </div>
+    );
   };
 
+  const Meals = () => {
+    
   return (
     <div className='Mealspage'>
             <Header/>
         
             <h3 className='booth-name'>Nara Kitchen</h3>
 
-        
-        <div className="selector-btn">
-        
-            <button
-                className={`btn meals-btn ${activeButton === "Meals" ? "active" : ""}`}
-                onClick={() => {
-                    handleButtonClick("Meals");
-                    }}>Meals
-            </button>
+            <ButtonStack />
+                    
+        <Mealsmenu/>
+        <Mealsmenu/>
+        <Mealsmenu/>
+        <Mealsmenu/>
+        <Mealsmenu/>
 
-            <button
-                className={`btn drink-btn ${activeButton === "Drink" ? "active" : ""}`}
-                onClick={() => {
-                    handleButtonClick("Drink");
-                    navigate('/drink');
-                }}>Drink
-            </button>
+        <Footer/>
 
-            <button
-                className={`btn dessert-btn ${
-                activeButton === "Dessert" ? "active" : ""
-                }`}
-                onClick={() => {
-                    handleButtonClick("Dessert");
-                    navigate('/dessert');
-                }}>
-                Dessert
-            </button>
-
-            <div
-                className={`active-bg ${activeButton === "Meals" ? "meals-active" : ""} ${
-                activeButton === "Drink" ? "drink-active" : ""
-                } ${activeButton === "Dessert" ? "dessert-active" : ""}`}
-            ></div>
-        </div>
-
-            {/* <nav>
-            <div class="menubar-meals">
-                <ul>
-                <li>
-                    <a href="#" className='mealsnav'>
-                    <FontAwesomeIcon icon={faUtensils} size='4x' />
-                    <p className='namenavbar'>Meals</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={()=>navigate('/drink')}>
-                    <FontAwesomeIcon icon={faGlassWater} size='4x' />
-                    <p className='namenavbar'>Drink</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={()=>navigate('/dessert')}>
-                    <FontAwesomeIcon icon={faIceCream} size='4x'/>
-                    <p className='namenavbar'>Dessert</p>
-                    </a>
-                </li>
-                </ul>
-            </div>
-        </nav> */}
-<Mealsmenu/>
-<Mealsmenu/>
-<Mealsmenu/>
-<Mealsmenu/>
-
-<Footer/>
     </div>
   )
 }
