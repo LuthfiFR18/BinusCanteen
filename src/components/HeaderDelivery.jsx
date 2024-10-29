@@ -11,7 +11,7 @@ function HeaderDelivery(){
 
     return(
         <div className="header-delivery">
-        <div className="logo-delivery" onClick={()=>navigate('/dashboard')}>
+        <div className="logo-delivery" onClick={()=>navigate('/deliverypage')}>
             Binus<span className='logo-text-span'>Canteen</span><span className='delivery-text'>Delivery</span>
         </div>
 

@@ -140,8 +140,8 @@ const ProductList = ({selectedLocation, search }) => {
     <td>{product.producttype}</td>
     <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
     <td>
-    <button className='button-admin-update'  onClick={() => openPopup(users)}>Update</button>
-      <button className='button-admin-delete' onClick={() => deleteProduct(users.uuid)}>Delete</button>
+    <button className='button-admin-booth-update'  onClick={() => openPopup(users)}>Update</button>
+      <button className='button-admin-booth-delete' onClick={() => deleteProduct(users.uuid)}>Delete</button>
 
         {isPopupOpen && (
           <div className="popup-overlay-update">
@@ -157,7 +157,7 @@ const ProductList = ({selectedLocation, search }) => {
 
               <form onSubmit={handleUpdate}>
                 <label htmlFor="Productname">Name Product:</label>
-                <input className='input-update-admin'
+                <input className='input-update-booth-admin'
                   type="text"
                   id="name"
                   name="name"
@@ -167,7 +167,7 @@ const ProductList = ({selectedLocation, search }) => {
                 />
 
                 <label htmlFor="price">Price:</label>
-                <input className='input-update-admin'
+                <input className='input-update-booth-admin'
                   type="text"
                   id="price"
                   name="price"
@@ -190,7 +190,7 @@ const ProductList = ({selectedLocation, search }) => {
               </select>
 
                 <label htmlFor="sellername">Seller Name:</label>
-                <input className='input-update-admin'
+                <input className='input-update-booth-admin'
                   type="text"
                   id="sellername"
                   name="sellername"
@@ -209,8 +209,8 @@ const ProductList = ({selectedLocation, search }) => {
                 />  
 
                 <div className="form-buttons">
-                <button className='button-admin-update' type="submit">Save</button>
-                  <button  className='button-admin-seller-delete' type="button" onClick={handleCancel}>
+                <button className='button-admin-booth-update' type="submit">Save</button>
+                  <button  className='button-admin-booth-delete' type="button" onClick={handleCancel}>
                     Cancel
                   </button>
                 </div>
