@@ -215,7 +215,7 @@ const Userlist = ({selectedLocation, search }) => {
                     />
                     <label htmlFor="phone number">Phone Number:</label>
                     <input className='input-update-admin'
-                      type="number"
+                      type="text"
                       id="phonenumber"
                       name="phonenumber"
                       value={formData.phonenumber}

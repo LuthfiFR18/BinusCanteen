@@ -11,233 +11,76 @@
     background-color: #ffff;
 }
 
-.booth-name{
+#booth-name{
     display: flex;
     justify-content: center;
     align-items: center;
     padding: 20px;
 }
 
-/* ButtonStack.css */
-
-    .selector-btn {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    /* Menggunakan nama class baru */
-    .menu-button {
-        width: 180px;
-        background-color: white;
-        padding: 10px 20px;
-        border-radius: 15px;
-        font-weight: bold;
-        margin: 5px;
-        cursor: pointer;
-        border-style: none;
-        z-index: 1;
-        box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-        transition: background-color 0.3s ease;
-    }
-
-    .menu-button.active {
-        pointer-events: none;
-        background-color: orange; /* Warna latar belakang untuk tombol aktif */
-        color: white; /* Warna teks untuk tombol aktif */
-        z-index: 2; /* Agar tombol aktif berada di depan */
-    }
-    /* Gaya untuk tombol yang tidak aktif */
-    .menu-button.inactive {
-        background-color: white;
-        color: #000000;
-    }
-
-    .menu-button:hover {
-        background-color: darkorange;
-        color: white;
-    }
-    
-/*
-.btn {
+.selector-btn {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 160px;
-    height: 50px;
-    border-style: none;
-    border-radius: 25px; /* Membuat ujung tombol bulat
-    background-color: #fff;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    cursor: pointer;
+}
+
+.menu-button-meals {
+    width: 180px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
     font-weight: bold;
-    z-index: 1;
-    position: relative;
-    transition: color 0.3s, z-index 0.4s ease, transform 0.4s ease, background-color 0.4s ease; /* Tambah transisi warna background
+    margin: 5px;
+    cursor: pointer;
+    border-style: none;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
 
-.meals-btn {
-    /* margin-right: -1px; Menyebabkan tumpang tindih ke kanan 
-    z-index: 3;
-
+.menu-button-drink {
+    width: 180px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin: 5px;
+    cursor: pointer;
+    border-style: none;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
 
-.drink-btn {
-    margin-left: -15px; /* Menyebabkan tumpang tindih ke kiri 
-    margin-right: -15px; /* Menyebabkan tumpang tindih ke kanan 
+.menu-button-dessert {
+    width: 180px;
+    background-color: white;
+    padding: 10px 20px;
+    border-radius: 15px;
+    font-weight: bold;
+    margin: 5px;
+    cursor: pointer;
+    border-style: none;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+}
+
+.menu-button-meals.active {
+    animation: myAnim 0.5s ease-in 0s 1 normal forwards;
+    pointer-events: none;
+    background-color: orange;
+    color: white;
     z-index: 2;
 }
 
-.dessert-btn 
-    /* margin-left: -5px; Menyebabkan tumpang tindih ke kiri
-    z-index: 1;
+@keyframes myAnim {
+	0% {
+		opacity: 0;
+		transform: scale(1.4);
+	}
+
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
 }
 
-.btn:hover {
-    background-color: #FF9D00;
-    color: #fff;
-    transition: 0.3s;
-
+.menu-button.inactive {
+    background-color: white;
+    color: #000000;
 }
-
-.active-bg {
-    position: absolute;
-    width: 160px;
-    height: 50px;
-    border-radius: 25px;
-    background-color: #ff9d00;
-    transition: all 0.4s ease;
-    z-index: 1;
-  }
-  
-  .meals-active {
-    width: 100%;
-    left: calc(50% - 280px); /* Posisi untuk tombol Meals 
-  }
-  
-  .drink-active {
-    left: calc(54.5% - 170px); /* Posisi untuk tombol Drink 
-  }
-  
-  .dessert-active {
-    left: 53%; /* Posisi untuk tombol Dessert 
-  }
-  
-  /* Hover untuk efek saat disentuh 
-  .btn:hover {
-    color: #fff;
-  }
-  
-  .btn.active {
-    /* z-index: 2; */
-    /* transform: scale(1.2); 
-    background-color: #FF9D00;
-    color: #fff;
-    pointer-events: none;
-  }
-*/
-/* .meals-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 160px;
-    height: 25px;
-    border-radius: 20px;
-    margin-left: -10px;
-    cursor: pointer;
-    border-style: none;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    background-color: #fff;
-}
-
-.drink-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 160px;
-    height: 25px;
-    border-radius: 20px;
-    margin-left: -10px;
-    margin-right: -5%;  
-    cursor: pointer;
-    border-style: none;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    background-color: #fff;
-    z-index: 1;
-}
-.dessert-btn{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 160px;
-    height: 25px;
-    margin-left: 5%;
-    border-radius: 20px;
-    cursor: pointer;
-    border-style: none;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    background-color: #fff;
-    z-index: 1;
-}
-
-.selector-btn :hover{
-    background-color: #FF9D00;
-    color: #fff;
-} */
-
-/* .menubar-meals{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menubar-meals ul{
-    width: 248px;
-    height: 238px;
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 40px;
-    gap: 20px;
-}
-
-.menubar-meals ul li{
-    display: flex;
-    width: 248px;
-    height: 230px;
-    text-align: center;
-    border-radius: 25px;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-}
-.menubar-meals ul li .mealsnav{
-    border-radius: 25px;;
-    border-style: solid;
-    border-color: #FF9D00;
-}
-.menubar-meals ul li i{
-    width: 248px;
-    height: 280px;
-    padding-bottom: 1000px;
-    font-size: 75px;
-    font-weight: 600;
-}
-
-.menubar-meals ul li a{
-    padding-top: 70px;
-    width: 248px;
-    display: center;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--btn-color);
-    align-items: center;
-    justify-content: center;
-}
-
-.menubar-meals ul li:hover{
-    background-color: var(--btn-color);
-}
-
-.menubar-meals ul li a:hover{
-    color: var(--text-color);
-} */

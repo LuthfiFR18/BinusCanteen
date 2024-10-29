@@ -6,7 +6,7 @@ function ResetPassword() {
     const navigate = useNavigate();
 
   return (
-    // <div className='resetPassword'>
+    <div className='resetPassword'>
         <div className="wrapperResetpassword">
             <h1>Reset Password</h1>
             <form action="#">
@@ -17,7 +17,7 @@ function ResetPassword() {
                 <button className="button" onClick={()=> navigate('/')}>Save</button>
             </form>
         </div>
-      //</div>
+    </div>
   );
 }
 
