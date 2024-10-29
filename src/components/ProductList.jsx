@@ -177,7 +177,7 @@ const ProductList = ({selectedLocation, search }) => {
                 />
 
                 <label htmlFor="productType">Product Type:</label>
-                <select
+                <select className='select-type'
                 id="productType"
                 name="productType"
                 value={formData.productType}
