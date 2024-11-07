@@ -2,6 +2,7 @@ import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import Roles from "./RolesModel.js";
 
+
 const {DataTypes} = Sequelize;
 
 const Users = db.define('user',{
@@ -69,10 +70,6 @@ const Users = db.define('user',{
 },{
     freezeTableName: true
 })
-
-// Relationships
-Roles.hasMany(Users);
-Users.belongsTo(Roles, {foreignKey: 'roleId', as: 'role'});
 
 
 export default Users;

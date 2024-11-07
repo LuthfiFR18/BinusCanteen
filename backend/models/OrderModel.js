@@ -25,8 +25,6 @@ const Order = db.define('order', {
     freezeTableName: true,
 });
 
-// Relationships
-Order.belongsTo(Cart, { foreignKey: 'cartId' });
-// Order.belongsTo(Products, { foreignKey: 'productId' });
+
 
 export default Order;

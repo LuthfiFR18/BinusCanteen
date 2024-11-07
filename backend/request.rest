@@ -11,12 +11,12 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "uuid" : "2502998701",
-    "name" : "Delivery",
-    "email" : "dlv@gmail.com",
-    "password" : "dlv",
+    "uuid" : "SLR1",
+    "name" : "Oliver Sykes Admin",
+    "email" : "slr@gmail.com",
+    "password" : "slr",
     "phonenumber" : "081234567890",
-    "roleId" : "3"
+    "roleId" : "1"
 }
 
 ###
@@ -56,11 +56,11 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
     {
-  "name": "Mie Ayam",
+  "name": "Mie Goreng",
   "price": 15000,
   "producttype": "Food",
   "boothId": 1,
-  "userId": 4
+  "userId": 2
 }
 ###
 POST http://localhost:5000/Booth
@@ -70,5 +70,17 @@ Content-Type: application/json
   "name": "Booth A",
   "openingTime": "2024-10-22T09:00:00.000Z",
   "closingTime": "2024-10-22T18:00:00.000Z",
-  "userId": 1
+  "userId": 2
+}
+
+### Membuat Course Baru
+POST http://localhost:5000/courses
+Content-Type: application/json
+
+{
+  "name": "Object Oriented Programming",
+  "classname": "Class LK01",
+  "startDate": "2024-11-07T07:20:00",
+  "endDate": "2024-12-07T08:50:00",
+  "userId": 2
 }

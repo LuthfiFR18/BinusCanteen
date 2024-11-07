@@ -4,21 +4,27 @@ import express from "express";
 import session from "express-session";
 import db from "./config/Database.js";
 import SequelizeStore from "connect-session-sequelize";
+
+
+import UserRoute from "./routes/UserRoute.js";
 import CartRoute from "./routes/CartRoute.js";
 import OrderRoute from "./routes/OrderRoute.js";
 import PaymentRoute from "./routes/PaymentRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
-import UserRoute from "./routes/UserRoute.js";
 import RoleRoute from "./routes/RoleRoute.js";
 import AuthRoute from "./routes/AuthRoute.js";
 import BoothRoute from "./routes/BoothRoute.js";
+import CourseRoute from "./routes/CourseRoute.js";
 
+import { associations } from './models/Association.js';
 
 dotenv.config();
 console.log(process.env)
 
 
 const app = express();
+
+associations();
 
 const sessionStore = SequelizeStore(session.Store);
 
@@ -54,8 +60,10 @@ app.use(PaymentRoute);
 app.use(RoleRoute);
 app.use(AuthRoute);
 app.use(BoothRoute);
+app.use(CourseRoute);
 
-store.sync();
+store.sync(); 
+
 
 
 console.log('Session Secret:', process.env.SESSION_SECRET);

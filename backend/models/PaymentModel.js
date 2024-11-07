@@ -44,8 +44,6 @@ const Payment = db.define('payment', {
     freezeTableName: true
 });
 
-// Relationships
-Payment.belongsTo(Order, { foreignKey: 'orderId' });
-// Payment.belongsTo(Users, { foreignKey: 'userId' });
+
 
 export default Payment;

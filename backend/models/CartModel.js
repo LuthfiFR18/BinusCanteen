@@ -22,14 +22,14 @@ const Cart = db.define('cart', {
         allowNull: false,
     },
 
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: Users, // Reference the Users model
-            key: 'id', // Assuming Users has a primary key called 'id'
-        }
-    },
+    // userId: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    //     references: {
+    //         model: Users, // Reference the Users model
+    //         key: 'id', // Assuming Users has a primary key called 'id'
+    //     }
+    // },
 
     quantity: {
         type: DataTypes.INTEGER,
@@ -47,8 +47,6 @@ const Cart = db.define('cart', {
     freezeTableName: true
 });
 
-Cart.hasMany(Products);
-Cart.belongsTo(Products, { foreignKey: 'productId', targetKey: 'id'  });
-Cart.belongsTo(Users, { foreignKey: 'userId', targetKey: 'id'  });
+
 
 export default Cart;

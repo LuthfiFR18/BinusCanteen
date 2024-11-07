@@ -65,7 +65,15 @@ const ProductList = ({selectedLocation, search }) => {
   });
 
   // Open and close popup functions
-  const openPopup = () => {
+  const openPopup = (product) => {
+    setFormData({
+      productName: product.name,
+      price: product.price,
+      productType: product.producttype,
+      sellerName: product.user ? product.user.name : "",  
+      productImage: null, 
+      previewImage: product.image || "", 
+    });
     setIsPopupOpen(true);
   };
 
@@ -140,7 +148,7 @@ const ProductList = ({selectedLocation, search }) => {
     <td>{product.producttype}</td>
     <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
     <td>
-    <button className='button-admin-booth-update'  onClick={() => openPopup(users)}>Update</button>
+    <button className='button-admin-booth-update'  onClick={() => openPopup(product)}>Update</button>
       <button className='button-admin-booth-delete' onClick={() => deleteProduct(users.uuid)}>Delete</button>
 
         {isPopupOpen && (
