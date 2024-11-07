@@ -1,8 +1,13 @@
-.payment-page{
+.payment-container{
   width: 100%;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.payment-page{
+  flex: 1;
 }
 
 .payment-title {
@@ -100,10 +105,8 @@
 .payment-btn{
   background-color: orange;
   padding: 15px;
-  /* margin-bottom: 50px; */
   text-align: center;
   margin-left: 40%;
-  /* margin-top: 0px; */
   cursor: pointer;
   color: white;
   font-weight: bold;
@@ -164,7 +167,7 @@
   width: 300px;
 }
 
-.payment-container {
+.payment-subcontainer {
   display: flex;
   justify-content: space-between;
   padding: 20px;

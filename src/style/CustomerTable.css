@@ -1,0 +1,109 @@
+.dropdown-customer-container {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+.dropdown-customer-button {
+    justify-content: center;
+    text-align: left;
+    background-color: #dddd;
+    position: relative;
+    color: black;
+    padding: 15px 50px;
+    border: none;
+    width: 100%;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.dropdown-customer-button.active {
+    background-color: #FF9D00;
+    color: white;
+}
+  
+.dropdown-customer-button::after {
+    content: ">";
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: transform 0.3s ease;
+}
+  
+.dropdown-customer-button.active::after {
+    transform: translateY(-50%) rotate(90deg); /* Putar 90 derajat ke bawah */
+}
+  
+.dropdown-customer-table {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease-out;
+}
+  
+.dropdown-customer-table.open-customer-table {
+    max-height: 500px; /* Sesuaikan dengan tinggi tabel */
+    transition: max-height 0.5s ease-in;
+}
+
+.dropdown-customer-table.closed-customer-table {
+    transition: max-height 0.3s ease-out; /* Transisi lebih cepat saat menutup tabel */
+}
+  
+.customer-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+    text-align: center;
+}
+  
+.customer-table th {
+    border-bottom: 2px solid black;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 8px 40px;
+}
+  
+.customer-table td {
+    border-bottom: 1px solid #ddd;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+  
+.customer-table-update{
+    font-size: 13px;
+    padding: 5px 10px;
+    background-color: #2E7ADD;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+  
+.customer-table-delete{
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 4px;
+    margin-right: 20px;
+}
+  
+.customer-table-update:hover {
+    background-color: rgb(2, 57, 116);
+}
+  
+.customer-table-delete:hover {
+    background-color: rgb(163, 3, 3);
+}
+  

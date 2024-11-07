@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../style/Cart.css';
-import Header from '../components/Header';
+import HeaderCartPayment from '../components/HeaderCartPayment';
 import Footer from '../components/Footer';
 import img1 from '../img/nasigoreng.png'
 
@@ -40,8 +40,9 @@ const Cart = () => {
   // };
 
   return (
+    <div className="cart-container">
     <div className="cart">
-          <Header/>
+          <HeaderCartPayment/>
       <h2 className='cart-title'>FOOD CART</h2>
       <table className="cart-table">
         <thead>
@@ -114,6 +115,7 @@ const Cart = () => {
       <button className="checkout" onClick={()=>navigate('/payment')}>
         CHECKOUT
       </button>
+      </div>
       <Footer/>
     </div>
   );

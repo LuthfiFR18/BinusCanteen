@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import '../style/Payment.css';
-import Header from '../components/Header';
+import HeaderCartPayment from '../components/HeaderCartPayment';
 import Footer from '../components/Footer';
 import img1 from '../img/nasigoreng.png';
 import bca from '../img/bca.png';
@@ -57,9 +57,10 @@ const Payment = () => {
   //   }
   // };
   return (
+    <div className="payment-container">
       <div className="payment-page">
-      <Header/>
-      
+        <HeaderCartPayment/>
+
       <h2 className='payment-title'>Payment Details</h2>
       <h5 className="countdown">Segera melakukan pembayaran sebelum 01:59:58</h5>
         <span className="status">Status:<span className='status-text'> Done</span></span>
@@ -144,7 +145,7 @@ const Payment = () => {
         </div>
       </div>
 
-      <div className="payment-container">
+      <div className="payment-subcontainer">
       <div className="payment-left-section">
         <p className="payment-error-message">*Silahkan pilih lokasi pengantaran.</p>
         
@@ -191,7 +192,7 @@ const Payment = () => {
     <button className="payment-btn" onClick={()=>navigate('/paymentFail')}>
         PAY
       </button>
-
+      </div>
       <Footer />
       </div>
   );

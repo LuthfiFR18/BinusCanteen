@@ -7,10 +7,16 @@
     --btn-color:#FF9D00;
 }
 
-.adminpage{
+.admin-container{
     width: 100%;
-    height: fit-content;
-    background-color: #ffff;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background: #fff;
+}
+.adminpage{
+    flex: 1;
+    
 }
 
 nav{
@@ -67,7 +73,7 @@ nav{
     color: var(--text-color);
 }
 
-.admin-container {
+.admin-subcontainer {
     display: flex;
     flex-direction: column;
     justify-content: center;

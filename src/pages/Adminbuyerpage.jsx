@@ -17,7 +17,7 @@ function Adminbuyerpage() {
     const [isError, setIsError] = useState(false);
     const [search, setSearch] = useState('');
   
-    const locations = ['All Users', 'Customer', 'Seller', 'Delivery']; // Sample locations
+    const locations = ['Customer', 'Seller', 'Delivery']; // Sample locations
     const handleLocationChange = (event) => {
         setLocation(event.target.value);
         setIsError(false); // Remove error when a location is selected
@@ -25,6 +25,7 @@ function Adminbuyerpage() {
 
     const navigate = useNavigate();
     return (
+      <div className="admin-container">
       <div className='adminpage'>
               <Headeradmin search={search} setSearch={setSearch}/>
               <nav>
@@ -33,7 +34,7 @@ function Adminbuyerpage() {
                   <li>
                       <a href="#" className='allusernav'>
                       <FontAwesomeIcon icon={faCartShopping} size='4x' />
-                      <p className='namenavbar'>All User</p>
+                      <p className='namenavbar'>All Users</p>
                       </a>
                   </li>
                   <li>
@@ -46,13 +47,13 @@ function Adminbuyerpage() {
               </div>
           </nav>
 
-        <div className="admin-container">        
+        <div className="admin-subcontainer">        
         <div className="dropdown-admin-wrapper">
           <select
             value={location}
             onChange={handleLocationChange}
             className="admin-dropdown">
-            {/* <option value="">All User</option> */}
+            <option value="">All User</option>
             {locations.map((loc, index) => (
               <option key={index} value={loc}>
                 {loc}
@@ -61,9 +62,9 @@ function Adminbuyerpage() {
           </select>
           {/* <button className="-admin-dropdown-submit-btn" onClick={handleSubmit}>
             sumbit
-          </button> */}
-        </div>
-        </div>
+          </button>  */}
+      </div> 
+      </div> 
 
          {/* <div className="toggle-navbar">
             <div className={`toggle-option ${activeTab === 'Mahasiswa' ? 'active' : ''}`} onClick={() => setActiveTab('Mahasiswa')}>
@@ -73,10 +74,11 @@ function Adminbuyerpage() {
                 Dosen
             </div>
         </div> */}
-
+          <div className="userlist-container">
           <Userlist selectedLocation={location} search={search}/>
- 
-  <Footer/>
+          </div>
+          </div>
+          <Footer/>
       </div>
     );
 }

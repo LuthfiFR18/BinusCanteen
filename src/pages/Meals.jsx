@@ -44,6 +44,7 @@ const ButtonStack = () => {
   const Meals = () => {
     
   return (
+    <div className="meals-container">
     <div className='Mealspage'>
             <Header/>
         
@@ -56,8 +57,8 @@ const ButtonStack = () => {
         <Mealsmenu/>
         <Mealsmenu/>
         <Mealsmenu/>
-
-        <Footer/>
+    </div>
+    <Footer/>
 
     </div>
   )

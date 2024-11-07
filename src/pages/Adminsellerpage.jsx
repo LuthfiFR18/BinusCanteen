@@ -6,6 +6,7 @@ import {faCartShopping, faStore, faTruck} from '@fortawesome/free-solid-svg-icon
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
+import CustomerTable from '../components/CustomertTable';
 import ProductList from '../components/ProductList';
 
 
@@ -14,32 +15,34 @@ function Adminsellerpage() {
     const [search, setSearch] = useState('');
 
     return (
-      <div className='sellerpage'>
-              <Headeradmin search={search} setSearch={setSearch}/>
-              <nav>
-              <div class="menu">
-                  <ul>
-                  <li>
-                      <a href="#" onClick={()=>navigate('/adminbuyer')}>
-                      <FontAwesomeIcon icon={faCartShopping} size='4x' />
-                      <p className='namenavbar'>All User</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" className='boothnav'>
-                      <FontAwesomeIcon icon={faStore} size='4x'/>
-                        <p className='namenavbar'>Booth</p>
-                      </a>
-                  </li>
-                  </ul>
-              </div>
-          </nav>
+        <div className="admin-container">
+            <div className='sellerpage'>
+                    <Headeradmin search={search} setSearch={setSearch}/>
+                    <nav>
+                    <div class="menu">
+                        <ul>
+                        <li>
+                            <a href="#" onClick={()=>navigate('/adminbuyer')}>
+                            <FontAwesomeIcon icon={faCartShopping} size='4x' />
+                            <p className='namenavbar'>All User</p>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" className='boothnav'>
+                            <FontAwesomeIcon icon={faStore} size='4x'/>
+                                <p className='namenavbar'>Booth</p>
+                            </a>
+                        </li>
+                        </ul>
+                    </div>
+                </nav>
+                <CustomerTable/>
 
-          <ProductList search={search} />
+                <ProductList search={search} />
 
+                </div>
 
-
-  <Footer/>
+            <Footer/>
       </div>
     );
 }

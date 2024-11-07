@@ -25,8 +25,8 @@ function Header(){
                 <a href="#" className='logo-cart' onClick={()=>navigate('/cart')}>
                     <FontAwesomeIcon icon={faCartShopping} className="logo-icon" />
                 </a>
+                <ProfileDropdown/>
             </div>
-            <ProfileDropdown/>
         </div>
         // <div className="header-container">
         //         {/* <!--Logo--> */}

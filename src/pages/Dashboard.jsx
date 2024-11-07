@@ -28,6 +28,7 @@ function Dashboard(){
 
     return(
             <div className="dashboard-container">
+                <div className="dashboard-page">
                 <Header/>
 
                 <h4 className='greeting-dashboard'>Welcome, {user?.name || 'Guest'}</h4>
@@ -36,8 +37,9 @@ function Dashboard(){
                 <Boothgrid/>
                 <Boothgrid/>
                 <Boothgrid/>
-
+            </div>
             <Footer/>
+
             </div>
     );
 }

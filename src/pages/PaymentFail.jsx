@@ -2,7 +2,7 @@ import React from 'react'
 import '../style/PaymentFail.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Header';
+import HeaderCartPayment from '../components/HeaderCartPayment';
 import Footer from '../components/Footer';
 
 function PaymentFail() {
@@ -15,8 +15,9 @@ function PaymentFail() {
     const total = subtotal + tax;
 
     return (
+      <div className="paymentfail-container">
     <div className="paymentfail-page">
-            <Header/>
+        <HeaderCartPayment/>      
         <h3 className="paymentfail-title">Payment Failed</h3>
         <div className="underline-paymentfail"></div>
 
@@ -46,9 +47,8 @@ function PaymentFail() {
       </div>
 
     <button className='paymentfail-btn' onClick={()=>navigate('/payment')}>OK</button>
-
+    </div>
         <Footer/>
-
     </div>
 
   )
