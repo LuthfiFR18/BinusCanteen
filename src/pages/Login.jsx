@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 // import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { LoginUser,reset } from "../features/authSlice.js"
+import PopUpForgotPassword from '../components/PopUpForgotPassword.jsx';
 import '../style/Login.css';
 // import Loginwrap from '../Components/Loginwrap';
 
@@ -52,29 +53,40 @@ function Login(){
     //     console.log("User state after login attempt:", user); // Check user state after login
     // }, [user]);
 
-    return(
-        <div className="loginpage">
-            <div className="wrapperLogin">
-                <h1 className='login-title'>Login</h1>
-                <form onSubmit={Auth}>
-                {/* <form action="#"> */}
-                    {isError && <p className='errorMsg'>{message}</p>}
-                    <h5 className='Logintext'>Email:</h5>
-                    <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
-                    {/* <input type="email" placeholder="Email"></input> */}
-                    <h5 className='Logintext'>Password:</h5>
-                    <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Password"></input>
-                    {/* <input type="password" placeholder="Password"></input> */}
-                    <a className="greyText" href="#" onClick={()=> navigate('/ResetPassword')}>
-                        Reset Password?</a>
-                    <button className="button" type='submit'>{isLoading ? 'Loading...' : 'Login'}</button>
-                    {/* <button className="button" type='submit' onClick={()=> navigate('/dashboard')}>Login</button> */}
-                    
-                </form>
-                <a className='askTxt'>Don't have account yet?<span className='greyText' href="#" onClick={()=> navigate('/register')}>Register Here</span></a>
+    const [isOpen, setIsOpen] = useState(false);
+
+    const togglePopup = () => {
+        setIsOpen(!isOpen);
+    };
+    
+        return(
+            <div className="login-container">
+            <div className="loginpage">
+                <div className="wrapperLogin">
+                    <h1 className='login-title'>Login</h1>
+                    <form onSubmit={Auth}>
+                    {/* <form action="#"> */}
+                        {isError && <p className='errorMsg'>{message}</p>}
+                        <h5 className='Logintext'>Email:</h5>
+                        <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
+                        <h5 className='Logintext'>Password:</h5>
+                        <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Password"></input>
+                        <a className="greyText" href="#" onClick={togglePopup}>
+                        Forgot Password?</a>
+                        {isOpen && (
+                            <PopUpForgotPassword togglePopup={togglePopup} email={email} setEmail={setEmail} />
+                        )}   
+
+                        <button className="button" type='submit'>{isLoading ? 'Loading...' : 'Login'}</button>
+                        
+                    </form>
+                    <a className='askTxt'>Don't have account yet?<span className='greyText' href="#" onClick={()=> navigate('/register')}>Register Here</span></a>
+                </div>
             </div>
-        </div>
-    );
+
+            </div>
+                
+        );
 }
 
 export default Login;

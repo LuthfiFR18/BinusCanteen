@@ -20,25 +20,22 @@ const ButtonStack = () => {
     return (
       <div className="selector-btn">
         <button
-        className={`menu-button meals-btn ${activeButton === 1 ? 'active' : 'menu-button'}`}
+        className={`menu-button-meals meals-btn ${activeButton === 1 ? 'active' : 'menu-button-meals'}`}
         onClick={() => handleClick(1, '/meals')}
 
-        >
-          Meals
+        >Meals
         </button>
         <button
-        className={`menu-button meals-btn ${activeButton === 2 ? 'active' : 'menu-button'}`}
+        className={`menu-button-drink ${activeButton === 2 ? 'active' : 'menu-button-drink'}`}
         onClick={() => handleClick(2, '/drink')}
           
-        >
-          Drink
+        >Drink
         </button>
         <button
-        className={`menu-button meals-btn ${activeButton === 3 ? 'active' : ''}`}
+        className={`menu-button-dessert ${activeButton === 3 ? 'active' : 'menu-button-dessert'}`}
         onClick={() => handleClick(3, '/dessert')}
         
-        >
-          Dessert
+        >Dessert
         </button>
       </div>
     );
@@ -50,7 +47,7 @@ const ButtonStack = () => {
     <div className='Mealspage'>
             <Header/>
         
-            <h3 className='booth-name'>Nara Kitchen</h3>
+            <h3 id='booth-name'>Nara Kitchen</h3>
 
             <ButtonStack />
                     

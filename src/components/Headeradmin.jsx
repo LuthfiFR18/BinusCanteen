@@ -15,7 +15,7 @@ function Headeradmin({search, setSearch}){
     return(
 
         <div className="header-admin">
-            <div className="logo-admin" onClick={()=>navigate('/dashboard')}>
+            <div className="logo-admin" onClick={()=>navigate('/adminbuyer')}>
                 Binus<span className='logo-text-span'>Canteen</span>
             </div>
                 <div class="search-box-admin">

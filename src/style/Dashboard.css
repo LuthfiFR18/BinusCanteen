@@ -11,7 +11,7 @@
     background-color: var(--text-color);
     width: 100%;
     min-height: 100vh;
-    margin-bottom: 150px;
+    /* margin-bottom: 150px; */
 }
 
 .greeting-dashboard{
@@ -21,51 +21,3 @@
     justify-content: center;
     align-items: center;
 }
-/* 
-
-/* Menu Navbar */
-
-/* .menu{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.menu ul{
-    width: 248px;
-    height: 238px;
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    margin-bottom: 20px;
-    gap: 20px;
-}
-
-.menu ul li{
-    display: flex;
-    width: 248px;
-    height: 230px;
-    text-align: center;
-    border-radius: 25px;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-}
-
-.menu ul li a{
-    padding-top: 70px;
-    width: 248px;
-    display: center;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--btn-color);
-    align-items: center;
-    justify-content: center;
-}
-
-.menu ul li:hover{
-    background-color: var(--btn-color);
-}
-
-.menu ul li a:hover{
-    color: var(--text-color);
-} */

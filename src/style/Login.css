@@ -8,6 +8,7 @@
     --btn-color:#FF9D00;
 }
 
+
 .loginpage{
     display: flex;
     align-items: center; /* Pusat secara vertikal */
@@ -90,3 +91,4 @@ form a{
     border-style: none;
     cursor: pointer;
 }
+

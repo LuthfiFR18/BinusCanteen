@@ -55,7 +55,7 @@ app.use(RoleRoute);
 app.use(AuthRoute);
 app.use(BoothRoute);
 
-// store.sync();
+store.sync();
 
 
 console.log('Session Secret:', process.env.SESSION_SECRET);

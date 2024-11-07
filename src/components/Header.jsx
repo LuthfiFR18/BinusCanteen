@@ -15,7 +15,7 @@ function Header(){
             </div>
 
             <div className="search-bar">
-                <input type="text" className='search-bar-box' placeholder='Search'/>
+                <input type="text" id='search-bar-box' placeholder='Search'/>
                 <button className='search-icon'>
                     <FontAwesomeIcon icon={faMagnifyingGlass} />
                 </button>

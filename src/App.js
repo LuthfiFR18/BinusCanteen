@@ -3,8 +3,9 @@ import './App.css';
 import React, { useState } from 'react';
 import Register from './pages/Register';
 import Login from './pages/Login';
-import Dashboard from './pages/Dashboard';
 import ResetPassword from './pages/ResetPassword';
+import ChangePassword from './pages/ChangePassword';
+import Dashboard from './pages/Dashboard';
 import Meals from './pages/Meals';
 import Drink from './pages/Drink';
 import Dessert from './pages/Dessert';
@@ -18,7 +19,6 @@ import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFail from './pages/PaymentFail';
 import DeliveryPage from './pages/DeliveryPage';
 import InProgress from './pages/InProgress';
-import UpdateAdmin from './pages/UpdateAdmin';
 import Sellerpage from './pages/Sellerpage';
 import EditPictureSeller from './pages/EditPictureSeller';
 import EditMenuSeller from './pages/EditMenuSeller';
@@ -76,7 +76,8 @@ function App() {
       <Routes>
         <Route path='/'element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
-        <Route path='/ResetPassword' element={<ResetPassword/>}/>
+        <Route path='/resetpassword' element={<ResetPassword/>}/>
+        <Route path='/changepassword' element={<ChangePassword/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>    
         <Route path='/meals' element={<Meals/>}/>    
         <Route path='/drink' element={<Drink/>}/>    
@@ -95,7 +96,6 @@ function App() {
         <Route path='/paymentfail' element={<PaymentFail/>}/>    
         <Route path='/deliverypage' element={<DeliveryPage/>}/>    
         <Route path='/inprogress' element={<InProgress/>}/>       
-        <Route path='/adminupdatecustomer' element={<UpdateAdmin/>}/>    
       </Routes>
     </Router>
   );

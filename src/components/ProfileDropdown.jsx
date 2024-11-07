@@ -80,7 +80,7 @@ const ProfileDropdown = () => {
                 <hr />
                 <ul>
                     <li>
-                        <button className='changepassword-btn' onClick={() => navigate('/resetpassword')}>
+                        <button className='changepassword-btn' onClick={() => navigate('/changepassword')}>
                         Change Password
                         </button>
                     </li>
