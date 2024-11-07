@@ -1,0 +1,38 @@
+.headercartpayment-container{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 75px;
+    align-items: center;
+    background-color: #2E7ADD;
+    border-radius: 0 0 15px 15px ;
+}
+
+.logo-text{
+    cursor: pointer;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.logo-text-span{
+    color: #FF9D00;
+}
+
+.logo-cartpayment-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+    margin-left: 78%;
+}
+
+.logo-cart{
+    margin-right: 30px;
+    font-size: 30px;
+    color: white;
+}
+
+.logo-cart:hover{
+    color: #FF9D00;
+}

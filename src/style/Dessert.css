@@ -5,10 +5,16 @@
     --btn-color:#FF9D00;
 }
 
-.dessertpage{
+.dessert-container{
     width: 100%;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background: #ffff;
+}
+
+.dessertpage{
+    flex: 1;
 }
 
 #booth-name{

@@ -4,6 +4,7 @@ import React, { useState } from 'react';
 import Register from './pages/Register';
 import Login from './pages/Login';
 import ResetPassword from './pages/ResetPassword';
+import ResetPasswordVerification from './pages/ResetPasswordVerification';
 import ChangePassword from './pages/ChangePassword';
 import Dashboard from './pages/Dashboard';
 import Meals from './pages/Meals';
@@ -13,7 +14,6 @@ import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Adminpage from './pages/Adminbuyerpage';
 import Adminsellerpage from './pages/Adminsellerpage';
-import Admindeliverypage from './pages/Admindeliverypage';
 import HistoryBuyer from './pages/HistoryBuyer';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFail from './pages/PaymentFail';
@@ -77,6 +77,7 @@ function App() {
         <Route path='/'element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
         <Route path='/resetpassword' element={<ResetPassword/>}/>
+        <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
         <Route path='/changepassword' element={<ChangePassword/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>    
         <Route path='/meals' element={<Meals/>}/>    
@@ -86,7 +87,6 @@ function App() {
         <Route path='/payment' element={<Payment/>}/>    
         <Route path='/adminbuyer' element={<Adminpage/>}/>    
         <Route path='/adminseller' element={<Adminsellerpage/>}/>    
-        <Route path='/admindelivery' element={<Admindeliverypage/>}/>  
         <Route path='/Sellerpage' element={<Sellerpage img={img} />}/>
         <Route path='/editpictureseller' element={<EditPictureSeller onSave={setImg}/>}/>
         <Route path='/editmenuseller' element={<EditMenuSeller/>}/>

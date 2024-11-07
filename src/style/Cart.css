@@ -1,6 +1,12 @@
-.cart {
+.cart-container{
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background: #ffff;
+}
+.cart {
+  flex: 1;
 }
 
 .cart-title {
@@ -92,12 +98,11 @@
 }
 
 .checkout {
-  background-color: orange;
+  background-color: #FF9D00;
   padding: 15px;
   text-align: center;
   margin-left: 40%;
   margin-top: 10px;
-  margin-bottom: 10%;
   cursor: pointer;
   color: white;
   font-weight: bold;

@@ -5,10 +5,15 @@
     --btn-color:#FF9D00;
 }
 
-.drinkpage{
+.drink-container{
     width: 100%;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background: #ffff;
+}
+.drinkpage{
+    flex: 1;
 }
 
 #booth-name{

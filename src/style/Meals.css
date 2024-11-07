@@ -5,10 +5,16 @@
     --btn-color:#FF9D00;
 }
 
-.Mealspage{
+.meals-container{
     width: 100%;
-    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-color: #ffff;
+}
+
+.Mealspage{
+    flex: 1;
 }
 
 #booth-name{
