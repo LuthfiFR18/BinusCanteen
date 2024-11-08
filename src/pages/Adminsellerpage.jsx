@@ -7,13 +7,21 @@ import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
 import SellerNameTableBooth from '../components/SellerNameTableBooth';
-// import CustomerTable from '../components/CustomertTable';
-// import ProductList from '../components/ProductList';
+import ProductList from '../components/ProductList';
 
 
 function Adminsellerpage() {
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
+    const [location, setLocation] = useState('');
+    const [isError, setIsError] = useState(false);
+
+
+    const locations = ['Customer', 'Seller', 'Delivery']; 
+    const handleLocationChange = (event) => {
+      setLocation(event.target.value);
+      setIsError(false);
+    };
 
     return (
         <div className="admin-container">
@@ -31,15 +39,31 @@ function Adminsellerpage() {
                         <li>
                             <a href="#" className='boothnav'>
                             <FontAwesomeIcon icon={faStore} size='4x'/>
-                                <p className='namenavbar'>Booth</p>
+                            <p className='namenavbar'>Booth</p>
                             </a>
                         </li>
                         </ul>
                     </div>
                 </nav>
-                <SellerNameTableBooth/>
 
-                {/* <ProductList search={search} /> */}
+                <div className="admin-booth-subcontainer">        
+                    <div className="dropdown-admin-booth-wrapper">
+                        <select
+                            value={location}
+                            onChange={handleLocationChange}
+                            className="admin-dropdown-booth">
+                            <option value="">All User</option>
+                            {locations.map((loc, index) => (
+                                <option key={index} value={loc}>
+                                {loc}
+                                </option>
+                            ))}
+                        </select>
+                    </div>
+                </div>
+                {/* <SellerNameTableBooth/> */}
+
+                <ProductList search={search} />
 
                 </div>
 

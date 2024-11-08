@@ -46,6 +46,7 @@ function HistoryBuyer() {
             <th>Price</th>
           </tr>
         </thead>
+
         <tbody>
           {items.map((item, index) => (
             <tr key={index}>
@@ -79,6 +80,7 @@ function HistoryBuyer() {
             <td colSpan="2" className="history-buyer-value">{total.toLocaleString()}</td>
           </tr>
         </tbody>
+        
       </table>
       <table className="history-buyer-table">
         <thead>

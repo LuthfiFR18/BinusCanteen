@@ -28,22 +28,24 @@
 }
 
 .history-buyer-table {
-  width: 100%;
-  border: 2px solid #ddd;
-  border-radius: 10px;
-  
+  width: 90%; 
+  margin: 0 auto; /* Centering tabel secara horizontal */
+  border-collapse: collapse;
+  margin-bottom: 20px;
   margin-bottom: 2%;
 }
 
-.history-buyer-table th,
 .history-buyer-table td {
   padding: 8px;
   align-items: center;
-  text-align: left;
+  text-align: center;
   vertical-align: middle;
 }
 
 .history-buyer-table th {
+  padding: 10px;
+  text-align: center;
+  align-items: center;
   font-weight: bold;
   background-color: #f2f2f2;
 }
@@ -51,15 +53,16 @@
 .history-buyer-item {
   display: flex;
   justify-content: left;
+  text-align: center;
   align-items: flex-start; /* Mengatur gambar dan teks sejajar ke atas */
 
 }
 
 .history-buyer-image {
-  width: 150px;
+  width: 150px; 
   height: 130px;
   border-radius: 5px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .history-buyer-request {

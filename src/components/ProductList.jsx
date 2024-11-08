@@ -126,112 +126,124 @@ const ProductList = ({selectedLocation, search }) => {
 
 
   return (
-    <table className='product-table'>
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name Product</th>
-        <th>Price</th>
-        <th>Product Type</th>
-        <th>Seller Name</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
+        <table className='product-table'>
+          <thead>
+            <tr>
+              <th colSpan="3"></th>
+              <th className='seller-name-booth'>mamat <span>/ Nara Kitchen</span></th>
+              <th colSpan="3"></th>
+            </tr>
+            <tr className='sub-title'>
+              <th>ID</th>
+              <th>Booth Name</th>
+              <th>Product Name</th>
+              <th>Price</th>
+              <th>Product Type</th>
+              <th>Seller Name</th>
+              <th>Action</th>
+            </tr>
+          </thead>
 
-    {products.map((product, index) => (
+        <tbody className='table-container'>
+        {products.map((product, index) => (
 
-    <tr key={product.uuid}>
-    <td>{index + 1}</td>
-    <td>{product.name}</td>
-    <td>{product.price}</td>
-    <td>{product.producttype}</td>
-    <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
-    <td>
-    <button className='button-admin-booth-update'  onClick={() => openPopup(product)}>Update</button>
-      <button className='button-admin-booth-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
+        <tr key={product.uuid}>
+        <td>{index + 1}</td>
+        <td>{product.name}</td>
+        <td>{product.price}</td>
+        <td>{product.producttype}</td>
+        <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
+        <td>
+        <button className='button-admin-booth-update'  onClick={() => openPopup(product)}>Update</button>
+          <button className='button-admin-booth-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
 
-        {isPopupOpen && (
-          <div className="popup-overlay-update">
-            <div className="popup-content">
-              <span className="close" onClick={closePopup}>
-                &times;
-              </span>
-              <h2>Update Data</h2>
+            {isPopupOpen && (
+              <div className="popup-overlay-update">
+                <div className="popup-content">
+                  <span className="close" onClick={closePopup}>
+                    &times;
+                  </span>
+                  <h2>Update Data</h2>
 
-              {formData.previewImage && (
-              <img src={formData.previewImage} alt="Product" className="product-image" />
+                  {formData.previewImage && (
+                  <img src={formData.previewImage} alt="Product" className="product-image" />
+                )}
+
+                  <form onSubmit={handleUpdate}>
+                    <label htmlFor="Productname">Name Product:</label>
+                    <input className='input-update-booth-admin'
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.productName}
+                      onChange={handleChange}
+                      placeholder="Enter name Product"
+                    />
+
+                    <label htmlFor="price">Price:</label>
+                    <input className='input-update-booth-admin'
+                      type="text"
+                      id="price"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleChange}
+                      placeholder="Enter Price"
+                    />
+
+                    <label htmlFor="productType">Product Type:</label>
+                    <select className='select-type'
+                      id="productType"
+                      name="productType"
+                      value={formData.productType}
+                      onChange={handleChange}
+                      placeholder='Select Type'
+                    >
+
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Dessert">Dessert</option>
+                    </select>
+
+                    <label htmlFor="sellername">Seller Name:</label>
+                    <input className='input-update-booth-admin'
+                      type="text"
+                      id="sellername"
+                      name="sellername"
+                      value={formData.sellerName}
+                      onChange={handleChange}
+                      placeholder="input name seller"
+                    />
+
+                    <label htmlFor="productImage">Product Image:</label>
+                    <input
+                      type="file"
+                      id="productImage"
+                      name="productImage"
+                      onChange={handleImageChange}
+                      accept="image/*"
+                    />  
+
+                    <div className="form-buttons">
+                    <button className='button-admin-booth-update' type="submit">Save</button>
+                      <button  className='button-admin-booth-delete' type="button" onClick={handleCancel}>
+                        Cancel
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+
             )}
 
-              <form onSubmit={handleUpdate}>
-                <label htmlFor="Productname">Name Product:</label>
-                <input className='input-update-booth-admin'
-                  type="text"
-                  id="name"
-                  name="name"
-                  value={formData.productName}
-                  onChange={handleChange}
-                  placeholder="Enter name Product"
-                />
+          </td>
+        </tr>
 
-                <label htmlFor="price">Price:</label>
-                <input className='input-update-booth-admin'
-                  type="text"
-                  id="price"
-                  name="price"
-                  value={formData.price}
-                  onChange={handleChange}
-                  placeholder="Enter Price"
-                />
+          ))}    
 
-                <label htmlFor="productType">Product Type:</label>
-                <select className='select-type'
-                id="productType"
-                name="productType"
-                value={formData.productType}
-                onChange={handleChange}
-                placeholder='Select Type'
-              >
-                <option value="Food">Food</option>
-                <option value="Drink">Drink</option>
-                <option value="Dessert">Dessert</option>
-              </select>
+          </tbody>
 
-                <label htmlFor="sellername">Seller Name:</label>
-                <input className='input-update-booth-admin'
-                  type="text"
-                  id="sellername"
-                  name="sellername"
-                  value={formData.sellerName}
-                  onChange={handleChange}
-                  placeholder="input name seller"
-                />
+        </table>
 
-                <label htmlFor="productImage">Product Image:</label>
-                <input
-                  type="file"
-                  id="productImage"
-                  name="productImage"
-                  onChange={handleImageChange}
-                  accept="image/*"
-                />  
-
-                <div className="form-buttons">
-                <button className='button-admin-booth-update' type="submit">Save</button>
-                  <button  className='button-admin-booth-delete' type="button" onClick={handleCancel}>
-                    Cancel
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        )}
-      </td>
-    </tr>
-  ))}
-        
-  </tbody>
-  </table>
   )
 }
 
