@@ -14,9 +14,9 @@
     min-height: 100vh;
     background: #fff;
 }
+
 .adminpage{
     flex: 1;
-    
 }
 
 nav{
@@ -82,8 +82,7 @@ nav{
     padding: 20px;
 }
 
-  
-.admin-dropdown-wrapper {
+.dropdown-admin-wrapper {
     display: flex;
     align-items: center;
 }
@@ -97,39 +96,3 @@ nav{
     text-align: center;
     width: 400px;
 }
-
-.toggle-navbar {
-    font-size: 16px;
-    font-weight: 600;
-    display: flex;
-    /* justify-content: space-between; */
-    width: 200px;
-    border: 2px solid #ccc;
-    border-radius: 25px;
-    overflow: hidden;
-    margin-top: 30px;
-    margin-left: 45%;
-    margin-bottom: 30px;
-    color: #0000;
-    background-color: #ffff;
-}
-  
-.toggle-option {
-    flex: 1;
-    padding: 10px;
-    text-align: center;
-    cursor: pointer;
-    background-color: #0000;
-    transition: background-color 0.3s ease;
-    color: #000000;
-}
-  
-.toggle-option.active {
-    background-color: #FF9D00;
-    color: #fff;
-}
-  
-.toggle-option:not(.active):hover {
-    background-color: #0000;
-}
-  

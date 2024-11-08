@@ -11,21 +11,21 @@ import Userlist from '../components/Userlist';
 
 function Adminbuyerpage() {
 
-    //const [activeTab, setActiveTab] = useState('');
+  //const [activeTab, setActiveTab] = useState('');
 
-    const [location, setLocation] = useState('');
-    const [isError, setIsError] = useState(false);
-    const [search, setSearch] = useState('');
-  
-    const locations = ['Customer', 'Seller', 'Delivery']; // Sample locations
-    const handleLocationChange = (event) => {
-        setLocation(event.target.value);
-        setIsError(false); // Remove error when a location is selected
-      };
+  const [location, setLocation] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [search, setSearch] = useState('');
 
-    const navigate = useNavigate();
-    return (
-      <div className="admin-container">
+  const locations = ['Customer', 'Seller', 'Delivery']; 
+  const handleLocationChange = (event) => {
+      setLocation(event.target.value);
+      setIsError(false);
+    };
+
+  const navigate = useNavigate();
+  return (
+    <div className="admin-container">
       <div className='adminpage'>
               <Headeradmin search={search} setSearch={setSearch}/>
               <nav>
@@ -48,22 +48,22 @@ function Adminbuyerpage() {
           </nav>
 
         <div className="admin-subcontainer">        
-        <div className="dropdown-admin-wrapper">
-          <select
-            value={location}
-            onChange={handleLocationChange}
-            className="admin-dropdown">
-            <option value="">All User</option>
-            {locations.map((loc, index) => (
-              <option key={index} value={loc}>
-                {loc}
-              </option>
-            ))}
-          </select>
-          {/* <button className="-admin-dropdown-submit-btn" onClick={handleSubmit}>
-            sumbit
-          </button>  */}
-      </div> 
+          <div className="dropdown-admin-wrapper">
+            <select
+              value={location}
+              onChange={handleLocationChange}
+              className="admin-dropdown">
+              <option value="">All User</option>
+              {locations.map((loc, index) => (
+                <option key={index} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+            {/* <button className="-admin-dropdown-submit-btn" onClick={handleSubmit}>
+              sumbit
+            </button>  */}
+        </div> 
       </div> 
 
          {/* <div className="toggle-navbar">
@@ -77,9 +77,9 @@ function Adminbuyerpage() {
           <div className="userlist-container">
           <Userlist selectedLocation={location} search={search}/>
           </div>
-          </div>
-          <Footer/>
-      </div>
-    );
+        </div>
+      <Footer/>
+    </div>
+  );
 }
 export default Adminbuyerpage;
