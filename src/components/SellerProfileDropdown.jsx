@@ -40,14 +40,14 @@ const SellerProfileDropdown = () => {
     })
 
   return (
-    <div className="profile-box" onClick={toggleDropdown} ref={domNode}>
+    <div className="profile-box-seller" onClick={toggleDropdown} ref={domNode}>
         <FontAwesomeIcon icon={faUser} className='profile-icon' />
 
         {/* Dropdown Menu */}
         {isOpen && (
-            <div className="dropdown-menu">
+            <div className="dropdown-menu-profile-seller">
                 <div>
-                    <img
+                    <img className='img-profile-seller'
                     src={img1}/>
 
                     <p>Nasi Goreng Nara</p>
