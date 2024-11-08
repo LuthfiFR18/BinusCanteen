@@ -20,6 +20,22 @@ function Register(){
 
         console.log("saveUser called"); // To check if the function is being called
 
+        if(isNaN(phonenumber)){
+            setMsg("Phone Number must only include digits!");
+            return;
+        }
+
+        if(phonenumber.length<10){
+            setMsg("Phone Number must be atleast 10 digits!");
+            return;
+        }
+
+        if(password.length < 6){
+            setMsg("Password must contain at least 6 characters!");
+            return;
+        }
+
+
         if (password !== confPassword) {
             setMsg("Passwords do not match");
             return;
@@ -56,11 +72,11 @@ function Register(){
         setSelectedRole(selectedRole);
     
         if (selectedRole === "User") {
-            setRoleId(2); // Assuming 3 is for Seller
+            setRoleId(2);
         } else if (selectedRole === "Seller") {
-            setRoleId(3); // Assuming 2 is for User
+            setRoleId(3);
         } else if (selectedRole === "Delivery") {
-            setRoleId(4); // Assuming 1 is for Delivery
+            setRoleId(4);
         }
     };
 
@@ -79,7 +95,8 @@ function Register(){
     return(
         <div className='registerpage'>
             <div className="wrapperRegister">
-                <h1 className='regis-title'>Registration</h1>   
+                <h1 className='regis-title'>Registration</h1>
+                <p className='errorMsg'>{msg}</p>   
                 <div className="role-options">
                     <input
                         type="radio"
@@ -158,7 +175,6 @@ function Register(){
                 
 
                 <form onSubmit={saveUser}>
-                    <p className='errorMsg'>{msg}</p>
                     <h5 className='regisform'>{role === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
                     <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
                     
