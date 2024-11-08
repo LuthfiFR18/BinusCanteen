@@ -136,7 +136,7 @@ const SellerNameTableBooth = ({selectedLocation, search }) => {
       <button
         className={`dropdown-booth-button ${isOpen ? 'active' : ''}`}
         onClick={toggleDropdown}
-      >Seller Name
+      >Seller Name <span className='booth-name-seller'>/ Nara Kitchen</span>
         {/* {isOpen ? 'Hide Table' : 'Show Table'} */}
       </button>
       <div className={`dropdown-booth-table ${isOpen ? 'open-booth-table' : 'closed-booth-table'}`}>
