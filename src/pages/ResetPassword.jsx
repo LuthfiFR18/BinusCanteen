@@ -18,7 +18,7 @@ function ResetPassword() {
                 <input type="Password" placeholder="New Password"></input>
                 <h5 className='resetText'>Confirm New Password:</h5>
                 <input type="password" placeholder="Confirm Password"></input>
-                <button className="button-change-password" onClick={()=> navigate('/')}>Save</button>
+                <button className="button-save-cancel-password" onClick={()=> navigate('/')}>Save</button>
             </form>
         </div>
     </div>

@@ -68,8 +68,8 @@ function ChangePassword() {
                 <input type="Password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}></input>
                 <h5 className='resetText'>Confirm New Password:</h5>
                 <input type="password" placeholder="Confirm Password" value={confNewpassword} onChange={(e) => setConfNewpassword(e.target.value)}></input>
-                <button className="button" onClick={resetPassword}>Save</button>
-                <button className="cancel-btn" onClick={resetPassword}>Cancel</button>
+                <button className="button-save-cancel-password" onClick={resetPassword}>Save</button>
+                <button className="button-save-cancel-password" onClick={resetPassword}>Cancel</button>
             </form>
         </div>
     </div>

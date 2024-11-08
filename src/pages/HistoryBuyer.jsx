@@ -78,9 +78,6 @@ function HistoryBuyer() {
             <td className="history-buyer-label">Total</td>
             <td colSpan="2" className="history-buyer-value">{total.toLocaleString()}</td>
           </tr>
-          <tr className="underline-row">
-            <td colSpan="3" className="history-buyer-underline"></td>
-          </tr>
         </tbody>
       </table>
       <table className="history-buyer-table">
@@ -122,9 +119,6 @@ function HistoryBuyer() {
           <tr>
             <td className="history-buyer-label">Total</td>
             <td colSpan="2" className="history-buyer-value">{total.toLocaleString()}</td>
-          </tr>
-          <tr className="underline-row">
-            <td colSpan="3" className="history-buyer-underline"></td>
           </tr>
         </tbody>
       </table>
