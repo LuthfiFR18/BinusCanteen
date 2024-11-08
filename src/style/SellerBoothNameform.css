@@ -1,0 +1,40 @@
+.seller-booth-form-container{
+    display: flex;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    padding: 0;
+    margin: 0;
+}
+
+.seller-booth-form-wrapper{
+    width: fit-content;
+    padding: 30px 30px 30px 30px;
+    margin: 125px auto;
+    background-color: var(--text-color);
+    border-radius: 25px;
+    text-align: center;
+    align-items: center;
+}
+
+.booth-label{
+    text-align: left;
+    padding-top: 30px;
+}
+
+.submit-booth-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    width: 184px;
+    height: 41px;
+    margin-top: 35px;
+    margin-left: 115px;
+    background-color: var(--btn-color);
+    color: var(--text-color);
+    font-weight: bold;
+    border-style: none;
+    cursor: pointer;
+}

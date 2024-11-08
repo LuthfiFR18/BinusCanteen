@@ -79,8 +79,6 @@ form a{
 }
 
 .button{
-    position: relative;
-    display: inline-block;
     border-radius: 25px;
     width: 184px;
     height: 41px;

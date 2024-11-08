@@ -5,11 +5,10 @@
     border-collapse: collapse;
 }
 
-.seller-name-booth{
+/* .seller-name-booth{
     align-items: center;
-    text-align: center  ;
-    vertical-align: middle;
-}
+    /* text-align: center  ; */
+    /* vertical-align: middle; */
 
 .sub-title{
     font-size: 14px;
@@ -26,7 +25,6 @@
   
 .product-table td {
     border-bottom: 1px solid #ddd;
-    padding-left: 8%;
     text-align: center; /* Center horizontally */
     vertical-align: middle; /* Center vertically */
 }

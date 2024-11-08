@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Register from './pages/Register';
+import SellerBoothNameform from './pages/SellerBoothNameform';
 import Login from './pages/Login';
 import ResetPassword from './pages/ResetPassword';
 import ResetPasswordVerification from './pages/ResetPasswordVerification';
@@ -76,6 +77,7 @@ function App() {
       <Routes>
         <Route path='/'element={<Login/>}/>
         <Route path='/register' element={<Register/>}/>
+        <Route path='/sellerbooth' element={<SellerBoothNameform/>}/>
         <Route path='/resetpassword' element={<ResetPassword/>}/>
         <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
         <Route path='/changepassword' element={<ChangePassword/>}/>

@@ -15,6 +15,20 @@ function Register(){
     const [roleId, setRoleId] = useState();
     const [msg, setMsg] = useState("");
 
+    const [role, setSelectedRole] = useState('');
+    const handleRoleChange = (event) => {
+        const selectedRole = event.target.value;
+        setSelectedRole(selectedRole);
+    
+        if (selectedRole === "User") {
+            setRoleId(2);
+        } else if (selectedRole === "Seller") {
+            setRoleId(3);
+        } else if (selectedRole === "Delivery") {
+            setRoleId(4);
+        }
+    };
+
     const saveUser = async (e) => {
         e.preventDefault();
 
@@ -57,40 +71,18 @@ function Register(){
             });
             console.log("Ready To be Submitted", response.data);
             console.log("User saved successfully:", response.data);
-            navigate("/");
+
+            if(roleId === 2 || roleId === 4){
+                navigate("/");
+            }else if(roleId === 3){
+                navigate("/sellerbooth")
+            }
         } catch (error) {
             if (error.response) {
             setMsg(error.response.data.msg);
             }
         }
     };
-
-    const [role, setSelectedRole] = useState('');
-    // const [selectedCategory, setSelectedCategory] = useState('');
-    const handleRoleChange = (event) => {
-        const selectedRole = event.target.value;
-        setSelectedRole(selectedRole);
-    
-        if (selectedRole === "User") {
-            setRoleId(2);
-        } else if (selectedRole === "Seller") {
-            setRoleId(3);
-        } else if (selectedRole === "Delivery") {
-            setRoleId(4);
-        }
-    };
-
-    // const handleCategoryChange = (event) => {
-    //     setSelectedCategory(event.target.value);
-    // }
-
-    // const handleRegisterClick = () => {
-    //     if (role === 'Seller') {
-    //       navigate('/Sellerpage'); // Replace with the actual path to your booth registration page
-    //     } else {
-    //       navigate('/');
-    //     }
-    // };
 
     return(
         <div className='registerpage'>
@@ -123,59 +115,9 @@ function Register(){
                     />
                     <label htmlFor="delivery">Delivery</label>
                 </div> 
-                {/* <div>
-                 {selectedRole === 'Seller' && (
-                    <div className="category-options">
-                        <h5>Select Category:</h5>
-                        <div className="category-radios">
-                            <div className="radio">
-                                <input
-                                    type="radio"
-                                    value="Food"
-                                    checked={selectedCategory === 'Food'}
-                                    onChange={handleCategoryChange}
-                                    id="food"
-                                />
-                                <label htmlFor="food">Food</label>
-                            </div>
-                            <div className="radio">
-                                <input
-                                    type="radio"
-                                    value="Drink"
-                                    checked={selectedCategory === 'Drink'}
-                                    onChange={handleCategoryChange}
-                                    id="drink"
-                                />
-                                <label htmlFor="drink">Drink</label>
-                            </div>
-                            <div className="radio">
-                                <input
-                                    type="radio"
-                                    value="Dessert"
-                                    checked={selectedCategory === 'Dessert'}
-                                    onChange={handleCategoryChange}
-                                    id="dessert"
-                                />
-                                <label htmlFor="dessert">Dessert</label>
-                            </div>
-                            <div className="radio">
-                                <input
-                                    type="radio"
-                                    value="All Type"
-                                    checked={selectedCategory === 'All Type'}
-                                    onChange={handleCategoryChange}
-                                    id="AllType"
-                                />
-                                <label htmlFor="AllType">All Type</label>
-                            </div>
-                        </div>
-                    </div>
-                )}
-                </div> */}
-                
 
                 <form onSubmit={saveUser}>
-                    <h5 className='regisform'>{role === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
+                    <h5 className='regisform'>Name:</h5>
                     <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
                     
                     <h5 className='regisform'>Phone Number:</h5>
@@ -191,28 +133,9 @@ function Register(){
                     <input type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
 
                     <button className="button" type='submit'>
-                        {role === 'Seller' ? 'Register Your Booth' : 'Register'}
+                        Register
                     </button>
                 </form>
-
-                    {/* <h5>Role:</h5>
-                    <div className="select-menu">
-                        <div className="select-btn">
-                            <span class="sBtn-text">Select Role</span>
-                            <i class='bx bx-chevron-down'></i>
-                        </div>
-                        <ul class="options">
-                            <li className="option">
-                                <span class="option-text">Binusian</span>
-                            </li>
-                            <li className="option">
-                                <span class="option-text">Seller</span>
-                            </li>
-                            <li className="option">
-                                <span class="option-text">Delivery</span>
-                            </li>
-                        </ul>
-                    </div> */}
             </div>
         </div>
     );
