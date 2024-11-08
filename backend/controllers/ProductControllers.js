@@ -9,6 +9,11 @@ export const getProducts = async(req, res) => {
                 model: Users,
                 as: 'user',
                 attributes: ['name']
+            },
+            {
+              model: Booth,
+              as: 'booth',
+              attributes: ['name'] 
             }]
         }); 
         res.json(product); 

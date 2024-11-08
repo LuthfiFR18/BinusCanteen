@@ -14,13 +14,33 @@ const SellerNameTableBooth = ({selectedLocation, search }) => {
   const [phonenumber, setPhoneNumber] = useState(""); 
   const [image, setImage] = useState("");
 
+
+  const [products, setProduct ] = useState([]);
+  const [booths, setBooths] = useState([]);
+  const [selectedBooth, setSelectedBooth] = useState(""); // Untuk booth yang dipilih
+  const [boothProductMap, setBoothProductMap] = useState({}); // Map untuk menyimpan produk per booth
+
+
+  useEffect(() => {
+    const getBooths = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/booth'); // Mengambil daftar booth dari backend
+        setBooths(response.data); // Simpan daftar booth ke state booths
+      } catch (error) {
+        console.error('Error fetching booths:', error);
+      }
+    };
+    
+    getBooths(); // Panggil fungsi untuk mengambil booth
+  }, []);
+
     useEffect(()=>{
       getProducts();
-      
+
     }, [selectedLocation, search]);
 
 
-    const [products, setProduct ] = useState([]);
+    
 
     const getProducts = async () => {
 
@@ -130,6 +150,10 @@ const SellerNameTableBooth = ({selectedLocation, search }) => {
     setIsOpen(!isOpen);
   };
 
+  const handleBoothChange = (e) => {
+    setSelectedBooth(e.target.value); // Simpan id booth yang dipilih
+  };
+
 
   return (
     <div className="dropdown-booth-container">
@@ -235,7 +259,11 @@ const SellerNameTableBooth = ({selectedLocation, search }) => {
                     Cancel
                   </button>
                 </div>
+
               </form>
+
+              
+
             </div>
           </div>
         )}
@@ -247,6 +275,8 @@ const SellerNameTableBooth = ({selectedLocation, search }) => {
   </table>
   </div>
   </div>
+
+
   )
 }
 
