@@ -32,6 +32,10 @@ h1{
     padding: 20px;
 }
 
+.errorMsg{
+    margin-bottom: 10px;
+}
+
 .radio{
     display: flex;
     align-items: center;

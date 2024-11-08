@@ -62,14 +62,14 @@ const ProfileDropdown = () => {
 
   return (
     <div className="profile-dropdown">
-    <div className="profile-box" onClick={toggleDropdown} ref={domNode}>
+    <div className="profile-box-customer" onClick={toggleDropdown} ref={domNode}>
         <FontAwesomeIcon icon={faUser} className='profile-icon'/>
 
         {/* Dropdown Menu */}
         {isOpen && (
-            <div className="dropdown-menu">
+            <div className="dropdown-menu-customer-profile">
                 <div>
-                    <img
+                    <img className='img-profile-customer'
                     src={img1}/>
 
                     {user && <p>{user.name}</p>}

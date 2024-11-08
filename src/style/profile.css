@@ -1,6 +1,6 @@
 /* ProfileDropdown.css */
 
-.profile-box{
+.profile-box-customer{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,7 +18,7 @@
   color: #FF9D00;
 }
 
-.dropdown-menu {
+.dropdown-menu-customer-profile {
   position: absolute;
   width: 250px;
   top: 70px;
@@ -30,33 +30,33 @@
   z-index: 1;
 }
 
-.dropdown-menu img {
+.img-profile-customer {
   width: 60px;
   height: 50px;
   border-radius: 50%;
   margin-left: 90px;
 }
 
-.dropdown-menu p {
+.dropdown-menu-customer-profile p {
   margin: 0;
   text-align: center;
 }
 
-.dropdown-menu hr {
+.dropdown-menu-customer-profile hr {
   margin: 10px 0;
 }
 
-.dropdown-menu ul {
+.dropdown-menu-customer-profile ul {
   list-style: none;
   padding: 0;
 }
 
-.dropdown-menu li {
+.dropdown-menu-customer-profile li {
   padding: 8px 0;
   text-align: center;
 }
 
-.dropdown-menu li button {
+.dropdown-menu-customer-profile li button {
   background: none;
   border: none;
   color: #000;

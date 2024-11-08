@@ -1,9 +1,11 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import '../style/SellerProfile.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser} from '@fortawesome/free-solid-svg-icons'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { LogOut,getMe, reset } from "../features/authSlice";
 import img1 from '../img/nasigoreng.png'
 
 let useClickOutside = (handler) =>{
@@ -29,8 +31,27 @@ useEffect(() =>{
 const SellerProfileDropdown = () => {
     const navigate = useNavigate();
     const [isOpen, setIsOpen] = useState(false);
+    const dispatch = useDispatch();
 
-   
+    const { user, isError, isLoading, message } = useSelector((state) => state.auth);
+
+    useEffect(() => {
+        dispatch(getMe()); // Fetch user data when component mounts
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (isError) {
+            console.error("Error fetching user:", message);
+            navigate("/"); // Redirect if there's an error
+        }
+    }, [isError, navigate, message]);
+
+    const handleLogout = () => {
+        dispatch(LogOut());
+        dispatch(reset());
+        navigate("/"); // Redirect to the login page
+    };
+
     const toggleDropdown = () => {
         setIsOpen(!isOpen);
     };
@@ -40,34 +61,33 @@ const SellerProfileDropdown = () => {
     })
 
   return (
-    <div className="profile-box" onClick={toggleDropdown} ref={domNode}>
+    <div className="profile-box-seller" onClick={toggleDropdown} ref={domNode}>
         <FontAwesomeIcon icon={faUser} className='profile-icon' />
 
         {/* Dropdown Menu */}
         {isOpen && (
-            <div className="dropdown-menu">
+            <div className="dropdown-menu-profile-seller">
                 <div>
-                    <img
+                    <img className='img-profile-seller'
                     src={img1}/>
 
-                    <p>Nasi Goreng Nara</p>
-                    <p>Surya Kencana</p>
-                    <p style={{ fontSize: '12px', color: 'gray' }}>
-                    surya.kencana@example.com
-                    </p>
+                    {user && <p>{user.name}</p>}
+                    {user && <p style={{ fontSize: '12px', color: 'gray' }}>
+                    {user.email}
+                    </p>}
                 </div>
                 <hr />
                 <ul>
                     <li>
-                        <button className='changepassword-btn' onClick={() => alert('Change Password Clicked')}>
+                        <button className='changepassword-btn' onClick={() => navigate('/changepassword')}>
                         Change Password
                         </button>
                     </li>
                     <li>
-                    <button className='history-btn'onClick={() => alert('History Clicked')}>History</button>
+                    <button className='history-btn'onClick={() => navigate('/historybuyer')}>History</button>
                     </li>
                     <li>
-                    <button className="logOut-btn" onClick={() => navigate('/')}>Log Out</button>
+                    <button className="logOut-btn" onClick={handleLogout}>Log Out</button>
                     </li>
                 </ul>
             </div>
