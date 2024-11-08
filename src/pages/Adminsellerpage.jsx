@@ -6,8 +6,9 @@ import {faCartShopping, faStore, faTruck} from '@fortawesome/free-solid-svg-icon
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
-import CustomerTable from '../components/CustomertTable';
-import ProductList from '../components/ProductList';
+import SellerNameTableBooth from '../components/SellerNameTableBooth';
+// import CustomerTable from '../components/CustomertTable';
+// import ProductList from '../components/ProductList';
 
 
 function Adminsellerpage() {
@@ -36,9 +37,9 @@ function Adminsellerpage() {
                         </ul>
                     </div>
                 </nav>
-                <CustomerTable/>
+                <SellerNameTableBooth/>
 
-                <ProductList search={search} />
+                {/* <ProductList search={search} /> */}
 
                 </div>
 

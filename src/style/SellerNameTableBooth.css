@@ -1,11 +1,11 @@
-.dropdown-customer-container {
+.dropdown-booth-container {
     justify-content: center;
     align-items: center;
     text-align: center;
     margin-top: 20px;
-  }
+}
   
-.dropdown-customer-button {
+.dropdown-booth-button {
     justify-content: center;
     text-align: left;
     background-color: #dddd;
@@ -20,12 +20,12 @@
     font-weight: bold;
 }
 
-.dropdown-customer-button.active {
+.dropdown-booth-button.active {
     background-color: #FF9D00;
     color: white;
 }
   
-.dropdown-customer-button::after {
+.dropdown-booth-button::after {
     content: ">";
     position: absolute;
     right: 15px;
@@ -34,11 +34,11 @@
     transition: transform 0.3s ease;
 }
   
-.dropdown-customer-button.active::after {
+.dropdown-booth-button.active::after {
     transform: translateY(-50%) rotate(90deg); /* Putar 90 derajat ke bawah */
 }
   
-.dropdown-customer-table {
+.dropdown-booth-table {
     justify-content: center;
     align-items: center;
     text-align: center;
@@ -47,23 +47,22 @@
     transition: max-height 0.5s ease-out;
 }
   
-.dropdown-customer-table.open-customer-table {
+.dropdown-booth-table.open-booth-table {
     max-height: 500px; /* Sesuaikan dengan tinggi tabel */
     transition: max-height 0.5s ease-in;
 }
 
-.dropdown-customer-table.closed-customer-table {
+.dropdown-booth-table.closed-booth-table {
     transition: max-height 0.3s ease-out; /* Transisi lebih cepat saat menutup tabel */
 }
   
-.customer-table {
+.booth-table {
     width: 100%;
     border-collapse: collapse;
-    margin-top: 5px;
     text-align: center;
 }
   
-.customer-table th {
+.booth-table th {
     border-bottom: 2px solid black;
     justify-content: center;
     align-items: center;
@@ -71,14 +70,14 @@
     padding: 8px 40px;
 }
   
-.customer-table td {
+.booth-table td {
     border-bottom: 1px solid #ddd;
     justify-content: center;
     align-items: center;
     text-align: center;
 }
   
-.customer-table-update{
+.booth-table-update{
     font-size: 13px;
     padding: 5px 10px;
     background-color: #2E7ADD;
@@ -89,7 +88,7 @@
     margin-right: 20px;
 }
   
-.customer-table-delete{
+.booth-table-delete{
     padding: 5px 10px;
     background-color: red;
     color: white;
@@ -99,11 +98,10 @@
     margin-right: 20px;
 }
   
-.customer-table-update:hover {
+.booth-table-update:hover {
     background-color: rgb(2, 57, 116);
 }
   
-.customer-table-delete:hover {
+.booth-table-delete:hover {
     background-color: rgb(163, 3, 3);
 }
-  
