@@ -62,6 +62,12 @@ Content-Type: application/json
   "boothId": 1,
   "userId": 2
 }
+
+### Delete Product
+DELETE http://localhost:5000/product/bcb79db9-91ac-4747-9faf-48fbb9044c56
+Content-Type: application/json
+
+
 ###
 POST http://localhost:5000/Booth
 Content-Type: application/json
@@ -84,3 +90,4 @@ Content-Type: application/json
   "endDate": "2024-12-07T08:50:00",
   "userId": 2
 }
+

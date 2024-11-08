@@ -149,7 +149,7 @@ const ProductList = ({selectedLocation, search }) => {
     <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
     <td>
     <button className='button-admin-booth-update'  onClick={() => openPopup(product)}>Update</button>
-      <button className='button-admin-booth-delete' onClick={() => deleteProduct(users.uuid)}>Delete</button>
+      <button className='button-admin-booth-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
 
         {isPopupOpen && (
           <div className="popup-overlay-update">
