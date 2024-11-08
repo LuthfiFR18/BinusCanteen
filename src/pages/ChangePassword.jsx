@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMe } from '../features/authSlice';
 import axios from 'axios';
-import '../style/ChangePassword.css'
+import '../style/ChangePassword.css';
+
 function ChangePassword() {
     const navigate = useNavigate();
 
@@ -14,11 +14,11 @@ function ChangePassword() {
     const [confNewpassword, setConfNewpassword] = useState("");
     const [msg, setMsg] = useState("");
 
-    const { user, isError, isLoading, message } = useSelector((state) => state.auth);
+    const { user, isError, message } = useSelector((state) => state.auth);
 
     useEffect(() => {
         dispatch(getMe()); // Fetch user data when component mounts
-        console.log(user.uuid);
+        // console.log(user.uuid);
     }, [dispatch]);
 
     useEffect(() => {
@@ -28,7 +28,7 @@ function ChangePassword() {
         }
     }, [isError, navigate, message]);
 
-    const resetPassword = async (e) => {
+    const changePassword = async (e) => {
       e.preventDefault();
 
       if (newPassword !== confNewpassword) {
@@ -46,7 +46,7 @@ function ChangePassword() {
               password: confNewpassword, // Send the new password for updating
           });
           setMsg("Password is saved");
-          console.log("User password updated successfully:", response.data);
+        //   console.log("User password updated successfully:", response.data);
           navigate("/"); // Redirect after successful password update
       } catch (error) {
           if (error.response) {
@@ -61,15 +61,14 @@ function ChangePassword() {
     <div className='changePassword'>
         <div className="wrapperChangepassword">
             <h1>Change Password</h1>
-        
             <form>
                 {msg && <p>{msg}</p>}
                 <h5 className='resetText'>New Password:</h5>
                 <input type="Password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}></input>
                 <h5 className='resetText'>Confirm New Password:</h5>
                 <input type="password" placeholder="Confirm Password" value={confNewpassword} onChange={(e) => setConfNewpassword(e.target.value)}></input>
-                <button className="button-save-cancel-password" onClick={resetPassword}>Save</button>
-                <button className="button-save-cancel-password" onClick={resetPassword}>Cancel</button>
+                <button className="button-save-cancel-password" onClick={changePassword}>Save</button>
+                <button className="button-save-cancel-password" onClick={()=> navigate('/dashboard')}>Cancel</button>
             </form>
         </div>
     </div>

@@ -215,13 +215,15 @@ const ProductList = ({selectedLocation, search }) => {
                     />
 
                     <label htmlFor="productImage">Product Image:</label>
-                    <input
+                    <button type='file'></button>
+                    {/* <input
+                      className='image'
                       type="file"
                       id="productImage"
                       name="productImage"
                       onChange={handleImageChange}
                       accept="image/*"
-                    />  
+                    />   */}
 
                     <div className="form-buttons">
                     <button className='button-admin-booth-update' type="submit">Save</button>
