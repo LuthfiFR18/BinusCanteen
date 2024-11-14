@@ -1,5 +1,4 @@
 import '../style/Register.css';
-// import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import axios from "axios";
 import React, { useState } from "react";
 import {useNavigate } from 'react-router-dom';
@@ -34,6 +33,12 @@ function Register(){
 
         console.log("saveUser called"); // To check if the function is being called
 
+        // Check if all fields are filled
+        if (!name || !email || !password || !phonenumber || !roleId) {
+            setMsg("Please fill in all the fields");
+            return;
+        }
+
         if(isNaN(phonenumber)){
             setMsg("Phone Number must only include digits!");
             return;
@@ -49,16 +54,28 @@ function Register(){
             return;
         }
 
-
         if (password !== confPassword) {
             setMsg("Passwords do not match");
             return;
         }
-    
-        // Check if all fields are filled
-        if (!name || !email || !password || !phonenumber || !roleId) {
-            setMsg("Please fill in all the fields");
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) || !email.endsWith('.com')) {
+            setMsg("Invalid email format. Email must contain '@' and end with '.com'.");
             return;
+        }
+
+        try {
+            const emailResponse = await axios.get(`http://localhost:5000/user/${email}`);
+            console.log(emailResponse.data); // Log the user data if found
+            
+            if(emailResponse.data){
+                setMsg("This email has been used, please Log In!")
+                return;
+            }
+        } catch (error) {
+            console.error(error);
+            setMsg("User not found.");
         }
 
         try {
