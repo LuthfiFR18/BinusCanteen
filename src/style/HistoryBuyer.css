@@ -1,14 +1,14 @@
 .history-buyer-container {
-  background: #ffff;
-  width: 100%;
   display: flex;
   flex-direction: column;
+  background: #ffff;
+  width: 100%;
   min-height: 100vh;
 }
 
 .history-buyer-page {
   flex: 1;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 
 .history-buyer-title{
