@@ -163,10 +163,7 @@ function Sellerpage() {
                 // onClose={() => setStoreClosed(true)}
                 />
             )} 
-{/*             
-            <Carouselbestoffer/>
-            <Carouselforyou/>
-            <Carouseltodayoffer/> */}
+
             <Footerseller/>
         </div>
     );

@@ -42,17 +42,16 @@ function ResetPasswordVerification() {
   return (
     <div className='ResetPasswordVerification-container'>
         <div className="wrapper-reset-password">
-        <form action="#">
-            <h3>Email Verification</h3>
-            {msg && <p>{msg}</p>}
-            <h5 className='veriftext'>Email:</h5>
+            <form action="#">
+                <h3>Email Verification</h3>
+                {msg && <p>{msg}</p>}
+                <h5 className='veriftext'>Email:</h5>
                 <input className='sadasad' type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
 
-            <button className="verification-email-btn" onClick={emailVerification}>Verify</button>
-        </form>
+                <button className="verification-email-btn" onClick={emailVerification}>Verify</button>
+            </form>
         </div>
     </div>
     )
 }
-
 export default ResetPasswordVerification;

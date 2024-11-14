@@ -45,20 +45,21 @@ const ButtonStack = () => {
     
   return (
     <div className="meals-container">
-    <div className='Mealspage'>
-            <Header/>
-        
-            <h3 id='booth-name'>Nara Kitchen</h3>
+      <div className='Mealspage'>
+        <Header/>
+    
+        <h3 id='booth-name'>Nara Kitchen</h3>
 
-            <ButtonStack />
+        <ButtonStack />
                     
         <Mealsmenu/>
         <Mealsmenu/>
         <Mealsmenu/>
         <Mealsmenu/>
         <Mealsmenu/>
-    </div>
-    <Footer/>
+
+      </div>
+      <Footer/>
 
     </div>
   )

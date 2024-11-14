@@ -10,7 +10,7 @@ function HeaderCartPayment(){
 
     return(
         <div className="headercartpayment-container">
-            <div className="logo-text" onClick={()=>navigate('/dashboard')}>
+            <div className="logo-cartpayment-text" onClick={()=>navigate('/dashboard')}>
                 Binus<span className='logo-text-span'>Canteen</span>
             </div>
 

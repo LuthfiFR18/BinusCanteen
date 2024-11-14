@@ -27,25 +27,27 @@ function Adminbuyerpage() {
   return (
     <div className="admin-container">
       <div className='adminpage'>
-              <Headeradmin search={search} setSearch={setSearch}/>
-              <nav>
-              <div class="menu">
-                  <ul>
-                  <li>
-                      <a href="#" className='allusernav'>
-                      <FontAwesomeIcon icon={faCartShopping} size='4x' />
-                      <p className='namenavbar'>All Users</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" onClick={()=>navigate('/adminseller')}>
-                      <FontAwesomeIcon icon={faStore} size='4x'/>
-                        <p className='namenavbar'>Booth</p>
-                      </a>
-                  </li>
-                  </ul>
-              </div>
-          </nav>
+        <Headeradmin search={search} setSearch={setSearch}/>
+
+        <nav>
+          <div class="menu">
+            <ul>
+              <li>
+                <a href="#" className='allusernav'>
+                <FontAwesomeIcon icon={faCartShopping} size='4x' />
+                <p className='namenavbar'>All Users</p>
+                </a>
+              </li>
+
+              <li>
+                <a href="#" onClick={()=>navigate('/adminseller')}>
+                <FontAwesomeIcon icon={faStore} size='4x'/>
+                  <p className='namenavbar'>Booth</p>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </nav>
 
         <div className="admin-subcontainer">        
           <div className="dropdown-admin-wrapper">
@@ -60,24 +62,15 @@ function Adminbuyerpage() {
                 </option>
               ))}
             </select>
-            {/* <button className="-admin-dropdown-submit-btn" onClick={handleSubmit}>
-              sumbit
-            </button>  */}
+          </div> 
         </div> 
-      </div> 
 
-         {/* <div className="toggle-navbar">
-            <div className={`toggle-option ${activeTab === 'Mahasiswa' ? 'active' : ''}`} onClick={() => setActiveTab('Mahasiswa')}>
-                Mahasiswa
-            </div>
-            <div className={`toggle-option ${activeTab === 'Dosen' ? 'active' : ''}`} onClick={() => setActiveTab('Dosen')}>
-                Dosen
-            </div>
-        </div> */}
-          <div className="userlist-container">
+        <div className="userlist-container">
           <Userlist selectedLocation={location} search={search}/>
-          </div>
         </div>
+
+      </div>
+
       <Footer/>
     </div>
   );

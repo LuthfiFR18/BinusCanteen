@@ -65,20 +65,19 @@ function ResetPassword() {
 
   return (
     <div className='resetPassword'>
-        <div className="wrapperResetpassword">
-            <h1>Reset Password</h1>
-            {/* <p>Email: {email}</p> */}
-            <form>
-                {msg && <p>{msg}</p>}
-                <h5 className='resetText'>New Password:</h5>
-                <input type="Password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}></input>
-                <h5 className='resetText'>Confirm New Password:</h5>
-                <input type="password" placeholder="Confirm Password" value={confNewpassword} onChange={(e) => setConfNewpassword(e.target.value)}></input>
-                <button className="button-save-cancel-password" onClick={resetPassword}>Save</button>
-            </form>
-        </div>
+      <div className="wrapperResetpassword">
+        <h1>Reset Password</h1>
+        <form>
+          {msg && <p>{msg}</p>}
+          <h5 className='resetText'>New Password:</h5>
+          <input type="Password" placeholder="New Password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)}></input>
+          <h5 className='resetText'>Confirm New Password:</h5>
+          <input type="password" placeholder="Confirm Password" value={confNewpassword} onChange={(e) => setConfNewpassword(e.target.value)}></input>
+          <button className="button-save-cancel-password" onClick={resetPassword}>Save</button>
+        </form>
+      </div>
     </div>
   );
 }
 
-export default ResetPassword
+export default ResetPassword;

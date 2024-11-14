@@ -11,23 +11,16 @@ function Headerseller(){
 
     return(
         <div class="header-seller">
-                {/* <!--Logo--> */}
-                <div className="logo-text" onClick={()=>navigate('/sellerpage')}>
-                    <h4>BINUS <span className='logo-text-span'>Canteen</span><sub>Seller</sub></h4>
-                </div>
+            <div className="logo-text" onClick={()=>navigate('/sellerpage')}>
+                <h4>BINUS <span className='logo-text-span'>Canteen</span><sub>Seller</sub></h4>
+            </div>
 
-                <div className="header-middle">
-                    <h2>Nasi Goreng Nara</h2>
-                </div>
-                
-                {/* <!--Profile--> */}
-                <SellerProfileDropdown/>
-                    {/* <h6 className='profile-name'>Mamat<br/>
-                    <span className='profile-name-span'>Mamat.kencana@gmail.com</span></h6>
-                    <ul>
-                    </ul> */}
+            <div className="header-middle">
+                <h2>Nasi Goreng Nara</h2>
+            </div>
+            
+            <SellerProfileDropdown/>
 
-                {/* </div> */}
         </div>
 
     );

@@ -63,7 +63,6 @@ function Login(){
                 <div className="wrapperLogin">
                     <h1 className='login-title'>Login</h1>
                     <form onSubmit={Auth}>
-                    {/* <form action="#"> */}
                         {isError && <p className='errorMsg'>{message}</p>}
                         <h5 className='Loginpasstext'>Email:</h5>
                         <input type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
