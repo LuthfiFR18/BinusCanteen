@@ -18,7 +18,7 @@ function ChangePassword() {
 
     useEffect(() => {
         dispatch(getMe()); // Fetch user data when component mounts
-        // console.log(user.uuid);
+        console.log(user);
     }, [dispatch]);
 
     useEffect(() => {
@@ -57,6 +57,18 @@ function ChangePassword() {
       }
   };
 
+    const cancel = async (e) => {
+        if(user.roleId===1){
+            navigate("/adminbuyer");
+        }else if(user.roleId === 2){
+            navigate("/dashboard");
+        }else if(user.roleId === 3){
+            navigate("/sellerpage");
+        }else if(user.roleId === 4){
+            navigate("/deliverypage");
+        }
+    };
+
   return (
     <div className='changePassword'>
         <div className="wrapperChangepassword">
@@ -68,7 +80,7 @@ function ChangePassword() {
                 <h5 className='resetText'>Confirm New Password:</h5>
                 <input type="password" placeholder="Confirm Password" value={confNewpassword} onChange={(e) => setConfNewpassword(e.target.value)}></input>
                 <button className="button-save-cancel-password" onClick={changePassword}>Save</button>
-                <button className="button-save-cancel-password" onClick={()=> navigate('/dashboard')}>Cancel</button>
+                <button className="button-save-cancel-password" onClick={cancel}>Cancel</button>
             </form>
         </div>
     </div>
