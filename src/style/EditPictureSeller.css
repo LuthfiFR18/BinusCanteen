@@ -8,7 +8,7 @@
     --btn-color:#FF9D00;
 }
 
-.wrapperLogin{
+/* .wrapperLogin{
     width: fit-content;
     height: fit-content;
     padding: 30px 30px 30px 30px;
@@ -25,13 +25,13 @@ h1{
 
 .Logintext{
     text-align: left;
-    /* padding-left: 5rem; */
+    /* padding-left: 5rem; 
     padding-top: 30px;
 }
 
 .greyText{
     text-align: left;
-    /* border-style: solid; */
+    /* border-style: solid; 
     margin-left: 20px;
 }
 
@@ -50,26 +50,6 @@ h1{
     font-size: 9px;
 }
 
-form input{
-    width: 421px;
-    height: 38px;
-    border-radius: 25px;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    border-style: none;
-    padding-left: 30px;
-    outline: 0;
-}
-form a{
-    display: block;
-    font-size: 9px;
-    color: #7a7777;
-    text-decoration: none;
-    margin-left: 0;
-    margin-right: 0;
-    padding-top: 1em;
-    text-align: center;
-}
-
 .button{
     position: relative;
     display: inline-block;
@@ -82,15 +62,17 @@ form a{
     font-weight: 600;
     border-style: none;
     cursor: pointer;
-}
+} */
 
 
 .edit-picture-seller {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    padding: 0;
+    margin: 0;
 }
   
 .back-button {

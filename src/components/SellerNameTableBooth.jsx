@@ -220,14 +220,14 @@ const SellerNameTableBooth = ({selectedLocation, search }) => {
                   placeholder="input name seller"
                 />
 
-                <label htmlFor="productImage">Product Image:</label>
+                {/* <label htmlFor="productImage">Product Image:</label>
                 <input
                   type="file"
                   id="productImage"
                   name="productImage"
                   onChange={handleImageChange}
                   accept="image/*"
-                />  
+                />   */}
 
                 <div className="form-buttons">
                 <button className='button-admin-booth-update' type="submit">Save</button>

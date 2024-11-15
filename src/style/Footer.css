@@ -1,13 +1,10 @@
-
 .Footer {
-  margin-top: 3.5%;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 70%;
   padding: 10px 0;
   width: 100%;
-  height: 70px;
   background-color: #2E7ADD;
   color: white;
   text-align: center;

@@ -175,8 +175,8 @@ const Userlist = ({selectedLocation, search }) => {
           <td>{users.phonenumber}</td>
           <td>{users.role ? users.role.name : 'Unknown'}</td>
           <td>
-          <button className='button-admin-update'  onClick={() => openPopup(users)}>Update</button>
-            <button className='button-admin-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
+          <button className='button-admin-user-update'  onClick={() => openPopup(users)}>Update</button>
+          <button className='button-admin-user-delete' onClick={() => deleteUser(users.uuid)}>Delete</button>
 
             {isPopupOpen && (
               <div className="popup-overlay-update">
@@ -226,8 +226,8 @@ const Userlist = ({selectedLocation, search }) => {
                     />
 
                     <div className="form-buttons">
-                    <button className='button-admin-update' type="submit">Save</button>
-                      <button  className='button-admin-seller-delete' type="button" onClick={handleCancel}>
+                    <button className='button-admin-user-save' type="submit">Save</button>
+                    <button className='button-admin-user-cancel' type="button" onClick={handleCancel}>
                         Cancel
                       </button>
                     </div>

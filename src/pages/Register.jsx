@@ -135,21 +135,21 @@ function Register(){
 
                 <form onSubmit={saveUser}>
                     <h5 className='regisform'>Name:</h5>
-                    <input type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
+                    <input className='input-register' type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
                     
                     <h5 className='regisform'>Phone Number:</h5>
-                    <input type="text" value={phonenumber} onChange={(e)=> setphonenumber(e.target.value)} placeholder="Phone Number"></input>
+                    <input className='input-register' type="text" value={phonenumber} onChange={(e)=> setphonenumber(e.target.value)} placeholder="Phone Number"></input>
 
                     <h5 className='regisform'>Email:</h5>
-                    <input type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="Email"></input>
+                    <input className='input-register' type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="Email"></input>
                     
                     <h5 className='regisform'>Password:</h5>
-                    <input type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"></input>
+                    <input className='input-register' type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"></input>
                     
                     <h5 className='regisform'>Confirm Password:</h5>
-                    <input type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
+                    <input className='input-register' type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
 
-                    <button className="button" type='submit'>
+                    <button className="button-register" type='submit'>
                         Register
                     </button>
                 </form>

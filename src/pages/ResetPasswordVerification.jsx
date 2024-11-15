@@ -46,7 +46,7 @@ function ResetPasswordVerification() {
                 <h3>Email Verification</h3>
                 {msg && <p>{msg}</p>}
                 <h5 className='veriftext'>Email:</h5>
-                <input className='sadasad' type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
+                <input className='password-verif-input' type="text" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)}></input>
 
                 <button className="verification-email-btn" onClick={emailVerification}>Verify</button>
             </form>
