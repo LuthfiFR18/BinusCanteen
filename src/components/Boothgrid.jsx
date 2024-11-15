@@ -26,10 +26,10 @@ function Boothgrid() {
 
 
   return (
-    <div className="canteen-list" key={booths.uuid}>
+    <div className="canteen-list" key={booths.id}>
                 <div className="canteen-container">
                 {booths.map((booth) => (
-                    <div className="box" key={booth.uuid} onClick={() => navigate(`/meals/${booth.uuid}`)}>
+                    <div className="box" key={booth.id} onClick={() => navigate(`/meals/${booth.id}`)}>
                       
                         {/* tambah ini untuk menyambungkan page berdasarkan id ${booth.uuid}   */}
                         <div className="box-img">
