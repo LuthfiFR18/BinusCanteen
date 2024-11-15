@@ -87,12 +87,14 @@ form a{
 
 /* Container to center the entire EditMenuSeller component */
 .edit-menu-seller-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    background-color: #4FC0FD;
-  }
+  display: flex;
+  align-items: center; /* Pusat secara vertikal */
+  justify-content: center; /* Pusat secara horizontal */
+  min-height: 100vh; /* Tinggi viewport penuh */
+  background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+  padding: 0;
+  margin: 0;
+}
   
   /* Centered and styled box for the form */
   .edit-menu-seller {

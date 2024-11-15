@@ -8,11 +8,14 @@
     --btn-color:#FF9D00;
 }
 
-body{
-    background-color: var(--main-color);
-    font-family: 'Poppins', sans-serif; /* Apply font-family to the whole page */
-    margin: 0;
+.edit-picture-seller{
+    display: flex;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
     padding: 0;
+    margin: 0;
 }
 
 h1{
