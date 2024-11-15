@@ -44,6 +44,11 @@ const Booth = db.define('booth',{
         }
     },
 
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },
+
     userId:{
         type: DataTypes.INTEGER,
         allowNull: false,

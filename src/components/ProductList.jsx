@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
-const ProductList = ({selectedLocation, search }) => {
+const ProductList = ({selectedBooth, search }) => {
 
   const [users, setUser ] = useState([]);
   const { id } = useParams();
@@ -16,29 +16,43 @@ const ProductList = ({selectedLocation, search }) => {
 
     useEffect(()=>{
       getProducts();
-      
-    }, [selectedLocation, search]);
+      getBooths();
+    }, [selectedBooth, search]);
 
 
     const [products, setProduct ] = useState([]);
+    const [booths, setBooths] = useState([]);
 
     const getProducts = async () => {
 
-      
       const response = await axios.get("http://localhost:5000/product");
-
-      
       let filteredProduct = response.data;
-  
-  
+
           // Filter berdasarkan pencarian
           if (search) {
             filteredProduct = filteredProduct.filter(product =>
                 product.name.toLowerCase().includes(search.toLowerCase())
             );
         }
+
+        if (selectedBooth) {
+          filteredProduct = filteredProduct.filter(product =>
+            product.booth && product.booth.name === selectedBooth
+          );
+        }
+    
+    
         
       setProduct(filteredProduct);
+    };
+
+    const getBooths = async () => {
+      try {
+        const response = await axios.get('http://localhost:5000/booth'); // Mengambil daftar booth dari backend
+        setBooths(response.data); // Simpan daftar booth ke state booths
+      } catch (error) {
+        console.error('Error fetching booths:', error);
+      }
     };
 
     const deleteProduct = async (productId) => {
@@ -130,7 +144,7 @@ const ProductList = ({selectedLocation, search }) => {
           <thead>
             <tr>
               <th colSpan="3"></th>
-              <th className='seller-name-booth'>mamat <span>/ Nara Kitchen</span></th>
+              <th className='seller-name-booth'>Mamat <span>/ Nara Kitchen</span></th>
               <th colSpan="3"></th>
             </tr>
             <tr className='sub-title'>
@@ -149,6 +163,7 @@ const ProductList = ({selectedLocation, search }) => {
 
         <tr key={product.uuid}>
         <td>{index + 1}</td>
+        <td>{product.booth && product.booth.name ? product.booth.name : 'Unknown'}</td>
         <td>{product.name}</td>
         <td>{product.price}</td>
         <td>{product.producttype}</td>

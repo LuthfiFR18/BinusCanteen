@@ -2,7 +2,7 @@ POST http://localhost:5000/roles
 Content-Type: application/json
 
 {
-    "name": "Delivery"
+    "name": "Seller"
 }
 
 
@@ -11,12 +11,12 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "uuid" : "SLR1",
-    "name" : "Oliver Sykes Admin",
-    "email" : "slr@gmail.com",
-    "password" : "slr",
-    "phonenumber" : "081234567890",
-    "roleId" : "1"
+    "uuid" : "dlv1",
+    "name" : "Delivery 1",
+    "email" : "dlv1@gmail.com",
+    "password" : "dlv",
+    "phonenumber" : "081234567811",
+    "roleId" : "3"
 }
 
 ###
@@ -25,16 +25,6 @@ GET http://localhost:5000/user
 
 ###
 GET http://localhost:5000/me
-
-###
-// login user admin
-POST http://localhost:5000/login
-Content-Type: application/json
-
-{
-    "email" : "lfr1@gmail.com",
-    "password" : "lfr18"
-}
 
 ###
 // login user
@@ -56,11 +46,11 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
     {
-  "name": "Mie Goreng",
+  "name": "Nasi Ayam Paket A",
   "price": 15000,
   "producttype": "Food",
-  "boothId": 1,
-  "userId": 2
+  "boothId": 3,
+  "userId": 3
 }
 
 ### Delete Product
@@ -73,10 +63,10 @@ POST http://localhost:5000/Booth
 Content-Type: application/json
 
     {
-  "name": "Booth A",
+  "name": "Rocky Chicken",
   "openingTime": "2024-10-22T09:00:00.000Z",
   "closingTime": "2024-10-22T18:00:00.000Z",
-  "userId": 2
+  "userId": 3
 }
 
 ### Membuat Course Baru
@@ -88,6 +78,15 @@ Content-Type: application/json
   "classname": "Class LK01",
   "startDate": "2024-11-07T07:20:00",
   "endDate": "2024-12-07T08:50:00",
-  "userId": 2
+  "userId": 5
 }
+
+###
+GET /booth/:boothId/products
+
+###
+GET http://localhost:5000/booth/1/products
+
+
+
 

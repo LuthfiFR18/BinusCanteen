@@ -53,10 +53,7 @@ const ButtonStack = () => {
             <ButtonStack />
                     
         <Mealsmenu/>
-        <Mealsmenu/>
-        <Mealsmenu/>
-        <Mealsmenu/>
-        <Mealsmenu/>
+        
     </div>
     <Footer/>
 

@@ -26,7 +26,7 @@ export const getProductById = async(req, res) => {
     try {
         const product = await Products.findOne({
             where: {
-                uuid: req.params.id
+                uuid: req.params.uuid
             },
             include: [{
                 model: Users,
@@ -82,6 +82,28 @@ export const deleteProduct = async (req, res) => {
 
         await product.destroy();
         res.json({ message: "Product deleted" });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+
+export const getProductsByBooth = async (req, res) => {
+    try {
+        const boothId = req.params.boothId; // Mendapatkan boothId dari parameter URL
+        const products = await Products.findAll({
+            where: { boothId: boothId }, // Menyaring produk berdasarkan boothId
+            include: [{
+                model: Booth,
+                as: 'booth',
+                attributes: ['name']
+            },
+            {
+                model: Users,
+                as: 'user',
+                attributes: ['name']
+            }]
+        });
+        res.json(products); // Mengembalikan daftar produk yang ditemukan
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

@@ -8,20 +8,37 @@ import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
 import SellerNameTableBooth from '../components/SellerNameTableBooth';
 import ProductList from '../components/ProductList';
+import axios from 'axios';
 
 
 function Adminsellerpage() {
     const navigate = useNavigate();
     const [search, setSearch] = useState('');
-    const [location, setLocation] = useState('');
+    const [selectedBooth, setSelectedBooth] = useState('');
     const [isError, setIsError] = useState(false);
 
+    const [booth, setBooths] = useState([]);
 
-    const locations = ['Customer', 'Seller', 'Delivery']; 
-    const handleLocationChange = (event) => {
-      setLocation(event.target.value);
+    const getBooths = async () => {
+        try {
+          const response = await axios.get('http://localhost:5000/booth'); // Mengambil daftar booth dari backend
+          setBooths(response.data); // Simpan daftar booth ke state booths
+        } catch (error) {
+          console.error('Error fetching booths:', error);
+        }
+      };
+
+    useEffect(()=>{
+
+        getBooths();
+    },[]);
+    
+
+    //const locations = ['Customer', 'Seller', 'Delivery']; 
+    const handleLocationChange = (e) => {
+      setSelectedBooth(e.target.value);
       setIsError(false);
-    };
+};
 
     return (
         <div className="admin-container">
@@ -49,13 +66,14 @@ function Adminsellerpage() {
                 <div className="admin-booth-subcontainer">        
                     <div className="dropdown-admin-booth-wrapper">
                         <select
-                            value={location}
+                            value={selectedBooth}
                             onChange={handleLocationChange}
                             className="admin-dropdown-booth">
-                            <option value="">All User</option>
-                            {locations.map((loc, index) => (
-                                <option key={index} value={loc}>
-                                {loc}
+
+                            <option value="">All Booth</option>
+                            {booth.map((booth) => (
+                                <option key={booth.uuid} value={booth.name}>
+                                {booth.name}
                                 </option>
                             ))}
                         </select>
@@ -63,7 +81,7 @@ function Adminsellerpage() {
                 </div>
                 {/* <SellerNameTableBooth/> */}
 
-                <ProductList search={search} />
+                <ProductList search={search} selectedBooth={selectedBooth} />
 
                 </div>
 

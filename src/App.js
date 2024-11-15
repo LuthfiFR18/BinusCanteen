@@ -80,7 +80,7 @@ function App() {
         <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
         <Route path='/changepassword' element={<ChangePassword/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>    
-        <Route path='/meals' element={<Meals/>}/>    
+        <Route path='/meals/:boothId' element={<Meals/>}/>    
         <Route path='/drink' element={<Drink/>}/>    
         <Route path='/dessert' element={<Dessert/>}/>    
         <Route path='/cart' element={<Cart/>}/>    

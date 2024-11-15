@@ -13,7 +13,7 @@ export const getBooth = async (req, res) => {
 
 export const getBoothById = async (req, res) => {
     try {
-        const booth = await Booth.findByPk(req.params.id); 
+        const booth = await Booth.findByPk(req.params.uuid); 
         if (!booth) return res.status(404).json({ message: "Booth not found" }); 
         res.json(booth); 
     } catch (error) {

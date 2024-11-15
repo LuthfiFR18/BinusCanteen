@@ -35,6 +35,6 @@ export const associations = () => {
     //Product
     Products.belongsTo(Users, { foreignKey: 'userId', as: 'user' });
 
-    Booth.hasMany(Products, {foreignKey: 'boothId'});
-    Products.belongsTo(Booth, { foreignKey: 'boothId' });
+    Booth.hasMany(Products, { foreignKey: 'boothId'}); // Sesuaikan jika Booth menggunakan uuid sebagai primary key
+    Products.belongsTo(Booth, { foreignKey: 'boothId', as: 'booth'});
 };

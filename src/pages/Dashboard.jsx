@@ -34,9 +34,6 @@ function Dashboard(){
                 <h4 className='greeting-dashboard'>Welcome, {user?.name || 'Guest'}</h4>
 
                 <Boothgrid/>
-                <Boothgrid/>
-                <Boothgrid/>
-                <Boothgrid/>
             </div>
             <Footer/>
 

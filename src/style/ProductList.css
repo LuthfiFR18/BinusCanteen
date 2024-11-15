@@ -26,7 +26,6 @@
   
 .product-table td {
     border-bottom: 1px solid #ddd;
-    padding-left: 8%;
     text-align: center; /* Center horizontally */
     vertical-align: middle; /* Center vertically */
 }
