@@ -11,12 +11,12 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "uuid" : "dlv1",
-    "name" : "Delivery 1",
-    "email" : "dlv1@gmail.com",
-    "password" : "dlv",
+    "uuid" : "adm1",
+    "name" : "Admin 1",
+    "email" : "adm1@gmail.com",
+    "password" : "dladmv",
     "phonenumber" : "081234567811",
-    "roleId" : "3"
+    "roleId" : "1"
 }
 
 ###
