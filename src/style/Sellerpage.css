@@ -80,6 +80,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
+    padding-bottom: 8px;
 }
   
 .menu-item {
@@ -153,9 +154,9 @@
 }
   
 .add-menu-btn {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+    position: relative;
+    bottom: -50px;
+    right: -650px;
     background-color: orange;
     color: white;
     border: none;
@@ -166,6 +167,31 @@
     z-index: 1000;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: transform 0.3s ease;
+}
+
+.menu-edit .out-of-stock-btn {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.menu-edit .back-in-stock-btn{
+    background-color: #FF9D00;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.menu-image.out-of-stock{
+    opacity: 0.5;
+    /* transition: opacity 0.3s ease; */
 }
   
   /* Popup styles */
@@ -189,11 +215,45 @@
     width: 300px;
     text-align: center;
 }
+
+.popup p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
   
 .popup-buttons {
     display: flex;
     justify-content: space-around;
     margin-top: 20px;
+}
+
+.popup .yes-btn{
+    background-color: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup .no-btn{
+    background-color: #FF9D00;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup .close-btn{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
   
 .popup-confirm-btn {

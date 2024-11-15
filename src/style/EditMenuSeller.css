@@ -66,11 +66,13 @@ h1{
 /* Container to center the entire EditMenuSeller component */
 .edit-menu-seller-container {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  background-color: #4FC0FD;
-  }
+  align-items: center; /* Pusat secara vertikal */
+  justify-content: center; /* Pusat secara horizontal */
+  min-height: 100vh; /* Tinggi viewport penuh */
+  background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+  padding: 0;
+  margin: 0;
+}
   
   /* Centered and styled box for the form */
   .edit-menu-seller {
@@ -90,16 +92,16 @@ h1{
   margin-bottom: 20px;
 }
   
-.image-upload-box {
-  width: 200px;
-  height: 150px;
-  border: 2px dashed #ccc;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 8px;
-}
+  .edit-menu-seller-image-upload-box {
+    width: 200px;
+    height: 150px;
+    border: 2px dashed #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border-radius: 8px;
+  }
   
 .uploaded-image {
   width: 100%;
@@ -157,13 +159,13 @@ h1{
   background-color: darkorange;
 }
 
-.back-button {
-  position: absolute;
-  top: 115px;
-  left: 550px;
-  background-color: #4FC0FD;
-  border: none;
-  font-size: 24px;
-  cursor: pointer;
+  .edit-menu-seller-back-button {
+    position: absolute;
+    top: 50px;
+    left: 550px;
+    background-color: #4FC0FD;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }
   

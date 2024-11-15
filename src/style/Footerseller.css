@@ -18,3 +18,30 @@
     text-align: center;
     font-size: 10px;
 } */
+
+/* :root{
+    --main-color: #4FC0FD;
+    --text-color: #ffff;
+    --bg-color: #000000;
+    --btn-color:#FF9D00;
+}
+
+.Footer{
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #2E7ADD;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+  }
+
+
+.footerText{
+    padding: 30px;
+    text-align: center;
+    font-size: 10px;
+} */
