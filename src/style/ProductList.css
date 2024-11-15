@@ -124,12 +124,13 @@ label {
 }
 
 .product-image{
+    margin-top: 30px;
     width: 120px;
     height: 60px;
 }
   
 .button-admin-booth-save{
-    width: 60px;
+    width: 70px;
     font-size: 13px;
     padding: 5px 10px;
     background-color: #2E7ADD;
@@ -145,14 +146,15 @@ label {
 }
 
 .button-admin-booth-cancel{
-    width: 60px;
-    border: none;
+    width: 70px;
     font-size: 13px;
     padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    cursor: pointer;
     border-radius: 4px;
     margin-right: 20px;
-    color: white;
-    background-color: #f44336;
 }
   
 .button-admin-booth-cancel:hover{
