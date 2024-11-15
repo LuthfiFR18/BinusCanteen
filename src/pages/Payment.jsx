@@ -61,140 +61,149 @@ const Payment = () => {
       <div className="payment-page">
         <HeaderCartPayment/>
 
-      <h2 className='payment-title'>Payment Details</h2>
-      <h5 className="countdown">Segera melakukan pembayaran sebelum 01:59:58</h5>
+        <h2 className='payment-title'>Payment Details</h2>
+        <h5 className="countdown">Segera melakukan pembayaran sebelum 01:59:58</h5>
         <span className="status">Status:<span className='status-text'> Done</span></span>
 
-      <table className="payment-table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Description</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="payment-item-cell">
-              <img src={img1} alt="Ayam Geprek" />
-              Ayam Geprek
-            </td>
-            <td>
-              <div className="payment-quantity-control">
+        <table className="payment-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td className="payment-item-cell">
+                <img src={img1} alt="Ayam Geprek" />
+                Ayam Geprek
+              </td>
+
+              <td>
+                <div className="payment-quantity-control">
                 <span>{quantities.ayam}</span>
-              </div>
-            </td>
-            <td>
-              <input className="payment-description-input" type="text" placeholder="lvl 2" />
-            </td>
-            <td>
-              {prices.ayam}
-            </td>
-          </tr>
-          <tr>
-            <td className="payment-item-cell">
-              <img src={img1} alt="Es Teh Manis" />
-              Es Teh Manis
-            </td>
-            <td>
-              <div className="payment-quantity-control">
+                </div>
+              </td>
+
+              <td>
+                <input className="payment-description-input" type="text" placeholder="lvl 2" />
+              </td>
+
+              <td>
+                {prices.ayam}
+              </td>
+
+            </tr>
+
+            <tr>
+              <td className="payment-item-cell">
+                <img src={img1} alt="Es Teh Manis" />
+                Es Teh Manis
+              </td>
+
+              <td>
+                <div className="payment-quantity-control">
                 <span>{quantities.tea}</span>
-              </div>
-            </td>
-            <td>
-              <input className="payment-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
-            </td>
-            <td>
-              {prices.tea}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+                </div>
+              </td>
 
-      {/* Payment Method Selection */}
-      <div className="payment-method-selection">
-        <div className="payment-options">
-          <div className="option">
-            <input
-              type="radio"
-              id="bca"
-              name="payment"
-              value="BCA Virtual Account"
-              checked={selectedPaymentMethod === 'BCA Virtual Account'}
-              onChange={handlePaymentMethodChange}
-            />
-            <label htmlFor="bca">
-              <img src={bca} className="logo-payment" /> BCA Virtual Account
-            </label>
-          </div>
+              <td>
+                <input className="payment-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+              </td>
 
-          <div className="option">
-            <input
-              type="radio"
-              id="qris"
-              name="payment"
-              value="QRIS"
-              checked={selectedPaymentMethod === 'QRIS'}
-              onChange={handlePaymentMethodChange}
-            />
-            <label htmlFor="qris">
-              <img src={qris} className="logo-payment" /> QRIS
-            </label>
+              <td>
+                {prices.tea}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        {/* Payment Method Selection */}
+        <div className="payment-method-selection">
+          <div className="payment-options">
+            <div className="option">
+              <input
+                type="radio"
+                id="bca"
+                name="payment"
+                value="BCA Virtual Account"
+                checked={selectedPaymentMethod === 'BCA Virtual Account'}
+                onChange={handlePaymentMethodChange}
+              />
+              <label htmlFor="bca">
+                <img src={bca} className="logo-payment" /> BCA Virtual Account
+              </label>
+            </div>
+
+            <div className="option">
+              <input
+                type="radio"
+                id="qris"
+                name="payment"
+                value="QRIS"
+                checked={selectedPaymentMethod === 'QRIS'}
+                onChange={handlePaymentMethodChange}
+              />
+              <label htmlFor="qris">
+                <img src={qris} className="logo-payment" /> QRIS
+              </label>
+            </div>
           </div>
         </div>
-      </div>
 
-      <div className="payment-subcontainer">
-      <div className="payment-left-section">
-        <p className="payment-error-message">*Silahkan pilih lokasi pengantaran.</p>
+        <div className="payment-subcontainer">
+          <div className="payment-left-section">
+            <p className="payment-error-message">*Silahkan pilih lokasi pengantaran.</p>
         
-        <div className="dropdown-payment-wrapper">
-          <select
-            value={location}
-            onChange={handleLocationChange}
-            className="payment-dropdown"
-          >
-            <option value="">Tempat Pengantaran</option>
-            {locations.map((loc, index) => (
+            <div className="dropdown-payment-wrapper">
+              <select
+                value={location}
+                onChange={handleLocationChange}
+                className="payment-dropdown"
+              >
+              <option value="">Tempat Pengantaran</option>
+              {locations.map((loc, index) => (
               <option key={index} value={loc}>
                 {loc}
               </option>
-            ))}
-          </select>
-          {/* <button className="-payment-dropdown-submit-btn" onClick={handleSubmit}>
-            sumbit
-          </button> */}
-        </div>
-      </div>
+              ))}
+              </select>
+            </div>
+          </div>
 
-      <div className="payment-right-section">
-        <hr className="payment-total-green-line" />
-        <div className="payment-summary">
-        <div>
-          <div className="payment-summary-line">
-            <span>Subtotal:</span>
-            <span>{subtotal}</span>
-          </div>
-          <div className="payment-summary-line">
-            <span>Tax:</span>
-            <span>{tax}</span>
-          </div>
-          <div className="payment-summary-line">
-            <strong>Total:</strong>
-            <strong>{total}</strong>
+          <div className="payment-right-section">
+            <hr className="payment-total-green-line" />
+            <div className="payment-summary">
+
+              <div>
+                <div className="payment-summary-line">
+                  <span>Subtotal:</span>
+                  <span>{subtotal}</span>
+                </div>
+
+                <div className="payment-summary-line">
+                  <span>Tax:</span>
+                  <span>{tax}</span>
+                </div>
+
+                <div className="payment-summary-line">
+                  <strong>Total:</strong>
+                  <strong>{total}</strong>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-      </div>
-    </div>
 
-    <button className="payment-btn" onClick={()=>navigate('/paymentFail')}>
-        PAY
-      </button>
+        <button className="payment-btn" onClick={()=>navigate('/paymentFail')}>
+          PAY
+        </button>
       </div>
       <Footer />
-      </div>
+    </div>
   );
 };
 

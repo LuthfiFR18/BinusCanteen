@@ -49,6 +49,7 @@
 }
 
 .cross-container {
+  justify-content: center;
   width: 100px;
   height: 80px;
   margin-top: 3%;

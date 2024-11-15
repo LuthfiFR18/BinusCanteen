@@ -38,9 +38,9 @@ function Boothgrid() {
                         <h3 className="booth-title">{booth.name}</h3>
                     </div>
                 ))}
-                
-                </div>
-            </div>
+            
+        </div>
+    </div>
   )
 }
 

@@ -48,21 +48,20 @@ const Drink = () => {
 
   return (
     <div className="drink-container">
-    <div className='drinkpage'>
-            <Header/>
-
+      <div className='drinkpage'>
+        <Header/>
         
-            <h3 id='booth-name'>Nara Kitchen</h3>
+        <h3 id='booth-name'>Nara Kitchen</h3>
 
-            <ButtonStack/>
+        <ButtonStack/>
         
         <Drinkmenu/>
         <Drinkmenu/>
         <Drinkmenu/>
         <Drinkmenu/>
         <Drinkmenu/>
-        </div>
-        <Footer/>
+      </div>
+      <Footer/>
     </div>
   )
 }

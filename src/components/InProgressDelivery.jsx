@@ -14,6 +14,7 @@ function InProgressDelivery() {
           <th>Status</th>
         </tr>
       </thead>
+      
       <tbody>
         <tr>
           <td>

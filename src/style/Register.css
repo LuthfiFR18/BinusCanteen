@@ -53,9 +53,9 @@ h1{
     padding-top: 18px;
 }
 
-form input{
+.input-register{
     outline: 0;
-    width: 360px;
+    width: 421px;
     height: 38px;
     border-radius: 25px;
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
@@ -67,7 +67,7 @@ a{
     text-decoration: none;
 }
 
-.button{
+.button-register{
     position: relative;
     display: inline-block;
     border-radius: 25px;

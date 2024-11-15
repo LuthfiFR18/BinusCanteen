@@ -29,6 +29,16 @@ export const getUserById = async(req, res) => {
     }
 }
 
+export const getUserByEmail = async(req, res) => {
+    try {
+        const user = await Users.findOne({ where: { email: req.params.email } }); 
+        if (!user) return res.status(404).json({ message: "User not found" }); 
+        res.json(user); 
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+}
+
 export const createUser = async(req, res) => {
     
     const { uuid, name, email, password,phonenumber,roleId } = req.body;

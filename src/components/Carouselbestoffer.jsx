@@ -57,16 +57,16 @@ const FoodAndDrinkCard = ({ id, name, price, imgSrc, activeCard, setActiveCard, 
           </div>
         )}
       </div>
+
       <div className="carousel-bestoffer-text">
-      <h6 className="name-product">{name}</h6>
-      <br />
-      <h6 className="price">Rp: {price}</h6>
-      {activeCard === id ? (
-        <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
-      ) : (
-        <button className="button-bestoffer" onClick={() => handlePesanClick(id)}>Pesan</button>
-      )}
-      
+        <h6 className="name-product">{name}</h6>
+        <br />
+        <h6 className="price">Rp: {price}</h6>
+        {activeCard === id ? (
+          <button className="button-bestoffer" onClick={handleConfirm}>Confirm</button>
+        ) : (
+          <button className="button-bestoffer" onClick={() => handlePesanClick(id)}>Pesan</button>
+        )}
       </div>
     </div>
   );
@@ -148,4 +148,4 @@ function Carouselbestoffer (){
     </div>
   );
 }
-export default Carouselbestoffer
+export default Carouselbestoffer;

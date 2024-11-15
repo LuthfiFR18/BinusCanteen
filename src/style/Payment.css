@@ -22,12 +22,19 @@
 .countdown{
   /* border-style: solid; */
   margin-top: 20px;
+  margin-bottom: 20px;
   display: flex;
   justify-content: center;
   text-align: center;
 }
 
+.status{
+  margin-left: 50px;
+  font-weight: bold;
+}
+
 .status-text{
+  font-weight: bold;
   color: green;
 }
 

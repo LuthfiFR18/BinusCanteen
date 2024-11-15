@@ -41,80 +41,94 @@ const Cart = () => {
 
   return (
     <div className="cart-container">
-    <div className="cart">
-          <HeaderCartPayment/>
-      <h2 className='cart-title'>FOOD CART</h2>
-      <table className="cart-table">
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Quantity</th>
-            <th>Description</th>
-            <th>Price</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td className="cart-item-cell">
-              <img src={img1}/>
-              Ayam Geprek
-            </td>
-            <td>
-              <div className="cart-quantity-control">
-                <button  onClick={() => updateQuantity('ayam', -1)}>-</button>
-                <span>{quantities.ayam}</span>
-                <button onClick={() => updateQuantity('ayam', 1)}>+</button>
-              </div>
-            </td>
-            <td>
-              <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
-            </td>
-            <td>
-              {prices.ayam}
-            </td>
-          </tr>
-          <tr>
-            <td className="cart-item-cell">
-              <img src={img1}/>
-              Es Teh Manis
-            </td>
-            <td>
-              <div className="cart-quantity-control">
-                <button onClick={() => updateQuantity('tea', -1)}>-</button>
-                <span>{quantities.tea}</span>
-                <button onClick={() => updateQuantity('tea', 1)}>+</button>
-              </div>
-            </td>
-            <td>
-              <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
-            </td>
-            <td>
-              {prices.tea}
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <div className="cart">
+        <HeaderCartPayment/>
+        <h2 className='cart-title'>FOOD CART</h2>
 
-      <div className="cart-summary">
-        <div>
-          <div className="summary-line">
-            <span>Subtotal:</span>
-            <span>{subtotal}</span>
-          </div>
-          <div className="summary-line">
-            <span>Tax:</span>
-            <span>{tax}</span>
-          </div>
-          <div className="summary-line">
-            <strong>Total:</strong>
-            <strong>{total}</strong>
+        <table className="cart-table">
+          <thead>
+            <tr>
+              <th>Item</th>
+              <th>Quantity</th>
+              <th>Description</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td className="cart-item-cell">
+                <img src={img1}/>
+                Ayam Geprek
+              </td>
+
+              <td>
+                <div className="cart-quantity-control">
+                  <button  onClick={() => updateQuantity('ayam', -1)}>-</button>
+                  <span>{quantities.ayam}</span>
+                  <button onClick={() => updateQuantity('ayam', 1)}>+</button>
+                </div>
+              </td>
+
+              <td>
+                <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+              </td>
+
+              <td>
+                {prices.ayam}
+              </td>
+
+            </tr>
+
+            <tr>
+              <td className="cart-item-cell">
+                <img src={img1}/>
+                Es Teh Manis
+              </td>
+
+              <td>
+                <div className="cart-quantity-control">
+                  <button onClick={() => updateQuantity('tea', -1)}>-</button>
+                  <span>{quantities.tea}</span>
+                  <button onClick={() => updateQuantity('tea', 1)}>+</button>
+                </div>
+              </td>
+
+              <td>
+                <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+              </td>
+
+              <td>
+                {prices.tea}
+              </td>
+
+            </tr>
+          </tbody>
+        </table>
+
+        <div className="cart-summary">
+          <div>
+            <div className="summary-line">
+              <span>Subtotal:</span>
+              <span>{subtotal}</span>
+            </div>
+
+            <div className="summary-line">
+              <span>Tax:</span>
+              <span>{tax}</span>
+            </div>
+
+            <div className="summary-line">
+              <strong>Total:</strong>
+              <strong>{total}</strong>
+            </div>
+
           </div>
         </div>
-      </div>
 
-      <button className="checkout" onClick={()=>navigate('/payment')}>
-        CHECKOUT
-      </button>
+        <button className="checkout" onClick={()=>navigate('/payment')}>
+          CHECKOUT
+        </button>
       </div>
       <Footer/>
     </div>

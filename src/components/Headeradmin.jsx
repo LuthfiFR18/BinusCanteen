@@ -18,19 +18,22 @@ function Headeradmin({search, setSearch}){
             <div className="logo-admin" onClick={()=>navigate('/adminbuyer')}>
                 Binus<span className='logo-text-span'>Canteen</span>
             </div>
-                <div class="search-box-admin">
-                    <div class="row">
-                        <input type="text" id='input-box-admin' placeholder="Search"
-                        autocomplete="off" onChange={(e)=> setSearch(e.target.value)} >
-                        </input>
-                        <button className='search-icon-admin'>
-                        <FontAwesomeIcon icon={faMagnifyingGlass} />
-                        </button>
-                    </div>
-                </div>
-                <ProfileDropdown/>
 
+            <div class="search-box-admin">
+                <div class="row">
+                    <input type="text" id='input-box-admin' placeholder="Search"
+                    autocomplete="off" onChange={(e)=> setSearch(e.target.value)} >
+                    </input>
+                    
+                    <button className='search-icon-admin'>
+                    <FontAwesomeIcon icon={faMagnifyingGlass} />
+                    </button>
+                </div>
             </div>
+            
+            <ProfileDropdown/>
+
+        </div>
     );
 }
 

@@ -27,17 +27,18 @@ function Dashboard(){
     }, [isError, navigate, message]);
 
     return(
-            <div className="dashboard-container">
-                <div className="dashboard-page">
+        <div className="dashboard-container">
+            <div className="dashboard-page">
                 <Header/>
 
                 <h4 className='greeting-dashboard'>Welcome, {user?.name || 'Guest'}</h4>
 
                 <Boothgrid/>
             </div>
+            
             <Footer/>
 
-            </div>
+        </div>
     );
 }
 

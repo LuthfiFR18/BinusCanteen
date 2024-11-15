@@ -43,22 +43,24 @@ function Adminsellerpage() {
     return (
         <div className="admin-container">
             <div className='sellerpage'>
-                    <Headeradmin search={search} setSearch={setSearch}/>
-                    <nav>
+                <Headeradmin search={search} setSearch={setSearch}/>
+                
+                <nav>
                     <div class="menu">
                         <ul>
-                        <li>
-                            <a href="#" onClick={()=>navigate('/adminbuyer')}>
-                            <FontAwesomeIcon icon={faCartShopping} size='4x' />
-                            <p className='namenavbar'>All User</p>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#" className='boothnav'>
-                            <FontAwesomeIcon icon={faStore} size='4x'/>
-                            <p className='namenavbar'>Booth</p>
-                            </a>
-                        </li>
+                            <li>
+                                <a href="#" onClick={()=>navigate('/adminbuyer')}>
+                                <FontAwesomeIcon icon={faCartShopping} size='4x' />
+                                <p className='namenavbar'>All User</p>
+                                </a>
+                            </li>
+
+                            <li>
+                                <a href="#" className='boothnav'>
+                                <FontAwesomeIcon icon={faStore} size='4x'/>
+                                <p className='namenavbar'>Booth</p>
+                                </a>
+                            </li>
                         </ul>
                     </div>
                 </nav>
@@ -79,11 +81,10 @@ function Adminsellerpage() {
                         </select>
                     </div>
                 </div>
-                {/* <SellerNameTableBooth/> */}
 
                 <ProductList search={search} selectedBooth={selectedBooth} />
 
-                </div>
+            </div>
 
             <Footer/>
       </div>

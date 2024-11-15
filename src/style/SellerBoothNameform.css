@@ -1,4 +1,4 @@
-.ResetPasswordVerification-container{
+.seller-booth-form-container{
     display: flex;
     align-items: center; /* Pusat secara vertikal */
     justify-content: center; /* Pusat secara horizontal */
@@ -8,7 +8,7 @@
     margin: 0;
 }
 
-.wrapper-reset-password{
+.seller-booth-form-wrapper{
     width: fit-content;
     padding: 30px 30px 30px 30px;
     margin: 125px auto;
@@ -18,22 +18,12 @@
     align-items: center;
 }
 
-.veriftext{
+.booth-label{
     text-align: left;
     padding-top: 30px;
 }
 
-.password-verif-input{
-    width: 421px;
-    height: 38px;
-    border-radius: 25px;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    border-style: none;
-    padding-left: 30px;
-    outline: 0;
-}
-
-.verification-email-btn{
+.submit-booth-btn{
     display: flex;
     justify-content: center;
     align-items: center;

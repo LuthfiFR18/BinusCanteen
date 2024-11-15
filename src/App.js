@@ -2,6 +2,7 @@
 import './App.css';
 import React, { useState } from 'react';
 import Register from './pages/Register';
+import SellerBoothNameform from './pages/SellerBoothNameform';
 import Login from './pages/Login';
 import ResetPassword from './pages/ResetPassword';
 import ResetPasswordVerification from './pages/ResetPasswordVerification';
@@ -22,7 +23,8 @@ import InProgress from './pages/InProgress';
 import Sellerpage from './pages/Sellerpage';
 import EditPictureSeller from './pages/EditPictureSeller';
 import EditMenuSeller from './pages/EditMenuSeller';
-import { BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-dom';  
+import { BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-dom'; 
+import { MenuProvider } from './app/MenuContext'; 
 function App() {
 
   // const [uploadedImage, setUploadedImage] = React.useState(null);

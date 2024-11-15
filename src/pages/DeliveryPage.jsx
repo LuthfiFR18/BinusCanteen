@@ -20,9 +20,11 @@ function DeliveryPage() {
             <div className={`toggle-option-delivery ${activeTab === 'Avaliable' ? 'active' : ''}`} onClick={() => setActiveTab('Avaliable')}>
                 Avaliable
             </div>
+
             <div className={`toggle-option-delivery ${activeTab === 'In Progress' ? 'active' : ''}`} onClick={() => navigate('/inprogress')}>
                 Drink
             </div>
+            
             <div className={`toggle-option-delivery ${activeTab === 'Booth' ? 'active' : ''}`} onClick={() => setActiveTab('Booth')}>
                 Dessert
             </div>

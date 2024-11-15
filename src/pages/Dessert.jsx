@@ -48,12 +48,12 @@ const Dessert = () => {
 
   return (
     <div className="dessert-container">
-    <div className='dessertpage'>
-            <Header/>
+      <div className='dessertpage'>
+        <Header/>
+        
+        <h3 id='booth-name'>Nara Kitchen</h3>
 
-            <h3 id='booth-name'>Nara Kitchen</h3>
-
-            <ButtonStack />
+        <ButtonStack />
 
         <Dessertmenu/>
         <Dessertmenu/>
@@ -61,8 +61,8 @@ const Dessert = () => {
         <Dessertmenu/>
         <Dessertmenu/>
         <Dessertmenu/>
-        </div>
-        <Footer/>
+      </div>
+      <Footer/>
     </div>
   )
 }

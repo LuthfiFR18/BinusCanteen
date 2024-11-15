@@ -169,8 +169,8 @@ const ProductList = ({selectedBooth, search }) => {
         <td>{product.producttype}</td>
         <td>{product.user && product.user.name ? product.user.name : 'Unknown'}</td>
         <td>
-        <button className='button-admin-booth-update'  onClick={() => openPopup(product)}>Update</button>
-          <button className='button-admin-booth-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
+        <button className='button-admin-booth-update' onClick={() => openPopup(product)}>Update</button>
+        <button className='button-admin-booth-delete' onClick={() => deleteProduct(product.uuid)}>Delete</button>
 
             {isPopupOpen && (
               <div className="popup-overlay-update">
@@ -230,7 +230,9 @@ const ProductList = ({selectedBooth, search }) => {
                     />
 
                     <label htmlFor="productImage">Product Image:</label>
+                      {/* <button type='file'></button> */}
                     <input
+                      className='image-input'
                       type="file"
                       id="productImage"
                       name="productImage"
@@ -239,10 +241,8 @@ const ProductList = ({selectedBooth, search }) => {
                     />  
 
                     <div className="form-buttons">
-                    <button className='button-admin-booth-update' type="submit">Save</button>
-                      <button  className='button-admin-booth-delete' type="button" onClick={handleCancel}>
-                        Cancel
-                      </button>
+                    <button className='button-admin-booth-save' type="submit">Save</button>
+                    <button  className='button-admin-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
                     </div>
                   </form>
                 </div>
