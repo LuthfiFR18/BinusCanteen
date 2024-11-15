@@ -150,7 +150,7 @@ function Register(){
                     <input type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
 
                     <button className="button" type='submit'>
-                        Register
+                        {role === 'Seller' ? 'Register Your Booth' : 'Register'}
                     </button>
                 </form>
             </div>

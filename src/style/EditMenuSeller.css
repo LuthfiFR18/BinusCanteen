@@ -112,7 +112,7 @@ form a{
     margin-bottom: 20px;
   }
   
-  .image-upload-box {
+  .edit-menu-seller-image-upload-box {
     width: 200px;
     height: 150px;
     border: 2px dashed #ccc;
@@ -179,9 +179,9 @@ form a{
     background-color: darkorange;
   }
 
-  .back-button {
+  .edit-menu-seller-back-button {
     position: absolute;
-    top: 115px;
+    top: 50px;
     left: 550px;
     background-color: #4FC0FD;
     border: none;

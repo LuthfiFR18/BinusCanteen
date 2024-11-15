@@ -18,6 +18,18 @@ import CourseRoute from "./routes/CourseRoute.js";
 
 import { associations } from './models/Association.js';
 
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App.js";
+import { MenuProvider } from "../src/app/MenuContext.js";
+
+ReactDOM.render(
+    <MenuProvider>
+        <App />
+    </MenuProvider>,
+    document.getElementById("root")
+);
+
 dotenv.config();
 console.log(process.env)
 
