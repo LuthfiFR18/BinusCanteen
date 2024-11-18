@@ -58,7 +58,7 @@ DELETE http://localhost:5000/product/bcb79db9-91ac-4747-9faf-48fbb9044c56
 Content-Type: application/json
 
 
-###
+### Add Booth
 POST http://localhost:5000/Booth
 Content-Type: application/json
 

@@ -1,39 +1,36 @@
-import React, {useState, useEffect } from 'react'
+import React, {useState} from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Meals.css';
 import Mealsmenu from '../components/Mealsmenu';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
+import { useLocation, useParams } from "react-router-dom";
 
 const ButtonStack = () => {
-    const [activeButton, setActiveButton] = useState(1);
+    const [activeButton] = useState(1);
     const navigate = useNavigate();
-  
-    const handleClick = (buttonNumber, path) => {
-      setActiveButton(buttonNumber);
-      navigate(path);
-    };
+    const { boothId} = useParams();
+    const location = useLocation();
+    const boothName = location.state?.boothName || "Unknown Booth";
+    // console.log("Booth ID:", boothId);
   
     return (
       <div className="selector-btn">
         <button
         className={`menu-button-meals meals-btn ${activeButton === 1 ? 'active' : 'menu-button-meals'}`}
-        onClick={() => handleClick(1, '/meals')}
+        onClick={() => navigate(`/meals/${boothId}`, { state: { boothName } })}
 
         >Meals
         </button>
         <button
         className={`menu-button-drink ${activeButton === 2 ? 'active' : 'menu-button-drink'}`}
-        onClick={() => handleClick(2, '/drink')}
+        onClick={() => navigate(`/drinks/${boothId}`, { state: { boothName } })}
           
         >Drink
         </button>
         <button
         className={`menu-button-dessert ${activeButton === 3 ? 'active' : 'menu-button-dessert'}`}
-        onClick={() => handleClick(3, '/dessert')}
+        onClick={() => navigate(`/desserts/${boothId}`, { state: { boothName } })}
         
         >Dessert
         </button>
@@ -42,13 +39,16 @@ const ButtonStack = () => {
   };
 
   const Meals = () => {
+    const location = useLocation();
+    const boothName = location.state?.boothName || "Unknown Booth";
+
     
   return (
     <div className="meals-container">
       <div className='Mealspage'>
         <Header/>
     
-        <h3 id='booth-name'>Nara Kitchen</h3>
+        <h3 id='booth-name'>{boothName}</h3>
 
         <ButtonStack />
                     

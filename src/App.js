@@ -83,8 +83,8 @@ function App() {
         <Route path='/changepassword' element={<ChangePassword/>}/>
         <Route path='/dashboard' element={<Dashboard/>}/>    
         <Route path='/meals/:boothId' element={<Meals/>}/>    
-        <Route path='/drink' element={<Drink/>}/>    
-        <Route path='/dessert' element={<Dessert/>}/>    
+        <Route path='/drinks/:boothId' element={<Drink/>}/>    
+        <Route path='/desserts/:boothId' element={<Dessert/>}/>    
         <Route path='/cart' element={<Cart/>}/>    
         <Route path='/payment' element={<Payment/>}/>    
         <Route path='/adminbuyer' element={<Adminpage/>}/>    
