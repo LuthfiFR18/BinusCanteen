@@ -47,8 +47,9 @@
 }
 
 .cart-item-cell img{
-  width: 100px;
+  width: 150px;
   height: 120px;
+  border-radius: 50%;
 }
 
 .cart-quantity-control {

@@ -2,6 +2,7 @@
   width: 100%; /* Menggunakan lebar penuh layar */
   justify-content: center;
   display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
@@ -11,13 +12,14 @@
   justify-content: center;
   align-items: center;
   padding: 15px;
-  box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+  margin-bottom: 20px;
+  box-shadow:  0 0.1rem 0.5rem 0.1rem #D0CECE;
   width: 620px;
 }
 .meals-item img {
   width: 100px;
   height: 100px;
-  border-radius: 8px;
+  border-radius: 50%;
   object-fit: cover;
   margin-right: 20px;
 }
