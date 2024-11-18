@@ -1,11 +1,11 @@
 .canteen-container{
     cursor: pointer;
     display: grid;
-    width: 1300px;
+    width: 90%; /* Lebih responsif dengan lebar berdasarkan persentase */
+    max-width: 1300px; /* Batasi lebar maksimal */
     height: 250px;
-    margin-left: auto;
-    margin-right: auto;
-    grid-template-columns: repeat(auto-fit, minmax( 200px, auto));
+    margin: 0 auto; /* Memusatkan secara horizontal */
+    grid-template-columns: repeat(auto-fill, minmax(225px, auto)); /* Pastikan booth tersusun secara horizontal */
     gap: 1.5rem;
     margin-top: 2rem;
 }
@@ -26,7 +26,7 @@
     width: 220px;
     height: 100%;
     border-radius: 15px;
-    /* object-fit: cover; */
+    object-fit: cover;
 }
 .box:hover{
     transform: translateY(-10px);
@@ -36,6 +36,7 @@
 
 .booth-title{
     margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
