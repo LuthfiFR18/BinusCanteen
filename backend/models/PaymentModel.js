@@ -18,8 +18,13 @@ const Payment = db.define('payment', {
         
     },
 
-    deliveryLocation: {
+    note: {
         type: DataTypes.STRING,
+        allowNull: true,
+    },
+
+    paymentAmount: {
+        type: DataTypes.FLOAT,
         allowNull: false,
         
     },
@@ -39,7 +44,14 @@ const Payment = db.define('payment', {
         type: DataTypes.STRING,
         allowNull: false,
         defaultValue: 'Pending'
+    },
+
+    deliveryLocation: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        
     }
+    
 }, {
     freezeTableName: true
 });
