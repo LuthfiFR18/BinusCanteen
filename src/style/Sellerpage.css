@@ -98,6 +98,10 @@
     border-radius: 10px;
     margin-right: 20px;
 }
+
+.menu-image-store-closed{
+    opacity: 0.5;
+}
   
 .menu-details {
     display: flex;
@@ -257,7 +261,7 @@
 }
   
 .popup-confirm-btn {
-    background-color: red;
+    background-color: black;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -266,7 +270,7 @@
 }
   
 .popup-cancel-btn {
-    background-color: orange;
+    background-color: blue;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -278,7 +282,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    background: none;
+    background: transparent;
     border: none;
     font-size: 18px;
     cursor: pointer;
@@ -333,4 +337,74 @@
 
 .menu ul li a:hover{
     color: var(--text-color);
+}
+
+.menu-edit .delete-btn {
+    background-color: black;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+/* Popup khusus untuk Delete Menu */
+.popup-delete {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    position: relative;
+    width: 300px;
+    text-align: center;
+}
+
+.popup-delete p {
+    margin-bottom: 20px;
+    font-size: 16px;
+    color: #333;
+}
+
+.popup-delete .popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.popup-delete .yes-btn {
+    background-color: black;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup-delete .no-btn {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.popup-delete .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.list-menu-seller-back-button {
+    position: absolute;
+    top: 120px;
+    left: 100px;
+    background-color: #4FC0FD;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
 }

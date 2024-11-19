@@ -20,7 +20,8 @@ const EditMenuSeller = ({ onSave }) => {
     const [description, setDescription] = useState('');
     const location = useLocation();
     const { menuId } = location.state || {};
-    const { menus, updateMenu } = useMenuContext();
+    const { updateMenu } = useMenuContext();
+    // const { menus, updateMenu } = useMenuContext();
 
     // const menu = menus.find((menu) => menu.id === menuId);
     const menu = location.state?.menu;
@@ -30,7 +31,8 @@ const EditMenuSeller = ({ onSave }) => {
             setSelectedImage(menu.image || null);
             setName(menu.name || '');
             setItemType(menu.itemType || 'Food');
-            setPrice(menu.price || '');
+            // setPrice(menu.price.replace(/\D/g, '') || '');
+            setPrice(formatPriceWithDots(menu.price.replace(/\D/g, '') || 'Rp. 0'))
             setDescription(menu.description || '');
         }
     }, [menu]);
@@ -48,10 +50,13 @@ const EditMenuSeller = ({ onSave }) => {
     };
 
     const handleSave = () => {
+        const rawPrice = price.replace(/\D/g, '');
         const updatedMenu = {
             ...menu,
             name,
-            price,
+            // price,
+            // price: `Rp ${rawPrice.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`,
+            price: formatPriceWithDots(rawPrice),
             description,
             image: selectedImage,
             itemType,
@@ -67,19 +72,35 @@ const EditMenuSeller = ({ onSave }) => {
     };
 
     const formatPriceWithDots = (value) => {
-        return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        if (!value) return 'Rp. 0';
+        return `Rp. ${value.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
+        // return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
     }
 
     const handlePriceChange = (event) => {
-        let rawValue = event.target.value.replace(/\./g, '');
+        // let rawValue = event.target.value.replace(/\./g, '');
 
-        if (rawValue.length > 1 && rawValue.startsWith('0')) {
-            return;
-        }
-        if(rawValue === '' || /^\d+$/.test(rawValue)) {
-            setPrice(formatPriceWithDots(rawValue));
-        }
+        // if (rawValue.length > 1 && rawValue.startsWith('0')) {
+        //     return;
+        // }
+        // if(rawValue === '' || /^\d+$/.test(rawValue)) {
+        //     setPrice(formatPriceWithDots(rawValue));
+        // }
+        const rawValue = event.target.value.replace(/\D/g, '');
+        setPrice(formatPriceWithDots(rawValue));
     };
+
+    // const handlePriceChange = (event) => {
+    //     let rawValue = event.target.value.replace(/\./g, '');
+
+    //     if (rawValue.length > 1 && rawValue.startsWith('0')) {
+    //         return;
+    //     }
+    //     if(rawValue === '' || /^\d+$/.test(rawValue)) {
+    //         setPrice(formatPriceWithDots(rawValue));
+    //     }
+    // };
+    
   
     return (
         <div className="edit-menu-seller-container">
