@@ -1,0 +1,145 @@
+.order-list-container {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    margin-top: 100px;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  
+  header h3 {
+    font-size: 1.5rem;
+  }
+  
+  header p {
+    font-size: 1rem;
+    color: #555;
+  }
+
+  body {
+    background-color: #4FC0FD;
+  }
+  
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f9f9f9;
+  }
+  
+  .order-table th,
+  .order-table td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: top;
+  }
+  
+  .order-table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+  
+  .order-table ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .order-table ul li {
+    margin-bottom: 5px;
+  }
+  
+  .order-table tbody tr:nth-child(even) {
+    background-color: #f8f8f8;
+  }
+  
+  .order-table tbody tr:hover {
+    background-color: #f1f1f1;
+  }
+  .order-list-seller-back-button {
+    position: absolute;
+    top: 50px;
+    left: 100px;
+    background-color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Popup styling */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .popup-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    position: relative;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    font-size: 18px;
+    cursor: pointer;
+  }
+  
+  .popup-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .popup-yes {
+    background: blue;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .popup-no {
+    background: red;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Done button styling */
+  .done-button {
+    background: black;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .done-button:hover {
+    opacity: 0.8;
+  }
+  
+
+  

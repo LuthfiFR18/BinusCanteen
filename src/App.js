@@ -23,6 +23,9 @@ import InProgress from './pages/InProgress';
 import Sellerpage from './pages/Sellerpage';
 import EditPictureSeller from './pages/EditPictureSeller';
 import EditMenuSeller from './pages/EditMenuSeller';
+import AddListMenuSeller from './pages/AddListMenuSeller';
+import OrderListSeller from './pages/OrderListSeller';
+import ListMenuSeller from './pages/ListMenuSeller';
 import { BrowserRouter as Router,Routes,Route, Navigate } from 'react-router-dom'; 
 import { MenuProvider } from './app/MenuContext'; 
 function App() {
@@ -74,32 +77,37 @@ function App() {
   // };
 
   return (
-    <Router>
-      <Routes>
-        <Route path='/'element={<Login/>}/>
-        <Route path='/register' element={<Register/>}/>
-        <Route path='/resetpassword' element={<ResetPassword/>}/>
-        <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
-        <Route path='/changepassword' element={<ChangePassword/>}/>
-        <Route path='/dashboard' element={<Dashboard/>}/>    
-        <Route path='/meals/:boothId' element={<Meals/>}/>    
-        <Route path='/drink' element={<Drink/>}/>    
-        <Route path='/dessert' element={<Dessert/>}/>    
-        <Route path='/cart' element={<Cart/>}/>    
-        <Route path='/payment' element={<Payment/>}/>    
-        <Route path='/adminbuyer' element={<Adminpage/>}/>    
-        <Route path='/adminseller' element={<Adminsellerpage/>}/>    
-        <Route path='/Sellerpage' element={<Sellerpage img={img} />}/>
-        <Route path='/editpictureseller' element={<EditPictureSeller onSave={setImg}/>}/>
-        <Route path='/editmenuseller' element={<EditMenuSeller/>}/>
-        <Route path='/' element={<Navigate to='/Sellerpage'/>}/>  
-        <Route path='/historybuyer' element={<HistoryBuyer/>}/>    
-        <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>    
-        <Route path='/paymentfail' element={<PaymentFail/>}/>    
-        <Route path='/deliverypage' element={<DeliveryPage/>}/>    
-        <Route path='/inprogress' element={<InProgress/>}/>       
-      </Routes>
-    </Router>
+    <MenuProvider>
+      <Router>
+        <Routes>
+          <Route path='/'element={<Login/>}/>
+          <Route path='/register' element={<Register/>}/>
+          <Route path='/resetpassword' element={<ResetPassword/>}/>
+          <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
+          <Route path='/changepassword' element={<ChangePassword/>}/>
+          <Route path='/dashboard' element={<Dashboard/>}/>    
+          <Route path='/meals/:boothId' element={<Meals/>}/>    
+          <Route path='/drinks/:boothId' element={<Drink/>}/>    
+          <Route path='/desserts/:boothId' element={<Dessert/>}/>    
+          <Route path='/cart' element={<Cart/>}/>    
+          <Route path='/payment' element={<Payment/>}/>    
+          <Route path='/adminbuyer' element={<Adminpage/>}/>    
+          <Route path='/adminseller' element={<Adminsellerpage/>}/>    
+          <Route path='/Sellerpage' element={<Sellerpage img={img} />}/>
+          <Route path='/editpictureseller' element={<EditPictureSeller onSave={setImg}/>}/>
+          <Route path='/editmenuseller' element={<EditMenuSeller/>}/>
+          <Route path='/orderlistseller' element={<OrderListSeller/>}/>
+          <Route path='/listmenuseller' element={<ListMenuSeller/>}/>
+          <Route path='/' element={<Navigate to='/Sellerpage'/>}/> 
+          <Route path='/addlistmenuseller' element={<AddListMenuSeller/>}/> 
+          <Route path='/historybuyer' element={<HistoryBuyer/>}/>    
+          <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>    
+          <Route path='/paymentfail' element={<PaymentFail/>}/>    
+          <Route path='/deliverypage' element={<DeliveryPage/>}/>    
+          <Route path='/inprogress' element={<InProgress/>}/>       
+        </Routes>
+      </Router>
+    </MenuProvider>
   );
 }
 

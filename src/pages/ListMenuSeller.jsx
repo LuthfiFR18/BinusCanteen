@@ -17,7 +17,7 @@ import imgDefault from '../img/nasigoreng.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
 
-function Sellerpage() {
+function ListMenuSeller() {
     const navigate = useNavigate();
     // const [menus, setMenus] = useState([
     //     {id:1, name: 'Nasi Goreng', description: 'Nasi dengan bumbu khas', price:15000, itemType: 'Food', image: 'nasigoreng.png', isOutOfStock: false}
@@ -157,43 +157,12 @@ function Sellerpage() {
         <div className='dashboard'>
             <div class="navbar1">
                 <Header/>
-                
-                <nav className='navmenu'>
-                    <div class="menu">
-                        <ul>
-                            <li>
-                                <a href="#" onClick={()=>navigate('/ListMenuSeller')}>
-                                <FontAwesomeIcon icon={faUtensils} size='4x' />
-                                <p className='namenavbar'>List Menu</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onClick={()=>navigate('/OrderListSeller')}>
-                                <FontAwesomeIcon icon={faGlassWater} size='4x' />
-                                <p className='namenavbar'>Order List</p>
-
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </nav>
             </div>
-            <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
-                <img src={img} alt="Dish"/>
-                {/* <img src="https://via.placeholder.com/300" alt="Dish 2"/>
-                <img src="https://via.placeholder.com/300" alt="Dish 3"/> */}
-                <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>
-            </div>
-
+            <button className="list-menu-seller-back-button" onClick={() => navigate('/Sellerpage')}>
+                <span className="arrow-left">&#8592;</span>
+            </button>
             <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2>
             {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
-            <button
-                className="close-store-btn"
-                onClick={handlePopupStoreStatus}
-                style={{ backgroundColor: storeClosed ? '#FF9D00' : 'red' }}
-            >
-                {storeClosed ? 'Open your store' : 'Close your store'}
-            </button>
             
             <div className="menu-list">
                 {/* {menus.map((menu, index) => ( */}
@@ -239,10 +208,6 @@ function Sellerpage() {
                     </div>
                 ))}
             </div>
-
-            <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
-            
-            
 
             {showPopupStoreStatus &&(
                 // <div className="popup-overlay">
@@ -303,4 +268,4 @@ function Sellerpage() {
     );
 }
 
-export default Sellerpage;
+export default ListMenuSeller;

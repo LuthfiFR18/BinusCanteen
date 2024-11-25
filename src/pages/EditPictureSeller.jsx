@@ -73,7 +73,7 @@ function EditPictureSeller(){
             
 
             {preview && (
-                <button className="save-button" onClick={handleSave}>
+                <button className="save-button-edit-picture-seller" onClick={handleSave}>
                     Save
                 </button>
             )}

@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import '../style/Boothgrid.css'
-import img1 from '../img/nasigoreng.png'
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import img1 from '../img/nasigoreng.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -20,16 +19,21 @@ function Boothgrid() {
         }
       };
 
-      useEffect(()=>{
-        getBooths();
-      }, []);
+    useEffect(()=>{
+      getBooths();
+    }, []);
+
+    const handleBoothClick = (boothId, boothName) => {
+      navigate(`/meals/${boothId}`, { state: { boothName } });
+    };
+
 
 
   return (
     <div className="canteen-list" key={booths.id}>
                 <div className="canteen-container">
                 {booths.map((booth) => (
-                    <div className="box" key={booth.id} onClick={() => navigate(`/meals/${booth.id}`)}>
+                    <div className="box" key={booth.id} onClick={() => handleBoothClick(booth.id,booth.name)}>
                       
                         {/* tambah ini untuk menyambungkan page berdasarkan id ${booth.uuid}   */}
                         <div className="box-img">
