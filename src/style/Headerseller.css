@@ -3,9 +3,9 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 75px;
+    height: 60px;
     background-color: #2E7ADD;
-    gap: 28%;
+    gap: 30%;
 }
 
 .logo-text{
@@ -14,6 +14,7 @@
     align-items: center;
     font-size: 24px;
     font-weight: bold;
+    margin-top: 5px;
     /* margin-right: 200px; */
 }
 
