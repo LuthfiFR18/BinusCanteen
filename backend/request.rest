@@ -46,7 +46,7 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
     {
-  "name": "Nasi Ayam Paket A",
+  "name": "Nasi Ayam Paket B",
   "price": 15000,
   "producttype": "Food",
   "boothId": 3,
@@ -86,6 +86,10 @@ GET /booth/:boothId/products
 
 ###
 GET http://localhost:5000/booth/1/products
+
+###
+GET http://localhost:5000/booth/1
+
 
 
 

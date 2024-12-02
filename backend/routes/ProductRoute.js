@@ -10,4 +10,5 @@ router.patch('/product/:id', updateProduct);
 router.delete('/product/:id', deleteProduct);
 router.get('/booth/:boothId/products', getProductsByBooth);
 
+
 export default router;

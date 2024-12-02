@@ -1,28 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import '../style/Sellerpage.css';
-import "slick-carousel/slick/slick.css";
+import { faGlassWater, faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import axios from "axios";
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate, useParams } from "react-router-dom";
 import "slick-carousel/slick/slick-theme.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
-import { useMenuContext } from '../app/MenuContext';
-import Header from '../components/Headerseller';
+import "slick-carousel/slick/slick.css";
 import Footerseller from '../components/Footerseller';
-import Carouselbestoffer from '../components/Carouselbestoffer';
-import Carouselforyou from '../components/Carouselforyou';
-import Carouseltodayoffer from '../components/Carouseltodayoffer';
+import Header from '../components/Headerseller';
 import PopUp from '../components/PopUpCloseSellerStore';
-import PopUpOutOfStock from '../components/PopUpOutOfStock';
 import PopUpDeleteMenuSeller from '../components/PopUpDeleteMenuSeller';
+import PopUpOutOfStock from '../components/PopUpOutOfStock';
+import { getMe } from '../features/authSlice';
 import imgDefault from '../img/nasigoreng.png';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
+import '../style/Sellerpage.css';
+
+
 
 function Sellerpage() {
     const navigate = useNavigate();
-    // const [menus, setMenus] = useState([
-    //     {id:1, name: 'Nasi Goreng', description: 'Nasi dengan bumbu khas', price:15000, itemType: 'Food', image: 'nasigoreng.png', isOutOfStock: false}
-    // ]);
-    const { menus, setMenus } = useMenuContext();
+    const [ menus, setMenus ] = useState([]);
     const [showPopupStoreStatus, setShowPopupStoreStatus] = useState(false);
     const [showPopupOutOfStock, setShowPopupOutOfStock] = useState(false);
     const [showPopupDeleteMenu, setShowPopupDeleteMenu] = useState(false);
@@ -33,15 +30,56 @@ function Sellerpage() {
     const [selectedMenuId, setSelectedMenuId] = useState(null);
     const [isClosingStore, setIsClosingStore] = useState(false);
     const [img, setImg] = useState(imgDefault);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
+    
+    
+   
 
     useEffect(() => {
+        dispatch(getMe());
+        
+    
         const savedImage = localStorage.getItem('savedImage');
-        if(savedImage){
-            setImg(savedImage);
-        } else{
-            setImg(imgDefault);
+        setImg(savedImage || imgDefault);
+    
+        
+        const loadBoothAndProducts = async () => {
+            if (!user || !user.id) {
+                console.error("User data is missing.");
+                return;
+            }
+    
+            try {
+                // Ambil Booth berdasarkan user.id
+                const boothResponse = await axios.get(`http://localhost:5000/booth/${user.id}`);
+                const boothData = boothResponse.data;
+                console.log("boothData: ", boothData);
+
+
+                if (boothData && boothData.booths && boothData.booths.id) {
+                    const boothId = boothData.booths.id; // Mengakses ID booth dari boothData.booths
+                    console.log("booth id : ", boothId);
+                    const productsResponse = await axios.get(
+                        `http://localhost:5000/booth/${boothId}/products`
+                    );
+                    setMenus(productsResponse.data); // Set data Produk ke state
+                    console.log("Produk dari Booth:", productsResponse.data);
+                } else {
+                    console.warn("Booth not found for user:", user.id);
+                }
+                
+            } catch (error) {
+                console.error("Error loading Booth and Products:", error.message);
+            }
+        };
+    
+        if (user && user.id) {
+            loadBoothAndProducts();
         }
-    }, []);
+    }, [user?.id]);
+
+    
 
     const handleNavigate = (path) =>{
         navigate(path);
@@ -93,10 +131,31 @@ function Sellerpage() {
         setShowPopupOutOfStock(true);
     };
 
-    useEffect(() => {
-        // console.log("Updated menus:", menus);
-        console.log("Updated menus in Sellerpage:", menus);
-    }, [menus]);
+    // const getBoothIdByUser = async(userId)=>{
+    //     try {
+            
+    //         const response = await axios.get(`http://localhost:5000/booth/${user.id}`);
+    //         setBooth(response.data);
+    //         console.log("booth ID : ", response.data);
+    //     } catch (error) {
+    //         console.error('Failed to get Booth Id:', error);
+    //     }
+    // }
+
+    // const fetchProductsByBooth  = async (boothId) => {
+    //     try {
+    //         const response = await axios.get(`http://localhost:5000/products/booth/${boothId}`);
+    //         console.log("Booth ID:", boothId);
+    //         console.log("Booth Name:", boothName);
+    //         console.log('Fetched Products:', response.data);
+    //         setProducts(response.data);
+    //     } catch (error) {
+    //         console.error('Failed to fetch products:', error);
+    //     }
+    // };
+
+    
+    
 
     const confirmOutOfStock = () => {
         if (selectedMenuId !== null) {
@@ -133,24 +192,6 @@ function Sellerpage() {
         setMenus((prevMenus) => prevMenus.filter((menu) => menu.id !== selectedMenuId));
         setShowPopupDeleteMenu(false);
     };
-
-    // const menus = [
-    //     {
-    //         name : 'Nasi Goreng Special',
-    //         price : 'Rp 20.000',
-    //         description : 'Nasi goreng dengan topping telur dadar/mata sapi',
-    //     },
-    //     {
-    //         name : 'Nasi Goreng Seafood',
-    //         price : 'Rp 30.000',
-    //         description : 'Nasi goreng dengan aneka seafood segar',
-    //     },
-    //     {
-    //         name : 'Nasi Goreng Komplit',
-    //         price : 'Rp 35.000',
-    //         description : 'Nasi goreng dengan topping seafood dan telur dadar/mata sapi',
-    //     }
-    // ]
     
 
     return(
@@ -185,7 +226,7 @@ function Sellerpage() {
                 <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>
             </div>
 
-            <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2>
+            <h2 className="list-menu-title">List Menu</h2>
             {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
             <button
                 className="close-store-btn"
@@ -194,19 +235,21 @@ function Sellerpage() {
             >
                 {storeClosed ? 'Open your store' : 'Close your store'}
             </button>
-            
+
             <div className="menu-list">
                 {/* {menus.map((menu, index) => ( */}
                 {menus.map((menu) => (
                     // <div key={index} className="menu-item">
+                    
                     <div key={menu.id} className="menu-item">
                         {/* <img src={img} alt="Menu Item" className="menu-image"/> */}
                         <img 
-                            src={menu.image || "nasigoreng.png"} 
-                            alt="Menu Item" 
-                            className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
-                            style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
-                        />
+                        src={menu.image || "nasigoreng.png"} 
+                        alt="Menu Item" 
+                        className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
+                        style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
+                    />
+                    
                         <div className="menu-details">
                             <div className="menu-info">
                                 <h4>{menu.name}</h4>
@@ -220,7 +263,7 @@ function Sellerpage() {
                             <div className="menu-edit">
                                 {/* <button onClick={() => handleNavigate('/EditMenuSeller')}>Edit</button> */}
                                 <button onClick={() => handleEditMenu(menu)}>Edit</button>
-                                {/* <button onClick={() => navigate(`/EditMenuSeller`, { state: { menu } })}>Edit</button> */}
+                                {/* <button onClick={() => navigate(/EditMenuSeller, { state: { menu } })}>Edit</button> */}
                                 <button 
                                     style={{ backgroundColor: menu.isOutOfStock ? '#FF9D00' : 'red' }} 
                                     onClick={() => handleOutOfStockClick(menu.id, menu.isOutOfStock)}
@@ -239,6 +282,8 @@ function Sellerpage() {
                     </div>
                 ))}
             </div>
+
+           
 
             <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
             
@@ -297,6 +342,8 @@ function Sellerpage() {
                     onConfirm={confirmDeleteMenu}
                 />
             )}
+
+            
 
             <Footerseller/>
         </div>
