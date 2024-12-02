@@ -19,9 +19,7 @@ import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
 
 function Sellerpage() {
     const navigate = useNavigate();
-    // const [menus, setMenus] = useState([
-    //     {id:1, name: 'Nasi Goreng', description: 'Nasi dengan bumbu khas', price:15000, itemType: 'Food', image: 'nasigoreng.png', isOutOfStock: false}
-    // ]);
+    
     const { menus, setMenus } = useMenuContext();
     const [showPopupStoreStatus, setShowPopupStoreStatus] = useState(false);
     const [showPopupOutOfStock, setShowPopupOutOfStock] = useState(false);
@@ -53,14 +51,7 @@ function Sellerpage() {
     };
 
     const handlePopupStoreStatus = () => {
-        // setPopupMassage(storeClosed ? 'Are you sure want to open your store?' : 'Are you sure want to close your store?');
-        // setIsClosingStore(!storeClosed);
-        // setShowPopup(true);
-        // if (storeClosed) {
-        //     setPopupMassage('Are you sure want to open your store?');
-        // } else{
-        //     setPopupMassage('Are you sure want to close your store?');
-        // }
+        
         const message = storeClosed 
             ? 'Are you sure want to open your store?' 
             : 'Are you sure want to close your store?';
@@ -94,7 +85,7 @@ function Sellerpage() {
     };
 
     useEffect(() => {
-        // console.log("Updated menus:", menus);
+        
         console.log("Updated menus in Sellerpage:", menus);
     }, [menus]);
 
@@ -107,19 +98,7 @@ function Sellerpage() {
                         : menu
                 )
             );
-            // const updatedMenus = menus.map(menu =>
-                // menu.id === selectedMenuId ? { ...menu, isOutOfStock: isOutOfStockAction } : menu
-            //     menu.id === selectedMenuId ? { ...menu, isOutOfStock: !menu.isOutOfStock } : menu
-            // );
-            // setMenus(updatedMenus);
-            // setMenus(prevMenus =>
-            //      prevMenus.map(menu =>
-            //         menu.id === selectedMenuId ? { ...menu, isOutOfStock: isOutOfStockAction } : menu
-            //     )
-            // );
-            // document.getElementById('outOfStockBtn-${menuId')
-            // const updatedMenu = updatedMenu.find(menu => menu.id === selectedMenuId);
-            // document.getElementById(`outOfStockBtn-${selectedMenuId}`).style.backgroundColor = updatedmenus.find(menu => menu.id === selectedMenuId).isOutOfStock ? '#FF9D00' : 'red';
+            
         }
         setShowPopupOutOfStock(false);
     };
@@ -134,44 +113,20 @@ function Sellerpage() {
         setShowPopupDeleteMenu(false);
     };
 
-    // const menus = [
-    //     {
-    //         name : 'Nasi Goreng Special',
-    //         price : 'Rp 20.000',
-    //         description : 'Nasi goreng dengan topping telur dadar/mata sapi',
-    //     },
-    //     {
-    //         name : 'Nasi Goreng Seafood',
-    //         price : 'Rp 30.000',
-    //         description : 'Nasi goreng dengan aneka seafood segar',
-    //     },
-    //     {
-    //         name : 'Nasi Goreng Komplit',
-    //         price : 'Rp 35.000',
-    //         description : 'Nasi goreng dengan topping seafood dan telur dadar/mata sapi',
-    //     }
-    // ]
-    
-
     return(
         <div className='dashboard'>
-            {/* <div class="navbar1"> */}
+            
                 <Header/>
 
                 <div className="header-seller">
-                {/* <h1 className="welcome-text">Welcome, NARA KITCHEN</h1> */}
+                
                     <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
                         <img src={img} alt="Dish"/>
-                        {/* <img src="https://via.placeholder.com/300" alt="Dish 2"/>
-                        <img src="https://via.placeholder.com/300" alt="Dish 3"/> */}
-                        {/* <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button> */}
+                        
                     </div>
 
                     <div className="header-content">    
                         <h1 className="welcome-text">Welcome, NARA KITCHEN</h1>
-
-                    {/* <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2> */}
-                    {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
                         <div className="button-group">
                             <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>    
                             <button
@@ -204,33 +159,15 @@ function Sellerpage() {
                         </ul>
                     </div>
                 </nav>
-            {/* </div> */}
-
-            {/* <h1 className="welcome-text">Welcome, NARA KITCHEN</h1> */}
-
-            {/* <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}> */}
-                {/* <img src={img} alt="Dish"/> */}
-                {/* <img src="https://via.placeholder.com/300" alt="Dish 2"/>
-                <img src="https://via.placeholder.com/300" alt="Dish 3"/> */}
-                {/* <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button> */}
-            {/* </div> */}
 
             <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2>
-            {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
-            {/* <button
-                className="close-store-btn"
-                onClick={handlePopupStoreStatus}
-                style={{ backgroundColor: storeClosed ? '#FF9D00' : 'red' }}
-            >
-                {storeClosed ? 'Open your store' : 'Close your store'}
-            </button> */}
             
             <div className="menu-list">
-                {/* {menus.map((menu, index) => ( */}
+
                 {menus.map((menu) => (
-                    // <div key={index} className="menu-item">
+                    
                     <div key={menu.id} className="menu-item">
-                        {/* <img src={img} alt="Menu Item" className="menu-image"/> */}
+                        
                         <img 
                             src={menu.image || "nasigoreng.png"} 
                             alt="Menu Item" 
@@ -240,7 +177,7 @@ function Sellerpage() {
                         <div className="menu-details">
                             <div className="menu-info">
                                 <h4>{menu.name}</h4>
-                                <p>{menu.description}</p>
+                                
                                 <p>Type: {menu.itemType}</p>
                             </div>
                             <div className="menu-info">
@@ -248,9 +185,9 @@ function Sellerpage() {
                                 <p>{menu.price}</p>
                             </div>
                             <div className="menu-edit">
-                                {/* <button onClick={() => handleNavigate('/EditMenuSeller')}>Edit</button> */}
+                                
                                 <button onClick={() => handleEditMenu(menu)}>Edit</button>
-                                {/* <button onClick={() => navigate(`/EditMenuSeller`, { state: { menu } })}>Edit</button> */}
+                                
                                 <button 
                                     style={{ backgroundColor: menu.isOutOfStock ? '#FF9D00' : 'red' }} 
                                     onClick={() => handleOutOfStockClick(menu.id, menu.isOutOfStock)}
@@ -275,40 +212,16 @@ function Sellerpage() {
             
 
             {showPopupStoreStatus &&(
-                // <div className="popup-overlay">
-                //     <div className="popup">
-                //         <button className="close-btn" onClick={() => setShowPopup(false)}>×</button>
-                //         <p>{popupMessage}</p>
-                //         <div className="popup-buttons">
-                //         <button className="yes-btn" 
-                //             style={{ backgroundColor: isOutOfStockAction ? 'red' : '#FF9D00' }}
-                //             // onClick={confirmOutOfStock}
-                //             onClick={() => {
-                //                 confirmOutOfStock();
-                //             }}
-                //             >
-                //             Yes
-                //         </button>
-                //         <button 
-                //             className="no-btn" 
-                //             style={{ backgroundColor: '#FF9D00' }} 
-                //             onClick={() => setShowPopup(false)}
-                //         >
-                //             No
-                //         </button>
-                //     </div>
-                // </div>
-
+                
                 <PopUp
-                //message="Are you sure you want to close the store?"
-                // onConfirm={handleCloseStore}
+                
                 message={popupMessage}
                 onConfirm={isClosingStore ? handleCloseStore : handleOpenStore}
                 onCancel={() => setShowPopupStoreStatus(false)}
                 isClosingStore={isClosingStore}
-                // onClose={() => setStoreClosed(true)}
+                
                 />
-        /* </div> */
+        
         )}
 
             {showPopupOutOfStock &&(

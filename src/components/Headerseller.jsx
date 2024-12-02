@@ -16,7 +16,7 @@ function Headerseller(){
             </div>
 
             <div className="header-middle">
-                {/* <h2>Nasi Goreng Nara</h2> */}
+                
             </div>
             
             <SellerProfileDropdown/>
