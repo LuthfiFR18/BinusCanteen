@@ -196,8 +196,35 @@ function Sellerpage() {
 
     return(
         <div className='dashboard'>
-            <div class="navbar1">
+            {/* <div class="navbar1"> */}
                 <Header/>
+
+                <div className="header-seller">
+                {/* <h1 className="welcome-text">Welcome, NARA KITCHEN</h1> */}
+                    <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
+                        <img src={img} alt="Dish"/>
+                        {/* <img src="https://via.placeholder.com/300" alt="Dish 2"/>
+                        <img src="https://via.placeholder.com/300" alt="Dish 3"/> */}
+                        {/* <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button> */}
+                    </div>
+
+                    <div className="header-content">    
+                        <h1 className="welcome-text">Welcome, NARA KITCHEN</h1>
+
+                    {/* <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2> */}
+                    {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
+                        <div className="button-group">
+                            <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>    
+                            <button
+                                className="close-store-btn"
+                                onClick={handlePopupStoreStatus}
+                                style={{ backgroundColor: storeClosed ? '#FF9D00' : 'red' }}
+                            >
+                                {storeClosed ? 'Open your store' : 'Close your store'}
+                            </button>
+                        </div>
+                    </div>
+                </div>
                 
                 <nav className='navmenu'>
                     <div class="menu">
@@ -218,23 +245,31 @@ function Sellerpage() {
                         </ul>
                     </div>
                 </nav>
-            </div>
-            <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
-                <img src={img} alt="Dish"/>
+            {/* </div> */}
+
+            {/* <h1 className="welcome-text">Welcome, NARA KITCHEN</h1> */}
+
+            {/* <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}> */}
+                {/* <img src={img} alt="Dish"/> */}
                 {/* <img src="https://via.placeholder.com/300" alt="Dish 2"/>
                 <img src="https://via.placeholder.com/300" alt="Dish 3"/> */}
-                <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>
-            </div>
+                {/* <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button> */}
+            {/* </div> */}
 
             <h2 className="list-menu-title">List Menu</h2>
             {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
-            <button
+            {/* <button
                 className="close-store-btn"
                 onClick={handlePopupStoreStatus}
                 style={{ backgroundColor: storeClosed ? '#FF9D00' : 'red' }}
             >
                 {storeClosed ? 'Open your store' : 'Close your store'}
+<<<<<<< HEAD
             </button>
+
+=======
+            </button> */}
+            
 
             <div className="menu-list">
                 {/* {menus.map((menu, index) => ( */}

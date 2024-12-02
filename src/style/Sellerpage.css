@@ -14,7 +14,6 @@
     --btn-color:#FF9D00;
 }
 
-
 .dashboard{
     background-color: var(--text-color);
     width: 100%;
@@ -25,16 +24,79 @@
     margin: 0;
 }
 
-.header-images {
-    display: flex;
-    justify-content: space-around;
-    position: relative;
+.menu{
+    margin-top: 220px;
+    margin-bottom: -100px;
 }
+
+.welcome-text{
+    /* margin-top: 20px; */
+    flex-grow: 1;
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--bg-color);
+    /* margin: 0 20px; */
+    margin: 0;
+    margin-left: -520px;
+    margin-right: 210px;
+    text-align: center;
+    margin-top: 290px;
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+.header-seller{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* background-color: var(--main-color); */
+    /* padding: 10px 20px; */
+    /* border-radius: 8px; */
+    /* height: auto */
+}
+
+/* .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-between;
+    margin: 20px 0;
+    margin: 20px auto;
+    width: 20px auto;
+    width: 90%;
+    max-width: 1200px;
+    position: relative;
+} */
+
+.header-content{
+    display: flex;
+    /* align-items: center; */
+    gap: 50px;
+}
+
+/* .header-images { */
+    /* flex-shrink: 0; */
+    /* display: flex;
+    flex-direction: column;
+    align-items: center; */
+    /* justify-content: space-around; */
+    /* justify-content: center;
+    position: relative; */
+    /* margin: 20px 0; */
+/* } */
   
 .header-images img {
-    width: 1500px;
-    height: 1060px;
-    margin-top: 50px;
+    width: 238px;
+    height: 238px; 
+    /* margin-left: -1050px; */
+    /* margin-right: 1px; */
+    margin-top: 350px;
+    margin-left: 80px;
+    margin-right: 280px;
+    border-radius: 15px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     object-fit: cover;
     transition: opacity 0.3s ease;
 }
@@ -42,11 +104,20 @@
 .header-images.store-closed img {
     opacity: 0.5; /* Make images slightly transparent */
 }
+
+.button-group{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 10px;
+    margin-top: 300px;
+}
   
 .edit-picture-btn {
-    position: absolute;
-    bottom: -50px;
-    right: 20px;
+    /* position: absolute;
+    bottom: 100px;
+    right: 20px; */
+    width: 160px;
     background-color: orange;
     border: none;
     padding: 10px 20px;
@@ -54,6 +125,7 @@
     border-radius: 20px;
     color: white;
     font-weight: bold;
+    margin: 0 20px;
 }
   
 .list-menu-title {
@@ -62,6 +134,7 @@
     text-align: left;
     margin-top: 130px;
     margin-bottom: 10px;
+    
 }
   
 .close-store-btn {
@@ -72,8 +145,10 @@
     border-radius: 20px;
     color: white;
     font-weight: bold;
-    margin-bottom: 20px;
-    margin-left: 1250px;
+    margin: 0 20px;
+    width: 160px;
+    /* margin-bottom: 20px;
+    margin-left: 1250px; */
 }
   
 .menu-list {
@@ -159,7 +234,7 @@
   
 .add-menu-btn {
     position: relative;
-    bottom: -50px;
+    bottom: -40px;
     right: -650px;
     background-color: orange;
     color: white;

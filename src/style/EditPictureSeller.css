@@ -14,9 +14,10 @@
     align-items: center; /* Pusat secara vertikal */
     justify-content: center; /* Pusat secara horizontal */
     min-height: 100vh; /* Tinggi viewport penuh */
-    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    /* background: linear-gradient(180deg, var(--main-color), #0073e6);  *//* Background gradasi */
     padding: 0;
     margin: 0;
+    margin-top: -100px;
 }
 
 /* .edit-picture-seller {
@@ -42,7 +43,7 @@
     left: -10px;
     background-color: var(--main-color);
     margin-top: 205px;
-    margin-left: -600px;
+    margin-left: -170px;
     border: none;
     font-size: 24px;
     cursor: pointer;
@@ -58,15 +59,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1250px;
-    height: 1200px;
+    width: 400px;
+    height: 400px;
     z-index: 1;
 }
   
 .edit-picture-seller-image-upload-box {
     border: 1px solid #ccc;
-    width: 1150px !important;
-    height: 800px !important;
+    width: 300px !important;
+    height: 300px !important;
     margin-top: 10px;
     margin-left: 10px;
     display: flex;
