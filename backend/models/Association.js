@@ -23,7 +23,7 @@ export const associations = () => {
 
     //Cart
     Cart.hasMany(Products);
-    Cart.belongsTo(Products, { foreignKey: 'productId', targetKey: 'id'  });
+    Cart.belongsTo(Products, { foreignKey: 'productId', as: 'product' });
     Cart.belongsTo(Users, { foreignKey: 'userId', targetKey: 'id'  });
 
     //Order
@@ -37,4 +37,5 @@ export const associations = () => {
 
     Booth.hasMany(Products, { foreignKey: 'boothId'}); // Sesuaikan jika Booth menggunakan uuid sebagai primary key
     Products.belongsTo(Booth, { foreignKey: 'boothId', as: 'booth'});
+    Products.hasMany(Cart, { foreignKey: 'productId' });
 };

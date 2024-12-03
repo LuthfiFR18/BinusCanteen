@@ -16,6 +16,13 @@ const Cart = db.define('cart', {
     productId: {
         type: DataTypes.INTEGER,
         allowNull: false,
+        references: {
+            model: Products, // Reference the Products model
+            key: 'id', // Assuming Products has a primary key called 'id'
+        },
+        validate:{
+            notEmpty: true
+        }
     },
 
     userId: {
