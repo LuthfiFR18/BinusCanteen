@@ -13,7 +13,6 @@ function AddListMenuSeller() {
   const [menuData, setMenuData] = useState({
     name: '',
     price: '',
-    description: '',
     itemType: '',
     image: null,
   });
@@ -33,20 +32,6 @@ function AddListMenuSeller() {
       setMenuData({ ...menuData, image: file });
     }
   };
-
-//   const handleChange = (e) => {
-//     const { name, value } = e.target;
-
-//     if (name === 'price') {
-//       // Format price to add Rp and separate thousands
-//       const formattedPrice = value.replace(/\D/g, ''); // Only allow digits
-//       if (formattedPrice.startsWith('0')) return; // Prevent leading zero
-//       const priceWithDots = new Intl.NumberFormat('id-ID').format(formattedPrice);
-//       setMenuData({ ...menuData, price: `Rp ${priceWithDots}` });
-//     } else {
-//       setMenuData({ ...menuData, [name]: value });
-//     }
-//   };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -119,17 +104,6 @@ function AddListMenuSeller() {
                     value={menuData.price}
                     onChange={handleChange}
                     placeholder="Enter price"
-                />
-        </div>
-
-        <div className="form-field">
-            <label>Description:</label>
-                <input
-                    type="text"
-                    name="description"
-                    value={menuData.description}
-                    onChange={handleChange}
-                    placeholder="Enter description"
                 />
         </div>
 

@@ -5,23 +5,12 @@ import '../style/EditPictureSeller.css';
 // import Loginwrap from '../Components/Loginwrap';
 function EditPictureSeller(){
     const navigate = useNavigate();
-    // const [image, setImage] = useState(null);
     const [preview, setPreview] = useState(null);
     const inputFileRef = useRef(null);
 
     const handleImageUpload = (e) => {
         const file = e.target.files[0];
-        // const imagename = e.target.files[0].name;
         
-        // if(file){
-        //     setImage(file);
-        //     const reader = new FileReader();
-        //     reader.onloadend = () => {
-        //         setPreview(reader.result);
-        //     };
-        //     reader.readAsDataURL(file);
-        // }
-
         if(file){
             const reader = new FileReader();
             reader.onloadend = () => {
@@ -33,7 +22,6 @@ function EditPictureSeller(){
 
     const handleSave = () => {
         if(preview){
-            // onSave(preview);
             localStorage.setItem('savedImage', preview);
             navigate('/Sellerpage');
         }
@@ -62,7 +50,6 @@ function EditPictureSeller(){
                     )}
                     <input 
                         type="file" 
-                        // id="file-input"
                         ref={inputFileRef}
                         style={{display: 'none'}}
                         accept="image/*" 

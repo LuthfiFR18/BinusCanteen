@@ -14,7 +14,7 @@
   align-items: center; /* Pusat secara vertikal */
   justify-content: center; /* Pusat secara horizontal */
   min-height: 100vh; /* Tinggi viewport penuh */
-  background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+  background: linear-gradient(180deg, var(--main-color), #4FC0FD); /* Background gradasi */
   padding: 0;
   margin: 0;
 }
@@ -106,7 +106,7 @@
 
   .edit-menu-seller-back-button {
     position: absolute;
-    top: 50px;
+    top: 80px;
     left: 550px;
     background-color: #4FC0FD;
     border: none;

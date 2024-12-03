@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-/* *{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: "Poppins",sans-serif;
-} */
-
 :root{
     --main-color: #4FC0FD;
     --text-color: #ffff;
@@ -30,68 +23,31 @@
 }
 
 .welcome-text{
-    /* margin-top: 20px; */
     flex-grow: 1;
     font-size: 32px;
     font-weight: bold;
     color: var(--bg-color);
-    /* margin: 0 20px; */
     margin: 0;
     margin-left: -520px;
     margin-right: 210px;
     text-align: center;
-    margin-top: 290px;
-    /* display: flex; */
-    /* align-items: center; */
-    /* justify-content: center; */
+    margin-top: 305px;
 }
 
 .header-seller{
     display: flex;
     align-items: center;
     justify-content: space-between;
-    /* background-color: var(--main-color); */
-    /* padding: 10px 20px; */
-    /* border-radius: 8px; */
-    /* height: auto */
 }
-
-/* .header-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    justify-content: space-between;
-    margin: 20px 0;
-    margin: 20px auto;
-    width: 20px auto;
-    width: 90%;
-    max-width: 1200px;
-    position: relative;
-} */
 
 .header-content{
     display: flex;
-    /* align-items: center; */
     gap: 50px;
 }
-
-/* .header-images { */
-    /* flex-shrink: 0; */
-    /* display: flex;
-    flex-direction: column;
-    align-items: center; */
-    /* justify-content: space-around; */
-    /* justify-content: center;
-    position: relative; */
-    /* margin: 20px 0; */
-/* } */
   
 .header-images img {
     width: 238px;
     height: 238px; 
-    /* margin-left: -1050px; */
-    /* margin-right: 1px; */
     margin-top: 350px;
     margin-left: 80px;
     margin-right: 280px;
@@ -114,9 +70,6 @@
 }
   
 .edit-picture-btn {
-    /* position: absolute;
-    bottom: 100px;
-    right: 20px; */
     width: 160px;
     background-color: orange;
     border: none;
@@ -147,8 +100,6 @@
     font-weight: bold;
     margin: 0 20px;
     width: 160px;
-    /* margin-bottom: 20px;
-    margin-left: 1250px; */
 }
   
 .menu-list {
@@ -156,6 +107,8 @@
     flex-direction: column;
     gap: 20px;
     padding-bottom: 8px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
   
 .menu-item {
@@ -205,7 +158,6 @@
 .menu-info p{
     margin: 0;
     color: #555;
-    /* align-items: center; */
     text-align: left;
 }
 
@@ -230,6 +182,7 @@
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
+    margin-right: 10px;
 }
   
 .add-menu-btn {
@@ -421,7 +374,6 @@
     padding: 5px 10px;
     border-radius: 5px;
     cursor: pointer;
-    margin-left: 10px;
 }
 
 /* Popup khusus untuk Delete Menu */
