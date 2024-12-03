@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useMenuContext } from '../app/MenuContext';
 import '../style/AddListMenuSeller.css';
+import { getMe } from '../features/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 function AddListMenuSeller() {
   const { menus, setMenus } = useMenuContext();
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const [menuData, setMenuData] = useState({
     name: '',
@@ -14,6 +17,10 @@ function AddListMenuSeller() {
     itemType: '',
     image: null,
   });
+
+  useEffect(()=>{
+    dispatch(getMe());
+  })
 
   const [previewImage, setPreviewImage] = useState(null);
 
