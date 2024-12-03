@@ -14,26 +14,11 @@
     align-items: center; /* Pusat secara vertikal */
     justify-content: center; /* Pusat secara horizontal */
     min-height: 100vh; /* Tinggi viewport penuh */
-    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    background: linear-gradient(180deg, var(--main-color), #4FC0FD); /* Background gradasi */
     padding: 0;
     margin: 0;
+    margin-top: -100px;
 }
-
-/* .edit-picture-seller {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-} */
-
-/* .back-button-container {
-    background-color: #fff;
-    padding: 10px;
-    border-radius: 100%;
-    display: inline-block;
-    margin-right: 300px;
-    margin-bottom: 250px;
-} */
   
 .edit-picture-seller-back-button {
     position: relative;
@@ -42,7 +27,7 @@
     left: -10px;
     background-color: var(--main-color);
     margin-top: 205px;
-    margin-left: -600px;
+    margin-left: -170px;
     border: none;
     font-size: 24px;
     cursor: pointer;
@@ -58,15 +43,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 1250px;
-    height: 1200px;
+    width: 400px;
+    height: 400px;
     z-index: 1;
 }
   
 .edit-picture-seller-image-upload-box {
     border: 1px solid #ccc;
-    width: 1150px !important;
-    height: 800px !important;
+    width: 300px !important;
+    height: 300px !important;
     margin-top: 10px;
     margin-left: 10px;
     display: flex;
@@ -104,7 +89,7 @@
     max-height: 100%;
 }
   
-.save-button {
+.save-button-edit-picture-seller {
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 10px 20px;

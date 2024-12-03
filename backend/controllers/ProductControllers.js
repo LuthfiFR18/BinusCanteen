@@ -42,9 +42,19 @@ export const getProductById = async(req, res) => {
 }
 
 export const createProduct = async(req, res) => {
-    const { name, price, producttype, boothId, userId  } = req.body; 
+    const { image, name, price, producttype, boothId, userId  } = req.body; 
+    
     try {
-        const newProduct = await Products.create({ name, price, producttype, boothId, userId }); 
+        const userId = req.user.id;
+        
+        const userBooth = await Booth.findOne({ where: { userId } });
+
+        if (!userBooth) {
+            return res.status(404).json({ message: "User does not own a booth" });
+        }
+
+        const newProduct = await Products.create({ image, name, price, producttype, boothId: userBooth.id, userId });
+
         res.status(201).json(newProduct);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -108,3 +118,4 @@ export const getProductsByBooth = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+

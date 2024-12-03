@@ -18,6 +18,7 @@ export function MenuProvider({ children }) {
       description: 'Nasi goreng dengan topping telur dadar/mata sapi',
       image: null,
       type: 'Food',
+      isOutOfStock: false
     },
     {
       id: 2,
@@ -26,6 +27,7 @@ export function MenuProvider({ children }) {
       description: 'Nasi goreng dengan aneka seafood segar',
       image: null,
       type: 'Food',
+      isOutOfStock: false
     },
     {
       id: 3,
@@ -34,18 +36,22 @@ export function MenuProvider({ children }) {
       description: 'Nasi goreng dengan topping seafood dan telur dadar/mata sapi',
       image: null,
       type: 'Food',
+      isOutOfStock: false
     },
   ]);
 
   const updateMenu = (updatedMenu) => {
+    // console.log('Updating menu:', updatedMenu);
     setMenus((prevMenus) =>
     //   prevMenus.map((menu) => (menu.id === updatedMenu.id ? updatedMenu : menu))
-      prevMenus.map((menu) => (menu.id === updatedMenu.id ? { ...menu, ...updatedMenu } : menu))
+      prevMenus.map((menu) => 
+        menu.id === updatedMenu.id ? { ...menu, ...updatedMenu } : menu
+      )
     );
   };
 
   return (
-    <MenuContext.Provider value={{ menus, updateMenu }}>
+    <MenuContext.Provider value={{ menus, setMenus, updateMenu }}>
       {children}
     </MenuContext.Provider>
   );

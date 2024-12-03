@@ -7,12 +7,6 @@ import '../style/EditMenuSeller.css';
 // import Loginwrap from '../Components/Loginwrap';
 const EditMenuSeller = ({ onSave }) => {
     const navigate = useNavigate();
-    // const [selectedImage, setSelectedImage] = useState(menu.image || null);
-    // const [name, setName] = useState(menu.name || ''); 
-    // const [itemType, setItemType] = useState(menu.itemType || 'Food');
-    // const [price, setPrice] = useState(menu.price || '');
-    // const [description, setDescription] = useState(menu.description || '');
-
     const [selectedImage, setSelectedImage] = useState(null);
     const [name, setName] = useState('');
     const [itemType, setItemType] = useState('Food');
@@ -20,9 +14,7 @@ const EditMenuSeller = ({ onSave }) => {
     const [description, setDescription] = useState('');
     const location = useLocation();
     const { menuId } = location.state || {};
-    const { menus, updateMenu } = useMenuContext();
-
-    // const menu = menus.find((menu) => menu.id === menuId);
+    const { updateMenu } = useMenuContext();
     const menu = location.state?.menu;
 
     useEffect(() => {
@@ -30,16 +22,11 @@ const EditMenuSeller = ({ onSave }) => {
             setSelectedImage(menu.image || null);
             setName(menu.name || '');
             setItemType(menu.itemType || 'Food');
-            setPrice(menu.price || '');
+            setPrice(formatPriceWithDots(menu.price.replace(/\D/g, '') || 'Rp. 0'))
             setDescription(menu.description || '');
         }
     }, [menu]);
 
-    // if (!menu) {
-    //     return <p>Menu not found</p>
-    // }
-  
-    // Handle image upload
     const handleImageUpload = (event) => {
         const file = event.target.files[0];
         if (file) {
@@ -48,14 +35,14 @@ const EditMenuSeller = ({ onSave }) => {
     };
 
     const handleSave = () => {
+        const rawPrice = price.replace(/\D/g, '');
         const updatedMenu = {
             ...menu,
             name,
-            price,
+            price: formatPriceWithDots(rawPrice),
             description,
             image: selectedImage,
             itemType,
-            // price,
         };
         updateMenu(updatedMenu);
         navigate('/Sellerpage');
@@ -67,20 +54,16 @@ const EditMenuSeller = ({ onSave }) => {
     };
 
     const formatPriceWithDots = (value) => {
-        return value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+        if (!value) return 'Rp. 0';
+        return `Rp. ${value.replace(/\B(?=(\d{3})+(?!\d))/g, '.')}`;
     }
 
     const handlePriceChange = (event) => {
-        let rawValue = event.target.value.replace(/\./g, '');
-
-        if (rawValue.length > 1 && rawValue.startsWith('0')) {
-            return;
-        }
-        if(rawValue === '' || /^\d+$/.test(rawValue)) {
-            setPrice(formatPriceWithDots(rawValue));
-        }
+        
+        const rawValue = event.target.value.replace(/\D/g, '');
+        setPrice(formatPriceWithDots(rawValue));
     };
-  
+
     return (
         <div className="edit-menu-seller-container">
             <button className="edit-menu-seller-back-button" onClick={() => navigate('/Sellerpage')}>
@@ -115,15 +98,14 @@ const EditMenuSeller = ({ onSave }) => {
                         type="text" 
                         id="price" 
                         value={price}
-                        // onChange={(e) => setPrice(e.target.value)}
+                        
                         onChange={handlePriceChange}
                         placeholder="Enter Price"
                     />
                 </div>
   
                 <div className="form-group">
-                    <label htmlFor="description">Description:</label>
-                    <input type="text" id="description" value={description} onChange={(e) => setDescription(e.target.value)} />
+                    
                 </div>
   
                 <div className="form-group">

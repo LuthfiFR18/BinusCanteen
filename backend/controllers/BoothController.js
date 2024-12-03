@@ -1,4 +1,7 @@
 import Booth from "../models/BoothModel.js";
+import Users from "../models/UserModel.js";
+
+
 
 
 export const getBooth = async (req, res) => {
@@ -63,3 +66,38 @@ export const deleteBooth = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const getBoothByUserId = async (req, res) => {
+    try {
+      const { userId } = req.params;
+      console.log('User ID:', userId);
+
+      // Validasi userId
+    if (!userId || isNaN(userId)) {
+        return res.status(400).json({ message: 'Invalid userId parameter' });
+      }
+
+      const booths = await Booth.findOne({
+        where: { userId },
+        include: {
+            model: Users,
+            as: 'user',
+            attributes: ['id', 'name', 'uuid'],
+        }
+      });
+  
+     
+      if (!booths) { // Cek jika booth tidak ditemukan
+        return res.status(404).json({ message: 'Booth not found for this user' });
+    }
+  
+      // Mengembalikan daftar booth
+      return res.status(200).json({
+        userId,
+        booths,
+      });
+    } catch (error) {
+      console.error(error);
+      res.status(500).json({ message: 'Internal Server Error', error: error.message });
+    }
+  };

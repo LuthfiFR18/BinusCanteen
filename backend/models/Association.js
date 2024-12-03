@@ -19,7 +19,7 @@ export const associations = () => {
 
     // Booth
     Users.hasOne(Booth, { foreignKey: 'userId' });
-    Booth.belongsTo(Users, { foreignKey: 'userId' });
+    Booth.belongsTo(Users, { foreignKey: 'userId', as: 'user' });
 
     //Cart
     Cart.hasMany(Products);
