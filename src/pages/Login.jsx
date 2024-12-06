@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { LoginUser,reset } from "../features/authSlice.js"
 import '../style/Login.css';
@@ -46,10 +45,6 @@ function Login(){
         e.preventDefault();
         dispatch(LoginUser({email, password}));
     };
-
-    // useEffect(() => {
-    //     console.log("User state after login attempt:", user); // Check user state after login
-    // }, [user]);
 
     const [isOpen, setIsOpen] = useState(false);
 

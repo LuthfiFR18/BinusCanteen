@@ -11,12 +11,12 @@ POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "uuid" : "adm1",
-    "name" : "Admin 1",
-    "email" : "adm1@gmail.com",
-    "password" : "dladmv",
+    "uuid" : "cst2",
+    "name" : "Customer 2",
+    "email" : "cst2@gmail.com",
+    "password" : "dlv",
     "phonenumber" : "081234567811",
-    "roleId" : "1"
+    "roleId" : "2"
 }
 
 ###
@@ -32,8 +32,8 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email" : "adm@gmail.com",
-    "password" : "adm"
+    "email" : "cst1@gmail.com",
+    "password" : "cst"
 }
 
 ###
@@ -79,13 +79,16 @@ Content-Type: application/json
   "startDate": "2024-11-07T07:20:00",
   "endDate": "2024-12-07T08:50:00",
   "userId": 5
-}
-
-###
-GET /booth/:boothId/products
+} 
 
 ###
 GET http://localhost:5000/booth/1/products
+
+### get cart from userId
+GET http://localhost:5000/cart/7
+
+### get total price from cart
+GET http://localhost:5000/cart/subTotal/5
 
 ###
 GET http://localhost:5000/booth/1
@@ -103,5 +106,11 @@ Content-Type: application/json
 }
 
 
+### update cart
+PATCH http://localhost:5000/cart/1506085f-95d4-452f-b163-42ea371c20e0
+Content-Type: application/json
 
+{
+  "quantity" : 7
+}
 
