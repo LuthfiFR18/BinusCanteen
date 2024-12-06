@@ -1,14 +1,20 @@
+import axios from "axios";
 import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { useMenuContext } from '../app/MenuContext';
-import '../style/AddListMenuSeller.css';
 import { getMe } from '../features/authSlice';
-import { useDispatch, useSelector } from 'react-redux';
+import '../style/AddListMenuSeller.css';
 
 function AddListMenuSeller() {
   const { menus, setMenus } = useMenuContext();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const {user} = useSelector((state) => state.auth);
+  // const location = useLocation();
+  // const [userData, setUserData] = useState();
+
+  const [booth, setBooth] = useState();
 
   const [menuData, setMenuData] = useState({
     name: '',
@@ -17,9 +23,32 @@ function AddListMenuSeller() {
     image: null,
   });
 
-  useEffect(()=>{
+  
+
+  useEffect(() => {
     dispatch(getMe());
-  })
+  }, [dispatch]);
+  
+  useEffect(() => {
+    if (user && user.id) {
+      getboothById();
+    }
+  }, [user]);
+
+  const getboothById = async () => {
+    try {
+      const boothResponse = await axios.get(`http://localhost:5000/booth/${user.id}`);
+      console.log("Booth response:", boothResponse.data);
+      const boothData = boothResponse.data;
+      setBooth(boothData);
+      
+
+    } catch (error) {
+      console.error("Error fetching booth:", error);
+    }
+  };
+  
+  
 
   const [previewImage, setPreviewImage] = useState(null);
 
@@ -34,18 +63,18 @@ function AddListMenuSeller() {
   };
 
     const handleChange = (e) => {
-        const { name, value } = e.target;
+      const { name, value } = e.target;
 
-        if (name === "price") {
-            const rawValue = value.replace(/\D/g, ""); // Hapus karakter non-digit
-            if (rawValue === "") {
-                setMenuData({ ...menuData, price: "" }); // Izinkan input kosong
-            } else {
-                const formattedPrice = new Intl.NumberFormat("id-ID").format(rawValue);
-                setMenuData({ ...menuData, price: `Rp ${formattedPrice}` });
+      if (name === "price") {
+          const rawValue = value.replace(/\D/g, ""); // Hapus karakter non-digit
+          if (rawValue === "") {
+              setMenuData({ ...menuData, price: "" }); // Izinkan input kosong
+          } else {
+              const formattedPrice = new Intl.NumberFormat("id-ID").format(rawValue);
+              setMenuData({ ...menuData, price: `Rp ${formattedPrice}` });
             }
         } else {
-            setMenuData({ ...menuData, [name]: value });
+          setMenuData({ ...menuData, [name]: value });
         }
     };
 
@@ -54,14 +83,41 @@ function AddListMenuSeller() {
     setMenuData({ ...menuData, itemType: e.target.value });
   };
 
-  const handleSave = () => {
-    const newMenu = {
-      ...menuData,
-      id: menus.length + 1, // Generate unique ID
-      isOutOfStock: false,
-      image: previewImage,
-    };
-    setMenus([...menus, newMenu]);
+  const handleSave = async () => {
+    
+    if (!booth || !booth.booths || !booth.booths.id) {
+      console.error("Booth data is missing or incomplete!");
+      return;
+    }
+
+    const formData = new FormData();
+
+    
+    formData.append("image", menuData.image);
+    formData.append("name", menuData.name);
+    formData.append("price", menuData.price.replace(/Rp\s?|\.|,/g, "")); // Konversi harga ke angka
+    formData.append("producttype", menuData.itemType);
+    formData.append("boothId", booth.booths.id);
+    formData.append("userId", booth.userId);
+
+    console.log("Data to be sent:");
+
+      for (let [key, value] of formData.entries()) {
+          console.log(`${key}: ${value}`);
+      }
+
+      try {
+     
+        const productsResponse = await axios.post(`http://localhost:5000/product`, formData, {
+          headers: { "Content-Type": "multipart/form-data" },
+        });
+            
+          console.log("Product created successfully:", productsResponse.data);
+          setMenuData(productsResponse.data);
+      } catch (error) {
+          console.error('Error Creating products:', error);
+      
+        };
     navigate('/Sellerpage');
   };
 

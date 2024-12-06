@@ -91,6 +91,17 @@ GET http://localhost:5000/booth/1/products
 GET http://localhost:5000/booth/1
 
 
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+
+    "name": "Sample Product",
+    "price": "50000",
+    "producttype": "Food"
+}
+
 
 
 

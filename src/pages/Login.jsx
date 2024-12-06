@@ -16,8 +16,8 @@ function Login(){
         const roleMap = {
             1: "Admin",
             2: "Customer",
-            3: "Seller",
-            4: "Delivery"
+            3: "Delivery",
+            4: "Seller"
         };
 
         if (user || isSuccess) {

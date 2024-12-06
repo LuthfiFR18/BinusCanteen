@@ -1,6 +1,7 @@
 import Products from "../models/ProductsModel.js";
 import Users from "../models/UserModel.js";
 import Booth from "../models/BoothModel.js";
+import upload from '../middleware/uploadConfig.js'; 
 
 export const getProducts = async(req, res) => {
     try {
@@ -42,21 +43,22 @@ export const getProductById = async(req, res) => {
 }
 
 export const createProduct = async(req, res) => {
-    const { image, name, price, producttype, boothId, userId  } = req.body; 
     
     try {
-        const userId = req.user.id;
+        console.log("Request body received:", req.body);
+        const { image, name, price, producttype, boothId, userId } = req.body;
+
         
-        const userBooth = await Booth.findOne({ where: { userId } });
 
-        if (!userBooth) {
-            return res.status(404).json({ message: "User does not own a booth" });
-        }
+        // if (!userBooth) {
+        //     return res.status(404).json({ message: "User does not own a booth" });
+        // }
 
-        const newProduct = await Products.create({ image, name, price, producttype, boothId: userBooth.id, userId });
+        const newProduct = await Products.create({ image, name, price: parseInt(price), producttype, boothId, userId });
 
         res.status(201).json(newProduct);
     } catch (error) {
+        console.error("Error while creating product:", error);
         res.status(500).json({ message: error.message });
     }
 }
@@ -81,6 +83,7 @@ export const updateProduct = async(req, res) => {
         await product.save(); // Menyimpan perubahan
         res.json(product); // Mengirimkan data product yang diperbarui
     } catch (error) {
+        console.error("Error while updating product:", error);
         res.status(500).json({ message: error.message });
     }
 }
@@ -93,6 +96,7 @@ export const deleteProduct = async (req, res) => {
         await product.destroy();
         res.json({ message: "Product deleted" });
     } catch (error) {
+        console.error("Error while deleting product:", error);
         res.status(500).json({ message: error.message });
     }
 };

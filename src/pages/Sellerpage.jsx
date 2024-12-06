@@ -32,6 +32,7 @@ function Sellerpage() {
     const [img, setImg] = useState(imgDefault);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
+    const [userData, setUserData] = useState();
     
     
    
@@ -43,8 +44,12 @@ function Sellerpage() {
         const savedImage = localStorage.getItem('savedImage');
         setImg(savedImage || imgDefault);
     
-        
-        const loadBoothAndProducts = async () => {
+        if (user && user.id) {
+            loadBoothAndProducts();
+        }
+    }, [user?.id]);
+
+    const loadBoothAndProducts = async () => {
             if (!user || !user.id) {
                 console.error("User data is missing.");
                 return;
@@ -56,12 +61,14 @@ function Sellerpage() {
                 const boothData = boothResponse.data;
                 console.log("boothData: ", boothData);
 
+                
+
 
                 if (boothData && boothData.booths && boothData.booths.id) {
                     const boothId = boothData.booths.id; // Mengakses ID booth dari boothData.booths
-                    console.log("booth id : ", boothId);
-                    const productsResponse = await axios.get(
-                        `http://localhost:5000/booth/${boothId}/products`
+                    
+
+                    const productsResponse = await axios.get(`http://localhost:5000/booth/${boothId}/products`
                     );
                     setMenus(productsResponse.data); // Set data Produk ke state
                     console.log("Produk dari Booth:", productsResponse.data);
@@ -73,11 +80,6 @@ function Sellerpage() {
                 console.error("Error loading Booth and Products:", error.message);
             }
         };
-    
-        if (user && user.id) {
-            loadBoothAndProducts();
-        }
-    }, [user?.id]);
 
     
 
@@ -144,13 +146,33 @@ function Sellerpage() {
     };
 
     const handleDeleteMenu = (menuId) => {
-        setSelectedMenuId(menuId);
-        setShowPopupDeleteMenu(true);
+        if (menuId) {
+            setSelectedMenuId(menuId);
+            setShowPopupDeleteMenu(true);
+        } else {
+            console.error("Menu ID is not valid:", menuId);
+        }
     };
 
-    const confirmDeleteMenu = () => {
-        setMenus((prevMenus) => prevMenus.filter((menu) => menu.id !== selectedMenuId));
-        setShowPopupDeleteMenu(false);
+    const confirmDeleteMenu = async () => {
+        if (!selectedMenuId) {
+            console.error("No selected menu to delete");
+            return;
+        }
+    
+        try {
+            const url = `http://localhost:5000/product/${selectedMenuId}`;
+            console.log("Deleting product at:", url);
+            const response = await axios.delete(url);
+            console.log("Product deleted:", response.data);
+    
+            // Optionally refresh the menu list after deletion
+            loadBoothAndProducts();
+    
+            setShowPopupDeleteMenu(false);
+        } catch (error) {
+            console.error("Error deleting product:", error);
+        }
     };
     
 
@@ -231,7 +253,7 @@ function Sellerpage() {
                             <div className="menu-info">
                                 <h4>{menu.name}</h4>
                                 
-                                <p>Type: {menu.itemType}</p>
+                                <p>Type: {menu.producttype}</p>
                             </div>
                             <div className="menu-info">
                                 <h4>Harga</h4>
@@ -250,7 +272,7 @@ function Sellerpage() {
                                 <button 
                                     className="delete-btn"
                                     style={{ backgroundColor: 'black', color: 'white' }}
-                                    onClick={() => handleDeleteMenu(menu.id)}
+                                    onClick={() => handleDeleteMenu(menu.uuid)}
                                 >
                                     Delete
                                 </button>
