@@ -114,7 +114,8 @@ const Payment = () => {
   const [location, setLocation] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const locations = ['Lantai 7', 'Lantai 10', 'Lantai 13', 'Lantai 16']; // Sample locations
+  const locations = ['Lantai 7 - 08.50', 'Lantai 10 - 08.50', 'Lantai 13 - 08.50', 'Lantai 16 - 13.20']; // Sample locations
+  const subtotal = 20000;
   const tax = 500;
   const total = React.useMemo(() => subTotal + tax, [subTotal, tax]);
 
@@ -221,7 +222,7 @@ const Payment = () => {
                 checked={selectedPaymentMethod === 'BCA Virtual Account'}
                 onChange={handlePaymentMethodChange}
               />
-              <label htmlFor="bca">
+              <label className='payment-method'htmlFor="bca">
                 <img src={bca} className="logo-payment" /> BCA Virtual Account
               </label>
             </div>
@@ -235,7 +236,7 @@ const Payment = () => {
                 checked={selectedPaymentMethod === 'QRIS'}
                 onChange={handlePaymentMethodChange}
               />
-              <label htmlFor="qris">
+              <label className='payment-method' htmlFor="qris">
                 <img src={qris} className="logo-payment" /> QRIS
               </label>
             </div>
