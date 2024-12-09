@@ -27,6 +27,7 @@
 .selector-btn {
     display: flex;
     justify-content: center;
+    gap: 10px;
     align-items: center;
     margin-bottom: 3%;
 }
@@ -90,4 +91,53 @@
 .menu-button.inactive {
     background-color: white;
     color: #000000;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .meals-container {
+        padding: 10px auto;
+        display: flex;
+        flex-direction: column;
+        background-color: #ffff;
+    }
+
+    .Mealspage {
+        flex: 1;
+    }
+
+    #booth-name {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 10px;  
+        font-size: 8px !important;
+    }
+
+    .selector-btn {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        gap: 5px;
+        align-items: center;
+        margin-bottom: 2%;
+    }
+
+    .menu-button-meals, .menu-button-drink, .menu-button-dessert {
+        width: 80px !important;
+        padding: 8px 8px !important;
+        font-size: 8px;
+    }
+
+    .menu-button-meals.active {
+        animation: myAnim 0.5s ease-in 0s 1 normal forwards;
+        pointer-events: none;
+        background-color: orange;
+        color: white;
+        z-index: 2;
+    }
+
+    .menu-button.inactive {
+        background-color: white;
+        color: #000000;
+    }
 }

@@ -17,6 +17,7 @@ function Adminbuyerpage() {
   const [isError, setIsError] = useState(false);
   const [search, setSearch] = useState('');
 
+  // Function Dropdown
   const locations = ['Customer', 'Seller', 'Delivery']; 
   const handleLocationChange = (event) => {
       setLocation(event.target.value);
@@ -29,8 +30,9 @@ function Adminbuyerpage() {
       <div className='adminpage'>
         <Headeradmin search={search} setSearch={setSearch}/>
 
+        {/* Navbar */}
         <nav>
-          <div class="menu">
+          <div class="menu-admin">
             <ul>
               <li>
                 <a href="#" className='allusernav'>
@@ -42,13 +44,14 @@ function Adminbuyerpage() {
               <li>
                 <a href="#" onClick={()=>navigate('/adminseller')}>
                 <FontAwesomeIcon icon={faStore} size='4x'/>
-                  <p className='namenavbar'>Booth</p>
+                  <p className='namenavbar'>Booth&Seller</p>
                 </a>
               </li>
             </ul>
           </div>
         </nav>
 
+        {/* Button Dropdown */}
         <div className="admin-subcontainer">        
           <div className="dropdown-admin-wrapper">
             <select
@@ -65,6 +68,7 @@ function Adminbuyerpage() {
           </div> 
         </div> 
 
+        {/* Table */}
         <div className="userlist-container">
           <Userlist selectedLocation={location} search={search}/>
         </div>

@@ -37,6 +37,7 @@ function HistoryBuyer() {
         <h3 className='history-buyer-title'>History</h3>      
         <p className="history-buyer-date">Friday, 6 September</p>
 
+        {/* Table History */}
         <div className="table-container">
           <table className="history-buyer-table">
             <thead>

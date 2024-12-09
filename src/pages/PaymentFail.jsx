@@ -17,15 +17,18 @@ function PaymentFail() {
   return (
     <div className="paymentfail-container">
       <div className="paymentfail-page">
-        <HeaderCartPayment/>      
+        <HeaderCartPayment/>  
+
         <h3 className="paymentfail-title">Payment Failed</h3>
         <div className="underline-paymentfail"></div>
 
+        {/* Mark fail Payment */}
         <div className="cross-container">
           <div className="cross-line cross-line-rotate-1"></div>
           <div className="cross-line cross-line-rotate-2"></div>
         </div>
 
+        {/* Reminder */}
         <h3 className="paymentfail-titlesummary">Please check on your saldo/choose another payment method</h3>
         
         <div className="underline-paymentfail-summary"></div>

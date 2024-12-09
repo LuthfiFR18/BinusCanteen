@@ -65,6 +65,8 @@ const Payment = () => {
         <h5 className="countdown">Segera melakukan pembayaran sebelum 01:59:58</h5>
         <span className="status">Status:<span className='status-text'> Done</span></span>
 
+
+        {/* Table Item Order to payment */}
         <table className="payment-table">
           <thead>
             <tr>

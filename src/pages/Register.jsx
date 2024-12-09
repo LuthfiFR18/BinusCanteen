@@ -106,6 +106,8 @@ function Register(){
             <div className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>
                 <p className='errorMsg'>{msg}</p>   
+
+                {/* Radio Button */}
                 <div className="role-options">
                     <input
                         type="radio"
@@ -133,6 +135,7 @@ function Register(){
                     <label htmlFor="delivery">Delivery</label>
                 </div> 
 
+                {/* From Register */}
                 <form onSubmit={saveUser}>
                     <h5 className='regisform'>Name:</h5>
                     <input className='input-register' type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
@@ -149,6 +152,7 @@ function Register(){
                     <h5 className='regisform'>Confirm Password:</h5>
                     <input className='input-register' type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
 
+                    {/* Button Submit */}
                     <button className="button-register" type='submit'>
                         Register
                     </button>

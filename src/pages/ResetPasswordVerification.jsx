@@ -42,6 +42,8 @@ function ResetPasswordVerification() {
   return (
     <div className='ResetPasswordVerification-container'>
         <div className="wrapper-reset-password">
+
+            {/* form Verify password */}
             <form action="#">
                 <h3>Email Verification</h3>
                 {msg && <p>{msg}</p>}

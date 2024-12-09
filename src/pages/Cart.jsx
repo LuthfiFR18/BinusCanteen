@@ -205,6 +205,7 @@ useEffect(() => {
                   </td>
 
                   <td>
+                    Rp.
                     {cart.product ? cart.product.price : 'Unknown'}
                   </td>
                 </tr>
@@ -221,17 +222,17 @@ useEffect(() => {
           <div>
             <div className="summary-line">
               <span>Subtotal:</span>
-              <span>{subTotal}</span>
+              <span>Rp.{subTotal}</span>
             </div>
 
             <div className="summary-line">
               <span>Tax:</span>
-              <span>{tax}</span>
+              <span>Rp.{tax}</span>
             </div>
 
             <div className="summary-line">
               <strong>Total:</strong>
-              <strong>{total}</strong>
+              <strong>Rp.{total}</strong>
             </div>
           </div>
         </div>

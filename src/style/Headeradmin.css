@@ -1,54 +1,83 @@
 .header-admin{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 75px;
-    background-color: #2E7ADD;
-    border-radius: 0 0 15px 15px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 75px;
+  gap: 19.5%;
+  background-color: #2E7ADD;
+  border-radius: 0 0 15px 15px ;
 
 }
 
 .logo-admin{
-    cursor: pointer;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
 }
 
 .logo-text-span{
-    color: #FF9D00;
+  color: #FF9D00;
 }
 
 .search-box-admin{
-    margin-left: 300px;
-    margin-right: 320px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .row{
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
 }
 
 #input-box-admin{
-    margin-right: 25px;
-    width: 550px;
-    padding: 5px;
-    padding-left: 20px;
-    font-size: 14px;
-    border-radius: 20px;
-    border-style: none;
-    outline: none;
+  margin-right: 25px;
+  width: 550px;
+  padding: 5px;
+  padding-left: 20px;
+  font-size: 14px;
+  border-radius: 20px;
+  border-style: none;
+  outline: none;
 }
 
 .search-icon-admin{
-    cursor: pointer;
-    transform: translateX(-400%);
-    background-color: transparent;
-    border-style: none;
+  cursor: pointer;
+  transform: translateX(-400%);
+  background-color: transparent;
+  border-style: none;
+}
+  
+@media screen and (max-width: 768px) {
+  .header-admin {
+    flex-direction: column;
+    height: auto;
+    padding: 15px;
+  }
+
+  .logo-admin {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+
+  .search-box-admin {
+    margin-left: 0;
+    margin-right: 0;
+    width: 50%;
+    justify-content: center;
+    padding: 10px 0;
+  }
+
+  #input-box-admin {
+    width: 550px;
+    height: 35px;
+  }
+
+  .search-icon-admin {
+    transform: translateX(-450%);
+  }
 }

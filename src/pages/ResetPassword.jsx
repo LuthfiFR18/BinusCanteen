@@ -67,6 +67,8 @@ function ResetPassword() {
     <div className='resetPassword'>
       <div className="wrapperResetpassword">
         <h1>Reset Password</h1>
+
+        {/* From Reset Password */}
         <form>
           {msg && <p>{msg}</p>}
           <h5 className='resetText'>New Password:</h5>

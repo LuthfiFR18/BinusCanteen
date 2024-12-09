@@ -11,7 +11,7 @@ function Header(){
     return(
         <div className="header-container">
             <div className="logo-text" onClick={()=>navigate('/dashboard')}>
-                Binus<span className='logo-text-span'>Canteen</span>
+                Binus<span className='logo-text-dashboard-span'>Canteen</span>
             </div>
 
             <div className="search-bar">
