@@ -1,8 +1,10 @@
 .drinkmenu-list{
-  width: 100%; /* Menggunakan lebar penuh layar */
+  width: 90%; /* Menggunakan lebar penuh layar */
   justify-content: center;
-  display: flex;
+  display: grid;
   align-items: center;
+  margin: auto;
+  gap: 1%;
 }
 .drink-item {
   border-radius: 25px;
@@ -221,7 +223,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
   .drinkmenu-list {
     width: 100%;
     padding: 0;
@@ -268,4 +270,4 @@
     font-size: 16px;
     padding: 10px 20px;
   }
-}
+} */

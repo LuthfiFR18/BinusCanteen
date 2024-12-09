@@ -4,7 +4,7 @@
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  min-width: 100%;
+  width: 100%;
   min-height: 75px;
   background-color: #2E7ADD;
   border-radius: 0 0 15px 15px ;
@@ -147,6 +147,7 @@
     margin: 0; /* Hilangkan margin kanan agar lebih rapi */
     justify-content: flex-end; /* Ikon tetap di sebelah kanan */
     width: auto; /* Pastikan fleksibilitas */
+    margin-bottom: 2%;
   }
 
   .logo-cart {

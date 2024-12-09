@@ -38,7 +38,7 @@ const Payment = () => {
   const [location, setLocation] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const locations = ['Lantai 7 - 08.50', 'Lantai 10 - 08.50', 'Lantai 13 - 08.50', 'Lantai 16 - 13.20']; // Sample locations
+  const locations = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
   const subtotal = 20000;
   const tax = 500;
   const total = subtotal + tax;
