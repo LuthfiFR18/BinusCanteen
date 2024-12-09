@@ -1,5 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
+import Cart from "./CartModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -15,7 +16,13 @@ const Payment = db.define('payment', {
     cartId: {
         type: DataTypes.STRING,
         allowNull: false,
-        
+        references: {
+            model: Cart,
+            key: 'id',
+        },
+        validate:{
+            notEmpty: true
+        }
     },
 
     paymentAmount: {
