@@ -3,7 +3,7 @@ POST http://localhost:5000/roles
 Content-Type: application/json
 
 {
-    "name": "Admin"
+    "name": "Seller"
 }
 
 
@@ -47,10 +47,10 @@ POST http://localhost:5000/product
 Content-Type: application/json
 
 {
-  "name": "Es Krim",
-  "price": 8000,
-  "producttype": "Dessert",
-  "boothId": 2,
+  "name": "Nasi Ayam Paket A",
+  "price": 15000,
+  "producttype": "Food",
+  "boothId": 1,
   "userId": 1
 }
 
@@ -64,10 +64,10 @@ POST http://localhost:5000/Booth
 Content-Type: application/json
 
     {
-  "name": "Nara Kitchen",
+  "name": "Rocky Chicken",
   "openingTime": "2024-10-22T09:00:00.000Z",
   "closingTime": "2024-10-22T18:00:00.000Z",
-  "userId": 2
+  "userId": 3
 }
 
 ### Membuat Course Baru

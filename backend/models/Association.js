@@ -24,7 +24,8 @@ export const associations = () => {
     Cart.belongsTo(Products, { foreignKey: 'productId', as: 'product' }); // A cart references one product
     Products.hasMany(Cart, { foreignKey: 'productId', as: 'carts' }); // A product can exist in multiple carts
     Cart.belongsTo(Users, { foreignKey: 'userId', targetKey: 'id' }); // A cart belongs to a user
-
+    Cart.hasMany(Payment, { foreignKey: 'cartId' });
+    
     // Payment
     Payment.belongsTo(Cart, { foreignKey: 'cartId' });
 

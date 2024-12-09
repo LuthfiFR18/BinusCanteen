@@ -8,9 +8,11 @@ const {DataTypes} = Sequelize;
 const Cart = db.define('cart', {
     uuid: {
         type: DataTypes.STRING,
-        primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
+        validate:{
+            notEmpty: true
+        }
     },
 
     productId: {

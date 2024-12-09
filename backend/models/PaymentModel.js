@@ -5,16 +5,18 @@ import Cart from "./CartModel.js";
 const {DataTypes} = Sequelize;
 
 const Payment = db.define('payment', {
+
     uuid: {
         type: DataTypes.STRING,
-        primaryKey: true,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
-        
+        validate:{
+            notEmpty: true
+        }
     },
 
     cartId: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         allowNull: false,
         references: {
             model: Cart,
@@ -56,7 +58,7 @@ const Payment = db.define('payment', {
     
 }, {
     freezeTableName: true
-});
+})
 
 
 
