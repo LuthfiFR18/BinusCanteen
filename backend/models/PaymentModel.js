@@ -30,7 +30,6 @@ const Payment = db.define('payment', {
     paymentAmount: {
         type: DataTypes.FLOAT,
         allowNull: false,
-        
     },
 
     paymentMethod: {

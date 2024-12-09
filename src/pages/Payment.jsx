@@ -1,16 +1,25 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../style/Payment.css';
 import HeaderCartPayment from '../components/HeaderCartPayment';
 import Footer from '../components/Footer';
 import img1 from '../img/nasigoreng.png';
 import bca from '../img/bca.png';
 import qris from '../img/qris.png';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import { useDispatch, useSelector } from 'react-redux';
+import { getMe } from '../features/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 
 const Payment = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  const [cart, setCart] = useState([]); // Ensure cart is an array
+  const [subTotal, setSubTotal] = useState(0);
+  const [userId, setUserId] = useState(null);
+
+  const { user } = useSelector((state) => state.auth);
 
   const [quantities, setQuantities] = useState({
     ayam: 1,
@@ -24,12 +33,79 @@ const Payment = () => {
     tea: 15000
   };
 
-  const updateQuantity = (item, change) => {
-    setQuantities((prevQuantities) => {
-      const newQuantity = prevQuantities[item] + change;
-      return newQuantity > 0 ? { ...prevQuantities, [item]: newQuantity } : prevQuantities;
-    });
+  useEffect(() => {
+    dispatch(getMe()); // Fetch user data when component mounts
+    console.log("Fetching user data...");
+  }, [dispatch]);
+
+  // This effect sets userId when user data is fetched
+  useEffect(() => {
+    if (user && user.id) {
+      setUserId(user.id); // Set the userId after user data is fetched
+      console.log("User ID fetched:", user.id); // Log user ID only once
+    }
+  }, [user]); // This runs only when user state changes
+
+  // This effect fetches the cart data when userId is set
+  useEffect(() => {
+    if (userId) {
+      console.log("Fetching cart for user ID:", userId); // Log when cart fetch starts
+      getCartByUserId();
+    }
+  }, [userId]); // Dependency on userId, only runs when userId changes
+
+  const getCartByUserId = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/cart/${userId}`);
+      console.log('Cart data received:', response.data);
+  
+      // Access the carts array from the response
+      if (response.data.carts && Array.isArray(response.data.carts)) {
+        setCart(response.data.carts); // Set the cart state to the array inside the response
+      } else {
+        setCart([]); // Fallback to an empty array if carts is not found or not an array
+      }
+    } catch (error) {
+      console.error('Error fetching cart:', error);
+      setCart([]); // Fallback in case of error
+    }
   };
+
+  useEffect(() => {
+    const calculateNewSubtotal = () => {
+      const newSubtotal = cart.reduce((sum, item) => {
+        const price = item.product?.price || 0;
+        return sum + price * item.quantity;
+      }, 0);
+      setSubTotal(newSubtotal);
+      console.log("New Subtotal Calculated:", newSubtotal);
+    };
+  
+    calculateNewSubtotal();
+  }, [cart]); // Runs whenever cart changes
+
+  const groupedPaymentArray = React.useMemo(() => {
+    console.log("Recomputing groupedCartArray with cart:", cart);
+  
+    const grouped = Object.values(
+      cart.reduce((acc, item) => {
+        const productName = item.product ? item.product.name : "Unknown";
+  
+        // Ensure products with the same name or ID are grouped together
+        if (!acc[productName]) {
+          acc[productName] = { ...item, quantity: item.quantity };
+        } else {
+          acc[productName].quantity += item.quantity; // Merge quantities for same product
+        }
+  
+        return acc;
+      }, {})
+    );
+  
+    console.log("Computed groupedCartArray:", grouped);
+    
+    return grouped;
+  }, [cart]);
 
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
@@ -41,11 +117,36 @@ const Payment = () => {
   const locations = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
   const subtotal = 20000;
   const tax = 500;
-  const total = subtotal + tax;
+  const total = React.useMemo(() => subTotal + tax, [subTotal, tax]);
+
 
   const handleLocationChange = (event) => {
     setLocation(event.target.value);
     setIsError(false); // Remove error when a location is selected
+  };
+
+  const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 24 hours in seconds
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setTimeLeft((prevTime) => {
+        if (prevTime <= 0) {
+          clearInterval(interval);
+          return 0;
+        }
+        return prevTime - 1;
+      });
+    }, 1000); // Update every second
+
+    return () => clearInterval(interval); // Cleanup interval on component unmount
+  }, []);
+
+  const formatTime = (seconds) => {
+    const hours = Math.floor(seconds / 3600);
+    const minutes = Math.floor((seconds % 3600) / 60);
+    const remainingSeconds = seconds % 60;
+
+    return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
   };
 
   // const handleSubmit = () => {
@@ -56,13 +157,14 @@ const Payment = () => {
   //     alert(`Order processed for delivery to ${location}`);
   //   }
   // };
+
   return (
     <div className="payment-container">
       <div className="payment-page">
         <HeaderCartPayment/>
 
         <h2 className='payment-title'>Payment Details</h2>
-        <h5 className="countdown">Segera melakukan pembayaran sebelum 01:59:58</h5>
+        <h5 className="countdown">Segera melakukan pembayaran sebelum {formatTime(timeLeft)}</h5>
         <span className="status">Status:<span className='status-text'> Done</span></span>
 
 
@@ -78,48 +180,33 @@ const Payment = () => {
           </thead>
 
           <tbody>
-            <tr>
-              <td className="payment-item-cell">
-                <img src={img1} alt="Ayam Geprek" />
-                Ayam Geprek
-              </td>
+            {cart.length > 0 ? (
+              groupedPaymentArray.map((cart) => (
+                <tr key={cart.id}>
+                  <td className="payment-item-cell">
+                    <img src={img1} alt="Product" />
+                    {cart.product ? cart.product.name : 'Unknown'}
+                  </td>
 
-              <td>
-                <div className="payment-quantity-control">
-                <span>{quantities.ayam}</span>
-                </div>
-              </td>
+                  <td>
+                      <span>{cart.quantity}</span>
+                  </td>
 
-              <td>
-                <input className="payment-description-input" type="text" placeholder="lvl 2" />
-              </td>
+                  <td>
+                    <input className="payment-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+                  </td>
 
-              <td>
-                {prices.ayam}
-              </td>
-
-            </tr>
-
-            <tr>
-              <td className="payment-item-cell">
-                <img src={img1} alt="Es Teh Manis" />
-                Es Teh Manis
-              </td>
-
-              <td>
-                <div className="payment-quantity-control">
-                <span>{quantities.tea}</span>
-                </div>
-              </td>
-
-              <td>
-                <input className="payment-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
-              </td>
-
-              <td>
-                {prices.tea}
-              </td>
-            </tr>
+                  <td>
+                    Rp.
+                    {cart.product ? cart.product.price*cart.quantity : 'Unknown'}
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4">No items in cart</td>
+              </tr>
+            )}
           </tbody>
         </table>
 
@@ -183,7 +270,7 @@ const Payment = () => {
               <div>
                 <div className="payment-summary-line">
                   <span>Subtotal:</span>
-                  <span>{subtotal}</span>
+                  <span>{subTotal}</span>
                 </div>
 
                 <div className="payment-summary-line">
