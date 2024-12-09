@@ -1,6 +1,5 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Order from "./OrderModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -12,15 +11,11 @@ const Payment = db.define('payment', {
         allowNull: false,
         
     },
-    orderId: {
+
+    cartId: {
         type: DataTypes.STRING,
         allowNull: false,
         
-    },
-
-    note: {
-        type: DataTypes.STRING,
-        allowNull: true,
     },
 
     paymentAmount: {

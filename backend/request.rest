@@ -1,3 +1,4 @@
+### create role
 POST http://localhost:5000/roles
 Content-Type: application/json
 
@@ -6,15 +7,15 @@ Content-Type: application/json
 }
 
 
-###
+### create user
 POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "uuid" : "cst2",
-    "name" : "Customer 2",
-    "email" : "cst2@gmail.com",
-    "password" : "dlv",
+    "uuid" : "cst1",
+    "name" : "Customer 1",
+    "email" : "cst@gmail.com",
+    "password" : "cst",
     "phonenumber" : "081234567811",
     "roleId" : "2"
 }
@@ -45,12 +46,12 @@ DELETE http://localhost:5000/logout
 POST http://localhost:5000/product
 Content-Type: application/json
 
-    {
-  "name": "Nasi Ayam Paket B",
-  "price": 15000,
-  "producttype": "Food",
-  "boothId": 3,
-  "userId": 3
+{
+  "name": "Es Krim",
+  "price": 8000,
+  "producttype": "Dessert",
+  "boothId": 2,
+  "userId": 1
 }
 
 ### Delete Product
@@ -63,10 +64,10 @@ POST http://localhost:5000/Booth
 Content-Type: application/json
 
     {
-  "name": "Rocky Chicken",
+  "name": "Nara Kitchen",
   "openingTime": "2024-10-22T09:00:00.000Z",
   "closingTime": "2024-10-22T18:00:00.000Z",
-  "userId": 3
+  "userId": 2
 }
 
 ### Membuat Course Baru

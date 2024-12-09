@@ -39,6 +39,11 @@ const Cart = db.define('cart', {
         allowNull: false,
         defaultValue: 1,
     },
+
+    productDescription: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    }
     
 }, {
     freezeTableName: true

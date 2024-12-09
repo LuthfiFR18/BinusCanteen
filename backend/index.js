@@ -8,7 +8,6 @@ import SequelizeStore from "connect-session-sequelize";
 
 import UserRoute from "./routes/UserRoute.js";
 import CartRoute from "./routes/CartRoute.js";
-import OrderRoute from "./routes/OrderRoute.js";
 import PaymentRoute from "./routes/PaymentRoute.js";
 import ProductRoute from "./routes/ProductRoute.js";
 import RoleRoute from "./routes/RoleRoute.js";
@@ -55,7 +54,6 @@ app.use(cors({
 app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
-app.use(OrderRoute);
 app.use(CartRoute);
 app.use(PaymentRoute);
 app.use(RoleRoute);
