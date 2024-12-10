@@ -95,9 +95,9 @@
   }
 
   .dropdown-menu-customer-profile {
-    width: 100px; /* Lebar dropdown lebih kecil */
-    top: 80px; /* Posisi lebih proporsional */
-    right: 80px; /* Jarak dari tepi lebih kecil */
+    width: 130px; /* Lebar dropdown lebih kecil */
+    top: 135px; /* Posisi lebih proporsional */
+    right: 40px; /* Jarak dari tepi lebih kecil */
   }
 
   .img-profile-customer {
@@ -107,6 +107,10 @@
   }
 
   .dropdown-menu-customer-profile p{
-    font-size: 7px !important;
+    font-size: 8px !important;
+  }
+
+  .dropdown-menu-customer-profile li button {
+    font-size: 8px;
   }
 }

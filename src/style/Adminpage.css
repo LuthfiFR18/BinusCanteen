@@ -96,3 +96,90 @@ nav{
     text-align: center;
     width: 400px;
 }
+
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  /* Admin container adjustments */
+  .admin-container {
+    padding: 5px auto; /* Corrected padding */
+  }
+
+  /* Admin page to take up remaining space */
+  .adminpage {
+    flex: 1;
+  }
+
+  /* Menu admin adjustments */
+  .menu-admin {
+    flex-direction: column; /* Stack items vertically on small screens */
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ensure it takes full width */
+  }
+
+  /* Adjust menu items */
+  .menu-admin ul {
+    width: 70%; /* Make menu items take full width */
+    height: auto; 
+    gap: 15px;
+    margin-top: 5%;
+    margin-bottom: 3%;
+    padding: 0; /* Remove any default padding */
+  }
+
+  .menu-admin ul li {
+    width: 90%; /* Adjust width for mobile screens */
+    max-width: 230px; /* Ensure items don't stretch too wide */
+    height: auto; /* Allow height to be adjusted based on content */
+    box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
+    border-radius: 10px; /* Smaller radius for mobile */
+    margin-bottom: 10px; /* Add space between items */
+  }
+
+  /* Specific border style for 'allusernav' */
+  .menu-admin ul li .allusernav {
+    border-radius: 10px;
+    border-color: #FF9D00;
+  }
+
+  /* Menu item text adjustments */
+  .menu-admin ul li a {
+    font-size: 8px; /* Adjust font size for better readability */
+    padding-top: 15px;
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Hover effect adjustments */
+  .menu-admin ul li:hover {
+    background-color: #FF9D00;
+  }
+
+  .menu-admin ul li a:hover {
+    color: #fff; /* Corrected color value */
+  }
+
+  /* Admin subcontainer adjustments */
+  .admin-subcontainer {
+    padding: 5px;
+    margin-right: 0;
+  }
+
+  /* Dropdown wrapper adjustments */
+  .dropdown-admin-wrapper {
+    display: flex;
+    flex-direction: column; /* Stack dropdown and items vertically */
+    align-items: center;
+    width: 100%; /* Ensure it takes full width */
+  }
+
+  /* Admin dropdown adjustments */
+  .admin-dropdown {
+    margin-left: 0; /* Remove left margin */
+    padding: 8px; /* Adjust padding */
+    font-size: 14px; /* Smaller font size */
+    width: 100%; /* Make dropdown take full width */
+    border-radius: 5px; /* Keep border radius */
+    border: 1px solid #ccc; /* Keep the border */
+  }
+}

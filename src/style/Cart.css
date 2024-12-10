@@ -223,6 +223,28 @@
     width: 100%;
   }
 
+  .dropdown-cart-wrapper option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  .cart-dropdown {
+    margin-bottom: 20px;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    font-size: 8px;
+  }
+
+  .cart-error-message {
+    color: red;
+    margin: auto;
+    margin-right: 20%;
+    font-size: 10px;
+  }
+
   .checkout {
     width: 40%;
     font-size: 10px;
@@ -307,6 +329,28 @@
 
   .cart-summary .summary-line {
     width: 100%;
+  }
+
+  .dropdown-cart-wrapper option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  .cart-dropdown {
+    margin-bottom: 20px;
+    margin: auto;
+    width: 100%;
+    height: 100%;
+    font-size: 14px;
+  }
+
+  .cart-error-message {
+    color: red;
+    margin: auto;
+    /* margin-right: 20%; */
+    font-size: 14px;
   }
 
   .checkout {

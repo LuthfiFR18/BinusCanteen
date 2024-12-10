@@ -180,7 +180,7 @@ const Userlist = ({selectedLocation, search }) => {
 
             {isPopupOpen && (
               <div className="popup-overlay-update">
-                <div className="popup-content">
+                <div className="popup-content-admin">
                   <span className="close" onClick={closePopup}>
                     &times;
                   </span>

@@ -4,6 +4,8 @@
     width: 90%; /* Lebih responsif dengan lebar berdasarkan persentase */
     margin: auto; /* Memusatkan secara horizontal */
     grid-template-columns: repeat(auto-fill, minmax(225px, 1fr)); /* Menyesuaikan kolom secara otomatis */
+    justify-content: center;
+    align-items: center;
     gap: 1rem;
     margin-top: 2rem;
 }

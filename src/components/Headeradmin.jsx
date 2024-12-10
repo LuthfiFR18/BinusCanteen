@@ -30,9 +30,9 @@ function Headeradmin({search, setSearch}){
                     </button>
                 </div>
             </div>
-            
-            <ProfileDropdown/>
-
+            <div className="profile-admin">
+                <ProfileDropdown/>
+            </div>
         </div>
     );
 }

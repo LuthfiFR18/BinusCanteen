@@ -10,6 +10,7 @@
 
 .logo-text{
   cursor: pointer;
+  display: flex;
   justify-content: center;
   align-items: center;
   font-size: 16px;
