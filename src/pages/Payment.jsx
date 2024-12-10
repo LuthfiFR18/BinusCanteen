@@ -114,7 +114,6 @@ const Payment = () => {
   const [location, setLocation] = useState('');
   const [isError, setIsError] = useState(false);
 
-  const locations = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
   const subtotal = 20000;
   const tax = 500;
   const total = React.useMemo(() => subTotal + tax, [subTotal, tax]);
@@ -244,25 +243,6 @@ const Payment = () => {
         </div>
 
         <div className="payment-subcontainer">
-          <div className="payment-left-section">
-            <p className="payment-error-message">*Silahkan pilih lokasi pengantaran.</p>
-        
-            <div className="dropdown-payment-wrapper">
-              <select
-                value={location}
-                onChange={handleLocationChange}
-                className="payment-dropdown"
-              >
-              <option value="">Tempat Pengantaran</option>
-              {locations.map((loc, index) => (
-              <option key={index} value={loc}>
-                {loc}
-              </option>
-              ))}
-              </select>
-            </div>
-          </div>
-
           <div className="payment-right-section">
             <hr className="payment-total-green-line" />
             <div className="payment-summary">

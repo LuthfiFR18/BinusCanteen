@@ -18,6 +18,15 @@ const Cart = () => {
 
   const { user } = useSelector((state) => state.auth);
 
+  const [location, setLocation] = useState('');
+  const [isError, setIsError] = useState(false);
+  const locations = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+    setIsError(false); // Remove error when a location is selected
+  };
+
   // This effect fetches user data
   useEffect(() => {
     dispatch(getMe()); // Fetch user data when component mounts
@@ -217,25 +226,45 @@ useEffect(() => {
           </tbody>
         </table>
 
-        <div className="cart-summary">
-          <div>
-            <div className="summary-line">
-              <span>Subtotal:</span>
-              <span>Rp.{subTotal}</span>
+        <div className="cart-subcontainer">
+          <div className="cart-left-section">
+              <p className="cart-error-message">*Silahkan pilih lokasi pengantaran.</p>
+          
+              <div className="dropdown-cart-wrapper">
+                <select
+                  value={location}
+                  onChange={handleLocationChange}
+                  className="cart-dropdown"
+                >
+                <option value="">Tempat Pengantaran</option>
+                {locations.map((loc, index) => (
+                <option key={index} value={loc}>
+                  {loc}
+                </option>
+                ))}
+                </select>
+              </div>
             </div>
 
-            <div className="summary-line">
-              <span>Tax:</span>
-              <span>Rp.{tax}</span>
-            </div>
+          <div className="cart-summary">
+            <div>
+              <div className="summary-line">
+                <span>Subtotal:</span>
+                <span>Rp.{subTotal}</span>
+              </div>
 
-            <div className="summary-line">
-              <strong>Total:</strong>
-              <strong>Rp.{total}</strong>
+              <div className="summary-line">
+                <span>Tax:</span>
+                <span>Rp.{tax}</span>
+              </div>
+
+              <div className="summary-line">
+                <strong>Total:</strong>
+                <strong>Rp.{total}</strong>
+              </div>
             </div>
           </div>
         </div>
-
         <button className="checkout" onClick={() => navigate('/payment')}>
           CHECKOUT
         </button>

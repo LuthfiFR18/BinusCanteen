@@ -1,12 +1,13 @@
-.drinkmenu-list{
+.drinkmenu-list {
   width: 90%; /* Menggunakan lebar penuh layar */
   justify-content: center;
   display: grid;
+  grid-template-columns: repeat(2, 1fr);
   align-items: center;
   margin: auto;
-  gap: 1%;
 }
 .drink-item {
+  margin-top: 2%;
   border-radius: 25px;
   display: flex;
   justify-content: center;

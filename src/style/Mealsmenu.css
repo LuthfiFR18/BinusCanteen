@@ -1,21 +1,24 @@
-.mealsmenu-list{
-  width: 100%; /* Menggunakan lebar penuh layar */
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.mealsmenu-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 10px auto;
+  width: 90%;
+
 }
 
 .meals-item {
+  margin-top: 2%;
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  margin-bottom: 1%;
+  margin: 10px auto;
   box-shadow:  0 0.1rem 0.5rem 0.1rem #D0CECE;
-  width: 620px;
+  width: 90%;
+  
 }
+
 .meals-item img {
   width: 100px;
   height: 100px;
@@ -32,12 +35,12 @@
   color: #333;
 }
 .meals-item p {
-  margin-left: 25%;
+  margin-left: 28%;
   font-size: 16px;
   color: #666;
 }
 .meals-order-button {
-  font-size: 5px;
+  font-size: 36px;
   font-weight: 600;
   border-radius: 25px;
   box-shadow:  0 0.3rem 1rem 0 #D0CECE;
@@ -53,11 +56,12 @@
 .meals-order-button span{
   font-size: 24px;
 }
+
 .meals-cart-control {
   margin-top: 20px;
   margin-right: 50px;
 }
-
+  
 .meals-cart-buttons {
   display: flex;
   justify-content: center;
@@ -172,19 +176,18 @@
   }
 }
 
-
 @media screen and (min-width: 481px) and (max-width: 1024px) {
   .mealsmenu-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     width: 100%;
-    padding: 0 10px;
+    padding: 10px auto;
   }
 
   .meals-item {
-    flex-direction: row;
-    width: 90%;
-    padding: 15px;
-    margin-top: auto;
-    margin-bottom: 3%;
+    width: 95%;
+    margin-top: 3%;
+    margin-bottom: 2%;
     box-shadow:  0 0.1rem 0.4rem 0.1rem #D0CECE;
   }
 
@@ -209,67 +212,69 @@
 
   .meals-cart-buttons {
     gap: 8px;
+    margin-left: 35%;
   }
 
   .meals-minplus-button, 
   .meals-quantity {
-    width: 35px;
-    height: 35px;
+    width: 30px;
+    height: 30px;
     font-size: 16px;
+    margin-left: 20px;
   }
 
   .meals-add-to-cart {
-    font-size: 15px;
-    padding: 8px 18px;
+    font-size: 12px;
+    margin-left: 50%;
+    padding: 8px 8px;
   }
 }
 
-@media screen and (min-width: 1024px) {
+/* @media screen and (min-width: 1024px) {
   .mealsmenu-list {
     width: 100%;
     padding: 0;
   }
 
-  .meals-item {
+  .drink-item {
     flex-direction: row;
-    justify-content: center;
     width: 620px;
     padding: 15px;
     box-shadow: 0 0.1rem 0.5rem 0.1rem #D0CECE;
   }
 
-  .meals-item img {
+  .drink-item img {
     width: 100px;
     height: 100px;
     margin-right: 20px;
   }
 
-  .meals-item h3, 
-  .meals-item p {
+  .drink-item h3, 
+  .drink-item p {
     margin-left: 20%;
     font-size: 16px;
   }
 
-  .meals-order-button {
+  .drink-order-button {
     width: 107px;
     height: 46px;
     font-size: 36px;
     margin-right: 55px;
   }
 
-  .meals-cart-buttons {
+  .drink-cart-buttons {
     gap: 10px;
   }
 
-  .meals-minplus-button, 
-  .meals-quantity {
+  .drink-minplus-button, 
+  .drink-quantity {
     width: 40px;
     height: 40px;
     font-size: 18px;
   }
 
-  .meals-add-to-cart {
+  .drink-add-to-cart {
     font-size: 16px;
     padding: 10px 20px;
   }
-}
+} */

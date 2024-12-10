@@ -82,6 +82,39 @@
   border-radius: 15px;
 }
 
+.cart-subcontainer{
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.cart-left-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.cart-dropdown-wrapper {
+  display: flex;
+  align-items: center;
+  margin-top: 20%;
+}
+
+.cart-dropdown {
+  margin-left: 50px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 400px;
+}
+
+.cart-error-message {
+  color: red;
+  margin-bottom: 10px;
+  margin-left: 100px;
+}
+
 .cart-summary {
   display: flex;
   justify-content: flex-end;
@@ -263,6 +296,8 @@
     font-size: 13px; 
     color: #999;
   }
+
+  
 
   .cart-summary {
     font-size: 16px;
