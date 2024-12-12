@@ -41,6 +41,7 @@ function Adminsellerpage() {
 };
 
     return (
+        // Page
         <div className="admin-container">
             <div className='sellerpage'>
                 <Headeradmin search={search} setSearch={setSearch}/>
@@ -58,13 +59,14 @@ function Adminsellerpage() {
                             <li>
                                 <a href="#" className='boothnav'>
                                 <FontAwesomeIcon icon={faStore} size='4x'/>
-                                <p className='namenavbar'>Booth</p>
+                                <p className='namenavbar'>Booth&Seller</p>
                                 </a>
                             </li>
                         </ul>
                     </div>
                 </nav>
 
+                {/* Button Dropdown  */}
                 <div className="admin-booth-subcontainer">        
                     <div className="dropdown-admin-booth-wrapper">
                         <select
@@ -82,6 +84,7 @@ function Adminsellerpage() {
                     </div>
                 </div>
 
+                {/* Table */}
                 <ProductList search={search} selectedBooth={selectedBooth} />
 
             </div>

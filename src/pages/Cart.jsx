@@ -15,9 +15,17 @@ const Cart = () => {
   const [cart, setCart] = useState([]); // Ensure cart is an array
   const [subTotal, setSubTotal] = useState(0);
   const [userId, setUserId] = useState(null);
-  const [productDesc, setProductDesc] = useState([])
 
   const { user } = useSelector((state) => state.auth);
+
+  const [location, setLocation] = useState('');
+  const [isError, setIsError] = useState(false);
+  const locations = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
+
+  const handleLocationChange = (event) => {
+    setLocation(event.target.value);
+    setIsError(false); // Remove error when a location is selected
+  };
 
   // This effect fetches user data
   useEffect(() => {
@@ -82,7 +90,7 @@ const Cart = () => {
   
         // Sync with backend to remove the item
         axios
-          .delete(`http://localhost:5000/cart/${itemToRemove.uuid}`)
+          .delete(`http://localhost:5000/cart/${itemToRemove.id}`)
           .then(() => {
             console.log("Item removed successfully:", itemToRemove);
           })
@@ -98,7 +106,7 @@ const Cart = () => {
   
         // Sync with backend to update the quantity
         axios
-          .patch(`http://localhost:5000/cart/${updatedCart[index].uuid}`, {
+          .patch(`http://localhost:5000/cart/${updatedCart[index].id}`, {
             quantity: updatedCart[index].quantity,
           })
           .then((response) => {
@@ -205,7 +213,8 @@ useEffect(() => {
                   </td>
 
                   <td>
-                    {cart.product ? cart.product.price : 'Unknown'}
+                    Rp.
+                    {cart.product ? cart.product.price*cart.quantity : 'Unknown'}
                   </td>
                 </tr>
               ))
@@ -217,25 +226,45 @@ useEffect(() => {
           </tbody>
         </table>
 
-        <div className="cart-summary">
-          <div>
-            <div className="summary-line">
-              <span>Subtotal:</span>
-              <span>{subTotal}</span>
+        <div className="cart-subcontainer">
+          <div className="cart-left-section">
+              <p className="cart-error-message">*Silahkan pilih lokasi pengantaran.</p>
+          
+              <div className="dropdown-cart-wrapper">
+                <select
+                  value={location}
+                  onChange={handleLocationChange}
+                  className="cart-dropdown"
+                >
+                <option value="">Tempat Pengantaran</option>
+                {locations.map((loc, index) => (
+                <option key={index} value={loc}>
+                  {loc}
+                </option>
+                ))}
+                </select>
+              </div>
             </div>
 
-            <div className="summary-line">
-              <span>Tax:</span>
-              <span>{tax}</span>
-            </div>
+          <div className="cart-summary">
+            <div>
+              <div className="summary-line">
+                <span>Subtotal:</span>
+                <span>Rp.{subTotal}</span>
+              </div>
 
-            <div className="summary-line">
-              <strong>Total:</strong>
-              <strong>{total}</strong>
+              <div className="summary-line">
+                <span>Tax:</span>
+                <span>Rp.{tax}</span>
+              </div>
+
+              <div className="summary-line">
+                <strong>Total:</strong>
+                <strong>Rp.{total}</strong>
+              </div>
             </div>
           </div>
         </div>
-
         <button className="checkout" onClick={() => navigate('/payment')}>
           CHECKOUT
         </button>

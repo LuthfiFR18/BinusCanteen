@@ -57,12 +57,14 @@ function Login(){
             <div className="loginpage">
                 <div className="wrapperLogin">
                     <h1 className='login-title'>Login</h1>
+
+                    {/* Login Form */}
                     <form onSubmit={Auth}>
                         {isError && <p className='errorMsg'>{message}</p>}
                         <h5 className='Loginpasstext'>Email:</h5>
                         <input className='inputLogin' type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
                         <h5 className='Loginpasstext'>Password:</h5>
-                        <input className='inputLogin' type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Password"></input>
+                        <input className='inputPassword' type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Password"></input>
                         <a className="greyText" href="#" onClick={()=> navigate('/resetpasswordverification')}>
                         Forgot Password?</a>
 

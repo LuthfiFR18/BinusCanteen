@@ -2,14 +2,27 @@ import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import Products from "./ProductsModel.js";
 import Users from "./UserModel.js";
+import Order from "./OrderModel.js";
 
 const {DataTypes} = Sequelize;
 
-const Cart = db.define('cart', {
+const OrderDetails = db.define('orderDetails', {
     uuid: {
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
         allowNull: false,
+        validate:{
+            notEmpty: true
+        }
+    },
+
+    orderId: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Order, // Reference the Products model
+            key: 'id', // Assuming Products has a primary key called 'id'
+        },
         validate:{
             notEmpty: true
         }
@@ -45,6 +58,14 @@ const Cart = db.define('cart', {
     productDescription: {
         type: DataTypes.STRING,
         allowNull: true,
+    },
+
+    subTotal: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        validate:{
+            notEmpty: true
+        }
     }
     
 }, {
@@ -53,4 +74,4 @@ const Cart = db.define('cart', {
 
 
 
-export default Cart;
+export default OrderDetails;

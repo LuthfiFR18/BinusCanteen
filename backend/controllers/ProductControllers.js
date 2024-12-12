@@ -43,6 +43,7 @@ export const getProductById = async(req, res) => {
 }
 
 export const createProduct = async(req, res) => {
+    const { image, name, price, producttype, boothId, userId  } = req.body; 
     
     try {
         console.log("Request body received:", req.body);

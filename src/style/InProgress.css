@@ -4,15 +4,38 @@
     background-color: #ffff;
 }
 
-.menu-name ul{
+.toggle-navbar-delivery{
+    font-weight: bold;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 5% auto 2.5%;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    background-color: #fff;
+    overflow: hidden;
 }
 
-.menu-name li{
-    margin-right: 20px;
-    margin-top: 5%;
-    display: inline-block;
+/* Elemen toggle button */
+.toggle-option-delivery{
+    padding: 10px;
+    flex: 1; /* Membagi ruang secara proporsional */
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+
+
+.toggle-option-delivery.active {
+    background-color: #FF9D00;
+    color: #fff;
+}
+
+.toggle-option-delivery:not(.active):hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Warna hover yang lebih halus */
 }
 
 

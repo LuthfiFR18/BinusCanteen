@@ -5,11 +5,12 @@ import Users from "./UserModel.js";
 const { DataTypes } = Sequelize;
 
 const Courses = db.define('course', {
-    id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        primaryKey: true
+    uuid: {
+        type: DataTypes.STRING,
+        defaultValue: DataTypes.UUIDV4,
+        allowNull: false,
     },
+    
     name: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -18,7 +19,7 @@ const Courses = db.define('course', {
             len: [3, 100] 
         }
     },
-    classname: {
+    courseRoom: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -26,20 +27,27 @@ const Courses = db.define('course', {
             len: [3, 50] 
         }
     },
-    startDate: {
-        type: DataTypes.DATE,
+
+    courseFloor: {
+        type: DataTypes.STRING,
         allowNull: false,
         validate: {
             notEmpty: true,
-            isDate: true
+            len: [3, 50] 
         }
     },
-    endDate: {
-        type: DataTypes.DATE,
+    startTime: {
+        type: DataTypes.TIME,
         allowNull: false,
         validate: {
             notEmpty: true,
-            isDate: true
+        }
+    },
+    endTime: {
+        type: DataTypes.TIME,
+        allowNull: false,
+        validate: {
+            notEmpty: true,
         }
     },
     //Primary Key

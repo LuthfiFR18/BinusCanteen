@@ -12,6 +12,7 @@ function Register(){
     const [confPassword, setConfPassword] = useState("");
     const [phonenumber, setphonenumber] = useState("");
     const [roleId, setRoleId] = useState();
+    const [userId, setUserId] = useState();
     const [msg, setMsg] = useState("");
 
     const [role, setSelectedRole] = useState('');
@@ -88,11 +89,13 @@ function Register(){
             });
             console.log("Ready To be Submitted", response.data);
             console.log("User saved successfully:", response.data);
+            console.log(response.data.id);
+            setUserId(response.data.id);
 
-            if(roleId === 2 || roleId === 4){
+            if(roleId === 2 || roleId === 3){
                 navigate("/");
-            }else if(roleId === 3){
-                navigate("/SellerBoothNameform")
+            }else if(roleId === 4){
+                navigate("/sellerbooth", { state: { userId } });
             }
         } catch (error) {
             if (error.response) {
@@ -106,6 +109,8 @@ function Register(){
             <div className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>
                 <p className='errorMsg'>{msg}</p>   
+
+                {/* Radio Button */}
                 <div className="role-options">
                     <input
                         type="radio"
@@ -133,6 +138,7 @@ function Register(){
                     <label htmlFor="delivery">Delivery</label>
                 </div> 
 
+                {/* From Register */}
                 <form onSubmit={saveUser}>
                     <h5 className='regisform'>Name:</h5>
                     <input className='input-register' type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
@@ -149,6 +155,7 @@ function Register(){
                     <h5 className='regisform'>Confirm Password:</h5>
                     <input className='input-register' type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
 
+                    {/* Button Submit */}
                     <button className="button-register" type='submit'>
                         Register
                     </button>

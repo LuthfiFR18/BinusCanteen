@@ -114,6 +114,7 @@
   padding: 15px;
   text-align: center;
   margin-left: 40%;
+  margin-bottom: 20px;
   cursor: pointer;
   color: white;
   font-weight: bold;
@@ -176,35 +177,8 @@
 
 .payment-subcontainer {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   padding: 20px;
-}
-
-.payment-left-section {
-  display: flex;
-  flex-direction: column;
-}
-
-.payment-dropdown-wrapper {
-  display: flex;
-  align-items: center;
-}
-
-.payment-dropdown {
-  margin-left: 50px;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
-  text-align: center;
-  width: 400px;
-}
-
-.payment-error-message {
-  color: red;
-  margin-bottom: 10px;
-  margin-left: 100px;
-
 }
 
 .payment-right-section {
@@ -223,4 +197,227 @@
 
 .right-section span {
   float: right;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .payment-container {
+    padding: 20px auto;
+  }
+
+  .payment-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .countdown {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .status{
+    font-size: 10px;
+    margin: auto;
+    margin-left: 3%;
+  }
+  .payment-table {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 8px;
+    table-layout: fixed;
+  }
+
+  .payment-table th, .payment-table td {
+    padding: 5px;
+    text-align: center;
+  }
+
+  .payment-item-cell img {
+    width: 50%;
+    height: 80px;
+    border-radius: 5px;
+    font-size: 8px;
+  }
+
+  .payment-description-input {
+    width: 80px;
+    height: 30px;
+  }
+
+  .payment-btn {
+    width: 50%;
+    margin-left: 25%;
+    padding: 5px;
+    font-size: 10px;
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Membungkus jika ruang tidak cukup */
+    width: 50%;
+    margin: auto;
+  }
+
+  .logo-payment {
+    width: 30%;
+    height: auto; /* Pertahankan proporsi gambar */
+  }
+  .payment-method{
+    width: 100%;
+    font-size: 10px;
+  }
+
+  .payment-summary {
+    margin-right: 5%;
+    font-size: 14px;
+  }
+
+  .payment-summary .payment-summary-line {
+    width: 100%;
+    font-size: 10px;
+  }
+
+  .dropdown-payment-wrapper option{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px;
+  }
+
+  .payment-dropdown {
+    margin-bottom: 20px;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    font-size: 8px;
+  }
+
+  .payment-error-message {
+    color: red;
+    margin: auto;
+    margin-right: 20%;
+    font-size: 10px;
+  }
+
+  .payment-total-green-line {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .payment-container {
+    padding: 30px auto;
+  }
+
+  .payment-title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+
+  .countdown {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+
+  .status {
+    font-size: 12px;
+    margin: auto;
+    margin-left: 5%;
+  }
+
+  .payment-table {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 10px;
+    table-layout: auto;
+  }
+
+  .payment-table th, .payment-table td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  .payment-item-cell img {
+    width: 70%;
+    height: 100px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+
+  .payment-description-input {
+    width: 150px;
+    height: 50px;
+    font-size: 12px;
+  }
+
+  .payment-btn {
+    width: 60%;
+    margin-left: 20%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Membungkus jika ruang tidak cukup */
+    width: 100%;
+    margin: auto;
+  }
+
+  .logo-payment {
+    width: 40%;
+    height: auto; /* Pertahankan proporsi gambar */
+    margin: 5px;
+  }
+
+  .payment-method {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .payment-summary {
+    margin-right: 7%;
+    font-size: 16px;
+  }
+
+  .payment-summary .payment-summary-line {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .dropdown-payment-wrapper option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .payment-dropdown {
+    margin-bottom: 20px;
+    margin: auto;
+    width: 70%;
+    font-size: 12px;
+  }
+
+  .payment-error-message {
+    color: red;
+    margin: auto;
+    margin-right: 10%;
+    font-size: 12px;
+  }
+
+  .payment-total-green-line {
+    width: 100%;
+    margin: auto;
+  }
 }

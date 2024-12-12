@@ -3,9 +3,10 @@ import Courses from './CourseModel.js';
 import Roles from './RolesModel.js';
 import Booth from './BoothModel.js';
 import Cart from './CartModel.js';
-import Order from './OrderModel.js';
 import Payment from './PaymentModel.js';
 import Products from './ProductsModel.js';
+import Order from './OrderModel.js';
+import OrderDetails from './OrderDetailsModel.js';
 
 
 export const associations = () => {
@@ -21,21 +22,25 @@ export const associations = () => {
     Users.hasOne(Booth, { foreignKey: 'userId' });
     Booth.belongsTo(Users, { foreignKey: 'userId', as: 'user' });
 
-    //Cart
-    Cart.hasMany(Products);
-    Cart.belongsTo(Products, { foreignKey: 'productId', as: 'product' });
-    Cart.belongsTo(Users, { foreignKey: 'userId', targetKey: 'id'  });
+    // Cart
+    Cart.belongsTo(Products, { foreignKey: 'productId', as: 'product' }); // A cart references one product
+    Products.hasMany(Cart, { foreignKey: 'productId', as: 'carts' }); // A product can exist in multiple carts
+    Cart.belongsTo(Users, { foreignKey: 'userId', targetKey: 'id' }); // A cart belongs to a user
+    Cart.hasMany(Payment, { foreignKey: 'cartId' });
 
-    //Order
+    // Order
     Order.belongsTo(Cart, { foreignKey: 'cartId' });
+    Order.hasMany(OrderDetails, { foreignKey: 'orderId', as: 'details' });
+    
+    // Order Details
+    OrderDetails.belongsTo(Order, { foreignKey: 'orderId', as: 'order' });
+    
+    // Payment
+    Payment.belongsTo(Cart, { foreignKey: 'cartId' });
 
-    //Payment
-    Payment.belongsTo(Order, { foreignKey: 'orderId' });
-
-    //Product
+    // Product
     Products.belongsTo(Users, { foreignKey: 'userId', as: 'user' });
-
-    Booth.hasMany(Products, { foreignKey: 'boothId'}); // Sesuaikan jika Booth menggunakan uuid sebagai primary key
-    Products.belongsTo(Booth, { foreignKey: 'boothId', as: 'booth'});
-    Products.hasMany(Cart, { foreignKey: 'productId' });
+    Booth.hasMany(Products, { foreignKey: 'boothId' });
+    Products.belongsTo(Booth, { foreignKey: 'boothId', as: 'booth' });
 };
+

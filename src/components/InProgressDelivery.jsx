@@ -3,7 +3,7 @@ import '../style/InProgressDelivery.css'
 function InProgressDelivery() {
   return (
     <div className="order-table-delivery">
-    <table>
+    <table className='inprogress-table'>
       <thead>
         <tr>
           <th>Date & time</th>

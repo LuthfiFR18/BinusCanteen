@@ -1,21 +1,24 @@
-.mealsmenu-list{
-  width: 100%; /* Menggunakan lebar penuh layar */
-  justify-content: center;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.mealsmenu-list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  margin: 10px auto;
+  width: 90%;
+
 }
 
 .meals-item {
+  margin-top: 2%;
   border-radius: 25px;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 15px;
-  margin-bottom: 20px;
+  margin: 10px auto;
   box-shadow:  0 0.1rem 0.5rem 0.1rem #D0CECE;
-  width: 620px;
+  width: 90%;
+  
 }
+
 .meals-item img {
   width: 100px;
   height: 100px;
@@ -32,7 +35,7 @@
   color: #333;
 }
 .meals-item p {
-  margin-left: 25%;
+  margin-left: 28%;
   font-size: 16px;
   color: #666;
 }
@@ -53,16 +56,17 @@
 .meals-order-button span{
   font-size: 24px;
 }
+
 .meals-cart-control {
   margin-top: 20px;
   margin-right: 50px;
 }
-
+  
 .meals-cart-buttons {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .meals-minplus-button {
@@ -89,6 +93,7 @@
   justify-content: center;
   align-items: center;
   font-size: 18px;
+  border-style: none;
 }
 
 .meals-add-to-cart {
@@ -100,5 +105,137 @@
   cursor: pointer;
   font-size: 16px;
   margin-top: 10px;
-  margin-left: 11px;
+}
+
+/* Media Queries */
+
+@media screen and (min-width: 320px) and (max-width: 480px){
+  .mealsmenu-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+    width: 100%;
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .meals-item {
+    flex-direction: column;
+    width: 100%;
+    padding: 10px;
+    box-shadow:  0 0.1rem 0.3rem 0.1rem #D0CECE;
+  }
+
+  .meals-item img {
+    width: 30px;
+    height: 30px;
+    margin-right: 0;
+    margin-bottom: 10px; 
+  }
+
+  .meals-item h3, 
+  .meals-item p {
+    margin-left: 0;
+    text-align: center;
+    font-size: 8px;
+  }
+
+  .meals-item h3 {
+    margin-bottom: 5px;
+  }
+
+  .meals-order-button {
+    width: 40%;
+    margin: 5px;
+    height: 30px;
+  }
+
+  .meals-cart-control {
+    margin-right: 0;
+  }
+
+  .meals-cart-buttons {
+    gap: 5px;
+  }
+
+  .meals-minplus-button, 
+  .meals-quantity {
+    width: 25px;
+    height: 25px;
+    font-size: 8px;
+    border-style: none;
+  }
+
+  .meals-add-to-cart {
+    font-size: 6px;
+    padding: 3px;
+    margin-left: 15%;
+    width: 70%;
+    height: 20px;
+    text-align: center;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .mealsmenu-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    width: 100%;
+    padding: 10px; /* Revisi padding */
+    justify-content: center; /* Ratakan grid ke tengah */
+    gap: 15px;
+  }
+
+  .meals-item {
+    width: auto; /* Kurangi width untuk memberikan ruang */
+    margin: auto; /* Atur agar rata tengah */
+    margin-top: 3%;
+    box-shadow: 0 0.1rem 0.4rem 0.1rem #D0CECE;
+    border-radius: 10px; /* Tambahkan radius untuk estetika */
+    overflow: hidden;
+  }
+
+  .meals-item img {
+    width: 18%; /* Pastikan gambar responsif */
+    height: 40%; /* Sesuaikan tinggi gambar */
+    object-fit: cover; /* Jaga proporsi gambar */
+  }
+
+  .meals-item h3,
+  .meals-item p {
+    text-align: left;
+    font-size: 10px; /* Sesuaikan ukuran font */
+  }
+
+  .meals-order-button {
+    width: 20%;
+    height: 20%;
+    margin: auto; /* Buat tombol berada di tengah */
+    display: flex;
+    font-size: 12px;
+  }
+
+  .meals-cart-buttons {
+    display: flex; /* Pastikan tombol tersusun horizontal */
+    gap: 8px;
+    justify-content: center; /* Rata tengah */
+    margin: 5px auto;
+    padding-left: 20px;
+  }
+
+  .meals-minplus-button,
+  .meals-quantity {
+    width: 40px;
+    height: 40px;
+    font-size: 16px;
+    margin-left: 15%;
+    border-style: none;
+  }
+
+  .meals-add-to-cart {
+    font-size: 10px;
+    text-align: center;
+    padding: 8px 18px;
+    margin-left: 33%;
+  }
 }

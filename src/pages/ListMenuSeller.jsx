@@ -16,6 +16,7 @@ import PopUpDeleteMenuSeller from '../components/PopUpDeleteMenuSeller';
 import imgDefault from '../img/nasigoreng.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
+import EditMenuSeller from './EditMenuSeller';
 
 function ListMenuSeller() {
     const navigate = useNavigate();
@@ -29,6 +30,8 @@ function ListMenuSeller() {
     const [isOutOfStockAction, setIsOutOfStockAction] = useState(false);
     const [selectedMenuId, setSelectedMenuId] = useState(null);
     const [isClosingStore, setIsClosingStore] = useState(false);
+    const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+    const [selectedMenu, setSelectedMenu] = useState(null);
     const [img, setImg] = useState(imgDefault);
 
     useEffect(() => {
@@ -70,8 +73,15 @@ function ListMenuSeller() {
     }
 
     const handleEditMenu = (menu) => {
-        navigate(`/EditMenuSeller`, { state: { menu } });
+        // navigate(`/EditMenuSeller`, { state: { menu } });
+        setSelectedMenu(menu);
+        setIsEditPopupOpen(true);
     };
+
+    const handleCloseEditPopup = () => {
+        setIsEditPopupOpen(false);
+        setSelectedMenu(null);
+    }
 
     const handleOutOfStockClick = (menuId, isOutOfStock) =>{
         setSelectedMenuId(menuId);
@@ -122,7 +132,7 @@ function ListMenuSeller() {
             
             <div className="menu-list">
                 {menus.map((menu) => (
-                    <div key={menu.id} className="menu-item">
+                    <div key={menu.id} className="list-menu-item">
                         <img 
                             src={menu.image || "nasigoreng.png"} 
                             alt="Menu Item" 
@@ -161,6 +171,17 @@ function ListMenuSeller() {
                 ))}
             </div>
 
+            {isEditPopupOpen && (
+                <div className="popup-overlay">
+                    <div className="popup">
+                        <EditMenuSeller
+                            menu={selectedMenu}
+                            onClose={handleCloseEditPopup}
+                        />
+                    </div>
+                </div>
+            )}
+
             {showPopupStoreStatus &&(
                 
                 <PopUp
@@ -169,7 +190,7 @@ function ListMenuSeller() {
                 onCancel={() => setShowPopupStoreStatus(false)}
                 isClosingStore={isClosingStore}
                 />
-        )}
+            )}
 
             {showPopupOutOfStock &&(
                 <PopUpOutOfStock

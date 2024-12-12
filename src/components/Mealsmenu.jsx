@@ -34,16 +34,20 @@ const Mealsmenu = () => {
 
     const getProductsbyBooth = async () => {
       try {
-        setLoadingProducts(true);
-        const response = await axios.get(`http://localhost:5000/booth/${boothId}/products`);
-        setProducts(response.data);
-        console.log(response.data);
+          setLoadingProducts(true);
+          const response = await axios.get(`http://localhost:5000/booth/${boothId}/products`);
+          if (response.status === 200) {
+              setProducts(response.data);
+          } else {
+              console.error('Failed to fetch products, status:', response.status);
+          }
       } catch (error) {
-        console.error('Error fetching products:', error);
+          console.error('Error fetching products:', error.response ? error.response.data : error.message);
       } finally {
-        setLoadingProducts(false);
+          setLoadingProducts(false);
       }
-    };
+  };
+  
     
     useEffect(() => {
       getProductsbyBooth();

@@ -82,6 +82,7 @@ function App() {
         <Routes>
           <Route path='/'element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/sellerbooth' element={<SellerBoothNameform/>}/>
           <Route path='/resetpassword' element={<ResetPassword/>}/>
           <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
           <Route path='/changepassword' element={<ChangePassword/>}/>
