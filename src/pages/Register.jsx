@@ -22,9 +22,9 @@ function Register(){
         if (selectedRole === "User") {
             setRoleId(2);
         } else if (selectedRole === "Seller") {
-            setRoleId(3);
-        } else if (selectedRole === "Delivery") {
             setRoleId(4);
+        } else if (selectedRole === "Delivery") {
+            setRoleId(3);
         }
     };
 
@@ -92,7 +92,7 @@ function Register(){
             if(roleId === 2 || roleId === 4){
                 navigate("/");
             }else if(roleId === 3){
-                navigate("/sellerbooth")
+                navigate("/SellerBoothNameform")
             }
         } catch (error) {
             if (error.response) {

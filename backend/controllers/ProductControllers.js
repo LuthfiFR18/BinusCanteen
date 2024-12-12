@@ -48,12 +48,7 @@ export const createProduct = async(req, res) => {
         console.log("Request body received:", req.body);
         const { image, name, price, producttype, boothId, userId } = req.body;
 
-        
-
-        // if (!userBooth) {
-        //     return res.status(404).json({ message: "User does not own a booth" });
-        // }
-
+ 
         const newProduct = await Products.create({ image, name, price: parseInt(price), producttype, boothId, userId });
 
         res.status(201).json(newProduct);
@@ -73,7 +68,8 @@ export const updateProduct = async(req, res) => {
         if (!product) return res.status(404).json({ message: "Product not found" });
 
         // Mengupdate data product
-        const { name, price, producttype, userId } = req.body;
+        const { image, name, price, producttype, boothId, userId } = req.body;
+        product.image = image || product.image;
         product.name = name || product.name;
         product.price = price || product.price;
         product.producttype = producttype || product.producttype;

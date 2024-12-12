@@ -48,8 +48,8 @@ const ProductList = ({selectedBooth, search }) => {
 
     const getBooths = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/booth'); // Mengambil daftar booth dari backend
-        setBooths(response.data); // Simpan daftar booth ke state booths
+        const response = await axios.get('http://localhost:5000/booth');
+        setBooths(response.data); 
       } catch (error) {
         console.error('Error fetching booths:', error);
       }
@@ -57,11 +57,11 @@ const ProductList = ({selectedBooth, search }) => {
 
     const deleteProduct = async (productId) => {
       try {
-          const url = `http://localhost:5000/product/${productId}`; // Pastikan productId adalah UUID yang sesuai
-          console.log("Deleting product at:", url); // Tambahkan log ini
+          const url = `http://localhost:5000/product/${productId}`; 
+          console.log("Deleting product at:", url);
           const response = await axios.delete(url);
           console.log("Product deleted:", response.data);
-          getProducts(); // Panggil kembali fungsi untuk memperbarui daftar produk
+          getProducts();
       } catch (error) {
           console.error("Error deleting product:", error);
       }
@@ -70,6 +70,7 @@ const ProductList = ({selectedBooth, search }) => {
   //pop up
   const [isPopupOpen, setIsPopupOpen] = useState(false);
   const [formData, setFormData] = useState({
+    
     productName: "",
     price: "",
     productType: "",
@@ -81,6 +82,7 @@ const ProductList = ({selectedBooth, search }) => {
   // Open and close popup functions
   const openPopup = (product) => {
     setFormData({
+      uuid: product.uuid,
       productName: product.name,
       price: product.price,
       productType: product.producttype,
@@ -93,14 +95,7 @@ const ProductList = ({selectedBooth, search }) => {
 
   const closePopup = () => {
     setIsPopupOpen(false);
-    setFormData({
-      productName: "",
-      price: "",
-      productType: "",
-      sellerName: "",
-      productImage: null,
-      previewImage: "",
-    });
+    
   };
 
   // Handle form input changes
@@ -122,11 +117,29 @@ const ProductList = ({selectedBooth, search }) => {
     });
   };
 
-  const handleUpdate = (e) => {
+  const handleUpdate = async (e) => {
     e.preventDefault();
-    console.log("Updated Product Data:", formData);
-    closePopup();
-  };
+    try {
+      if (!formData.uuid) {
+        console.error('No product ID provided for update');
+        return;
+      }
+
+        await axios.patch(`http://localhost:5000/product/${formData.uuid}`, {
+            name: formData.productName,
+            price: parseInt(formData.price),
+            producttype: formData.productType,
+            sellerName: formData.sellerName,
+            image: formData.productImage
+        });
+        console.log("Product updated successfully");
+        getProducts(); // Refresh daftar produk
+        closePopup();
+    } catch (error) {
+        console.error("Error updating product:", error);
+    }
+};
+
 
   const handleCancel = () => {
     // setFormData({

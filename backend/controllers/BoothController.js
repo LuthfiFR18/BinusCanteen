@@ -35,7 +35,7 @@ export const createBooth = async (req, res) => {
     }
 };
 
-export const updateBooth= async (req, res) => {
+export const updateBooth = async (req, res) => {
     try {
         const booth = await Booth.findByPk(req.params.id); 
         if (!booth) return res.status(404).json({ message: "Booth not found" }); 
