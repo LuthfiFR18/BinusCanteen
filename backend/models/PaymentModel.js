@@ -1,6 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-import Cart from "./CartModel.js";
+import Order from "./OrderModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -15,11 +15,11 @@ const Payment = db.define('payment', {
         }
     },
 
-    cartId: {
+    orderId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Cart,
+            model: Order,
             key: 'id',
         },
         validate:{
@@ -35,8 +35,8 @@ const Payment = db.define('payment', {
     paymentMethod: {
         type: DataTypes.STRING,
         allowNull: false,
-        
     },
+    
     paymentDate: {
         type: DataTypes.DATE,
         allowNull: false,
@@ -48,12 +48,6 @@ const Payment = db.define('payment', {
         allowNull: false,
         defaultValue: 'Pending'
     },
-
-    deliveryLocation: {
-        type: DataTypes.STRING,
-        allowNull: false,
-        
-    }
     
 }, {
     freezeTableName: true

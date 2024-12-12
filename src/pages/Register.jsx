@@ -12,6 +12,7 @@ function Register(){
     const [confPassword, setConfPassword] = useState("");
     const [phonenumber, setphonenumber] = useState("");
     const [roleId, setRoleId] = useState();
+    const [userId, setUserId] = useState();
     const [msg, setMsg] = useState("");
 
     const [role, setSelectedRole] = useState('');
@@ -22,9 +23,9 @@ function Register(){
         if (selectedRole === "User") {
             setRoleId(2);
         } else if (selectedRole === "Seller") {
-            setRoleId(3);
-        } else if (selectedRole === "Delivery") {
             setRoleId(4);
+        } else if (selectedRole === "Delivery") {
+            setRoleId(3);
         }
     };
 
@@ -88,11 +89,13 @@ function Register(){
             });
             console.log("Ready To be Submitted", response.data);
             console.log("User saved successfully:", response.data);
+            console.log(response.data.id);
+            setUserId(response.data.id);
 
-            if(roleId === 2 || roleId === 4){
+            if(roleId === 2 || roleId === 3){
                 navigate("/");
-            }else if(roleId === 3){
-                navigate("/sellerbooth")
+            }else if(roleId === 4){
+                navigate("/sellerbooth", { state: { userId } });
             }
         } catch (error) {
             if (error.response) {
