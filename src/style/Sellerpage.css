@@ -18,8 +18,24 @@
 }
 
 .menu{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
     margin-top: 220px;
     margin-bottom: -100px;
+}
+
+ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    gap: 20px;
+}
+
+li{
+    margin: 0;
+    padding: 0;
 }
 
 .welcome-text{
@@ -101,7 +117,7 @@
     margin: 0 20px;
     width: 160px;
 }
-  
+
 .menu-list {
     display: flex;
     flex-direction: column;
@@ -110,8 +126,36 @@
     margin-left: 10px;
     margin-right: 10px;
 }
-  
+
 .menu-item {
+    display: flex;
+    /* border: 1px solid #ddd; */
+    /* border-radius: 10px; */
+    border-radius: 10px;
+    padding: 10px;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 120px;
+    height: 40px;
+    text-decoration: none;
+    color: orange; /* Warna teks */
+    font-weight: bold;
+    font-size: 14px; /* Ukuran font */
+    border: 1px solid #ddd; /* Border */
+    border-radius: 10px; /* Membuat sudut rounded */
+    background-color: #f9f9f9; /* Warna background */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Bayangan */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    text-align: center;
+}
+
+.menu-item:hover {
+    background-color: #ffd6a5; /* Warna hover */
+    transform: scale(1.05); /* Membesar sedikit */
+}
+
+.list-menu-item {
     display: flex;
     border: 1px solid #ddd;
     border-radius: 10px;
@@ -193,7 +237,7 @@
     color: white;
     border: none;
     padding: 15px;
-    border-radius: 50%;
+    border-radius: 100%;
     font-size: 24px;
     cursor: pointer;
     z-index: 1000;
@@ -237,6 +281,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    z-index: 1000;
 }
   
 .popup {
@@ -244,7 +289,9 @@
     padding: 20px;
     border-radius: 10px;
     position: relative;
-    width: 300px;
+    /* width: 300px; */
+    width: 90%;
+    max-width: 400px;
     text-align: center;
 }
 
@@ -312,7 +359,8 @@
     right: 10px;
     background: transparent;
     border: none;
-    font-size: 18px;
+    /* font-size: 18px; */
+    font-size: 20px;
     cursor: pointer;
 }
 
@@ -340,31 +388,47 @@
 
 .menu ul li{
     display: flex;
-    width: 248px;
-    height: 230px;
+    /* width: 248px; */
+    height: 0px;
+    padding: 0;
+    margin: 0;
+    width: auto;
+    /* height: auto; */
+    background: none;
     text-align: center;
     border-radius: 25px;
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
 
 .menu ul li a{
-    padding-top: 70px;
-    width: 248px;
-    display: center;
+    /* padding-top: 70px; */
+    padding: 10px 20px;
+    width: 130px;
+    /* width: auto; */
+    /* height: auto; */
+    height: 100px;
+    background: none;
+    /* display: center; */
+    display: flex;
+    text-align: center;
     font-size: 16px;
     font-weight: bold;
     text-decoration: none;
-    color: var(--btn-color);
+    /* color: var(--btn-color); */
+    color: #000;
     align-items: center;
     justify-content: center;
 }
 
 .menu ul li:hover{
-    background-color: var(--btn-color);
+    /* background-color: var(--btn-color); */
+    background-color: transparent;
+    box-shadow: none;
 }
 
 .menu ul li a:hover{
-    color: var(--text-color);
+    /* color: var(--text-color); */
+    color: var(--btn-color);
 }
 
 .menu-edit .delete-btn {

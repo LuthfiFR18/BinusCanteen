@@ -5,17 +5,23 @@ import { useMenuContext } from '../app/MenuContext';
 import '../style/EditMenuSeller.css';
 // import e from 'cors';
 // import Loginwrap from '../Components/Loginwrap';
-const EditMenuSeller = ({ onSave }) => {
+// const EditMenuSeller = ({ onSave }) => {
+const EditMenuSeller = ({ menu, onClose }) => {
     const navigate = useNavigate();
-    const [selectedImage, setSelectedImage] = useState(null);
-    const [name, setName] = useState('');
-    const [itemType, setItemType] = useState('Food');
-    const [price, setPrice] = useState('');
-    const [description, setDescription] = useState('');
+    // const [selectedImage, setSelectedImage] = useState(null);
+    const [selectedImage, setSelectedImage] = useState(menu?.image || null);
+    // const [name, setName] = useState('');
+    const [name, setName] = useState(menu?.name || '');
+    // const [itemType, setItemType] = useState('Food');
+    const [itemType, setItemType] = useState(menu?.itemType || 'Food');
+    // const [price, setPrice] = useState('');
+    const [price, setPrice] = useState(menu?.price || '');
+    // const [description, setDescription] = useState('');
+    const [description, setDescription] = useState(menu?.description || '');
     const location = useLocation();
     const { menuId } = location.state || {};
     const { updateMenu } = useMenuContext();
-    const menu = location.state?.menu;
+    // const menu = location.state?.menu;
 
     useEffect(() => {
         if (menu) {
@@ -44,8 +50,10 @@ const EditMenuSeller = ({ onSave }) => {
             image: selectedImage,
             itemType,
         };
-        updateMenu(updatedMenu);
-        navigate('/Sellerpage');
+        // updateMenu(updatedMenu);
+        // navigate('/Sellerpage');
+        console.log("Updated Menu:", updatedMenu);
+        onClose();
     };
   
     // Handle radio button selection
@@ -66,10 +74,19 @@ const EditMenuSeller = ({ onSave }) => {
 
     return (
         <div className="edit-menu-seller-container">
-            <button className="edit-menu-seller-back-button" onClick={() => navigate('/Sellerpage')}>
+            {/* <button className="edit-menu-seller-back-button" onClick={() => navigate('/Sellerpage')}>
                 <span className="arrow-left">&#8592;</span>
+            </button> */}
+            {/* <button className="close-popup-btn" onClick={onClose}>
+                &#x2715;
+            </button> */}
+            <button className="close-popup-btn" onClick={onClose}>
+                &#x2715;
             </button>
             <div className="edit-menu-seller">
+                {/* <button className="close-popup-btn" onClick={onClose}>
+                    &#x2715;
+                </button> */}
                 <div className="image-upload">
                     <label htmlFor="imageUpload" className="edit-menu-seller-image-upload-box">
                         {selectedImage ? (
@@ -84,6 +101,7 @@ const EditMenuSeller = ({ onSave }) => {
                         accept="image/*"
                         style={{ display: 'none' }}
                         onChange={handleImageUpload}
+                        // onChange={(e) => setSelectedImage(URL.createObjectURL(e.target.files[0]))}
                     />
                 </div>
   
@@ -98,28 +116,33 @@ const EditMenuSeller = ({ onSave }) => {
                         type="text" 
                         id="price" 
                         value={price}
-                        
-                        onChange={handlePriceChange}
+                        // onChange={handlePriceChange}
+                        // onChange={(e) => setPrice(e.target.value)}
+                        onChange={(e) => handlePriceChange(e)}
                         placeholder="Enter Price"
                     />
                 </div>
   
-                <div className="form-group">
+                {/* <div className="form-group">
                     
-                </div>
+                </div> */}
   
                 <div className="form-group">
                     <label>Meal Type:</label>
                     <div className="radio-group">
                         <label>
                             <input type="radio" value="Food" checked={itemType === 'Food'} onChange={handleItemTypeChange} />
+                            {/* <input type="radio" value="Food" checked={itemType === 'Food'} onChange={(e) => setItemType(e.target.value)} /> */}
+                            {/* <input type="radio" value="Food" checked={itemType === 'Food'} onChange={(e) => setItemType(e.target.value)} /> */}
                             Food
                         </label>
                         <label>
+                            {/* <input type="radio" value="Drink" checked={itemType === 'Drink'} onChange={(e) => setItemType(e.target.value)}/> */}
                             <input type="radio" value="Drink" checked={itemType === 'Drink'} onChange={handleItemTypeChange}/>
                             Drink
                         </label>
                         <label>
+                            {/* <input type="radio" value="Dessert" checked={itemType === 'Dessert'} onChange={(e) => setItemType(e.target.value)}/> */}
                             <input type="radio" value="Dessert" checked={itemType === 'Dessert'} onChange={handleItemTypeChange}/>
                             Dessert
                         </label>
