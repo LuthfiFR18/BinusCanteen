@@ -1,9 +1,24 @@
 import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
 import '../style/SellerBoothNameform.css'
 function SellerBoothNameform() {
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const [userId, setUserId] = useState('');
+
+  useEffect(() => {
+    if (location.state && location.state.userId) {
+        setUserId(location.state.userId);
+    }
+}, [location.state]);
+
+useEffect(() => {
+    console.log(userId); // Logs the updated userId
+}, [userId]);
+
 
   const [imagePreview, setImagePreview] = useState(null);
 

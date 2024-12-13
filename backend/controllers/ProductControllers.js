@@ -46,11 +46,11 @@ export const createProduct = async(req, res) => {
     const { image, name, price, producttype, boothId, userId  } = req.body; 
     
     try {
-        // const userId = req.user.id;
-        
-        // const userBooth = await Booth.findOne({ where: { userId } });
+        console.log("Request body received:", req.body);
+        const { image, name, price, producttype, boothId, userId } = req.body;
 
-        const newProduct = await Products.create({ image, name, price, producttype, boothId, userId });
+ 
+        const newProduct = await Products.create({ image, name, price: parseInt(price), producttype, boothId, userId });
 
         res.status(201).json(newProduct);
     } catch (error) {
@@ -69,7 +69,8 @@ export const updateProduct = async(req, res) => {
         if (!product) return res.status(404).json({ message: "Product not found" });
 
         // Mengupdate data product
-        const { name, price, producttype, userId } = req.body;
+        const { image, name, price, producttype, boothId, userId } = req.body;
+        product.image = image || product.image;
         product.name = name || product.name;
         product.price = price || product.price;
         product.producttype = producttype || product.producttype;
