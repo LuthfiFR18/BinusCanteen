@@ -63,6 +63,12 @@
     color: var(--text-color);
 }
 
+.menu-admin ul li .boothnav{
+    border-radius: 25px;;
+    border-style: solid;
+    border-color: #FF9D00;
+}
+
 .admin-booth-subcontainer {
     display: flex;
     flex-direction: column;

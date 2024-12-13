@@ -1,10 +1,19 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useNavigate } from 'react-router-dom';
 import '../style/SellerBoothNameform.css'
 function SellerBoothNameform() {
 
   const navigate = useNavigate();
 
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const handleImageChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const imageURL = URL.createObjectURL(file);
+      setImagePreview(imageURL);
+    }
+  };
   return (
     <div className='seller-booth-form-container'>
       <div className="seller-booth-form-wrapper">
@@ -22,6 +31,24 @@ function SellerBoothNameform() {
 
           <h5 className="time-close-booth-text">Time Close Booth:</h5>
           <input type="time" className='time-close-booth'/>
+
+          <h5 className="image-booth-seller-text">Input Image Booth:</h5>
+          <input
+            type="file"
+            className='input-image-booth'
+            accept="image/*"
+            onChange={handleImageChange}
+          />
+          {imagePreview && (
+            <div>
+              <p>Preview Image:</p>
+              <img
+                src={imagePreview}
+                alt="Booth Preview"
+                style={{ maxWidth: '300px', marginTop: '10px' }}
+              />
+            </div>
+          )}
           <button className="submit-booth-btn" onClick={()=> navigate('/')}>Submit</button>
         </form>
       </div>

@@ -47,7 +47,7 @@ function Adminsellerpage() {
                 <Headeradmin search={search} setSearch={setSearch}/>
                 
                 <nav>
-                    <div class="menu">
+                    <div class="menu-admin">
                         <ul>
                             <li>
                                 <a href="#" onClick={()=>navigate('/adminbuyer')}>
