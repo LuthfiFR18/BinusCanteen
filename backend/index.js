@@ -4,7 +4,7 @@ import express from "express";
 import session from "express-session";
 import db from "./config/Database.js";
 import SequelizeStore from "connect-session-sequelize";
-
+import path from 'path'
 
 import UserRoute from "./routes/UserRoute.js";
 import CartRoute from "./routes/CartRoute.js";
@@ -51,6 +51,8 @@ app.use(cors({
     credentials: true,
     origin: ['http://localhost:3000', 'http://localhost:3001']
 }));
+
+app.use('/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 app.use(express.json());
 app.use(UserRoute);

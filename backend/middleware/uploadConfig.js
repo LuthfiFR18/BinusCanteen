@@ -1,6 +1,9 @@
 import multer from 'multer';
 import path from 'path';
 
+
+
+
 // Konfigurasi penyimpanan file
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -8,7 +11,7 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, cb) => {
     // Tentukan nama file yang unik (misalnya menggunakan timestamp dan ekstensi asli file)
-    cb(null, Date.now() + path.extname(file.originalname));
+    cb(null, file.fieldname + "_" + Date.now() + path.extname(file.originalname));
   }
 });
 

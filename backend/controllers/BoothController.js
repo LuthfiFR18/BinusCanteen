@@ -1,5 +1,6 @@
 import Booth from "../models/BoothModel.js";
 import Users from "../models/UserModel.js";
+import upload from "../middleware/uploadConfig.js";
 
 
 
@@ -35,24 +36,36 @@ export const createBooth = async (req, res) => {
     }
 };
 
-export const updateBooth= async (req, res) => {
+export const updateBooth = async (req, res) => {
     try {
-        const booth = await Booth.findByPk(req.params.id); 
-        if (!booth) return res.status(404).json({ message: "Booth not found" }); 
-
-        // Mengupdate data seller
-        const { name, openingTime, closingTime, userId } = req.body;
-        booth.name = name || booth.name;
-        booth.openingTime = openingTime || booth.openingTime;
-        booth.closingTime = closingTime || booth.closingTime;   
-        booth.userId = userId || booth.userId;
-
-        await booth.save(); // Menyimpan perubahan
-        res.json(booth); // Mengirimkan data booth yang diperbarui
+      const booth = await Booth.findByPk(req.params.id); // Cari booth berdasarkan ID
+      if (!booth) {
+        return res.status(404).json({ message: "Booth not found" });
+      }
+  
+      const { name, openingTime, closingTime, userId } = req.body;
+  
+      // Perbarui data booth
+      booth.name = name || booth.name;
+      booth.openingTime = openingTime || booth.openingTime;
+      booth.closingTime = closingTime || booth.closingTime;
+      booth.userId = userId || booth.userId;
+  
+      // Perbarui kolom `image` jika ada file gambar diupload
+      if (req.file) {
+        booth.image = req.file.filename; // Simpan nama file gambar
+      }
+  
+      await booth.save(); // Simpan perubahan
+  
+      res.json({
+        message: "Booth updated successfully",
+        booth,
+      });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+      res.status(500).json({ message: error.message });
     }
-};
+  };
 
 
 export const deleteBooth = async (req, res) => {
