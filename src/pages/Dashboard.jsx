@@ -2,7 +2,6 @@ import React, { useEffect } from 'react';
 import '../style/Dashboard.css';
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMe, reset } from '../features/authSlice';

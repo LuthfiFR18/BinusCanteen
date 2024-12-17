@@ -64,7 +64,7 @@
 }
 
 /* Popup content */
-.popup-content {
+.popup-content-admin {
   background: #fff;
   padding: 30px;
   border-radius: 10px;
@@ -128,4 +128,69 @@ label {
 
 .button-admin-user-cancel:hover{
   background-color: rgb(163, 3, 3);
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .user-table {
+    width: 100%;
+    font-size: 5px; /* Mengurangi ukuran font untuk tabel */
+    table-layout: fixed;
+    margin: 10px auto;
+    /* min-height: 100vh; */
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 5px; /* Mengurangi padding */
+  }
+
+  .button-admin-user-update,
+  .button-admin-user-delete {
+
+    font-size: 5px; /* Mengurangi ukuran font */
+    padding: 3px 5px; /* Mengurangi padding */
+    margin-right: 5px; /* Mengurangi jarak antar tombol */
+    margin-bottom: 20%;
+  }
+  .button-admin-user-delete {
+    padding-right: 7px;
+    text-align: center;
+  }
+  .popup-content-admin {
+    width: 70%; /* Membuat popup lebih fleksibel */
+    padding: 20px; /* Mengurangi padding */
+  }
+
+  .input-update-admin {
+    font-size: 7px; /* Mengurangi ukuran font input */
+    padding: 10px; /* Menyesuaikan padding input */
+  }
+
+  .form-buttons {
+    flex-direction: column; /* Membuat tombol vertikal */
+    align-items: center; /* Meratakan tombol secara horizontal */
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    margin: auto;
+  }
+
+  .button-admin-user-save,
+  .button-admin-user-cancel {
+    width: 60%; /* Membuat tombol memanjang mengikuti lebar layar */
+    margin-bottom: 10px; /* Menambah jarak antar tombol */
+    font-size: 8px;
+  }
+
+  .button-admin-user-cancel{
+    padding: 5px;
+  }
+
+  .close {
+    font-size: 12x !important; /* Menyesuaikan ukuran ikon close */
+  }
+
+  label {
+    font-size: 8px !important; /* Menyesuaikan ukuran font label */
+  }
 }

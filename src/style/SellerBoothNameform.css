@@ -11,7 +11,7 @@
 .seller-booth-form-wrapper{
     width: fit-content;
     padding: 30px 30px 30px 30px;
-    margin: 125px auto;
+    margin: 10px auto;
     background-color: var(--text-color);
     border-radius: 25px;
     text-align: center;
@@ -20,7 +20,41 @@
 
 .booth-label{
     text-align: left;
-    padding-top: 30px;
+    padding: 8px;
+}
+
+.booth-input{
+    margin-bottom: 5%;
+}
+
+.date-booth-text{
+    text-align: left;
+}
+
+.date-booth{
+    width: 100%;
+    padding: 8px;
+    border-radius:20px;
+    margin-bottom: 5%;
+}
+
+.time-open-booth-text{
+    text-align: left;
+}
+.time-open-booth{
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+}
+
+.time-close-booth-text{
+    text-align: left;
+}
+.time-close-booth{
+    padding: 8px;
+    width: 100%;
+    border-radius: 20px;
 }
 
 .submit-booth-btn{
@@ -30,8 +64,8 @@
     border-radius: 25px;
     width: 184px;
     height: 41px;
-    margin-top: 35px;
-    margin-left: 115px;
+    margin-top: 10%;
+    margin-left: 10%;
     background-color: var(--btn-color);
     color: var(--text-color);
     font-weight: bold;

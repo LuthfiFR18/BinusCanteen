@@ -1,17 +1,22 @@
-.delivery-list{
+.delivery-list {
     width: 100%;
     height: fit-content;
+    display: flex;
+    flex-direction: column; /* Mengatur item agar berjejer secara vertikal */
+    align-items: center; /* Menjaga item berada di tengah */
 }
-.delivery-item {
+
+.delivery-item {    
     border-radius: 25px;
     display: flex;
     align-items: center;
     padding: 15px;
-    margin: 1% 0 0 30%;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-    max-width: 600px;
-    width: 100%;
+    margin: 10px 0; /* Memberikan jarak antar item */
+    box-shadow: 0 0.1rem 0.5rem 0.1rem #D0CECE;
+    max-width: 600px; /* Batas lebar maksimal */
+    width: 90%; /* Sesuaikan lebar agar responsif */
 }
+
 .delivery-item img {
     width: 100px;
     height: 100px;
@@ -19,44 +24,93 @@
     object-fit: cover;
     margin-right: 20px;
 }
+
 .delivery-item-content {
     flex-grow: 1;
 }
+
 .title-item {
-  margin-left: 20%;
-  font-size: 16px;
+    font-size: 16px;
     color: #333;
 }
+
 .delivery-item p {
-    margin-left: 30%;
     font-size: 14px;
     color: #666;
 }
 
-.order-number-delivery{
+.order-number-delivery {
     font-size: 14px;
     text-align: center;
     margin-right: 10%;
-}
-.delivery-place-order{
-    font-size: 14px;
-    text-align: center;
-    margin-right: 10%;
-}
-.delivery-order-button {
-  font-size: 36px;
-  font-weight: 600;
-  border-radius: 25px;
-  box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-  width: 107px;
-  height: 46px;
-  margin-right: 55px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 }
 
-.delivery-order-button span{
-font-size: 24px;
+.delivery-place-order {
+    font-size: 14px;
+    text-align: center;
+    margin-right: 10%;
+}
+
+.delivery-order-button {
+    font-size: 36px;
+    font-weight: 600;
+    border-radius: 25px;
+    box-shadow: 0 0.3rem 1rem 0 #D0CECE;
+    width: 107px;
+    height: 46px;
+    margin-left: 10px; /* Mengatur jarak tombol */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.delivery-order-button span {
+    font-size: 24px;
+}
+
+/* Responsif untuk ukuran layar max-width 768px */
+@media screen and (max-width: 768px) {
+    .delivery-item {
+        width: 100%;
+        flex-direction: row; /* Mengubah elemen menjadi kolom */
+        align-items: center;
+        padding: 10px;
+        margin: 8px 0; /* Mengurangi margin antar item */
+    }
+
+    .delivery-item img {
+        width: 80px; /* Mengurangi ukuran gambar */
+        height: 80px;
+        margin-bottom: 0; /* Menambah jarak antara gambar dan konten */
+    }
+
+    .delivery-item-content {
+        text-align: center; /* Menjaga teks tetap di tengah */
+    }
+
+    .title-item {
+        font-size: 14px; /* Menyesuaikan ukuran font */
+    }
+
+    .delivery-item p {
+        font-size: 12px; /* Menyesuaikan ukuran font */
+    }
+
+    .order-number-delivery,
+    .delivery-place-order {
+        font-size: 12px;
+        margin-right: 0; /* Menghilangkan margin kanan */
+    }
+
+    .delivery-order-button {
+        font-size: 28px; /* Menyesuaikan ukuran font tombol */
+        width: 90px; /* Mengurangi lebar tombol */
+        height: 40px; /* Mengurangi tinggi tombol */
+        margin-right: 50px; /* Menghilangkan margin kanan */
+    }
+
+    .delivery-order-button span {
+        font-size: 18px; /* Menyesuaikan ukuran font tombol */
+    }
 }

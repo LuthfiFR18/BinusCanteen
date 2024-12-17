@@ -1,9 +1,6 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import Users from "./UserModel.js";
-import Products from "./ProductsModel.js";
-
-
 
 const {DataTypes} = Sequelize;
 
@@ -27,20 +24,18 @@ const Booth = db.define('booth',{
     },
 
     openingTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.TIME,
         allowNull: false,
         validate: {
             notEmpty: true,
-            isDate: true
         }
     },
 
     closingTime: {
-        type: DataTypes.DATE,
+        type: DataTypes.TIME,
         allowNull: false,
         validate: {
             notEmpty: true,
-            isDate: true
         }
     },
 

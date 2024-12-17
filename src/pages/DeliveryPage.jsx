@@ -14,43 +14,40 @@ function DeliveryPage() {
 
   return (
     <div className="dashboard-delivery">
-        <HeaderDelivery/>
+        <div className="delivery-page">
+            <HeaderDelivery/>
 
-        <div className="toggle-navbar-delivery">
-            <div className={`toggle-option-delivery ${activeTab === 'Avaliable' ? 'active' : ''}`} onClick={() => setActiveTab('Avaliable')}>
-                Avaliable
-            </div>
-
-            <div className={`toggle-option-delivery ${activeTab === 'In Progress' ? 'active' : ''}`} onClick={() => navigate('/inprogress')}>
-                Drink
+            <div className="toggle-navbar-delivery">
+                <div className={`toggle-option-delivery ${activeTab === 'Avaliable' ? 'active' : ''}`} onClick={() =>setActiveTab('Avaliable')}>
+                    Avaliable
+                </div>
+                <div className={`toggle-option-delivery ${activeTab === 'In Progress' ? 'active' : ''}`} onClick={() => navigate('/inprogress')}>
+                    In Progress
+                </div>
             </div>
             
-            <div className={`toggle-option-delivery ${activeTab === 'Booth' ? 'active' : ''}`} onClick={() => setActiveTab('Booth')}>
-                Dessert
+            {/* Box Filter */}
+            <a href="" className="filter-box">
+                <FontAwesomeIcon icon={faFilter} className='filter-icon' />
+            </a>
+            
+            {/* Delivery Date */}
+            <div className="time-date-delivery">
+                <p className="delivery-date">08:50 - Senin, 17/08/45</p>
+                <AvaliableDelivery/>
+                <AvaliableDelivery/>
+                <AvaliableDelivery/>
+            </div>
+
+            <div className="time-date-delivery">
+                <p className="delivery-date">08:50 - Senin, 17/08/45</p>
+                
+                <AvaliableDelivery/>
+                <AvaliableDelivery/>
+                <AvaliableDelivery/>
             </div>
         </div>
-        
-        <a href="" className="filter-box">
-        <FontAwesomeIcon icon={faFilter} className='filter-icon' />
-        </a>
-        
-        <div className="time-date-delivery">
-        <p className="delivery-date">08:50 - Senin, 17/08/45</p>
-        
-        <AvaliableDelivery/>
-        <AvaliableDelivery/>
-        <AvaliableDelivery/>
-        </div>
 
-        <div className="time-date-delivery">
-        <p className="delivery-date">08:50 - Senin, 17/08/45</p>
-        
-        <AvaliableDelivery/>
-        <AvaliableDelivery/>
-        <AvaliableDelivery/>
-        </div>
-
-        
         <Footer/>
     </div>
   )

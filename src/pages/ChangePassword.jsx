@@ -73,6 +73,8 @@ function ChangePassword() {
     <div className='changePassword'>
         <div className="wrapperChangepassword">
             <h1>Change Password</h1>
+
+            {/* Form Change Password */}
             <form>
                 {msg && <p>{msg}</p>}
                 <h5 className='resetText'>New Password:</h5>

@@ -1,9 +1,8 @@
-import Order from "../models/OrderModel.js";
+import OrderDetails from "../models/OrderDetailsModel";
 
-
-export const getOrders = async (req, res) => {
+export const getOrderDetails = async (req, res) => {
     try {
-        const orders = await Order.findAll();
+        const orderDetails = await OrderDetails.findAll();
         res.status(200).json(orders);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -11,9 +10,9 @@ export const getOrders = async (req, res) => {
 };
 
 
-export const getOrderById = async (req, res) => {
+export const getOrderDetailsById = async (req, res) => {
     try {
-        const order = await Order.findByPk(req.params.id);
+        const order = await OrderDetails.findByPk(req.params.id);
         if (!order) return res.status(404).json({ message: "Order not found" });
         res.status(200).json(order);
     } catch (error) {
@@ -22,10 +21,10 @@ export const getOrderById = async (req, res) => {
 };
 
 
-export const createOrder = async (req, res) => {
+export const createOrderDetails = async (req, res) => {
     try {
-        const { userId, deliveryLocation } = req.body;
-        const newOrder = await Order.create({ userId, deliveryLocation });
+        const { CustomerID, BoothID, Quantity } = req.body;
+        const newOrder = await OrderDetails.create({ CustomerID, BoothID, Quantity });
         res.status(201).json(newOrder);
     } catch (error) {
         res.status(400).json({ message: error.message });
@@ -33,9 +32,9 @@ export const createOrder = async (req, res) => {
 };
 
 
-export const updateOrder = async (req, res) => {
+export const updateOrderDetails = async (req, res) => {
     try {
-        const order = await Order.findByPk(req.params.id);
+        const order = await OrderDetails.findByPk(req.params.id);
         if (!order) return res.status(404).json({ message: "Order not found" });
         
         const { CustomerID, BoothID, Quantity } = req.body;
@@ -47,12 +46,12 @@ export const updateOrder = async (req, res) => {
 };
 
 
-export const deleteOrder = async (req, res) => {
+export const deleteOrderDetails = async (req, res) => {
     try {
-        const order = await Order.findByPk(req.params.id);
+        const order = await OrderDetails.findByPk(req.params.id);
         if (!order) return res.status(404).json({ message: "Order not found" });
         
-        await order.destroy();
+        await OrderDetails.destroy();
         res.status(204).send();
     } catch (error) {
         res.status(500).json({ message: error.message });

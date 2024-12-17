@@ -15,14 +15,15 @@ function InProgress() {
     <div className="inprogress-delivery-container">
         <HeaderDelivery/>
 
-        <div className="toggle-navbar-delivery-inprogress">
-            <div className={`toggle-option-delivery-inprogress ${activeTab === 'Avaliable' ? 'active' : ''}`} onClick={() => navigate('/deliverypage')}>
+        <div className="toggle-navbar-delivery">
+            <div className={`toggle-option-delivery ${activeTab === 'Avaliable' ? 'active' : ''}`} onClick={() => navigate('/deliverypage')}>
                 Avaliable
             </div>
-            <div className={`toggle-option-delivery-inprogress ${activeTab === 'In Progress' ? 'active' : ''}`} onClick={() => setActiveTab('In Progress')}>
+            <div className={`toggle-option-delivery ${activeTab === 'In Progress' ? 'active' : ''}`} onClick={() => setActiveTab('In Progress')}>
                 In Progress
             </div>
         </div>
+        {/* List Item to Order */}
         <InProgressDelivery/>
         <InProgressDelivery/>
         <InProgressDelivery/>

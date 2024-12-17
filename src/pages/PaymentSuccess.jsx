@@ -18,12 +18,14 @@ function PaymentSuccess() {
     <div className="paymentsuccess-container">
       <div className="paymentsuccess-page">
         <HeaderCartPayment/>
+
         <h3 className="paymentsuccess-title">Payment Successfull</h3>
         <div className="underline-paymentsuccess"></div>
-
+  
         <h3 className="paymentsuccess-titlesummary">Summary</h3>
         <div className="underline-paymentsuccess-summary"></div>
 
+        {/* Description Item Price */}
         <div className="paymentsuccess-summary">
           <div>
             <div className="paymentsuccess-summary-line">
@@ -41,12 +43,14 @@ function PaymentSuccess() {
           </div>
         </div>
 
+        {/* Mark payment Successfull */}
         <div className="checkmark-done-container">
           <div className="checkmark-done">
             <span>&#10003;</span>
           </div>
         </div>
 
+        {/* Button Back to Dashboard */}
         <button className='paymentsuccess-btn' onClick={()=>navigate('/dashboard')}>OK</button>
       </div>
       <Footer/>

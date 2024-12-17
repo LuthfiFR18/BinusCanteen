@@ -11,11 +11,10 @@ import Header from '../components/Headerseller';
 import PopUp from '../components/PopUpCloseSellerStore';
 import PopUpDeleteMenuSeller from '../components/PopUpDeleteMenuSeller';
 import PopUpOutOfStock from '../components/PopUpOutOfStock';
+import EditMenuSeller from './EditMenuSeller';
 import { getMe } from '../features/authSlice';
 import imgDefault from '../img/nasigoreng.png';
 import '../style/Sellerpage.css';
-
-
 
 function Sellerpage() {
     const navigate = useNavigate();
@@ -32,17 +31,15 @@ function Sellerpage() {
     const [img, setImg] = useState();
     const [profileImage, setProfileImage] = useState('');
     const [boothName, setBoothName] = useState();
+    const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
+    const [selectedMenu, setSelectedMenu] = useState(null);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
     const [userData, setUserData] = useState();
     
-    
-   
-
     useEffect(() => {
         dispatch(getMe());
-        
-    
+           
         const savedImage = localStorage.getItem('savedImage');
         setImg(savedImage || imgDefault);
     
@@ -92,8 +89,6 @@ function Sellerpage() {
             }
         };
 
-    
-
     const handleNavigate = (path) =>{
         navigate(path);
     };
@@ -124,9 +119,18 @@ function Sellerpage() {
         localStorage.setItem('savedImage', newImage);
     }
 
+    // const handleEditMenu = (menu) => {
+    //     navigate(`/EditMenuSeller`, { state: { menu } });
+    // };
     const handleEditMenu = (menu) => {
-        navigate(`/EditMenuSeller`, { state: { menu } });
+        setSelectedMenu(menu);
+        setIsEditPopupOpen(true);
     };
+
+    const handleCloseEditPopup = () => {
+        setIsEditPopupOpen(false);
+        setSelectedMenu(null);
+    }
 
     const handleOutOfStockClick = (menuId, isOutOfStock) =>{
         setSelectedMenuId(menuId);
@@ -186,7 +190,6 @@ function Sellerpage() {
         }
     };
     
-
     return(
         <div className='dashboard'>
             
@@ -218,6 +221,18 @@ function Sellerpage() {
                     <div class="menu">
                         <ul>
                             <li>
+                                <a href="#" className="menu-item" onClick={() => navigate('/ListMenuSeller')}>
+                                    {/* <FontAwesomeIcon icon={faUtensils} size="2x" /> */}
+                                    <span className="menu-text">List Menu</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" className="menu-item" onClick={() => navigate('/OrderListSeller')}>
+                                    {/* <FontAwesomeIcon icon={faGlassWater} size="2x" /> */}
+                                    <span className="menu-text">Order List</span>
+                                </a>
+                            </li>
+                            {/* <li>
                                 <a href="#" onClick={()=>navigate('/ListMenuSeller')}>
                                 <FontAwesomeIcon icon={faUtensils} size='4x' />
                                 <p className='namenavbar'>List Menu</p>
@@ -229,11 +244,10 @@ function Sellerpage() {
                                 <p className='namenavbar'>Order List</p>
 
                                 </a>
-                            </li>
+                            </li> */}
                         </ul>
                     </div>
                 </nav>
-
 
             <h2 className="list-menu-title">List Menu</h2>
             {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
@@ -246,7 +260,6 @@ function Sellerpage() {
             </button> */}
             <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2>
             
-
             <div className="menu-list">
 
                 {menus.map((menu) => (
@@ -254,11 +267,11 @@ function Sellerpage() {
                     <div key={menu.id} className="menu-item">
                         
                         <img 
-                        src={menu.image || "nasigoreng.png"} 
-                        alt="Menu Item" 
-                        className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
-                        style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
-                    />
+                            src={menu.image || "nasigoreng.png"} 
+                            alt="Menu Item" 
+                            className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
+                            style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
+                        />
                     
                         <div className="menu-details">
                             <div className="menu-info">
@@ -293,11 +306,18 @@ function Sellerpage() {
                 ))}
             </div>
 
-           
-
             <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
             
-            
+            {isEditPopupOpen && (
+                <div className="popup-overlay">
+                    <div className="popup">
+                        <EditMenuSeller
+                            menu={selectedMenu}
+                            onClose={handleCloseEditPopup}
+                        />
+                    </div>
+                </div>
+            )}
 
             {showPopupStoreStatus &&(
                 
@@ -310,7 +330,7 @@ function Sellerpage() {
                 
                 />
         
-        )}
+            )}
 
             {showPopupOutOfStock &&(
                 <PopUpOutOfStock
@@ -328,8 +348,6 @@ function Sellerpage() {
                     onConfirm={confirmDeleteMenu}
                 />
             )}
-
-            
 
             <Footerseller/>
         </div>

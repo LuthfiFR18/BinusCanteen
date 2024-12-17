@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { LoginUser,reset } from "../features/authSlice.js"
 import '../style/Login.css';
@@ -47,10 +46,6 @@ function Login(){
         dispatch(LoginUser({email, password}));
     };
 
-    // useEffect(() => {
-    //     console.log("User state after login attempt:", user); // Check user state after login
-    // }, [user]);
-
     const [isOpen, setIsOpen] = useState(false);
 
     const togglePopup = () => {
@@ -62,12 +57,14 @@ function Login(){
             <div className="loginpage">
                 <div className="wrapperLogin">
                     <h1 className='login-title'>Login</h1>
+
+                    {/* Login Form */}
                     <form onSubmit={Auth}>
                         {isError && <p className='errorMsg'>{message}</p>}
                         <h5 className='Loginpasstext'>Email:</h5>
                         <input className='inputLogin' type="text" value={email} onChange={(e)=>setEmail(e.target.value)} placeholder="Email"></input>
                         <h5 className='Loginpasstext'>Password:</h5>
-                        <input className='inputLogin' type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Password"></input>
+                        <input className='inputPassword' type="password" value={password} onChange={(e)=>setPassword(e.target.value)}  placeholder="Password"></input>
                         <a className="greyText" href="#" onClick={()=> navigate('/resetpasswordverification')}>
                         Forgot Password?</a>
 

@@ -9,7 +9,7 @@ export const getUser = async(req, res) => {
             include: [{
                 model: Roles,
                 as: 'role',
-                attributes: ['name']
+                attributes: ['name'],
             }]
         }); 
         

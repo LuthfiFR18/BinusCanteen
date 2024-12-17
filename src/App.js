@@ -82,6 +82,7 @@ function App() {
         <Routes>
           <Route path='/'element={<Login/>}/>
           <Route path='/register' element={<Register/>}/>
+          <Route path='/sellerbooth' element={<SellerBoothNameform/>}/>
           <Route path='/resetpassword' element={<ResetPassword/>}/>
           <Route path='/resetpasswordverification' element={<ResetPasswordVerification/>}/>
           <Route path='/changepassword' element={<ChangePassword/>}/>
@@ -104,8 +105,9 @@ function App() {
           <Route path='/paymentsuccess' element={<PaymentSuccess/>}/>    
           <Route path='/paymentfail' element={<PaymentFail/>}/>    
           <Route path='/deliverypage' element={<DeliveryPage/>}/>    
-          <Route path='/inprogress' element={<InProgress/>}/>       
-        </Routes>
+          <Route path='/inprogress' element={<InProgress/>}/>
+          <Route path='/SellerBoothNameform' element={<SellerBoothNameform/>}/>       
+        </Routes>/
       </Router>
     </MenuProvider>
   );

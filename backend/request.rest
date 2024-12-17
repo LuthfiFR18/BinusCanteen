@@ -1,3 +1,4 @@
+### create role
 POST http://localhost:5000/roles
 Content-Type: application/json
 
@@ -6,17 +7,17 @@ Content-Type: application/json
 }
 
 
-###
+### create user
 POST http://localhost:5000/user
 Content-Type: application/json
 
 {
-    "uuid" : "adm1",
-    "name" : "Admin 1",
-    "email" : "adm1@gmail.com",
-    "password" : "dladmv",
+    "uuid" : "CST1",
+    "name" : "Customer 1",
+    "email" : "cst1@gmail.com",
+    "password" : "cst",
     "phonenumber" : "081234567811",
-    "roleId" : "1"
+    "roleId" : "2"
 }
 
 ###
@@ -32,8 +33,8 @@ POST http://localhost:5000/login
 Content-Type: application/json
 
 {
-    "email" : "adm@gmail.com",
-    "password" : "adm"
+    "email" : "cst1@gmail.com",
+    "password" : "cst"
 }
 
 ###
@@ -45,12 +46,12 @@ DELETE http://localhost:5000/logout
 POST http://localhost:5000/product
 Content-Type: application/json
 
-    {
-  "name": "Nasi Ayam Paket B",
-  "price": 15000,
-  "producttype": "Food",
-  "boothId": 3,
-  "userId": 3
+{
+  "name": "Es Krim",
+  "price": 8000,
+  "producttype": "Dessert",
+  "boothId": 1,
+  "userId": 1
 }
 
 ### Delete Product
@@ -63,9 +64,9 @@ POST http://localhost:5000/Booth
 Content-Type: application/json
 
     {
-  "name": "Rocky Chicken",
-  "openingTime": "2024-10-22T09:00:00.000Z",
-  "closingTime": "2024-10-22T18:00:00.000Z",
+  "name": "Rasela",
+  "openingTime": "09:00:00",
+  "closingTime": "17:00:00",
   "userId": 3
 }
 
@@ -74,18 +75,22 @@ POST http://localhost:5000/courses
 Content-Type: application/json
 
 {
-  "name": "Object Oriented Programming",
-  "classname": "Class LK01",
-  "startDate": "2024-11-07T07:20:00",
-  "endDate": "2024-12-07T08:50:00",
+  "name": "Algorithm and Programming",
+  "courseRoom": "A1701",
+  "courseFloor": "Lantai 17 Gedung A",
+  "startTime": "09:20:00",
+  "endTime": "10:50:00",
   "userId": 5
-}
-
-###
-GET /booth/:boothId/products
+} 
 
 ###
 GET http://localhost:5000/booth/1/products
+
+### get cart from userId
+GET http://localhost:5000/cart/7
+
+### get total price from cart
+GET http://localhost:5000/cart/subTotal/5
 
 ###
 GET http://localhost:5000/booth/1
@@ -111,5 +116,11 @@ Content-Type: multipart/form-data
 }
 
 
+### update cart
+PATCH http://localhost:5000/cart/1506085f-95d4-452f-b163-42ea371c20e0
+Content-Type: application/json
 
+{
+  "quantity" : 7
+}
 

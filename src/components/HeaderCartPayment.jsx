@@ -9,9 +9,9 @@ function HeaderCartPayment(){
     const navigate = useNavigate();
 
     return(
-        <div className="headercartpayment-container">
+        <div className="header-cartpayment-container">
             <div className="logo-cartpayment-text" onClick={()=>navigate('/dashboard')}>
-                Binus<span className='logo-text-span'>Canteen</span>
+                Binus<span className='logo-text-cartpayment-span'>Canteen</span>
             </div>
 
             <div className='logo-cartpayment-box'>

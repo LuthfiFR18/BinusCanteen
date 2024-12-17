@@ -12,6 +12,7 @@ function Register(){
     const [confPassword, setConfPassword] = useState("");
     const [phonenumber, setphonenumber] = useState("");
     const [roleId, setRoleId] = useState();
+    const [setUserId] = useState();
     const [msg, setMsg] = useState("");
 
     const [role, setSelectedRole] = useState('');
@@ -22,9 +23,9 @@ function Register(){
         if (selectedRole === "User") {
             setRoleId(2);
         } else if (selectedRole === "Seller") {
-            setRoleId(3);
-        } else if (selectedRole === "Delivery") {
             setRoleId(4);
+        } else if (selectedRole === "Delivery") {
+            setRoleId(3);
         }
     };
 
@@ -65,18 +66,18 @@ function Register(){
             return;
         }
 
-        try {
-            const emailResponse = await axios.get(`http://localhost:5000/user/${email}`);
-            console.log(emailResponse.data); // Log the user data if found
+        // try {
+        //     const emailResponse = await axios.get(`http://localhost:5000/user/${email}`);
+        //     console.log(emailResponse.data); // Log the user data if found
             
-            if(emailResponse.data){
-                setMsg("This email has been used, please Log In!")
-                return;
-            }
-        } catch (error) {
-            console.error(error);
-            setMsg("User not found.");
-        }
+        //     if(emailResponse.data){
+        //         setMsg("This email has been used, please Log In!")
+        //         return;
+        //     }
+        // } catch (error) {
+        //     console.error(error);
+        //     setMsg("User not found.");
+        // }
 
         try {
             const response = await axios.post("http://localhost:5000/user", {
@@ -89,10 +90,11 @@ function Register(){
             console.log("Ready To be Submitted", response.data);
             console.log("User saved successfully:", response.data);
 
-            if(roleId === 2 || roleId === 4){
+            if(roleId === 2 || roleId === 3){
                 navigate("/");
-            }else if(roleId === 3){
-                navigate("/sellerbooth")
+            }else if(roleId === 4){
+                console.log("Navigating with userId:", response.data.id); // Use response.data.id directly
+                navigate("/sellerbooth", { state: { userId: response.data.id } });
             }
         } catch (error) {
             if (error.response) {
@@ -106,6 +108,8 @@ function Register(){
             <div className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>
                 <p className='errorMsg'>{msg}</p>   
+
+                {/* Radio Button */}
                 <div className="role-options">
                     <input
                         type="radio"
@@ -133,6 +137,7 @@ function Register(){
                     <label htmlFor="delivery">Delivery</label>
                 </div> 
 
+                {/* From Register */}
                 <form onSubmit={saveUser}>
                     <h5 className='regisform'>Name:</h5>
                     <input className='input-register' type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
@@ -149,6 +154,7 @@ function Register(){
                     <h5 className='regisform'>Confirm Password:</h5>
                     <input className='input-register' type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
 
+                    {/* Button Submit */}
                     <button className="button-register" type='submit'>
                         Register
                     </button>
