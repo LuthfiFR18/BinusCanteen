@@ -118,6 +118,14 @@ Content-Type: application/json
     "producttype": "Food"
 }
 
+###
+PATCH  http://localhost:5000/Booth/3
+Content-Type: multipart/form-data
+
+{
+  "image": "8072a6856398a45501ca2fc9b99f3074"
+}
+
 
 ### update cart
 PATCH http://localhost:5000/cart/1506085f-95d4-452f-b163-42ea371c20e0
