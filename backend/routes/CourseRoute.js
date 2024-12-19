@@ -1,7 +1,7 @@
 import express from "express";
 import { 
     getCourses, 
-    getCourseById, 
+    getCourseByUserId, 
     createCourse, 
     updateCourse, 
     deleteCourse 
@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 router.get("/courses", getCourses); // Mendapatkan semua course
-router.get("/courses/:id", getCourseById); // Mendapatkan course berdasarkan ID
+router.get("/courses/:userId", getCourseByUserId); // Mendapatkan course berdasarkan ID
 router.post("/courses", createCourse); // Membuat course baru
 router.put("/courses/:id", updateCourse); // Mengupdate course berdasarkan ID
 router.delete("/courses/:id", deleteCourse); // Menghapus course berdasarkan ID

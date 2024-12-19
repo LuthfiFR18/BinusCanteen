@@ -2,7 +2,8 @@ import React from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
-import '../style/SellerBoothNameform.css'
+import '../style/SellerBoothNameform.css';
+import axios from 'axios';
 function SellerBoothNameform() {
 
   const navigate = useNavigate();
@@ -36,22 +37,17 @@ function SellerBoothNameform() {
       }
 
       try {
-        const response = await axios.post("http://localhost:5000/user", {
-        name: name,
-        email: email,
-        password: password,
-        phonenumber: phonenumber,
-        roleId: roleId,
+        const response = await axios.post("http://localhost:5000/booth", {
+        name: boothName,
+        openingTime: opening,
+        closingTime: closing,
+        userId: userId,
         });
         console.log("Ready To be Submitted", response.data);
-        console.log("User saved successfully:", response.data);
+        console.log("Booth saved successfully:", response.data);
 
-        if(roleId === 2 || roleId === 3){
-            navigate("/");
-        }else if(roleId === 4){
-            console.log("Navigating with userId:", response.data.id); // Use response.data.id directly
-            navigate("/sellerbooth", { state: { userId: response.data.id } });
-        }
+        navigate("/");
+
     } catch (error) {
         if (error.response) {
         setMsg(error.response.data.msg);
@@ -66,7 +62,7 @@ function SellerBoothNameform() {
         <h3 className="booth-title">Enter Your Booth Name</h3>
         <p className='errorMsg'>{msg}</p>
 
-        <form onsubmit={saveBooth}>
+        <form onSubmit={saveBooth}>
           <h5 className='booth-label'>Booth Name:</h5>
           <input className='booth-input' type="text" onChange={(e)=> setBoothName(e.target.value)} placeholder='Booth Name' />
 
@@ -76,7 +72,7 @@ function SellerBoothNameform() {
           <h5 className="time-close-booth-text">Time Close Booth:</h5>
           <input type="time" className="time-open-booth" onChange={(e)=> setClosing(e.target.value)}/>
 
-          <button className="submit-booth-btn" onClick={()=> navigate('/')}>Submit</button>
+          <button className="submit-booth-btn">Submit</button>
         </form>
       </div>
     </div>

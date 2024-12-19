@@ -1,7 +1,7 @@
 import express from "express";
 import {
     getOrderDetails,
-    getOrderDetailsById,
+    getOrderDetailsByOrderId,
     createOrderDetails,
     updateOrderDetails,
     deleteOrderDetails
@@ -10,7 +10,7 @@ import {
 const router = express.Router();
 
 router.get('/orderDetails', getOrderDetails);
-router.get('/orderDetails/:id', getOrderDetailsById);
+router.get('/orderDetails/:id', getOrderDetailsByOrderId);
 router.post('/orderDetails', createOrderDetails);
 router.patch('/orderDetails/:id', updateOrderDetails);
 router.delete('/orderDetails/:id', deleteOrderDetails);

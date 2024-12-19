@@ -107,7 +107,7 @@ function App() {
           <Route path='/deliverypage' element={<DeliveryPage/>}/>    
           <Route path='/inprogress' element={<InProgress/>}/>
           <Route path='/SellerBoothNameform' element={<SellerBoothNameform/>}/>       
-        </Routes>/
+        </Routes>
       </Router>
     </MenuProvider>
   );

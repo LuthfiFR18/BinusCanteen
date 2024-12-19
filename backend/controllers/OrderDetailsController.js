@@ -1,31 +1,65 @@
-import OrderDetails from "../models/OrderDetailsModel";
+import OrderDetails from "../models/OrderDetailsModel.js";
+import Products from "../models/ProductsModel.js";
+import Users from "../models/UserModel.js";
 
 export const getOrderDetails = async (req, res) => {
     try {
         const orderDetails = await OrderDetails.findAll();
-        res.status(200).json(orders);
+        res.status(200).json(orderDetails);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
 
-export const getOrderDetailsById = async (req, res) => {
+export const getOrderDetailsByOrderId = async (req, res) => {
     try {
-        const order = await OrderDetails.findByPk(req.params.id);
-        if (!order) return res.status(404).json({ message: "Order not found" });
-        res.status(200).json(order);
+        // Get userId from params
+        const { userId } = req.params;
+        console.log('User ID:', userId);
+
+        // Validate userId
+        if (!userId || isNaN(userId)) {
+            return res.status(400).json({ message: 'Invalid userId parameter' });
+        }
+
+        // Fetch all OrderDetails items for the user and include product details
+        const carts = await OrderDetails.findAll({
+            where: { userId }, // filter by userId
+            include: [
+                {
+                    model: Products,
+                    as: 'product',
+                    attributes: ['id','name', 'price'],
+                },
+                {
+                    model: Users,
+                    as: 'user',
+                    attributes: ['id', 'name', 'uuid'], // Include user details (if needed)
+                },
+            ],
+        });
+
+        if (!carts || carts.length === 0) {
+            return res.status(404).json({ message: 'No cart items found for this user' });
+        }
+
+        // Return the cart items
+        return res.status(200).json({
+            carts, // returns cart items with products details
+        });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Error fetching cart:', error);
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 };
 
 
 export const createOrderDetails = async (req, res) => {
     try {
-        const { CustomerID, BoothID, Quantity } = req.body;
-        const newOrder = await OrderDetails.create({ CustomerID, BoothID, Quantity });
-        res.status(201).json(newOrder);
+        const { orderId,productId,userId, quantity,productDescription,subTotal } = req.body;
+        const newOrderDetails = await OrderDetails.create({ orderId,productId,userId, quantity,productDescription,subTotal });
+        res.status(201).json(newOrderDetails);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }

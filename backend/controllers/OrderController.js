@@ -58,3 +58,18 @@ export const deleteOrder = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+export const deleteAllOrders = async (req, res) => {
+    try {
+
+        await OrderDetails.destroy({ where: {} }); // Delete all order details
+        // Delete all orders
+        await Order.destroy({
+            where: {}, // Empty condition to target all records
+        });
+        
+        res.status(204).send(); // No content, successful operation
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};

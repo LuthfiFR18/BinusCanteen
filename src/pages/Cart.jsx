@@ -13,17 +13,23 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const [cart, setCart] = useState([]); // Ensure cart is an array
+  const [course, setCourse] = useState([]);
   const [subTotal, setSubTotal] = useState(0);
   const [userId, setUserId] = useState(null);
+  const [orderId, setOrderId] = useState(null);
+  const [deliveryLocation, setDeliveryLocation] = useState('');
+  const [productDescription, setProductDescription] = useState('');
+  const [quantity, setQuantity] = useState(0);
+
 
   const { user } = useSelector((state) => state.auth);
 
-  const [location, setLocation] = useState('');
+  const [room, setRoom] = useState('');
   const [isError, setIsError] = useState(false);
-  const locations = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
+  // const rooms = ['Lantai 7 - A0708 - 08.50', 'Lantai 10 - A1001 - 08.50', 'Lantai 13 - A1302 - 08.50', 'Lantai 16 - A1604 - 13.20']; // Sample locations
 
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
+  const handleRoomChange = (event) => {
+    setRoom(event.target.value);
     setIsError(false); // Remove error when a location is selected
   };
 
@@ -49,6 +55,13 @@ const Cart = () => {
     }
   }, [userId]); // Dependency on userId, only runs when userId changes
 
+  useEffect(() => {
+    if (userId) {
+      console.log("Fetching course for user ID:", userId); // Log when cart fetch starts
+      getCourseByUserId();
+    }
+  }, [userId]); // Dependency on userId, only runs when userId changes
+
   const getCartByUserId = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/cart/${userId}`);
@@ -62,6 +75,22 @@ const Cart = () => {
       }
     } catch (error) {
       console.error('Error fetching cart:', error);
+      setCart([]); // Fallback in case of error
+    }
+  };
+
+  const getCourseByUserId = async () => {
+    try {
+      const response = await axios.get(`http://localhost:5000/courses/${userId}`);
+      console.log('Course data received:', response.data);
+
+      if (response.data.courses && Array.isArray(response.data.courses)) {
+        setCourse(response.data.courses); // Set the cart state to the array inside the response
+      } else {
+        setCourse([]); // Fallback to an empty array if carts is not found or not an array
+      }
+    } catch (error) {
+      console.error('Error fetching course:', error);
       setCart([]); // Fallback in case of error
     }
   };
@@ -120,20 +149,83 @@ const Cart = () => {
       return updatedCart; // Update the state
     });
   };
+
+  const saveOrder = async () => {
+    let orderId;
+
+    try {
+      // Send DELETE request to the backend to delete all orders
+      const response = await axios.delete('http://localhost:5000/order');
+      console.log("All orders deleted successfully:", response);
+      alert("All orders have been deleted successfully!");
+  } catch (error) {
+      console.error("Error deleting all orders:", error);
+      alert("Failed to delete all orders. Please try again later.");
+  }
+  
+    try {
+      // Save the order
+      const response = await axios.post("http://localhost:5000/order", {
+        userId: userId,
+        deliveryLocation: room,
+      });
+      console.log("Order created successfully:", response.data);
+      orderId = response.data.id;
+      setOrderId(orderId);
+    } catch (error) {
+      console.error("Error creating order:", error);
+      return;
+    }
+  
+    if (!cart || Object.keys(cart).length === 0) {
+      console.error("Cart is empty. Cannot create order details.");
+      return;
+    }
+  
+    // Iterate over the groupedCartArray or cart to create order details for each product
+    for (const cartItem of groupedCartArray) {
+      const payload = {
+        orderId,
+        userId: userId,
+        productId: cartItem.product?.id, // Ensure you get productId from cartItem.product
+        quantity: cartItem.quantity, // Ensure you get quantity from cartItem
+        productDescription: cartItem.productDescription || "", // Assuming productDescription is optional
+        subTotal: cartItem.product?.price * cartItem.quantity, // Calculate subTotal if price is available
+      };
+  
+      console.log("Order Details Payload:", payload);
+  
+      try {
+        const response = await axios.post("http://localhost:5000/orderDetails", payload);
+        console.log("Order detail saved successfully:", response.data);
+        navigate("/payment");
+      } catch (error) {
+        console.error("Error saving order detail for product:", cartItem.product?.id, error);
+      }
+    }
+  };
+  
+  
+  
+  useEffect(() => {
+    if (orderId !== null) {
+      console.log("Updated Order Id: ", orderId);
+    }
+  }, [orderId]);
   
 
-useEffect(() => {
-  const calculateNewSubtotal = () => {
-    const newSubtotal = cart.reduce((sum, item) => {
-      const price = item.product?.price || 0;
-      return sum + price * item.quantity;
-    }, 0);
-    setSubTotal(newSubtotal);
-    console.log("New Subtotal Calculated:", newSubtotal);
-  };
+  useEffect(() => {
+    const calculateNewSubtotal = () => {
+      const newSubtotal = cart.reduce((sum, item) => {
+        const price = item.product?.price || 0;
+        return sum + price * item.quantity;
+      }, 0);
+      setSubTotal(newSubtotal);
+      console.log("New Subtotal Calculated:", newSubtotal);
+    };
 
-  calculateNewSubtotal();
-}, [cart]); // Runs whenever cart changes
+    calculateNewSubtotal();
+  }, [cart]); // Runs whenever cart changes
   
   const groupedCartArray = React.useMemo(() => {
     console.log("Recomputing groupedCartArray with cart:", cart);
@@ -232,15 +324,16 @@ useEffect(() => {
           
               <div className="dropdown-cart-wrapper">
                 <select
-                  value={location}
-                  onChange={handleLocationChange}
+                  value={room}
+                  onChange={handleRoomChange}
                   className="cart-dropdown"
                 >
                 <option value="">Tempat Pengantaran</option>
-                {locations.map((loc, index) => (
-                <option key={index} value={loc}>
-                  {loc}
-                </option>
+                {course.map((course) => (
+                <option key={course.id} value={`${course.courseRoom},${course.endTime}`}>
+                {course.courseRoom} - {course.endTime}
+              </option>
+              
                 ))}
                 </select>
               </div>
@@ -265,7 +358,7 @@ useEffect(() => {
             </div>
           </div>
         </div>
-        <button className="checkout" onClick={() => navigate('/payment')}>
+        <button className="checkout" onClick={saveOrder}>
           CHECKOUT
         </button>
       </div>

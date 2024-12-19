@@ -21,17 +21,7 @@ const Payment = () => {
 
   const { user } = useSelector((state) => state.auth);
 
-  const [quantities, setQuantities] = useState({
-    ayam: 1,
-    tea: 1
-  });
-
   const [selectedPaymentMethod, setSelectedPaymentMethod] = useState(null); // State for payment method
-
-  const prices = {
-    ayam: 15000,
-    tea: 15000
-  };
 
   useEffect(() => {
     dispatch(getMe()); // Fetch user data when component mounts
@@ -111,18 +101,9 @@ const Payment = () => {
     setSelectedPaymentMethod(event.target.value);
   };
 
-  const [location, setLocation] = useState('');
-  const [isError, setIsError] = useState(false);
 
-  const subtotal = 20000;
   const tax = 500;
   const total = React.useMemo(() => subTotal + tax, [subTotal, tax]);
-
-
-  const handleLocationChange = (event) => {
-    setLocation(event.target.value);
-    setIsError(false); // Remove error when a location is selected
-  };
 
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 24 hours in seconds
 
@@ -147,15 +128,6 @@ const Payment = () => {
 
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
   };
-
-  // const handleSubmit = () => {
-  //   if (!location) {
-  //     setIsError(true); // Show error if no location is selected
-  //   } else {
-  //     // Process the order
-  //     alert(`Order processed for delivery to ${location}`);
-  //   }
-  // };
 
   return (
     <div className="payment-container">
@@ -267,7 +239,7 @@ const Payment = () => {
           </div>
         </div>
 
-        <button className="payment-btn" onClick={()=>navigate('/paymentFail')}>
+        <button className="payment-btn" onClick={()=>navigate('/paymentSuccess')}>
           PAY
         </button>
       </div>
