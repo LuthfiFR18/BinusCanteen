@@ -29,6 +29,8 @@ export const getBoothById = async (req, res) => {
 export const createBooth = async (req, res) => {
     const { uuid, name, openingTime, closingTime, userId } = req.body; 
     try {
+
+      
         const newBooth = await Booth.create({  uuid, name, openingTime, closingTime, userId }); 
         res.status(201).json(newBooth);
     } catch (error) {

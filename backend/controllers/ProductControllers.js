@@ -43,13 +43,16 @@ export const getProductById = async(req, res) => {
 }
 
 export const createProduct = async(req, res) => {
-    const { image, name, price, producttype, boothId, userId  } = req.body; 
+    const { name, price, producttype, boothId, userId  } = req.body; 
+
+    let image = null;
+        if (req.file) {
+            image = req.file.filename; 
+        }
     
     try {
         console.log("Request body received:", req.body);
-        const { image, name, price, producttype, boothId, userId } = req.body;
 
- 
         const newProduct = await Products.create({ image, name, price: parseInt(price), producttype, boothId, userId });
 
         res.status(201).json(newProduct);
