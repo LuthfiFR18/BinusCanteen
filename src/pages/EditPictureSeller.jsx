@@ -57,10 +57,7 @@ function EditPictureSeller(){
             try {
                 const boothId = boothData.booths.id;
                 // Kirim request PATCH ke server dengan FormData
-                const response = await axios.patch(
-                    `http://localhost:5000/booth/${boothId}`,
-                    formData,
-                    {
+                const response = await axios.patch(`http://localhost:5000/booth/${boothId}`,formData,{
                         headers: {
                             "Content-Type": "multipart/form-data",
                         },

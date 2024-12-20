@@ -20,7 +20,7 @@ import CourseRoute from "./routes/CourseRoute.js";
 import { associations } from './models/Association.js';
 
 dotenv.config();
-console.log(process.env)
+// console.log(process.env)
 
 
 const app = express();
@@ -59,6 +59,7 @@ app.use(express.json());
 app.use(UserRoute);
 app.use(ProductRoute);
 app.use(CartRoute);
+
 app.use(OrderRoute);
 app.use(OrderDetailsRoute);
 app.use(PaymentRoute);

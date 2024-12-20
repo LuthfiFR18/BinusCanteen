@@ -1,18 +1,19 @@
 import axios from "axios";
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { useMenuContext } from '../app/MenuContext';
 import { getMe } from '../features/authSlice';
 import '../style/AddListMenuSeller.css';
 
 function AddListMenuSeller() {
-  const { menus, setMenus } = useMenuContext();
+  const [preview, setPreview] = useState(null);
+  const [imageFile, setImageFile] = useState(null);
+ 
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const {user} = useSelector((state) => state.auth);
-  // const location = useLocation();
-  // const [userData, setUserData] = useState();
+  
 
   const [booth, setBooth] = useState();
 
@@ -49,18 +50,18 @@ function AddListMenuSeller() {
   };
   
   
-
-  const [previewImage, setPreviewImage] = useState(null);
-
-  const handleImageUpload = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => setPreviewImage(reader.result);
-      reader.readAsDataURL(file);
-      setMenuData({ ...menuData, image: file });
-    }
-  };
+    const handleImageUpload = (e) => {
+      const file = e.target.files[0];
+      
+      if(file){
+          const reader = new FileReader();
+          reader.onloadend = () => {
+              setPreview(reader.result);
+          };
+          reader.readAsDataURL(file);
+          setImageFile(file);
+      }
+    };
 
     const handleChange = (e) => {
       const { name, value } = e.target;
@@ -79,32 +80,33 @@ function AddListMenuSeller() {
     };
 
 
-  const handleRadioChange = (e) => {
-    setMenuData({ ...menuData, itemType: e.target.value });
-  };
+    const handleRadioChange = (e) => {
+      setMenuData({ ...menuData, itemType: e.target.value });
+    };
+
 
   const handleSave = async () => {
-    
-    if (!booth || !booth.booths || !booth.booths.id) {
-      console.error("Booth data is missing or incomplete!");
-      return;
-    }
-
-    const formData = new FormData();
-
-    
-    formData.append("image", menuData.image);
-    formData.append("name", menuData.name);
-    formData.append("price", menuData.price.replace(/Rp\s?|\.|,/g, "")); // Konversi harga ke angka
-    formData.append("producttype", menuData.itemType);
-    formData.append("boothId", booth.booths.id);
-    formData.append("userId", booth.userId);
-
-    console.log("Data to be sent:");
-
-      for (let [key, value] of formData.entries()) {
-          console.log(`${key}: ${value}`);
+      if (imageFile) {
+        const formData = new FormData();
+        formData.append("image", imageFile);
+      
+      if (!booth || !booth.booths || !booth.booths.id) {
+        console.error("Booth data is missing or incomplete!");
+        return;
       }
+
+ 
+      formData.append("name", menuData.name);
+      formData.append("price", menuData.price.replace(/Rp\s?|\.|,/g, "")); // Konversi harga ke angka
+      formData.append("producttype", menuData.itemType);
+      formData.append("boothId", booth.booths.id);
+      formData.append("userId", booth.userId);
+
+      console.log("Data to be sent:");
+
+        for (let [key, value] of formData.entries()) {
+            console.log(`${key}: ${value}`);
+        }
 
       try {
      
@@ -118,6 +120,8 @@ function AddListMenuSeller() {
           console.error('Error Creating products:', error);
       
         };
+
+    }
     navigate('/Sellerpage');
   };
 
@@ -127,8 +131,8 @@ function AddListMenuSeller() {
                 <span className="arrow-left">&#8592;</span>
         </button>
         <div className="image-upload-container" onClick={() => document.getElementById('imageUpload').click()}>
-            {previewImage ? (
-            <img src={previewImage} alt="Menu Preview" className="preview-image" />
+            {preview? (
+            <img src={preview} alt="Menu Preview" className="preview-image" />
             ) : (
             <div className="placeholder">Add Image Menu</div>
             )}

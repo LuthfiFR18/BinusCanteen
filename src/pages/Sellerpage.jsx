@@ -36,6 +36,7 @@ function Sellerpage() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
     const [userData, setUserData] = useState();
+    const [productImage, setProductImage] = useState();
     
     useEffect(() => {
         dispatch(getMe());
@@ -58,10 +59,7 @@ function Sellerpage() {
                 // Ambil Booth berdasarkan user.id
                 const boothResponse = await axios.get(`http://localhost:5000/booth/${user.id}`);
                 const boothData = boothResponse.data;
-                console.log("boothData: ", boothData);
-
-                // Mengambil gambar dan nama dari booth
-                    
+                console.log("boothData: ", boothData);                  
                     
                 const NamaBooth = boothData.booths.name;
                     setBoothName(NamaBooth);
@@ -119,9 +117,7 @@ function Sellerpage() {
         localStorage.setItem('savedImage', newImage);
     }
 
-    // const handleEditMenu = (menu) => {
-    //     navigate(`/EditMenuSeller`, { state: { menu } });
-    // };
+   
     const handleEditMenu = (menu) => {
         setSelectedMenu(menu);
         setIsEditPopupOpen(true);
@@ -324,7 +320,6 @@ function Sellerpage() {
                     </div>
                 </nav>
 
-            <h2 className="list-menu-title">List Menu</h2>
             {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
             {/* <button
                 className="close-store-btn"
@@ -333,7 +328,7 @@ function Sellerpage() {
             >
                 {storeClosed ? 'Open your store' : 'Close your store'}
             </button> */}
-            <h2 className="list-menu-title">List Menu Nasi Goreng Nara</h2>
+            <h2 className="list-menu-title">List Menu {boothName}</h2>
             
             <div className="menu-list">
 
@@ -342,7 +337,7 @@ function Sellerpage() {
                     <div key={menu.id} className="menu-item">
                         
                         <img 
-                            src={menu.image || "nasigoreng.png"} 
+                            src={`http://localhost:5000/uploads/${menu.image}`} 
                             alt="Menu Item" 
                             className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
                             style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
