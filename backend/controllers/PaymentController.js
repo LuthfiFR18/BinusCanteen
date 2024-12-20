@@ -23,14 +23,14 @@ export const getPaymentById = async (req, res) => {
 
 // Membuat pembayaran baru
 export const createPayment = async (req, res) => {
-    const { OrderID, PaymentAmount, PaymentMethod, PaymentDate, PaymentStatus } = req.body; // Mengambil data dari request body
+    const { orderId, paymentAmount, paymentMethod, paymentDate, paymentStatus } = req.body; // Mengambil data dari request body
     try {
         const newPayment = await Payment.create({ 
-            OrderID, 
-            PaymentAmount, 
-            PaymentMethod, 
-            PaymentDate, 
-            PaymentStatus 
+            orderId, 
+            paymentAmount, 
+            paymentMethod, 
+            paymentDate, 
+            paymentStatus 
         }); // Membuat pembayaran baru
         res.status(201).json(newPayment); // Mengirimkan data pembayaran yang baru dibuat
     } catch (error) {

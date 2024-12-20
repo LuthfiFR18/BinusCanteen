@@ -17,9 +17,8 @@ const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [userId, setUserId] = useState(null);
   const [orderId, setOrderId] = useState(null);
-  const [deliveryLocation, setDeliveryLocation] = useState('');
+  const [delOrderId, setDelOrderId] = useState(null);
   const [productDescription, setProductDescription] = useState('');
-  const [quantity, setQuantity] = useState(0);
 
 
   const { user } = useSelector((state) => state.auth);
@@ -155,13 +154,13 @@ const Cart = () => {
 
     try {
       // Send DELETE request to the backend to delete all orders
-      const response = await axios.delete('http://localhost:5000/order');
-      console.log("All orders deleted successfully:", response);
-      alert("All orders have been deleted successfully!");
-  } catch (error) {
+      const response = await axios.delete('http://localhost:5000/orders/notPaid');
+      console.log("orders deleted successfully:", response);
+      // alert("orders have been deleted successfully!");
+    } catch (error) {
       console.error("Error deleting all orders:", error);
-      alert("Failed to delete all orders. Please try again later.");
-  }
+      // alert("Failed to delete all orders. Please try again later.");
+    }
   
     try {
       // Save the order

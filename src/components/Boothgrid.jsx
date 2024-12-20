@@ -1,6 +1,5 @@
 import React, {useEffect, useState} from 'react'
 import '../style/Boothgrid.css'
-import img1 from '../img/nasigoreng.png';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
