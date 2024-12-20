@@ -1,271 +1,259 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
-}
-
 .admin-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: #fff;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
 }
 
 .adminpage{
-    flex: 1;
+  flex: 1;
 }
 
-nav{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 .menu-admin{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
 }
 
 .menu-admin ul{
-    width: 248px;
-    height: 238px;
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    gap: 20px;
+  width: 248px;
+  height: 238px;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  gap: 20px;
 }
 
 .menu-admin ul li{
-    display: flex;
-    width: 248px;
-    height: 230px;
-    text-align: center;
-    border-radius: 25px;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+  display: flex;
+  width: 248px;
+  height: 230px;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
-.menu-admin ul li .allusernav{
-    border-radius: 25px;;
-    border-style: solid;
-    border-color: #FF9D00;
+
+.menu-admin ul li .activenav{
+  border-radius: 25px;;
+  border-style: solid;
+  border-color: #FF9D00;
 }
 
 .menu-admin ul li a{
-    padding-top: 70px;
-    width: 248px;
-    display: center;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--btn-color);
-    align-items: center;
-    justify-content: center;
+  padding-top: 70px;
+  width: 248px;
+  display: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--btn-color);
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-admin ul li:hover{
-    background-color: var(--btn-color);
+  background-color: var(--btn-color);
 }
 
 .menu-admin ul li a:hover{
-    color: var(--text-color);
+  color: var(--text-color);
 }
 
 .admin-subcontainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-right: 2%;
-    padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2%;
+  padding: 20px;
 }
 
 .dropdown-admin-wrapper {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
   
 .admin-dropdown {
-    margin-left: 50px;
-    padding: 10px;
-    font-size: 16px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    text-align: center;
-    width: 400px;
+  margin-left: 50px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 400px;
 }
 
 /* Media Queries */
 @media screen and (min-width: 320px) and (max-width: 480px) {
-  /* Admin container adjustments */
   .admin-container {
-    padding: 10px auto; /* Corrected padding */
+    padding: 10px auto;
   }
 
-  /* Admin page to take up remaining space */
   .adminpage {
     flex: 1;
   }
 
-  /* Menu admin adjustments */
   .menu-admin {
-    flex-direction: column; /* Stack items vertically on small screens */
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%; /* Ensure it takes full width */
+    width: 90%;
   }
 
-  /* Adjust menu items */
   .menu-admin ul {
-    width: 70%; /* Make menu items take full width */
-    height: auto; 
+    width: 100%;
+    height: auto;
     gap: 15px;
     margin-top: 5%;
     margin-bottom: 3%;
-    padding: 0; /* Remove any default padding */
   }
 
   .menu-admin ul li {
-    width: 90%; /* Adjust width for mobile screens */
-    max-width: 230px; /* Ensure items don't stretch too wide */
-    height: auto; /* Allow height to be adjusted based on content */
+    width: 90%;
+    max-width: 230px;
+    height: auto;
     box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
-    border-radius: 10px; /* Smaller radius for mobile */
-    margin-bottom: 10px; /* Add space between items */
+    border-radius: 10px;
+    margin-bottom: 30px;
   }
 
-  /* Specific border style for 'allusernav' */
-  .menu-admin ul li .allusernav {
+  .menu-admin ul li .activenav {
     border-radius: 10px;
     border-color: #FF9D00;
   }
 
-  /* Menu item text adjustments */
   .menu-admin ul li a {
-    font-size: 8px; /* Adjust font size for better readability */
-    padding-top: 15px;
+    font-size: 8px;
+    padding-top: 10px;
     width: 100%;
     text-align: center;
   }
 
-  /* Hover effect adjustments */
   .menu-admin ul li:hover {
     background-color: #FF9D00;
   }
 
   .menu-admin ul li a:hover {
-    color: #fff; /* Corrected color value */
+    color: #fff;
   }
 
-  /* Admin subcontainer adjustments */
-  .admin-subcontainer {
-    padding: 5px;
-    margin-right: 0;
-  }
-
-  /* Dropdown wrapper adjustments */
   .dropdown-admin-wrapper {
     display: flex;
-    flex-direction: column; /* Stack dropdown and items vertically */
+    flex-direction: column;
     align-items: center;
-    width: 100%; /* Ensure it takes full width */
+    width: 100%;
   }
 
-  /* Admin dropdown adjustments */
   .admin-dropdown {
-    margin-left: 0; /* Remove left margin */
-    padding: 8px; /* Adjust padding */
-    font-size: 14px; /* Smaller font size */
-    width: 100%; /* Make dropdown take full width */
-    border-radius: 5px; /* Keep border radius */
-    border: 1px solid #ccc; /* Keep the border */
+    margin-left: 0;
+    padding: 8px;
+    font-size: 12px; /* Mengecilkan font-size dropdown */
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+
+  .navbar {
+    height: 50px; /* Mengecilkan tinggi navbar */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    background-color: #f8f9fa;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+
+  .navbar-logo {
+    font-size: 14px; /* Mengecilkan ukuran logo */
+  }
+
+  .navbar-menu {
+    display: flex;
+    gap: 10px;
+  }
+
+  .navbar-menu a {
+    font-size: 10px; /* Mengecilkan font-size link */
+    padding: 5px 10px;
+  }
+
+  .navbar-dropdown {
+    font-size: 12px; /* Mengecilkan dropdown */
+    padding: 5px;
   }
 }
 
-@media screen and (min-width: 481px) and (max-width: 1024px) {
-  /* Admin container adjustments */
+@media screen and(min-width:481px) and (max-width: 1024px) {
   .admin-container {
-    padding: 15px auto; /* Increase padding for better spacing */
+    padding: 15px auto; 
   }
 
-  /* Admin page to take up remaining space */
   .adminpage {
     flex: 1;
   }
 
-  /* Menu admin adjustments */
   .menu-admin {
-    flex-direction: row; /* Arrange items horizontally on larger screens */
+    flex-direction: column; 
     justify-content: center;
     align-items: center;
-    width: 100%;
-    gap: 20px; /* Space out the items */
+    width: 10%;
   }
-
-  /* Adjust menu items */
   .menu-admin ul {
-    width: 60%; /* Adjust to take less width on larger screens */
-    height: auto;
-    gap: 20px;
+    width: 100%;
+    height: 100px; 
+    gap: 15px;
     margin-top: 5%;
     margin-bottom: 3%;
-    padding: 0;
   }
 
   .menu-admin ul li {
-    width: 180px; /* Reduce width for medium-sized screens */
+    width: 50%; 
     height: auto;
     box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
     border-radius: 10px;
     margin-bottom: 10px;
   }
 
-  /* Specific border style for 'allusernav' */
   .menu-admin ul li .allusernav {
     border-radius: 10px;
     border-color: #FF9D00;
   }
 
-  /* Menu item text adjustments */
   .menu-admin ul li a {
-    font-size: 12px; /* Increase font size for better readability */
+    font-size: 12px; 
     padding-top: 15px;
     width: 100%;
     text-align: center;
   }
 
-  /* Hover effect adjustments */
   .menu-admin ul li:hover {
     background-color: #FF9D00;
   }
 
   .menu-admin ul li a:hover {
-    color: #fff; /* Corrected color value */
+    color: #fff; 
   }
 
-  /* Admin subcontainer adjustments */
   .admin-subcontainer {
     padding: 15px;
     margin-right: 0;
   }
 
-  /* Dropdown wrapper adjustments */
   .dropdown-admin-wrapper {
     display: flex;
-    flex-direction: row; /* Place dropdowns and items in a row */
+    flex-direction: row; 
     justify-content: space-between;
     align-items: center;
     width: 100%;
   }
 
-  /* Admin dropdown adjustments */
   .admin-dropdown {
     margin-left: 0;
-    padding: 10px; /* Adjust padding */
-    font-size: 16px; /* Increase font size for better readability */
-    width: 100%; /* Make dropdown take full width */
+    padding: 10px; 
+    font-size: 16px; 
+    width: 100%;
     border-radius: 5px;
     border: 1px solid #ccc;
   }

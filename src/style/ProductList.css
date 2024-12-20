@@ -1,4 +1,3 @@
-
 .product-table {
     width: 100%;
     text-align: center;
@@ -24,6 +23,7 @@
     border-bottom: 1px solid #ddd;
     text-align: center; /* Center horizontally */
     vertical-align: middle; /* Center vertically */
+    padding: 8px;
 }
   
 .button-admin-booth-update{
@@ -79,7 +79,7 @@
     z-index: 999;
 }
 
-.popup-content {
+.popup-content-admin-booth {
     background: #fff;
     padding: 30px;
     border-radius: 10px;
@@ -160,4 +160,156 @@ label {
 .button-admin-booth-cancel:hover{
     background-color: rgb(163, 3, 3);
 }
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    .product-table {
+      font-size: 6px;
+      width: 100%;
+      table-layout: fixed;
+    }
   
+    .sub-title,
+    .table-container {
+      font-size: 7px;
+    }
+  
+    .product-table th, .product-table td {
+      padding: 6px;
+    }
+  
+    .button-admin-booth-update, 
+    .button-admin-booth-delete {
+        font-size: 6px; /* Mengurangi ukuran font */
+        padding: 3px 5px; /* Mengurangi padding */
+        margin-right: 5px; /* Mengurangi jarak antar tombol */
+        margin-bottom: 20%;
+    }
+
+    .button-admin-booth-delete {
+        padding-right: 7px;
+        text-align: center;
+      }
+  
+    .select-type {
+      font-size: 6px;
+      padding: 8px;
+    }
+  
+    .popup-content-admin-booth {
+      width: 100%;
+      padding: 20px;
+    }
+  
+    .close {
+        font-size: 12x !important; /* Menyesuaikan ukuran ikon close */
+    }
+    
+    label {
+        font-size: 8px !important; /* Menyesuaikan ukuran font label */
+    }
+  
+    .input-update-booth-admin {
+      font-size: 7px;
+      padding: 10px;
+    }
+  
+    .form-buttons {
+      flex-direction: row;
+      gap: 10px;
+    }
+  
+    .image-input {
+      margin-top: 10px;
+      margin-right: 0;
+    }
+  
+    .product-image {
+      margin-top: 20px;
+      width: 100px;
+      height: 50px;
+    }
+  
+    .button-admin-booth-save, 
+    .button-admin-booth-cancel {
+      font-size: 12px;
+      padding: 4px 8px;
+      width: auto;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    .product-table {
+      font-size: 7px;
+      width: 100%;
+      table-layout: fixed;
+    }
+  
+    /* .sub-title,
+    .table-container {
+      font-size: 10px;
+    } */
+  
+    .product-table th, .product-table td {
+        font-size: 7px;
+      padding: 8px;
+    }
+  
+    .button-admin-booth-update, 
+    .button-admin-booth-delete {
+        font-size: 7px;
+        padding: 5px 10px;
+        margin-right: 10px;
+        margin-bottom: 20%;
+    }
+
+    .button-admin-booth-delete {
+        padding-right: 12px;
+        text-align: center;
+      }
+  
+    .select-type {
+      font-size: 10px;
+      padding: 10px;
+    }
+  
+    .popup-content-admin-booth {
+      width: 80%;
+      padding: 25px;
+    }
+  
+    .close {
+        font-size: 16px !important;
+    }
+    
+    label {
+        font-size: 10px !important;
+    }
+  
+    .input-update-booth-admin {
+      font-size: 10px;
+      padding: 10px;
+    }
+  
+    .form-buttons {
+      flex-direction: row;
+      gap: 15px;
+    }
+  
+    .image-input {
+      margin-top: 15px;
+      margin-right: 0;
+    }
+  
+    .product-image {
+      margin-top: 25px;
+      width: 150px;
+      height: 75px;
+    }
+  
+    .button-admin-booth-save, 
+    .button-admin-booth-cancel {
+      font-size: 10px;
+      padding: 6px 12px;
+      width: auto;
+    }
+}

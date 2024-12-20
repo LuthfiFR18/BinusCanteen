@@ -22,7 +22,7 @@
 
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 480px) {
     .header-delivery {
         width: 100%;
         flex-direction: column; /* Mengubah arah tata letak ke vertikal */
@@ -36,10 +36,6 @@
     .logo-delivery {
         font-size: 18px; /* Ukuran font lebih kecil */
         margin-bottom: 3%;
-    }
-
-    .profile-icon {
-        font-size: 18px; /* Sesuaikan ukuran font untuk ikon profil */
     }
 
     .delivery-text {

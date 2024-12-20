@@ -156,11 +156,6 @@ const ProductList = ({selectedBooth, search }) => {
         <table className='product-table'>
           <thead>
             <tr>
-              <th colSpan="3"></th>
-              <th className='seller-name-booth'>Mamat <span>/ Nara Kitchen</span></th>
-              <th colSpan="3"></th>
-            </tr>
-            <tr className='sub-title'>
               <th>ID</th>
               <th>Booth Name</th>
               <th>Product Name</th>
@@ -187,7 +182,7 @@ const ProductList = ({selectedBooth, search }) => {
 
             {isPopupOpen && (
               <div className="popup-overlay-update">
-                <div className="popup-content">
+                <div className="popup-content-admin-booth">
                   <span className="close" onClick={closePopup}>
                     &times;
                   </span>

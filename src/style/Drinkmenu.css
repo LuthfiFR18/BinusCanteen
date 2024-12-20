@@ -19,6 +19,15 @@
   
 }
 
+.menu-item-empty{
+  display: grid;
+  place-items: center; /* Posisi konten di tengah secara vertikal dan horizontal */
+  grid-template-columns: 1fr; /* Satu kolom penuh saat tidak ada item */
+  text-align: center;
+  width: 100%;
+  font-size: 16px; /* Ukuran teks default */
+}
+
 .drink-item img {
   width: 100px;
   height: 100px;
@@ -124,6 +133,10 @@
     width: 100%;
     padding: 10px;
     box-shadow:  0 0.1rem 0.3rem 0.1rem #D0CECE;
+  }
+
+  .menu-item-empty{
+    font-size: 8px;
   }
 
   .drink-item img {

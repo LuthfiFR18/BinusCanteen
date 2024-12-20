@@ -1,7 +1,6 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import '../style/SellerBoothNameform.css'
 function SellerBoothNameform() {
 
@@ -34,12 +33,12 @@ useEffect(() => {
       <div className="seller-booth-form-wrapper">
         <h3 className="booth-title">Enter Your Booth Name</h3>
         <form action="#">
+
           <h5 className='booth-label'>Booth Name:</h5>
           <input className='booth-input' type="text" placeholder='Booth Name' />
 
           <h5 className='date-booth-text'>Date Booth:</h5>
           <input type="date" className="date-booth" />
-
 
           <h5 className="time-open-booth-text">Time Open Booth:</h5>
           <input type="time" className="time-open-booth"/>

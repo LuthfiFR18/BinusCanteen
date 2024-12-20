@@ -46,11 +46,10 @@
 
 /* Media Queries */
 
-@media screen and (min-width: 320px) and (max-width: 480px) {
+@media screen and (max-width: 480px) {
     .canteen-container {
         grid-template-columns: repeat(2, 1fr); 
         width: 80%;
-        height: auto;
         gap: 1rem;
         margin-top: 1rem;
         margin-bottom: 8%;
@@ -78,9 +77,9 @@
     }
   
     .booth-title {
-        width: 90%;
+        width: 100%;
         margin: 10px 0; /* Jarak atas dan bawah */
-        font-size: 12px; /* Ukuran font kecil untuk layar kecil */
+        font-size: 8px; /* Ukuran font kecil untuk layar kecil */
         text-align: center;
         color: #333; /* Warna teks */
     }

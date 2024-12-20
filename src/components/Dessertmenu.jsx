@@ -103,7 +103,7 @@ if (loadingProducts) return <p>Loading products...</p>;
   return (
     <div className="dessertmenu-list">
       {products.length === 0 ? (
-        <p>No products available for this booth.</p>
+        <p className="menu-item-empty">No products available for this booth.</p>
       ) : (
         products
         .filter((product) => product.producttype === "Dessert")
