@@ -162,12 +162,10 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    margin-bottom: 0 !important;
   }
 
   .menu-admin ul {
-    width: 100%;
-    height: auto;
     gap: 15px;
     margin-right: 4%;
   }
@@ -175,7 +173,7 @@
   .menu-admin ul li {
     width: 130px !important;
     height: 130px !important;
-    margin: 10px auto;
+    margin: 5px auto;
     box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
   }
 
@@ -188,7 +186,6 @@
     font-size: 12px !important; /* Slightly larger for better readability on tablets */
     padding-top: 20% !important;
     text-align: center;
-    display: block; /* Ensures the anchor tag takes up full width */
   }
 
   .menu-admin ul li:hover {

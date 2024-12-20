@@ -142,8 +142,10 @@ const ProductList = ({selectedBooth, search }) => {
 
 
   const handleCancel = () => {
+
     closePopup();
   };
+  
 
 
   return (

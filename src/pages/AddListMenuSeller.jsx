@@ -74,7 +74,7 @@ function AddListMenuSeller() {
               const formattedPrice = new Intl.NumberFormat("id-ID").format(rawValue);
               setMenuData({ ...menuData, price: `Rp ${formattedPrice}` });
             }
-        } else {
+      } else {
           setMenuData({ ...menuData, [name]: value });
         }
     };
