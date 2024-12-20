@@ -15,8 +15,16 @@
   padding: 15px;
   margin: 10px auto;
   box-shadow:  0 0.1rem 0.5rem 0.1rem #D0CECE;
-  width: 90%;
-  
+  width: 90%; 
+}
+
+.menu-item-empty{
+  display: grid;
+  place-items: center; /* Posisi konten di tengah secara vertikal dan horizontal */
+  grid-template-columns: 1fr; /* Satu kolom penuh saat tidak ada item */
+  text-align: center;
+  width: 100%;
+  font-size: 16px; /* Ukuran teks default */
 }
 
 .dessert-item img {
@@ -124,6 +132,10 @@
     width: 100%;
     padding: 10px;
     box-shadow:  0 0.1rem 0.3rem 0.1rem #D0CECE;
+  }
+
+  .menu-item-empty{
+    font-size: 8px;
   }
 
   .dessert-item img {

@@ -22,7 +22,7 @@
     color: #333;
   }
   
-  input[type="text"] {
+  /* input[type="text"] {
     width: 100%;
     padding: 0.8rem;
     padding-left: 30px;
@@ -35,7 +35,7 @@
   
   input[type="text"]:focus {
     border-color: #007bff;
-  }
+  } */
   
   /* Image Upload */
   .image-upload-container {

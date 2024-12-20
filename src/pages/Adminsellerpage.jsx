@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faCartShopping, faStore, faTruck} from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping, faStore, faReceipt} from '@fortawesome/free-solid-svg-icons'
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
 import '../style/Adminsellerpage.css'
@@ -46,24 +46,29 @@ function Adminsellerpage() {
             <div className='sellerpage'>
                 <Headeradmin search={search} setSearch={setSearch}/>
                 
-                <nav>
-                    <div class="menu">
-                        <ul>
-                            <li>
-                                <a href="#" onClick={()=>navigate('/adminbuyer')}>
-                                <FontAwesomeIcon icon={faCartShopping} size='4x' />
-                                <p className='namenavbar'>All User</p>
-                                </a>
-                            </li>
+                <nav className='menu-admin'>
+                    <ul>
+                        <li>
+                            <a href="#" onClick={()=>navigate('/adminbuyer')}>
+                            <FontAwesomeIcon icon={faCartShopping} size='4x' />
+                            <p className='namenavbar'>All User</p>
+                            </a>
+                        </li>
 
-                            <li>
-                                <a href="#" className='boothnav'>
-                                <FontAwesomeIcon icon={faStore} size='4x'/>
-                                <p className='namenavbar'>Booth&Seller</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
+                        <li>
+                            <a href="#" className='activenav'>
+                            <FontAwesomeIcon icon={faStore} size='4x'/>
+                            <p className='namenavbar'>Booth&Seller</p>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#" onClick={()=>navigate('/admintranscation')}>
+                            <FontAwesomeIcon icon={faReceipt} size='4x' />
+                            <p className='namenavbar'>Transaction</p>
+                            </a>
+                        </li>
+                    </ul>
                 </nav>
 
                 {/* Button Dropdown  */}

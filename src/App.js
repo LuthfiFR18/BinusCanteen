@@ -15,6 +15,7 @@ import Cart from './pages/Cart';
 import Payment from './pages/Payment';
 import Adminpage from './pages/Adminbuyerpage';
 import Adminsellerpage from './pages/Adminsellerpage';
+import AdminTransaction from './pages/AdminTransaction';
 import HistoryBuyer from './pages/HistoryBuyer';
 import PaymentSuccess from './pages/PaymentSuccess';
 import PaymentFail from './pages/PaymentFail';
@@ -93,7 +94,8 @@ function App() {
           <Route path='/cart' element={<Cart/>}/>    
           <Route path='/payment' element={<Payment/>}/>    
           <Route path='/adminbuyer' element={<Adminpage/>}/>    
-          <Route path='/adminseller' element={<Adminsellerpage/>}/>    
+          <Route path='/adminseller' element={<Adminsellerpage/>}/>
+          <Route path='/admintranscation' element={<AdminTransaction/>}/>
           <Route path='/Sellerpage' element={<Sellerpage img={img} />}/>
           <Route path='/editpictureseller' element={<EditPictureSeller onSave={setImg}/>}/>
           <Route path='/editmenuseller' element={<EditMenuSeller/>}/>

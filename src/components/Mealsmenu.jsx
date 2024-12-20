@@ -110,7 +110,7 @@ const Mealsmenu = () => {
   return (
     <div className="mealsmenu-list">
       {products.length === 0 ? (
-        <p>No products available for this booth.</p>
+        <p className="menu-item-empty">No products available for this booth.</p>
       ) : (
         products
         .filter((product) => product.producttype === "Food")

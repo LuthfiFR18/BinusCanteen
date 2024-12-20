@@ -55,6 +55,16 @@
     padding: 8px;
     width: 100%;
     border-radius: 20px;
+    margin-bottom: 5%;
+}
+
+.image-booth-seller-text{
+    text-align: left;
+}
+
+.input-image-booth{
+    padding: 8px;
+    width: 100%;
 }
 
 .submit-booth-btn{
@@ -64,8 +74,8 @@
     border-radius: 25px;
     width: 184px;
     height: 41px;
+    margin: auto;
     margin-top: 10%;
-    margin-left: 10%;
     background-color: var(--btn-color);
     color: var(--text-color);
     font-weight: bold;
