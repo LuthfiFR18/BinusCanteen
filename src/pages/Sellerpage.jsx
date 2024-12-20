@@ -189,6 +189,81 @@ function Sellerpage() {
             console.error("Error deleting product:", error);
         }
     };
+
+    //Pop Up
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [formData, setFormData] = useState({
+      
+      productName: "",
+      price: "",
+      productType: "",
+      sellerName: "",
+      productImage: null, // Image file
+      previewImage: "", // Preview URL for the image
+    });
+  
+    // Open and close popup functions
+    const openPopup = (product) => {
+      setFormData({
+        uuid: product.uuid,
+        productName: product.name,
+        price: product.price,
+        productType: product.producttype,
+        sellerName: product.user ? product.user.name : "",  
+        productImage: null, 
+        previewImage: product.image || "", 
+      });
+      setIsPopupOpen(true);
+    };
+  
+    const closePopup = () => {
+      setIsPopupOpen(false);
+    };
+
+     // Handle form input changes
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+            setFormData({
+            ...formData,
+            [name]: value,
+        });
+    };
+
+  // Handle image change
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+      ...formData,
+      productImage: file,
+      previewImage: URL.createObjectURL(file), // Create URL for preview
+    });
+  };
+
+  const handleCancel = () => {
+    closePopup();
+  };
+
+  const handleUpdate = async (e) => {
+    e.preventDefault();
+        try {
+            if (!formData.uuid) {
+            console.error('No product ID provided for update');
+            return;
+        }
+
+            await axios.patch(`http://localhost:5000/product/${formData.uuid}`, {
+                name: formData.productName,
+                price: parseInt(formData.price),
+                producttype: formData.productType,
+                sellerName: formData.sellerName,
+                image: formData.productImage
+            });
+            console.log("Product updated successfully");
+            closePopup();
+        }catch (error) {
+            console.error("Error updating product:", error);
+        }
+    };
     
     return(
         <div className='dashboard'>
@@ -285,7 +360,7 @@ function Sellerpage() {
                             </div>
                             <div className="menu-edit">
                                 
-                                <button onClick={() => handleEditMenu(menu)}>Edit</button>
+                                <button onClick={() => openPopup()}>Edit</button>
                                 
                                 <button 
                                     style={{ backgroundColor: menu.isOutOfStock ? '#FF9D00' : 'red' }} 
@@ -306,17 +381,83 @@ function Sellerpage() {
                 ))}
             </div>
 
-            <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
+            <button className="add-menu-btn" onClick={() => openPopup()}>+</button>
             
-            {isEditPopupOpen && (
-                <div className="popup-overlay">
-                    <div className="popup">
-                        <EditMenuSeller
-                            menu={selectedMenu}
-                            onClose={handleCloseEditPopup}
-                        />
+            {isPopupOpen && (
+              <div className="popup-overlay-update">
+                <div className="popup-content-admin-booth">
+                  <span className="close" onClick={closePopup}>
+                    &times;
+                  </span>
+                  <h2>Update Data</h2>
+
+                  {formData.previewImage && (
+                  <img src={formData.previewImage} alt="Product" className="product-image" />
+                )}
+
+                  <form onSubmit={handleUpdate}>
+                    <label htmlFor="Productname">Name Product:</label>
+                    <input className='input-update-booth-admin'
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.productName}
+                      onChange={handleChange}
+                      placeholder="Enter name Product"
+                    />
+
+                    <label htmlFor="price">Price:</label>
+                    <input className='input-update-booth-admin'
+                      type="text"
+                      id="price"
+                      name="price"
+                      value={formData.price}
+                      onChange={handleChange}
+                      placeholder="Enter Price"
+                    />
+
+                    <label htmlFor="productType">Product Type:</label>
+                    <select className='select-type'
+                      id="productType"
+                      name="productType"
+                      value={formData.productType}
+                      onChange={handleChange}
+                      placeholder='Select Type'
+                    >
+
+                    <option value="Food">Food</option>
+                    <option value="Drink">Drink</option>
+                    <option value="Dessert">Dessert</option>
+                    </select>
+
+                    <label htmlFor="sellername">Seller Name:</label>
+                    <input className='input-update-booth-admin'
+                      type="text"
+                      id="sellername"
+                      name="sellername"
+                      value={formData.sellerName}
+                      onChange={handleChange}
+                      placeholder="input name seller"
+                    />
+
+                    <label htmlFor="productImage">Product Image:</label>
+                      {/* <button type='file'></button> */}
+                    <input
+                      className='image-input'
+                      type="file"
+                      id="productImage"
+                      name="productImage"
+                      onChange={handleImageChange}
+                      accept="image/*"
+                    />  
+
+                    <div className="form-buttons">
+                    <button className='button-admin-booth-save' type="submit">Save</button>
+                    <button  className='button-admin-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
                     </div>
+                  </form>
                 </div>
+              </div>
             )}
 
             {showPopupStoreStatus &&(

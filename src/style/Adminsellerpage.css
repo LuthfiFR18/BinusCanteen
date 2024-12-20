@@ -1,193 +1,218 @@
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
+.admin-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
 }
 
-.admin-container{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-}
 .sellerpage{
-    flex: 1;
+  flex: 1;
 }
+
 .menu-admin{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
 }
 
 .menu-admin ul{
-    width: 248px;
-    height: 238px;
-    display: flex;
-    justify-content: center;
-    margin-top: 60px;
-    gap: 20px;
+  width: 20px;
+  height: 238px;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  gap: 20px;
 }
 
 .menu-admin ul li{
-    display: flex;
-    width: 248px;
-    height: 230px;
-    text-align: center;
-    border-radius: 25px;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+  display: flex;
+  width: 248px;
+  height: 230px;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
+
 .menu-admin ul li .activenav{
-    border-radius: 25px;;
-    border-style: solid;
-    border-color: #FF9D00;
+  border-radius: 25px;;
+  border-style: solid;
+  border-color: #FF9D00;
 }
 
 .menu-admin ul li a{
-    padding-top: 70px;
-    width: 248px;
-    display: center;
-    font-size: 16px;
-    font-weight: bold;
-    text-decoration: none;
-    color: var(--btn-color);
-    align-items: center;
-    justify-content: center;
+  padding-top: 70px;
+  width: 248px;
+  display: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--btn-color);
+  align-items: center;
+  justify-content: center;
 }
 
 .menu-admin ul li:hover{
-    background-color: var(--btn-color);
+  background-color: var(--btn-color);
 }
 
 .menu-admin ul li a:hover{
-    color: var(--text-color);
-}
-
-.menu-admin ul li .boothnav{
-    border-radius: 25px;
-    border-style: solid;
-    border-color: #FF9D00;
+  color: var(--text-color);
 }
 
 .admin-booth-subcontainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 2%;
+  padding: 20px;
+}
+
+.dropdown-admin-booth-wrapper {
+  display: flex;
+  align-items: center;
+}
+  
+.admin-dropdown-booth {
+  margin-left: 50px;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+  width: 400px;
+}
+
+/* Media Queries */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .admin-container {
+    padding: 10px auto;
+  }
+
+  .menu-admin {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 10px auto;
+    margin-left: 2%;
+  }
+
+  .menu-admin ul {
+    width: 100%;
+    height: auto;
+    gap: 15px;
+    margin-top: 5%;
+  }
+
+  .menu-admin ul li {
+    width: 90%;
+    max-width: 230px;
+    height: auto;
+    box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
+    border-radius: 10px;
+  }
+
+  .menu-admin ul li .activenav {
+    border-radius: 10px;
+    border-color: #FF9D00;
+  }
+
+  .menu-admin ul li a {
+    font-size: 8px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-admin ul li:hover {
+    background-color: #FF9D00;
+  }
+
+  .menu-admin ul li a:hover {
+    color: #fff;
+  }
+
+  .dropdown-admin-booth-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .admin-dropdown-booth {
+    margin-left: 0;
+    padding: 8px;
+    font-size: 12px;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .admin-container {
+    padding: 15px auto;
+  }
+
+  .menu-admin {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
-    margin-bottom: 20px;
-}
+    width: 100%;
+  }
 
-.dropdown-admin-booth-wrapper {
+  .menu-admin ul {
+    width: 100%;
+    height: auto;
+    gap: 15px;
+    margin-right: 4%;
+  }
+
+  .menu-admin ul li {
+    width: 130px !important;
+    height: 130px !important;
+    margin: 10px auto;
+    box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
+  }
+
+  .menu-admin ul li .activenav {
+    border-radius: 20px;
+    border-color: #FF9D00;
+  }
+
+  .menu-admin ul li a {
+    font-size: 12px !important; /* Slightly larger for better readability on tablets */
+    padding-top: 20% !important;
+    text-align: center;
+    display: block; /* Ensures the anchor tag takes up full width */
+  }
+
+  .menu-admin ul li:hover {
+    background-color: #FF9D00;
+  }
+
+  .menu-admin ul li a:hover {
+    color: #fff;
+  }
+
+  .dropdown-admin-booth-wrapper {
     display: flex;
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-}
-  
-.admin-dropdown-booth{
-    margin-left: 50px;
+    width: 100%;
+    margin-right: 10%;
+  }
+
+  .admin-dropdown-booth {
     padding: 10px;
     font-size: 16px;
+    width: 100%;
     border-radius: 5px;
     border: 1px solid #ccc;
-    text-align: center;
-    width: 400px;
+  }
 }
-
-@media screen and (min-width: 320px) and (max-width: 480px) {
-    .admin-container {
-      padding: 10px auto;
-    }
-  
-    .adminpage {
-      flex: 1;
-    }
-  
-    .menu-admin {
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      width: 90%;
-    }
-  
-    .menu-admin ul {
-      width: 100%;
-      height: auto;
-      gap: 15px;
-      margin-top: 5%;
-      margin-bottom: 3%;
-    }
-  
-    .menu-admin ul li {
-      width: 90%;
-      max-width: 230px;
-      height: auto;
-      box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
-      border-radius: 10px;
-      margin-bottom: 30px;
-    }
-  
-    .menu-admin ul li .activenav {
-      border-radius: 10px;
-      border-color: #FF9D00;
-    }
-  
-    .menu-admin ul li a {
-      font-size: 8px;
-      padding-top: 10px;
-      width: 100%;
-      text-align: center;
-    }
-  
-    .menu-admin ul li:hover {
-      background-color: #FF9D00;
-    }
-  
-    .menu-admin ul li a:hover {
-      color: #fff;
-    }
-  
-    .dropdown-admin-booth-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      width: 100%;
-    }
-  
-    .admin-dropdown-booth {
-      margin-left: 0;
-      padding: 8px;
-      font-size: 12px; /* Mengecilkan font-size dropdown */
-      width: 100%;
-      border-radius: 5px;
-      border: 1px solid #ccc;
-    }
-  
-    .navbar {
-      height: 50px; /* Mengecilkan tinggi navbar */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0 10px;
-      background-color: #f8f9fa;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-  
-    .navbar-logo {
-      font-size: 14px; /* Mengecilkan ukuran logo */
-    }
-  
-    .navbar-menu {
-      display: flex;
-      gap: 10px;
-    }
-  
-    .navbar-menu a {
-      font-size: 10px; /* Mengecilkan font-size link */
-      padding: 5px 10px;
-    }
-  
-    .navbar-dropdown {
-      font-size: 12px; /* Mengecilkan dropdown */
-      padding: 5px;
-    }
-}  
