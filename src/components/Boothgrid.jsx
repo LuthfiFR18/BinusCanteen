@@ -37,7 +37,7 @@ function Boothgrid() {
                       
                         {/* tambah ini untuk menyambungkan page berdasarkan id ${booth.uuid}   */}
                         <div className="box-img">
-                            <img src={img1} alt={booth.name} />
+                            <img src={`http://localhost:5000/uploads/${booth.image}`} alt={booth.name} />
                         </div>
                         <h3 className="booth-title">{booth.name}</h3>
                     </div>

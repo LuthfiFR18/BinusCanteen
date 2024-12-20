@@ -28,7 +28,9 @@ function Sellerpage() {
     const [isOutOfStockAction, setIsOutOfStockAction] = useState(false);
     const [selectedMenuId, setSelectedMenuId] = useState(null);
     const [isClosingStore, setIsClosingStore] = useState(false);
-    const [img, setImg] = useState(imgDefault);
+    const [img, setImg] = useState();
+    const [profileImage, setProfileImage] = useState('');
+    const [boothName, setBoothName] = useState();
     const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState(null);
     const dispatch = useDispatch();
@@ -58,8 +60,20 @@ function Sellerpage() {
                 const boothData = boothResponse.data;
                 console.log("boothData: ", boothData);
 
+                // Mengambil gambar dan nama dari booth
+                    
+                    
+                const NamaBooth = boothData.booths.name;
+                    setBoothName(NamaBooth);
+
+                const boothImage = boothData.booths.image;
+                    setProfileImage(boothImage);
+                
+
+
                 if (boothData && boothData.booths && boothData.booths.id) {
                     const boothId = boothData.booths.id; // Mengakses ID booth dari boothData.booths
+                    
                     
 
                     const productsResponse = await axios.get(`http://localhost:5000/booth/${boothId}/products`
@@ -184,12 +198,12 @@ function Sellerpage() {
                 <div className="header-seller">
                 
                     <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
-                        <img src={img} alt="Dish"/>
+                        <img src={`http://localhost:5000/uploads/${profileImage}`} alt="Error"/>
                         
                     </div>
 
                     <div className="header-content">    
-                        <h1 className="welcome-text">Welcome, NARA KITCHEN</h1>
+                        <h1 className="welcome-text">Welcome, {boothName}</h1>
                         <div className="button-group">
                             <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>    
                             <button

@@ -1,69 +1,78 @@
 import React, {useState, useEffect} from 'react'
 import { useNavigate } from 'react-router-dom';
 import { useLocation } from "react-router-dom";
-import '../style/SellerBoothNameform.css'
+import { useEffect, useState } from "react";
+import '../style/SellerBoothNameform.css';
+import axios from 'axios';
 function SellerBoothNameform() {
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const [msg, setMsg] = useState("");
   const [userId, setUserId] = useState('');
+  const [boothName, setBoothName] = useState('');
+  const [opening, setOpening] = useState('');
+  const [closing, setClosing] = useState('');
 
   useEffect(() => {
-    if (location.state && location.state.userId) {
-        setUserId(location.state.userId);
-    }
-}, [location.state]);
+      console.log("Location state:", location.state);
+      if (location.state?.userId) {
+          setUserId(location.state.userId);
+          console.log("User ID set to:", location.state.userId);
+      } else {
+          console.log("No userId found in location.state");
+          setUserId("defaultUserId"); // Or handle the case appropriately
+      }
+  }, [location.state]);
 
-useEffect(() => {
-    console.log(userId); // Logs the updated userId
-}, [userId]);
+  const saveBooth = async (e) => {
+    e.preventDefault();
 
+        console.log("saveBooth is called"); // To check if the function is being called
 
-  const [imagePreview, setImagePreview] = useState(null);
+        if (!boothName || !opening || !closing) {
+          setMsg("Please fill in all the fields");
+          return;
+      }
 
-  const handleImageChange = (event) => {
-    const file = event.target.files[0];
-    if (file) {
-      const imageURL = URL.createObjectURL(file);
-      setImagePreview(imageURL);
+      try {
+        const response = await axios.post("http://localhost:5000/booth", {
+        name: boothName,
+        openingTime: opening,
+        closingTime: closing,
+        userId: userId,
+        });
+        console.log("Ready To be Submitted", response.data);
+        console.log("Booth saved successfully:", response.data);
+
+        navigate("/");
+
+    } catch (error) {
+        if (error.response) {
+        setMsg(error.response.data.msg);
+        }
     }
   };
+
+
   return (
     <div className='seller-booth-form-container'>
       <div className="seller-booth-form-wrapper">
         <h3 className="booth-title">Enter Your Booth Name</h3>
-        <form action="#">
+        <p className='errorMsg'>{msg}</p>
 
+        <form onSubmit={saveBooth}>
           <h5 className='booth-label'>Booth Name:</h5>
-          <input className='booth-input' type="text" placeholder='Booth Name' />
-
-          <h5 className='date-booth-text'>Date Booth:</h5>
-          <input type="date" className="date-booth" />
+          <input className='booth-input' type="text" onChange={(e)=> setBoothName(e.target.value)} placeholder='Booth Name' />
 
           <h5 className="time-open-booth-text">Time Open Booth:</h5>
-          <input type="time" className="time-open-booth"/>
+          <input type="time" className="time-open-booth" onChange={(e)=> setOpening(e.target.value)}/>
 
           <h5 className="time-close-booth-text">Time Close Booth:</h5>
-          <input type="time" className='time-close-booth'/>
+          <input type="time" className="time-open-booth" onChange={(e)=> setClosing(e.target.value)}/>
 
-          <h5 className="image-booth-seller-text">Input Image Booth:</h5>
-          <input
-            type="file"
-            className='input-image-booth'
-            accept="image/*"
-            onChange={handleImageChange}
-          />
-          {imagePreview && (
-            <div>
-              <p>Preview Image:</p>
-              <img
-                src={imagePreview}
-                alt="Booth Preview"
-                style={{ maxWidth: '300px', marginTop: '10px' }}
-              />
-            </div>
-          )}
-          <button className="submit-booth-btn" onClick={()=> navigate('/')}>Submit</button>
+          <button className="submit-booth-btn">Submit</button>
         </form>
       </div>
     </div>

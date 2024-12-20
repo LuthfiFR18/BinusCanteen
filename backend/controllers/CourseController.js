@@ -1,4 +1,5 @@
 import Courses from "../models/CourseModel.js";
+import Users from "../models/UserModel.js";
 
 // Mendapatkan semua course
 export const getCourses = async (req, res) => {
@@ -11,16 +12,34 @@ export const getCourses = async (req, res) => {
 };
 
 // Mendapatkan course berdasarkan ID
-export const getCourseById = async (req, res) => {
+export const getCourseByUserId = async (req, res) => {
     try {
-        const course = await Courses.findByPk(req.params.id);
-        if (course) {
-            res.json(course);
-        } else {
-            res.status(404).json({ message: "Course not found" });
+        // Get userId from params
+        const { userId } = req.params;
+        console.log('User ID:', userId);
+
+        // Validate userId
+        if (!userId || isNaN(userId)) {
+            return res.status(400).json({ message: 'Invalid userId parameter' });
         }
+
+        // Fetch all cart items for the user and include product details
+        const courses = await Courses.findAll({
+            where: { userId }, // filter by userId
+            include: [
+                {
+                    model: Users,
+                    as: 'user',
+                    attributes: ['id', 'name', 'uuid'], // Include user details (if needed)
+                },
+            ],
+        });
+        return res.status(200).json({
+            courses, // returns cart items with products details
+        });
     } catch (error) {
-        res.status(500).json({ message: error.message });
+        console.error('Error fetching course:', error);
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 };
 

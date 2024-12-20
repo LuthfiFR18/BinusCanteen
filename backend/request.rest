@@ -83,6 +83,17 @@ Content-Type: application/json
   "userId": 5
 } 
 
+### membuat order baru 
+POST http://localhost:5000/order
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "deliveryLocation":"disini"
+}
+
+
+### membuat OrderDetails baru
 ###
 GET http://localhost:5000/booth/1/products
 
@@ -105,6 +116,14 @@ Content-Type: application/json
     "name": "Sample Product",
     "price": "50000",
     "producttype": "Food"
+}
+
+###
+PATCH  http://localhost:5000/Booth/3
+Content-Type: multipart/form-data
+
+{
+  "image": "8072a6856398a45501ca2fc9b99f3074"
 }
 
 

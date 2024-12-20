@@ -12,7 +12,7 @@ function Register(){
     const [confPassword, setConfPassword] = useState("");
     const [phonenumber, setphonenumber] = useState("");
     const [roleId, setRoleId] = useState();
-    const [userId, setUserId] = useState();
+    const [setUserId] = useState();
     const [msg, setMsg] = useState("");
 
     const [role, setSelectedRole] = useState('');
@@ -66,18 +66,18 @@ function Register(){
             return;
         }
 
-        try {
-            const emailResponse = await axios.get(`http://localhost:5000/user/${email}`);
-            console.log(emailResponse.data); // Log the user data if found
+        // try {
+        //     const emailResponse = await axios.get(`http://localhost:5000/user/${email}`);
+        //     console.log(emailResponse.data); // Log the user data if found
             
-            if(emailResponse.data){
-                setMsg("This email has been used, please Log In!")
-                return;
-            }
-        } catch (error) {
-            console.error(error);
-            setMsg("User not found.");
-        }
+        //     if(emailResponse.data){
+        //         setMsg("This email has been used, please Log In!")
+        //         return;
+        //     }
+        // } catch (error) {
+        //     console.error(error);
+        //     setMsg("User not found.");
+        // }
 
         try {
             const response = await axios.post("http://localhost:5000/user", {
@@ -89,13 +89,12 @@ function Register(){
             });
             console.log("Ready To be Submitted", response.data);
             console.log("User saved successfully:", response.data);
-            console.log(response.data.id);
-            setUserId(response.data.id);
 
             if(roleId === 2 || roleId === 3){
                 navigate("/");
             }else if(roleId === 4){
-                navigate("/sellerbooth", { state: { userId } });
+                console.log("Navigating with userId:", response.data.id); // Use response.data.id directly
+                navigate("/sellerbooth", { state: { userId: response.data.id } });
             }
         } catch (error) {
             if (error.response) {
