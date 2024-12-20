@@ -1,9 +1,8 @@
 import React, {useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from 'react-router-dom';
 import '../style/SellerBoothNameform.css';
 import axios from 'axios';
+
 function SellerBoothNameform() {
 
   const navigate = useNavigate();
