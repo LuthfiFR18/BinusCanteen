@@ -34,7 +34,9 @@ export const associations = () => {
     
     // Order Details
     OrderDetails.belongsTo(Order, { foreignKey: 'orderId', as: 'order' });
-    
+    OrderDetails.belongsTo(Booth, { foreignKey: 'boothId', as: 'booth' });
+    Booth.hasMany(OrderDetails, { foreignKey: 'boothId', as: 'orderDetails' });
+
     // Payment
     Payment.belongsTo(Cart, { foreignKey: 'cartId' });
 
