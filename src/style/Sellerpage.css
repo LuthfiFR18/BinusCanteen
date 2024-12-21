@@ -1,13 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
-}
-
-.dashboard{
+.dashboard-seller{
     background-color: var(--text-color);
     width: 100%;
     align-items: center;
@@ -17,48 +9,36 @@
     margin: 0;
 }
 
-.menu{
-    margin-top: 220px;
-    margin-bottom: -100px;
-}
-
 .welcome-text{
-    flex-grow: 1;
     font-size: 32px;
-    font-weight: bold;
+    margin: 10px auto;
+    margin-left: 16%;
     color: var(--bg-color);
-    margin: 0;
-    margin-left: -520px;
-    margin-right: 210px;
     text-align: center;
-    margin-top: 305px;
 }
 
-.header-seller{
+.header-profile-seller{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    margin: 10px auto;
 }
 
 .header-content{
     display: flex;
-    gap: 50px;
+    justify-content: center;
+    align-items: center;
 }
   
 .header-images img {
-    width: 238px;
-    height: 238px; 
-    margin-top: 350px;
+    width: 220px;
+    height: 220px;
+    margin-top: 15%;
     margin-left: 80px;
-    margin-right: 280px;
     border-radius: 15px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     object-fit: cover;
     transition: opacity 0.3s ease;
-}
-  
-.header-images.store-closed img {
-    opacity: 0.5; /* Make images slightly transparent */
 }
 
 .button-group{
@@ -66,7 +46,8 @@
     flex-direction: column;
     align-items: flex-end;
     gap: 10px;
-    margin-top: 300px;
+    margin: 10px auto;
+    margin-left: 20%;
 }
   
 .edit-picture-btn {
@@ -78,7 +59,21 @@
     border-radius: 20px;
     color: white;
     font-weight: bold;
-    margin: 0 20px;
+}
+
+.close-store-btn {
+    background-color: red;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 20px;
+    color: white;
+    font-weight: bold;
+    width: 160px;
+}
+  
+.header-images.store-closed img {
+    opacity: 0.5; /* Make images slightly transparent */
 }
   
 .list-menu-title {
@@ -88,18 +83,6 @@
     margin-top: 130px;
     margin-bottom: 10px;
     
-}
-  
-.close-store-btn {
-    background-color: red;
-    border: none;
-    padding: 10px 20px;
-    cursor: pointer;
-    border-radius: 20px;
-    color: white;
-    font-weight: bold;
-    margin: 0 20px;
-    width: 160px;
 }
   
 .menu-list {
@@ -319,6 +302,7 @@
 }
 
 .navmenu{
+    width: 100%;
     display: flex;
     justify-content: space-around;
 }
@@ -332,8 +316,6 @@
 }
 
 .menu ul{
-    width: 248px;
-    height: 238px;
     display: flex;
     justify-content: center;
     margin-top: 60px;
@@ -342,15 +324,14 @@
 
 .menu ul li{
     display: flex;
-    width: 248px;
-    height: 230px;
+    width: 200px;
+    height: 100px;
     text-align: center;
-    border-radius: 25px;
+    border-radius: 15px;
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
 }
 
 .menu ul li a{
-    padding-top: 70px;
     width: 248px;
     display: center;
     font-size: 16px;

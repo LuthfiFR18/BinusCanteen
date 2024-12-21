@@ -7,12 +7,14 @@
   border-radius: 50%;
   width: 45px;
   height: 45px;
-  margin-top: 5px;
 }
   
 .profile-icon{
-  width: 30px;
-  margin-right: 7px;
+  cursor: pointer;
+  height: 30px;
+  padding-top: 1px;
+  margin-left: 4%;
+  color: #FF9D00;
 }
   
 .dropdown-menu-profile-seller {
@@ -61,16 +63,12 @@
   text-align: center;
 }   
 .changepassword-btn:hover {
-  color: #FF9D00; /* Optional hover effect */
+  color: #FF9D00;
 }
 .history-btn:hover {
-  color: #FF9D00; /* Optional hover effect */
+  color: #FF9D00; 
 }
 
 .logOut-btn:hover{
   color: red;
 }
-
-/* .dropdown-menu li button:last-child {
-  color: red;
-} */

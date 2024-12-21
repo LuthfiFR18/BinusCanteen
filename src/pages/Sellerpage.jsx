@@ -185,20 +185,83 @@ function Sellerpage() {
             console.error("Error deleting product:", error);
         }
     };
+
+    //pop up
+    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [formData, setFormData] = useState({
+        productName: "",
+        price: "",
+        productType: "",
+        sellerName: "",
+        productImage: null, // Image file
+        previewImage: "", // Preview URL for the image
+    });
+
+    // Open and close popup functions
+    const openPopup = () => {
+        setIsPopupOpen(true);
+    };
+
+    const closePopup = () => {
+        setIsPopupOpen(false);
+        setFormData({
+        productName: "",
+        price: "",
+        productType: "",
+        sellerName: "",
+        productImage: null,
+        previewImage: "",
+        });
+    };
+
+    // Handle form input changes
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setFormData({
+        ...formData,
+        [name]: value,
+        });
+    };
+
+    // Handle image change
+    const handleImageChange = (e) => {
+        const file = e.target.files[0];
+        setFormData({
+        ...formData,
+        productImage: file,
+        previewImage: URL.createObjectURL(file), // Create URL for preview
+        });
+    };
+
+    const handleUpdate = (e) => {
+        e.preventDefault();
+        console.log("Updated Product Data:", formData);
+        closePopup();
+    };
+
+    const handleCancel = () => {
+        // setFormData({
+        //   name: "",
+        //   email: "",
+        //   password: "",
+        //   phonenumber: "",
+        // });
+        closePopup();
+    };
+
     
     return(
-        <div className='dashboard'>
+        <div className='dashboard-seller'>
             
                 <Header/>
 
-                <div className="header-seller">
+                <div className="header-profile-seller">
                 
                     <div className={`header-images ${storeClosed ? 'store-closed' : ''}`}>
                         <img src={`http://localhost:5000/uploads/${profileImage}`} alt="Error"/>
                         
                     </div>
 
-                    <div className="header-content">    
                         <h1 className="welcome-text">Welcome, {boothName}</h1>
                         <div className="button-group">
                             <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>    
@@ -210,7 +273,6 @@ function Sellerpage() {
                                 {storeClosed ? 'Open your store' : 'Close your store'}
                             </button>
                         </div>
-                    </div>
                 </div>
                 
                 <nav className='navmenu'>
@@ -228,31 +290,10 @@ function Sellerpage() {
                                     <span className="menu-text">Order List</span>
                                 </a>
                             </li>
-                            {/* <li>
-                                <a href="#" onClick={()=>navigate('/ListMenuSeller')}>
-                                <FontAwesomeIcon icon={faUtensils} size='4x' />
-                                <p className='namenavbar'>List Menu</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#" onClick={()=>navigate('/OrderListSeller')}>
-                                <FontAwesomeIcon icon={faGlassWater} size='4x' />
-                                <p className='namenavbar'>Order List</p>
-
-                                </a>
-                            </li> */}
                         </ul>
                     </div>
                 </nav>
-
-            {/* <button className="close-store-btn" onClick={handlePopup}>Close your store</button> */}
-            {/* <button
-                className="close-store-btn"
-                onClick={handlePopupStoreStatus}
-                style={{ backgroundColor: storeClosed ? '#FF9D00' : 'red' }}
-            >
-                {storeClosed ? 'Open your store' : 'Close your store'}
-            </button> */}
+                
             <h2 className="list-menu-title">List Menu {boothName}</h2>
             
             <div className="menu-list">
@@ -280,14 +321,74 @@ function Sellerpage() {
                             </div>
                             <div className="menu-edit">
                                 
-                                <button onClick={() => handleEditMenu(menu)}>Edit</button>
-                                
-                                <button 
-                                    style={{ backgroundColor: menu.isOutOfStock ? '#FF9D00' : 'red' }} 
-                                    onClick={() => handleOutOfStockClick(menu.id, menu.isOutOfStock)}
-                                >
-                                    {menu.isOutOfStock ? 'Back in Stock' : 'Out of Stock'}
-                                </button>
+                                <button onClick={() => openPopup()}>Edit</button>
+
+                                {isPopupOpen && (
+                                    <div className="popup-overlay-update">
+                                        <div className="popup-content-admin-booth">
+                                        <span className="close" onClick={closePopup}>
+                                            &times;
+                                        </span>
+                                        <h2>Edit Menu</h2>
+
+                                        {formData.previewImage && (
+                                        <img src={formData.previewImage} alt="Product" className="product-image" />
+                                        )}
+
+                                        <form onSubmit={handleUpdate}>
+                                            <label htmlFor="Productname">Name Product:</label>
+                                            <input className='input-update-booth-admin'
+                                            type="text"
+                                            id="name"
+                                            name="name"
+                                            value={formData.productName}
+                                            onChange={handleChange}
+                                            placeholder="Enter name Product"
+                                            />
+
+                                            <label htmlFor="price">Price:</label>
+                                            <input className='input-update-booth-admin'
+                                            type="text"
+                                            id="price"
+                                            name="price"
+                                            value={formData.price}
+                                            onChange={handleChange}
+                                            placeholder="Enter Price"
+                                            />
+
+                                            <label htmlFor="productType">Product Type:</label>
+                                            <select className='select-type'
+                                            id="productType"
+                                            name="productType"
+                                            value={formData.productType}
+                                            onChange={handleChange}
+                                            placeholder='Select Type'
+                                            >
+
+                                            <option value="Food">Food</option>
+                                            <option value="Drink">Drink</option>
+                                            <option value="Dessert">Dessert</option>
+                                            </select>
+
+                                            <label htmlFor="productImage">Product Image:</label>
+                                            {/* <button type='file'></button> */}
+                                            <input
+                                            className='image-input'
+                                            type="file"
+                                            id="productImage"
+                                            name="productImage"
+                                            onChange={handleImageChange}
+                                            accept="image/*"
+                                            />  
+
+                                            <div className="form-buttons">
+                                            <button className='button-admin-booth-save' type="submit">Save</button>
+                                            <button  className='button-admin-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
+                                            </div>
+                                        </form>
+                                        </div>
+                                    </div>
+                                )}
                                 <button 
                                     className="delete-btn"
                                     style={{ backgroundColor: 'black', color: 'white' }}
@@ -303,14 +404,13 @@ function Sellerpage() {
 
             <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
             
-            {isEditPopupOpen && (
+            {isEditPopupOpen&&(
                 <div className="popup-overlay">
-                    <div className="popup">
-                        <EditMenuSeller
-                            menu={selectedMenu}
-                            onClose={handleCloseEditPopup}
-                        />
-                    </div>
+                <div className="popup">
+                    <EditMenuSeller
+                    menu={selectedMenu}
+                    onClose={handleCloseEditPopup}/>
+                </div>
                 </div>
             )}
 

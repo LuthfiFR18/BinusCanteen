@@ -3,30 +3,30 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    height: 60px;
+    min-height:75px;
     background-color: #2E7ADD;
-    gap: 30%;
+    border-radius: 0 0 15px 15px;
+    gap: 73%;
 }
 
-.logo-text{
+.logo-seller-text{
     cursor: pointer;
+    display: flex;
     justify-content: center;
     align-items: center;
     font-size: 24px;
-    font-weight: bold;
-    margin-top: 5px;
+    margin-left: 3%;
+    margin-bottom: 5px;
 }
 
 .logo-text-span{
     color: #FF9D00;
 }
 
-.header-middle{
-    color: white;
+.profile-box{
     display: flex;
-    align-items: center;
     justify-content: center;
-    margin-top: 5px;
-    margin-right: 100px;
+    align-items: center;
+    margin-right: 5%;
 }
 
