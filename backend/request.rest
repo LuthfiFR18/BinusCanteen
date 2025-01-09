@@ -99,6 +99,9 @@ GET http://localhost:5000/booth/1/products
 ### delete order
 DELETE http://localhost:5000/orders/notPaid
 
+### get order
+GET http://localhost:5000/orders/notPaid
+
 ### delete order
 DELETE http://localhost:5000/order
 
