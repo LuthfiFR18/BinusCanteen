@@ -142,14 +142,10 @@ const ProductList = ({selectedBooth, search }) => {
 
 
   const handleCancel = () => {
-    // setFormData({
-    //   name: "",
-    //   email: "",
-    //   password: "",
-    //   phonenumber: "",
-    // });
+
     closePopup();
   };
+  
 
 
   return (
@@ -255,9 +251,7 @@ const ProductList = ({selectedBooth, search }) => {
                   </form>
                 </div>
               </div>
-
             )}
-
           </td>
         </tr>
 

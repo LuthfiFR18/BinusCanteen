@@ -13,7 +13,7 @@ function AdminTransaction() {
   return (
     <div className="admintransaction-container">
         <Headeradmin/>
-        <nav className='nav-admin'>
+        <nav className='menu-admin'>
             <ul>
                 <li>
                     <a href="#" onClick={()=>navigate('/adminbuyer')}>

@@ -1,49 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import '../style/OrderListSeller.css';
 import PopUpOrderDone from "../components/PopUpOrderDone";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Await } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import Header from '../components/Headerseller';
 import Footerseller from '../components/Footerseller';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
+import axios from "axios";
+import { getMe } from '../features/authSlice';
+import { useDispatch, useSelector } from 'react-redux';
 
 const OrderListSeller = () => {
     const navigate = useNavigate();
-    // const orders = [
-    const [orders, setOrders] = useState([
-        {
-        id: 1,
-        name: "Adel",
-        items: ["Ayam Geprek Mozarela [2x]", "Indomie geprek [1x]"],
-        description: ["Ayam Geprek Mozarela tidak pedas", "Indomie geprek level 2", "Lantai 7"],
-        time: "08.30",
-        },
-        {
-        id: 2,
-        name: "Adel",
-        items: ["Ayam Geprek Mozarela [2x]", "Indomie geprek [1x]"],
-        description: ["Ayam Geprek Mozarela tidak pedas", "Indomie geprek level 2", "Lantai 9"],
-        time: "10.30",
-        },
-        {
-        id: 3,
-        name: "Rendy",
-        items: ["Ayam Geprek Mozarela [2x]", "Indomie geprek [1x]"],
-        description: ["Ayam Geprek Mozarela tidak pedas", "Indomie geprek level 2", "Lantai 11"],
-        time: "12.30",
-        },
-        {
-        id: 4,
-        name: "Henry",
-        items: ["Ayam Geprek Mozarela [2x]", "Indomie geprek [1x]"],
-        description: ["Ayam Geprek Mozarela tidak pedas", "Indomie geprek level 2", "Lantai 13"],
-        time: "12.30",
-        },
-    ]);
+    const [orderList, setOrderList] = useState([]);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
 
+    useEffect(() => {
+
+        dispatch(getMe());
+
+    }, [dispatch]);
+
+    useEffect(() => {
+        if (user && user.id) {
+            getOrderDetails();  
+        }
+    }, [user]);
+
+    const getOrderDetails = async () => {
+        try {
+            if (!user || !user.id) {
+                console.error("User data is missing.");
+                return;
+            }
+          const response = await axios.get(`http://localhost:5000/orderDetails?userId=${user.id}`);
+          setOrderList(response.data);
+          console.log(response.data);
+        } catch (error) {
+          console.error("Failed to fetch order details:", error);
+        }
+    };
+    
+
+    
     const [selectedOrder, setSelectedOrder] = useState(null);
     const [isPopupOpen, setPopupOpen] = useState(false);
 
@@ -52,15 +55,15 @@ const OrderListSeller = () => {
         setPopupOpen(true);
     }
 
-    const handleConfirm = () => {
-        const confirmed = window.confirm(
-            "Are you sure this order is complete? This will notify the buyer that their order is finished and ready for delivery"
-        );
-        if (confirmed) {
-            setOrders(orders.filter((order) => order.id !== selectedOrder));
-            setPopupOpen(false);
-        }
-    }
+    // const handleConfirm = () => {
+    //     const confirmed = window.confirm(
+    //         "Are you sure this order is complete? This will notify the buyer that their order is finished and ready for delivery"
+    //     );
+    //     if (confirmed) {
+    //         setOrderList(orderList.filter((order) => orderList.id !== selectedOrder));
+    //         setPopupOpen(false);
+    //     }
+    // }
 
   return (
         <div className="order-list-container">
@@ -83,14 +86,14 @@ const OrderListSeller = () => {
                     </thead>
                     <tbody>
                         {/* {orders.map((order, index) => ( */}
-                        {orders.map((order, index) => (
+                        {order.map((order, index) => (
                             // <tr key={index}>
                             <tr key={order.id}>
-                                <td>{order.name}</td>
+                                <td>name</td>
                                 <td>
                                     <ul>
                                     {order.items.map((item, idx) => (
-                                        <li key={idx}>{item}</li>
+                                        <li key={idx}>{item.name}</li>
                                     ))}
                                     </ul>
                                 </td>
@@ -115,7 +118,7 @@ const OrderListSeller = () => {
                 <PopUpOrderDone
                     isOpen={isPopupOpen}
                     onClose={() => setPopupOpen(false)}
-                    onConfirm={handleConfirm}
+                    // onConfirm={handleConfirm}
                 />
         </div>
   );

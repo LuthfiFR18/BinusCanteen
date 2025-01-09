@@ -11,15 +11,13 @@ function Headerseller(){
 
     return(
         <div class="header-seller">
-            <div className="logo-text" onClick={()=>navigate('/sellerpage')}>
+            <div className="logo-seller-text" onClick={()=>navigate('/sellerpage')}>
                 <h4>BINUS <span className='logo-text-span'>Canteen</span><sub>Seller</sub></h4>
             </div>
 
-            <div className="header-middle">
-                
+            <div className="profile-box">            
+                <SellerProfileDropdown/>
             </div>
-            
-            <SellerProfileDropdown/>
 
         </div>
 

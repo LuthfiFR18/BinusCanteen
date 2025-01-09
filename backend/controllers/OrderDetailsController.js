@@ -4,7 +4,31 @@ import Users from "../models/UserModel.js";
 
 export const getOrderDetails = async (req, res) => {
     try {
-        const orderDetails = await OrderDetails.findAll();
+
+        const userId = req.query.userId;
+
+        if (!userId) {
+            return res.status(400).json({ message: "User ID is required" });
+        }
+
+        const orderDetails = await OrderDetails.findAll({
+            where: {
+                userId: userId
+            },
+            include: [
+                {
+                    model: Products,
+                    as: 'product',
+                    attributes: ['name'],
+                },
+                {
+                    model: Users,
+                    as: 'user',
+                    attributes: ['name'],
+                },
+            ],
+        });
+        
         res.status(200).json(orderDetails);
     } catch (error) {
         res.status(500).json({ message: error.message });

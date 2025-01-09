@@ -34,7 +34,7 @@ const store = new sessionStore({
 })
 
 // (async()=>{
-//     await db.sync();
+//     await db.sync({ alter: true });
 // })();
 
 /* The commented out code `app.use(session({ ... }))` is setting up a session middleware in the Express application. Here's what each option in the session configuration object does: */
@@ -67,8 +67,6 @@ app.use(RoleRoute);
 app.use(AuthRoute);
 app.use(BoothRoute);
 app.use(CourseRoute);
-
-
 
 
 

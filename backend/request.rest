@@ -79,7 +79,7 @@ Content-Type: application/json
   "courseFloor": "Lantai 17 Gedung A",
   "startTime": "09:20:00",
   "endTime": "10:50:00",
-  "userId": 5
+  "userId": 13
 } 
 
 ### membuat order baru 

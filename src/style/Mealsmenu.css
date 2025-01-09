@@ -213,35 +213,44 @@
     width: 60px; /* Atur gambar lebih kecil agar proporsional */
     height: 60px;
     margin-bottom: 8px;
+    margin-left: 5%;
     object-fit: cover; /* Jaga proporsi gambar */
   }
 
   .meals-item h3, .meals-item p {
     text-align: center; /* Teks di tengah */
-    font-size: 14px; /* Ukuran font lebih besar */
+    font-size: 16px; /* Ukuran font lebih besar */
     margin: 5px 0;
+  }
+
+  .meals-order-button {
+    margin: 10px auto;
   }
 
   .meals-cart-buttons {
     display: flex;
     justify-content: center; /* Pastikan tombol berada di tengah */
+    align-items: center;
     gap: 10px; /* Jaga jarak antar tombol */
-    margin: 10px 0;
+    margin-left: 10%;
+    width: 100%;
   }
 
   .meals-minplus-button, 
   .meals-quantity {
-    width: 35px; /* Ukuran tombol lebih kecil agar tidak tumpang tindih */
+    width: 70px; /* Ukuran tombol lebih kecil agar tidak tumpang tindih */
     height: 35px;
-    font-size: 12px;
+    font-size: 16px;
     border: none;
+    background-color: rgb(216, 213, 213);
   }
 
   .meals-add-to-cart {
-    font-size: 12px;
+    font-size: 16px;
     padding: 8px;
-    width: 80%;
+    width: 100%;
     text-align: center;
     margin: 10px auto;
+    margin-left: 9%;
   }
 }

@@ -3,6 +3,7 @@ import db from "../config/Database.js";
 import Products from "./ProductsModel.js";
 import Users from "./UserModel.js";
 import Order from "./OrderModel.js";
+import Booth from "./BoothModel.js";
 
 const {DataTypes} = Sequelize;
 
@@ -66,7 +67,19 @@ const OrderDetails = db.define('orderDetails', {
         validate:{
             notEmpty: true
         }
-    }
+    },
+
+    boothId: {
+        type: DataTypes.INTEGER,
+        allowNull: false, // Tidak boleh NULL
+        references: {
+            model: Booth, // Referensi model Booth
+            key: 'id', // Kolom id pada tabel Booth
+        },
+        validate: {
+            notEmpty: true,
+        },
+    },
     
 }, {
     freezeTableName: true

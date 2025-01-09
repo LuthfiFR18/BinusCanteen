@@ -54,6 +54,7 @@
   justify-content: left;
 }
 
+/*Quantity */
 .cart-quantity-control {
   display: flex;
   justify-content: center;
@@ -73,7 +74,7 @@
   height: 30px;
 }
 
-
+/*Description*/
 .cart-description-input {
   width: 271px;
   height: 106px;
@@ -96,8 +97,8 @@
 
 .cart-dropdown-wrapper {
   display: flex;
+  justify-content: center;
   align-items: center;
-  margin-top: 20%;
 }
 
 .cart-dropdown {
@@ -289,8 +290,8 @@
 
   .cart-item-cell img {
     margin: 0; 
-    width: 50px;
-    height: 10vh;
+    width: 70px;
+    height: 100px;
     border-radius: 50%;
   }
 

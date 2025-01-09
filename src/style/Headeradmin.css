@@ -120,10 +120,10 @@
   }
 
   .search-box-admin {
-    width: auto;
     justify-content: center;
     align-items: center;
     gap: 15px;
+    margin: 5px auto;
   }
 
   .row {
@@ -140,9 +140,16 @@
   }
 
   .search-icon-admin {
-    transform: translateX(-450%);
+    transform: translateX(-400%);
     background-color: transparent;
     border-style: none;
     margin-bottom: 2%;
+  }
+
+  .profile-admin{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 6%;
   }
 }
