@@ -129,6 +129,16 @@ const Payment = () => {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
   };
 
+  // const pay = async () => {
+  //   const data = {
+  //     id: ,
+  //     productName: ,
+  //     price: ,
+  //     quantity: 
+
+  //   }
+  // };
+
   return (
     <div className="payment-container">
       <div className="payment-page">

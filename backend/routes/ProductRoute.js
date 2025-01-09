@@ -9,7 +9,7 @@ const router = express.Router();
 router.get('/product', getProducts);
 router.get('/product/:id', getProductById);
 router.post('/product', upload.single('image'), createProduct);
-router.patch('/product/:id', updateProduct);
+router.patch('/product/:id',upload.single('image'), updateProduct);
 router.delete('/product/:id', deleteProduct);
 router.get('/booth/:boothId/products', getProductsByBooth);
 

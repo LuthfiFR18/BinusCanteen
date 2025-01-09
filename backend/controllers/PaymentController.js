@@ -1,4 +1,5 @@
 import Payment from "../models/PaymentModel.js";
+import Midtrans from "midtrans-client"
 
 // Mendapatkan semua pembayaran
 export const getPayments = async (req, res) => {
@@ -70,3 +71,5 @@ export const deletePayment = async (req, res) => {
         res.status(500).json({ message: error.message }); // Menangani error
     }
 };
+
+
