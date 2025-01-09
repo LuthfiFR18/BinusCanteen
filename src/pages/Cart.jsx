@@ -193,6 +193,7 @@ const Cart = () => {
         quantity: cartItem.quantity, // Ensure you get quantity from cartItem
         productDescription: cartItem.productDescription || "", // Assuming productDescription is optional
         subTotal: cartItem.product?.price * cartItem.quantity, // Calculate subTotal if price is available
+        boothId : 3
       };
   
       console.log("Order Details Payload:", payload);
