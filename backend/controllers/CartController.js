@@ -152,3 +152,17 @@ export const deleteCart = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+// Delete all carts
+export const deleteAllCarts = async (req, res) => {
+    try {
+        const result = await Cart.destroy({ where: {} }); // Deletes all records
+        if (result === 0) {
+            return res.status(404).json({ message: "No carts found to delete" });
+        }
+        res.status(200).json({ message: `${result} cart(s) deleted` });
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+};
+

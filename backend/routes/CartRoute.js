@@ -7,6 +7,7 @@ import {
     updateCart,
     getCartByUserId,
     calculateSubTotal,
+    deleteAllCarts,
     // getCartByUserId,
     // updateQuantity
 } from "../controllers/CartController.js";
@@ -18,6 +19,7 @@ router.get('/cart/:userId', getCartByUserId);
 router.post('/cart', createCart);
 router.patch('/cart/:id', updateCart);
 router.delete('/cart/:id', deleteCart);
+router.delete('/cart', deleteAllCarts);
 router.get("/cart/subTotal/:userId", calculateSubTotal);
 // router.post("cart/update-quantity", updateQuantity);
 

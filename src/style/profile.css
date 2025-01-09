@@ -13,8 +13,9 @@
 .profile-icon{
   cursor: pointer;
   height: 30px;
+  width: 60%;
   padding-top: 1px;
-  margin-left: 6px;
+  margin-left: 1px;
   color: #FF9D00;
 }
 
