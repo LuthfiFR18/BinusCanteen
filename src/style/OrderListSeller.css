@@ -1,26 +1,21 @@
 .order-list-container {
     font-family: Arial, sans-serif;
-    margin: 20px;
-    margin-top: 100px;
   }
   
   header {
     display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+    justify-content: center;
+    gap: 75%;
+    margin: 3% auto;
   }
   
   header h3 {
-    font-size: 1.5rem;
+    font-size: 21px;
   }
   
   header p {
     font-size: 1rem;
     color: #555;
-  }
-
-  body {
-    /* background-color: #4FC0FD; */
   }
   
   .order-table {

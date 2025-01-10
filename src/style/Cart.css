@@ -19,13 +19,15 @@
 .cart-table {
   width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 .cart-table th {
-  padding: 10px 75px 10px 0;
+  padding: 10px 0 10px 0;
   text-align: center;
   border-bottom: 1px solid #ccc;
-  vertical-align: middle; 
+  vertical-align: middle;
+  align-items: center;
 }
 
 .cart-table th {
@@ -34,23 +36,24 @@
 }
 
 .cart-table td{
-  padding: 10px 75px 10px 0;
+  padding: 10px 0 10px 0;
   text-align: center;
   border-bottom: 1px solid #ccc;
-  vertical-align: middle;
 }
 
 .cart-item-cell {
   display: flex;
-  justify-content: space-evenly;
   align-items: center;
+  text-align: center;
+  margin-left: 20px;
+  gap: 10%;
 }
 
 .cart-item-cell img{
   width: 30%;
   height: 15vh;
   border-radius: 50%;
-  justify-content: left;
+  vertical-align: middle; /* Pastikan ini ada */
 }
 
 /*Quantity */

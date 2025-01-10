@@ -7,7 +7,11 @@ import { useNavigate } from 'react-router-dom';
 import { useLocation, useParams } from "react-router-dom";
 
 const ButtonStack = () => {
-    const [activeButton] = useState(1);
+    const [activeButton, setActivateButton] = useState("Meals");
+
+    const handleTabClick = (tabName) => {
+      setActivateButton(tabName);
+    };
     const navigate = useNavigate();
     const { boothId} = useParams();
     const location = useLocation();
@@ -17,20 +21,19 @@ const ButtonStack = () => {
     return (
       <div className="selector-btn">
         <button
-        className={`menu-button-meals meals-btn ${activeButton === 1 ? 'active' : 'menu-button-meals'}`}
-        onClick={() => navigate(`/meals/${boothId}`, { state: { boothName } })}
+        className={`menu-button-meals ${activeButton === "Meals" ? 'active' : ""}`}
+        onClick={() =>handleTabClick("Meals")}
 
         >Meals
         </button>
         <button
-        className={`menu-button-drink ${activeButton === 2 ? 'active' : 'menu-button-drink'}`}
-        onClick={() => navigate(`/drinks/${boothId}`, { state: { boothName } })}
-          
+        className={`menu-button-drink ${activeButton === "Drink" ? 'active' : ""}`}
+        onClick={() => handleTabClick("Drink")}
         >Drink
         </button>
         <button
-        className={`menu-button-dessert ${activeButton === 3 ? 'active' : 'menu-button-dessert'}`}
-        onClick={() => navigate(`/desserts/${boothId}`, { state: { boothName } })}
+        className={`menu-button-dessert ${activeButton === "Dessert" ? 'active' : ""}`}
+        onClick={() => handleTabClick("Dessert")}
         
         >Dessert
         </button>

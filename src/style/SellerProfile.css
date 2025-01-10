@@ -61,7 +61,11 @@
   color: #000;
   cursor: pointer;
   text-align: center;
-}   
+}
+
+.changepicture-btn:hover{
+  color: #FF9D00;
+}
 .changepassword-btn:hover {
   color: #FF9D00;
 }

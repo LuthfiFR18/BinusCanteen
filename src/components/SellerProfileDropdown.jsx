@@ -79,6 +79,11 @@ const SellerProfileDropdown = () => {
                 <hr />
                 <ul>
                     <li>
+                        <button className='changepicture-btn' onClick={() => navigate('/EditPictureSeller')}>
+                        Change picture Booth
+                        </button>
+                    </li>
+                    <li>
                         <button className='changepassword-btn' onClick={() => navigate('/changepassword')}>
                         Change Password
                         </button>

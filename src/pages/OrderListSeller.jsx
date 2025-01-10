@@ -67,14 +67,14 @@ const OrderListSeller = () => {
 
   return (
         <div className="order-list-container">
-            <button className="order-list-seller-back-button" onClick={() => navigate('/Sellerpage')}>
-                <span className="arrow-left">&#8592;</span>
-            </button>
+            <Header/>
                 <header>
                     <h3>Jumat 8:50</h3>
                     <p>20/09/2024</p>
                 </header>
-                <table className="order-table">
+
+                
+                {/* <table className="order-table">
                     <thead>
                     <tr>
                         <th>Nama</th>
@@ -85,7 +85,7 @@ const OrderListSeller = () => {
                     </tr>
                     </thead>
                     <tbody>
-                        {/* {orders.map((order, index) => ( */}
+                        {/* {orders.map((order, index) => (
                         {order.map((order, index) => (
                             // <tr key={index}>
                             <tr key={order.id}>
@@ -113,7 +113,7 @@ const OrderListSeller = () => {
                             </tr>
                         ))}
                     </tbody>
-                </table>
+                </table> */}
 
                 <PopUpOrderDone
                     isOpen={isPopupOpen}

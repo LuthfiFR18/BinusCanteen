@@ -115,7 +115,7 @@ const Mealsmenu = () => {
         products
         .filter((product) => product.producttype === "Food")
         .length === 0 ? ( // Check if no products of type 'Food' exist
-          <p>No food items available for this booth.</p>
+          <p className="menu-item-empty">No food items available for this booth.</p>
         ):(products
           .filter((product) => product.producttype === "Food")
           .map((product) => (
