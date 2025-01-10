@@ -111,15 +111,7 @@ const Payment = () => {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
   };
 
-  // const pay = async () => {
-  //   const data = {
-  //     id: ,
-  //     productName: ,
-  //     price: ,
-  //     quantity: 
-
-  //   }
-  // };
+  
   const payment = async () =>{
     if(!selectedPaymentMethod){
       setMsg("Harap memilih salah satu payment method dibawah ini!")
@@ -144,6 +136,26 @@ const Payment = () => {
     } catch (error) {
       console.error("Error creating payment:", error);
       return;
+    }
+  };
+
+
+  const pay = async () => {
+    try {
+
+      const response = await axios.get(`/orderDetails/${orderId}/product`);
+      const productData = response.data;
+      
+      const paymentData = productData.map((product) => ({
+        id: product.id,
+        productName: product.name,
+        price: product.price,
+        quantity: product.quantity,
+      }));
+  
+      console.log("Payment Data:", paymentData);
+    } catch (error) {
+      console.error("Error Get product data:", error);
     }
   };
 
