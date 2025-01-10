@@ -86,8 +86,8 @@ export const getOrderDetailsByOrderId = async (req, res) => {
 
 export const createOrderDetails = async (req, res) => {
     try {
-        const { orderId,productId,userId, quantity,productDescription,subTotal} = req.body;
-        const newOrderDetails = await OrderDetails.create({ orderId,productId,userId, quantity,productDescription,subTotal});
+        const { orderId,productId,userId, quantity,productDescription,subTotal } = req.body;
+        const newOrderDetails = await OrderDetails.create({ orderId,productId,userId, quantity,productDescription,subTotal });
         res.status(201).json(newOrderDetails);
     } catch (error) {
         res.status(400).json({ message: error.message });

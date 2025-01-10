@@ -68,19 +68,6 @@ const OrderDetails = db.define('orderDetails', {
             notEmpty: true
         }
     },
-
-    boothId: {
-        type: DataTypes.INTEGER,
-        allowNull: false, // Tidak boleh NULL
-        references: {
-            model: Booth, // Referensi model Booth
-            key: 'id', // Kolom id pada tabel Booth
-        },
-        validate: {
-            notEmpty: true,
-        },
-    },
-    
 }, {
     freezeTableName: true
 });
