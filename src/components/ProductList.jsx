@@ -138,7 +138,7 @@ const ProductList = ({selectedBooth, search }) => {
     } catch (error) {
         console.error("Error updating product:", error);
     }
-};
+  };
 
 
   const handleCancel = () => {

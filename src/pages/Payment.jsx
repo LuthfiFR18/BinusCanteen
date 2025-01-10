@@ -15,9 +15,11 @@ const Payment = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [cart, setCart] = useState([]); // Ensure cart is an array
+  const [order, setOrder] = useState([]); // Ensure cart is an array
   const [subTotal, setSubTotal] = useState(0);
   const [userId, setUserId] = useState(null);
+  const [orderId, setOrderId] = useState(null);
+  const [msg, setMsg] = useState("");
 
   const { user } = useSelector((state) => state.auth);
 
@@ -32,38 +34,40 @@ const Payment = () => {
   useEffect(() => {
     if (user && user.id) {
       setUserId(user.id); // Set the userId after user data is fetched
-      console.log("User ID fetched:", user.id); // Log user ID only once
+      console.log("User ID fetched:", userId); // Log user ID only once
     }
   }, [user]); // This runs only when user state changes
 
   // This effect fetches the cart data when userId is set
   useEffect(() => {
-    if (userId) {
-      console.log("Fetching cart for user ID:", userId); // Log when cart fetch starts
-      getCartByUserId();
-    }
-  }, [userId]); // Dependency on userId, only runs when userId changes
+    // Fetch order details when the component mounts
+    getOrderDetailsByOrderId();
+  }, [user]); // Empty dependency array means this runs only once
 
-  const getCartByUserId = async () => {
+  const getOrderDetailsByOrderId = async () => {
     try {
-      const response = await axios.get(`http://localhost:5000/cart/${userId}`);
-      console.log('Cart data received:', response.data);
+      const response = await axios.get(`http://localhost:5000/orders/notPaid/${userId}`);
+      console.log('Order Details data received:', response.data);
+
+      if (response.data.orderIds && response.data.orderIds.length > 0) {
+        setOrderId(response.data.orderIds[0]); // Set the first orderId from the array
+      }
   
       // Access the carts array from the response
-      if (response.data.carts && Array.isArray(response.data.carts)) {
-        setCart(response.data.carts); // Set the cart state to the array inside the response
+      if (response.data.orderDetails && Array.isArray(response.data.orderDetails)) {
+        setOrder(response.data.orderDetails); // Set the cart state to the array inside the response
       } else {
-        setCart([]); // Fallback to an empty array if carts is not found or not an array
+        setOrder([]); // Fallback to an empty array if carts is not found or not an array
       }
     } catch (error) {
       console.error('Error fetching cart:', error);
-      setCart([]); // Fallback in case of error
+      setOrder([]); // Fallback in case of error
     }
   };
 
   useEffect(() => {
     const calculateNewSubtotal = () => {
-      const newSubtotal = cart.reduce((sum, item) => {
+      const newSubtotal = order.reduce((sum, item) => {
         const price = item.product?.price || 0;
         return sum + price * item.quantity;
       }, 0);
@@ -72,30 +76,8 @@ const Payment = () => {
     };
   
     calculateNewSubtotal();
-  }, [cart]); // Runs whenever cart changes
+  }, [order]); // Runs whenever cart changes
 
-  const groupedPaymentArray = React.useMemo(() => {
-    console.log("Recomputing groupedCartArray with cart:", cart);
-  
-    const grouped = Object.values(
-      cart.reduce((acc, item) => {
-        const productName = item.product ? item.product.name : "Unknown";
-  
-        // Ensure products with the same name or ID are grouped together
-        if (!acc[productName]) {
-          acc[productName] = { ...item, quantity: item.quantity };
-        } else {
-          acc[productName].quantity += item.quantity; // Merge quantities for same product
-        }
-  
-        return acc;
-      }, {})
-    );
-  
-    console.log("Computed groupedCartArray:", grouped);
-    
-    return grouped;
-  }, [cart]);
 
   const handlePaymentMethodChange = (event) => {
     setSelectedPaymentMethod(event.target.value);
@@ -129,6 +111,42 @@ const Payment = () => {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
   };
 
+  // const pay = async () => {
+  //   const data = {
+  //     id: ,
+  //     productName: ,
+  //     price: ,
+  //     quantity: 
+
+  //   }
+  // };
+  const payment = async () =>{
+    if(!selectedPaymentMethod){
+      setMsg("Harap memilih salah satu payment method dibawah ini!")
+    }
+    try {
+      // Save the order
+      const response = await axios.post("http://localhost:5000/payment", {
+        orderId: orderId,
+        paymentAmount: total,
+        paymentMethod: selectedPaymentMethod,
+        paymentStatus:"Done"
+      });
+      console.log("Payment created successfully:", response.data);
+      navigate("/paymentsuccess");
+
+      try{
+        const response = await axios.delete("http://localhost:5000/cart");
+      }catch (error){
+        console.error("Error deleteing cart:", error);
+      return;
+      }
+    } catch (error) {
+      console.error("Error creating payment:", error);
+      return;
+    }
+  };
+
   return (
     <div className="payment-container">
       <div className="payment-page">
@@ -136,7 +154,7 @@ const Payment = () => {
 
         <h2 className='payment-title'>Payment Details</h2>
         <h5 className="countdown">Segera melakukan pembayaran sebelum {formatTime(timeLeft)}</h5>
-        <span className="status">Status:<span className='status-text'> Done</span></span>
+        {/* <span className="status">Status:<span className='status-text'> Done</span></span> */}
 
 
         {/* Table Item Order to payment */}
@@ -151,16 +169,16 @@ const Payment = () => {
           </thead>
 
           <tbody>
-            {cart.length > 0 ? (
-              groupedPaymentArray.map((cart) => (
-                <tr key={cart.id}>
+            {order.length > 0 ? (
+              order.map((order) => (
+                <tr key={order.id}>
                   <td className="payment-item-cell">
                     <img src={img1} alt="Product" />
-                    {cart.product ? cart.product.name : 'Unknown'}
+                    {order.product ? order.product.name : 'Unknown'}
                   </td>
 
                   <td>
-                      <span>{cart.quantity}</span>
+                      <span>{order.quantity}</span>
                   </td>
 
                   <td>
@@ -169,7 +187,7 @@ const Payment = () => {
 
                   <td>
                     Rp.
-                    {cart.product ? cart.product.price*cart.quantity : 'Unknown'}
+                    {order.product ? order.product.price*order.quantity : 'Unknown'}
                   </td>
                 </tr>
               ))
@@ -181,6 +199,7 @@ const Payment = () => {
           </tbody>
         </table>
 
+        <p className='payment-error-message'>{msg}</p>
         {/* Payment Method Selection */}
         <div className="payment-method-selection">
           <div className="payment-options">
@@ -239,7 +258,7 @@ const Payment = () => {
           </div>
         </div>
 
-        <button className="payment-btn" onClick={()=>navigate('/paymentSuccess')}>
+        <button className="payment-btn" onClick={payment}>
           PAY
         </button>
       </div>

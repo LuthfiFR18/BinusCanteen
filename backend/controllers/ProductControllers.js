@@ -72,8 +72,12 @@ export const updateProduct = async(req, res) => {
         if (!product) return res.status(404).json({ message: "Product not found" });
 
         // Mengupdate data product
-        const { image, name, price, producttype, boothId, userId } = req.body;
-        product.image = image || product.image;
+        const {name, price, producttype, boothId, userId } = req.body;
+
+        if (req.file) {
+            product.image = req.file.filename;
+        }
+
         product.name = name || product.name;
         product.price = price || product.price;
         product.producttype = producttype || product.producttype;

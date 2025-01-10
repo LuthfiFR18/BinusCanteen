@@ -13,7 +13,7 @@ import PopUpDeleteMenuSeller from '../components/PopUpDeleteMenuSeller';
 import PopUpOutOfStock from '../components/PopUpOutOfStock';
 import EditMenuSeller from './EditMenuSeller';
 import { getMe } from '../features/authSlice';
-import imgDefault from '../img/nasigoreng.png';
+
 import '../style/Sellerpage.css';
 
 function Sellerpage() {
@@ -28,21 +28,17 @@ function Sellerpage() {
     const [isOutOfStockAction, setIsOutOfStockAction] = useState(false);
     const [selectedMenuId, setSelectedMenuId] = useState(null);
     const [isClosingStore, setIsClosingStore] = useState(false);
-    const [img, setImg] = useState();
     const [profileImage, setProfileImage] = useState('');
     const [boothName, setBoothName] = useState();
     const [isEditPopupOpen, setIsEditPopupOpen] = useState(false);
     const [selectedMenu, setSelectedMenu] = useState(null);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
-    const [userData, setUserData] = useState();
-    const [productImage, setProductImage] = useState();
+    const [preview, setPreview] = useState(null);
+    const [imageFile, setImageFile] = useState(null);
     
     useEffect(() => {
         dispatch(getMe());
-           
-        const savedImage = localStorage.getItem('savedImage');
-        setImg(savedImage || imgDefault);
     
         if (user && user.id) {
             loadBoothAndProducts();
@@ -87,6 +83,8 @@ function Sellerpage() {
             }
         };
 
+        
+
     const handleNavigate = (path) =>{
         navigate(path);
     };
@@ -112,17 +110,6 @@ function Sellerpage() {
         setShowPopupStoreStatus(false);
     }
 
-    const handleSaveImage = (newImage) => {
-        setImg(newImage);
-        localStorage.setItem('savedImage', newImage);
-    }
-
-   
-    const handleEditMenu = (menu) => {
-        setSelectedMenu(menu);
-        setIsEditPopupOpen(true);
-    };
-
     const handleCloseEditPopup = () => {
         setIsEditPopupOpen(false);
         setSelectedMenu(null);
@@ -136,11 +123,6 @@ function Sellerpage() {
             "Are you sure this menu is out of stock?");
         setShowPopupOutOfStock(true);
     };
-
-    useEffect(() => {
-        
-        console.log("Updated menus in Sellerpage:", menus);
-    }, [menus]);
 
     const confirmOutOfStock = () => {
         if (selectedMenuId !== null) {
@@ -173,7 +155,7 @@ function Sellerpage() {
     
         try {
             const url = `http://localhost:5000/product/${selectedMenuId}`;
-            console.log("Deleting product at:", url);
+
             const response = await axios.delete(url);
             console.log("Product deleted:", response.data);
     
@@ -192,52 +174,100 @@ function Sellerpage() {
         productName: "",
         price: "",
         productType: "",
-        sellerName: "",
         productImage: null, // Image file
         previewImage: "", // Preview URL for the image
     });
 
     // Open and close popup functions
-    const openPopup = () => {
+    const openPopup = (menu) => {
+        if (!menu) {
+            console.error("Product data is undefined");
+            return;
+        }
+        setFormData({
+            uuid: menu.uuid,
+            productName: menu.name,
+            price: menu.price,
+            productType: menu.producttype,
+            productImage: null, 
+            previewImage: menu.image || "", 
+        });
         setIsPopupOpen(true);
+    };
+
+    const handleUpdate = async (e) => {
+        e.preventDefault();
+        
+        try {
+            if (!formData.uuid) {
+                console.error('No product ID provided for update');
+                return;
+            }
+    
+            // Membuat objek data yang dikirim
+            const formDataToSend = new FormData();
+            formDataToSend.append('name', formData.productName);
+            formDataToSend.append('price', formData.price);
+            formDataToSend.append('producttype', formData.productType);
+
+            if (formData.productImage) {
+                
+                formDataToSend.append('image', formData.productImage);
+            }
+            
+            // for (let pair of formDataToSend.entries()) {
+            //     console.log(pair[0] + ': ' + pair[1]);
+            // }
+    
+
+            const response = await axios.patch(`http://localhost:5000/product/${formData.uuid}`, formDataToSend,{
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+            });
+
+            console.log("Product updated successfully");
+            loadBoothAndProducts(); 
+            closePopup();
+        } catch (error) {
+            console.error("Error updating product:", error.response?.data || error.message);
+        }
     };
 
     const closePopup = () => {
         setIsPopupOpen(false);
-        setFormData({
-        productName: "",
-        price: "",
-        productType: "",
-        sellerName: "",
-        productImage: null,
-        previewImage: "",
-        });
+        
     };
 
     // Handle form input changes
     const handleChange = (e) => {
-        const { name, value } = e.target;
-        setFormData({
-        ...formData,
-        [name]: value,
+            const { name, value } = e.target;
+            setFormData({
+            ...formData,
+            [name]: value,
         });
     };
 
     // Handle image change
     const handleImageChange = (e) => {
         const file = e.target.files[0];
-        setFormData({
-        ...formData,
-        productImage: file,
-        previewImage: URL.createObjectURL(file), // Create URL for preview
-        });
+        if (file) {
+
+            // Create preview URL
+            const previewUrl = URL.createObjectURL(file);
+            
+            setFormData(prev => {
+                const newFormData = {
+                    ...prev,
+                    productImage: file,
+                    previewImage: previewUrl
+                };
+
+                return newFormData;
+            });
+        }
     };
 
-    const handleUpdate = (e) => {
-        e.preventDefault();
-        console.log("Updated Product Data:", formData);
-        closePopup();
-    };
 
     const handleCancel = () => {
         // setFormData({
@@ -320,7 +350,7 @@ function Sellerpage() {
                             </div>
                             <div className="menu-edit">
                                 
-                                <button onClick={() => openPopup()}>Edit</button>
+                                <button onClick={() => openPopup(menu)}>Edit</button>
 
                                 {isPopupOpen && (
                                     <div className="popup-overlay-update">
@@ -338,8 +368,8 @@ function Sellerpage() {
                                             <label htmlFor="Productname">Name Product:</label>
                                             <input className='input-update-booth-admin'
                                             type="text"
-                                            id="name"
-                                            name="name"
+                                            id="productName"
+                                            name="productName"
                                             value={formData.productName}
                                             onChange={handleChange}
                                             placeholder="Enter name Product"

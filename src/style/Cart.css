@@ -17,13 +17,14 @@
 }
 
 .cart-table {
+  table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
   table-layout: fixed;
 }
 
 .cart-table th {
-  padding: 10px 0 10px 0;
+  padding: 10px 0px 10px 0;
   text-align: center;
   border-bottom: 1px solid #ccc;
   vertical-align: middle;
@@ -36,7 +37,7 @@
 }
 
 .cart-table td{
-  padding: 10px 0 10px 0;
+  padding: 10px 0px 10px 0;
   text-align: center;
   border-bottom: 1px solid #ccc;
 }
@@ -50,8 +51,8 @@
 }
 
 .cart-item-cell img{
-  width: 30%;
-  height: 15vh;
+  width: 40%;
+  height: 20vh;
   border-radius: 50%;
   vertical-align: middle; /* Pastikan ini ada */
 }

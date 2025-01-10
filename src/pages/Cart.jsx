@@ -17,8 +17,7 @@ const Cart = () => {
   const [subTotal, setSubTotal] = useState(0);
   const [userId, setUserId] = useState(null);
   const [orderId, setOrderId] = useState(null);
-  const [delOrderId, setDelOrderId] = useState(null);
-  const [productDescription, setProductDescription] = useState('');
+  const [msg, setMsg] = useState("");
 
 
   const { user } = useSelector((state) => state.auth);
@@ -150,6 +149,10 @@ const Cart = () => {
   };
 
   const saveOrder = async () => {
+    if(!room){
+      setMsg("*Silahkan pilih lokasi pengantaran.");
+      return;
+    }
     let orderId;
 
     try {
@@ -319,7 +322,7 @@ const Cart = () => {
 
         <div className="cart-subcontainer">
           <div className="cart-left-section">
-              <p className="cart-error-message">*Silahkan pilih lokasi pengantaran.</p>
+              <p className="cart-error-message">{msg}</p>
           
               <div className="dropdown-cart-wrapper">
                 <select
