@@ -52,7 +52,6 @@ function HistoryBuyer() {
               {items.map((item, index) => (
                 <tr key={index}>
                   <td className="history-buyer-item">
-                    <img src={img1} className="history-buyer-image" />
                     <div>
                       <p className='history-buyer-item-text'>{item.name}</p>
 
@@ -66,29 +65,49 @@ function HistoryBuyer() {
                 </tr>
               ))}
 
-                <tr className="divider-row">
-                  <td colSpan="3" className="history-buyer-divider"></td>
+                <tr>
+                  <td colSpan="3" className="history-buyer-status">
+                    <p className='status-label'>Status :
+                      <span className='status-order-unpaid'> UNPAID</span>
+                      <button className='paid-button' type='submit' onClick={()=> navigate("/payment")}>Paid Now</button>
+                    </p>
+                  </td>
                 </tr>
+            </tbody>
+          </table>
+          <table className="history-buyer-table">
+            <thead>
+              <tr>
+                <th>Item</th>
+                <th>Quantity</th>
+                <th>Price</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {items.map((item, index) => (
+                <tr key={index}>
+                  <td className="history-buyer-item">
+                    <div>
+                      <p className='history-buyer-item-text'>{item.name}</p>
+
+                      <p className="history-buyer-request">{item.request}</p>
+                    </div>
+                  </td>
+                  
+                  <td className="history-buyer-quantity">{item.quantity} X</td>
+
+                  <td className="history-buyer-price">{item.price.toLocaleString()}</td>
+                </tr>
+              ))}
 
                 <tr>
-                  <td className="history-buyer-status-label">Status :<span className='history-buyer-status'>Unpaid</span></td>
-                </tr>
-
-                <tr>
-                  <td className="history-buyer-label">Subtotal</td>
-
-                  <td colSpan="4" className="history-buyer-value">{subtotal.toLocaleString()}</td>
-                </tr>
-
-                <tr>
-                  <td className="history-buyer-label">Tax</td>
-
-                  <td colSpan="2" className="history-buyer-value">{tax.toLocaleString()}</td>
-                </tr>
-                <tr>
-                  <td className="history-buyer-label">Total</td>
-
-                  <td colSpan="2" className="history-buyer-value">{total.toLocaleString()}</td>
+                  <td colSpan="3" className="history-buyer-status">
+                    <p className='status-label'>Status :
+                      <span className='status-order-paid'> PAID</span>
+                      <button className='paid-button' type='submit' onClick={()=> navigate("/payment")}>Buy Again</button>
+                    </p>
+                  </td>
                 </tr>
             </tbody>
           </table>
