@@ -1,18 +1,12 @@
 import express from "express";
-import Midtrans from "midtrans-client"
-
-let snap = new Midtrans.Snap({
-    isProduction : false,
-    serverKey : process.env.SECRET,
-    clientKey : process.env.SECRET_PUBLIC_CLIENT
-})
 
 import {
     createPayment,
     deletePayment,
     getPaymentById,
     getPayments,
-    updatePayment
+    updatePayment,
+    createPaymentToken
 } from "../controllers/PaymentController.js";
 
 const router = express.Router();
@@ -22,26 +16,6 @@ router.get('/payment/:id', getPaymentById); // Mendapatkan pembayaran berdasarka
 router.post('/payment', createPayment); // Membuat pembayaran baru
 router.patch('/payment/:id', updatePayment); // Memperbarui pembayaran yang ada
 router.delete('/payment/:id', deletePayment); // Menghapus pembayaran
+router.post('/payment/token', createPaymentToken);
 
 export default router;
-
-
-export async function POST(request){
-    const {id, productName, price, quantity} = await request.json()
-
-    let parameter = {
-        item_details : {
-            productName : productName,
-            price : price,
-            quantity : quantity
-        },
-
-        payment_details : {
-            orderId : id,
-            grossAmount: price * quantity
-        }
-
-    }
-
-    const token = await snap.createTransactionToken(parameter)
-}

@@ -11,6 +11,7 @@ import { getMe } from '../features/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 
+
 const Payment = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -42,28 +43,54 @@ const Payment = () => {
   useEffect(() => {
     // Fetch order details when the component mounts
     getOrderDetailsByOrderId();
-  }, [user]); // Empty dependency array means this runs only once
+  }, [userId]); // Empty dependency array means this runs only once
+
+
 
   const getOrderDetailsByOrderId = async () => {
-    try {
-      const response = await axios.get(`http://localhost:5000/orders/notPaid/${userId}`);
-      console.log('Order Details data received:', response.data);
-
-      if (response.data.orderIds && response.data.orderIds.length > 0) {
-        setOrderId(response.data.orderIds[0]); // Set the first orderId from the array
-      }
-  
-      // Access the carts array from the response
-      if (response.data.orderDetails && Array.isArray(response.data.orderDetails)) {
-        setOrder(response.data.orderDetails); // Set the cart state to the array inside the response
-      } else {
-        setOrder([]); // Fallback to an empty array if carts is not found or not an array
-      }
-    } catch (error) {
-      console.error('Error fetching cart:', error);
-      setOrder([]); // Fallback in case of error
+    if (!userId) {
+        console.log('Waiting for userId...');
+        return;
     }
-  };
+
+    try {
+        console.log('Attempting to fetch orders for userId:', userId);
+        const response = await axios.get(`http://localhost:5000/orders/notPaid/${userId}`);
+        console.log('Full response:', response);
+
+        if (!response.data) {
+            console.log('No data received from server');
+            setOrder([]);
+            return;
+        }
+
+        if (response.data.orderDetails && response.data.orderDetails.length > 0) {
+          setOrder(response.data.orderDetails);
+          
+          setOrderId(response.data.orderDetails[0].orderId);
+          console.log("Order ID set to:", response.data.orderDetails[0].orderId);
+        }
+
+        /* This code snippet is handling the response data received from a server request to fetch order details. Here's a breakdown of what it does: */
+        // const { orderDetails } = response.data;
+        
+        // if (orderDetails && Array.isArray(orderDetails)) {
+        //     console.log('Setting order details:', orderDetails);
+        //     setOrder(orderDetails);
+        // } else {
+        //     console.log('No valid order details found');
+        //     setOrder([]);
+        // }
+    } catch (error) {
+        console.error('Detailed error:', {
+            message: error.message,
+            response: error.response?.data,
+            status: error.response?.status
+        });
+        setOrder([]);
+        setMsg("Error fetching order details: " + (error.response?.data?.message || error.message));
+    }
+};
 
   useEffect(() => {
     const calculateNewSubtotal = () => {
@@ -84,7 +111,7 @@ const Payment = () => {
   };
 
 
-  const tax = 500;
+  const tax = 1000;
   const total = React.useMemo(() => subTotal + tax, [subTotal, tax]);
 
   const [timeLeft, setTimeLeft] = useState(24 * 60 * 60); // 24 hours in seconds
@@ -111,51 +138,89 @@ const Payment = () => {
     return `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(remainingSeconds).padStart(2, '0')}`;
   };
 
-  
-  const payment = async () =>{
-    if(!selectedPaymentMethod){
-      setMsg("Harap memilih salah satu payment method dibawah ini!")
-    }
-    try {
-      // Save the order
-      const response = await axios.post("http://localhost:5000/payment", {
-        orderId: orderId,
-        paymentAmount: total,
-        paymentMethod: selectedPaymentMethod,
-        paymentStatus:"Done"
-      });
-      console.log("Payment created successfully:", response.data);
-      navigate("/paymentsuccess");
-
-      try{
-        const response = await axios.delete("http://localhost:5000/cart");
-      }catch (error){
-        console.error("Error deleteing cart:", error);
-      return;
-      }
-    } catch (error) {
-      console.error("Error creating payment:", error);
-      return;
-    }
-  };
 
 
   const pay = async () => {
-    try {
+    if (!selectedPaymentMethod) {
+        setMsg("Harap pilih metode pembayaran");
+        return;
+    }
 
-      const response = await axios.get(`/orderDetails/${orderId}/product`);
-      const productData = response.data;
-      
-      const paymentData = productData.map((product) => ({
-        id: product.id,
-        productName: product.name,
-        price: product.price,
-        quantity: product.quantity,
-      }));
-  
-      console.log("Payment Data:", paymentData);
+    if (!orderId) {
+        setMsg("Order ID tidak valid");
+        return;
+    }
+
+    try {
+      const payloadData = {
+        orderId: orderId,
+        items: [
+            
+            ...order.map(item => ({
+                id: item.product?.id,
+                name: item.product?.name,
+                price: item.product?.price,
+                quantity: item.quantity
+            })),
+            // Menambahkan pajak
+            {
+                id: 'tax',
+                name: 'Pajak',
+                price: tax,
+                quantity: 1
+            }
+        ],
+        totalAmount: total,  // total akan sama dengan jumlah semua item termasuk pajak
+        paymentMethod: selectedPaymentMethod
+    };
+
+        const response = await axios.post('http://localhost:5000/payment/token', payloadData);
+        console.log("midtrans token: ", response.data.token);
+        if (response.data.token) {
+            // Handle the token...
+            window.snap.pay(response.data.token, {
+              onSuccess: async (result) => {
+                console.log('Payment success:', result);
+                await handlePaymentSuccess(result);
+              },
+              onPending: (result) => {
+                console.log('Payment pending:', result);
+                setMsg("Pembayaran sedang diproses, silahkan lanjutkan pembayaran di history anda!");
+              },
+              onError: (error) => {
+                console.error('Payment error:', error);
+                setMsg("Pembayaran gagal. Silakan coba lagi.");
+              },
+              onClose: () => {
+                setMsg("Pembayaran dibatalkan. Silakan coba lagi.");
+              }
+            });
+        }
     } catch (error) {
-      console.error("Error Get product data:", error);
+        console.error("Payment error:", error);
+        setMsg(error.response?.data?.error || "Terjadi kesalahan saat memproses pembayaran");
+    }
+  };
+
+  const handlePaymentSuccess = async (paymentResult) => {
+    try {
+      // Update payment status in your database
+      await axios.post("http://localhost:5000/payment", {
+        orderId,
+        paymentAmount: total,
+        paymentMethod: selectedPaymentMethod,
+        paymentStatus: "Done",
+        transactionId: paymentResult.transaction_id
+      });
+
+      // Clear cart
+      await axios.delete("http://localhost:5000/cart");
+      
+      // Navigate to success page
+      navigate("/paymentsuccess");
+    } catch (error) {
+      console.error("Error updating payment status:", error);
+      setMsg("Pembayaran berhasil tetapi terjadi kesalahan dalam memperbarui status");
     }
   };
 
@@ -270,7 +335,7 @@ const Payment = () => {
           </div>
         </div>
 
-        <button className="payment-btn" onClick={payment}>
+        <button className="payment-btn" onClick={pay}>
           PAY
         </button>
       </div>
