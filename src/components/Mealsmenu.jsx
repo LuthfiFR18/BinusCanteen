@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 
 
-const Mealsmenu = () => {
+const Mealsmenu = ({ activeButton }) => {
   const [quantity, setQuantity] = useState({});
   const [showCartControls, setShowCartControls] = useState({});
   const [products, setProducts] = useState([]);
@@ -110,14 +110,28 @@ const Mealsmenu = () => {
   return (
     <div className="mealsmenu-list">
       {products.length === 0 ? (
-        <p className="menu-item-empty">No products available for this booth.</p>
+    <p className="menu-item-empty">No products available for this booth.</p>
+  ) : (
+    products
+      .filter((product) => {
+        // Filter based on the active button
+        if (activeButton === "Meals") return product.producttype === "Food";
+        if (activeButton === "Drink") return product.producttype === "Drink";
+        if (activeButton === "Dessert") return product.producttype === "Dessert";
+        return false;
+      })
+      .length === 0 ? ( // Check if no products of the active category exist
+        <p className="menu-item-empty">
+          No {activeButton.toLowerCase()} items available for this booth.
+        </p>
       ) : (
         products
-        .filter((product) => product.producttype === "Food")
-        .length === 0 ? ( // Check if no products of type 'Food' exist
-          <p>No food items available for this booth.</p>
-        ):(products
-          .filter((product) => product.producttype === "Food")
+          .filter((product) => {
+            if (activeButton === "Meals") return product.producttype === "Food";
+            if (activeButton === "Drink") return product.producttype === "Drink";
+            if (activeButton === "Dessert") return product.producttype === "Dessert";
+            return false;
+          })
           .map((product) => (
             <div className="meals-item" key={product.uuid}>
               <img src={img1} alt={`Product image of ${product.name}`} />
@@ -128,7 +142,10 @@ const Mealsmenu = () => {
 
               {/* Initial Order Button */}
               {!showCartControls[product.uuid] && (
-                <div className="meals-order-button" onClick={() => handleShowCartControls(product.uuid)}>
+                <div
+                  className="meals-order-button"
+                  onClick={() => handleShowCartControls(product.uuid)}
+                >
                   <span>+</span>
                 </div>
               )}

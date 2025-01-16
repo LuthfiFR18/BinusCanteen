@@ -54,6 +54,22 @@ function SellerBoothNameform() {
     }
   };
 
+  const [formData, setFormData] = useState({
+        productImage: null, // Image file
+        previewImage: "", // Preview URL for the image
+      });
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setFormData({
+    ...formData,
+    productImage: file,
+    previewImage: URL.createObjectURL(file), // Create URL for preview
+    });
+  };
+
+  const [openTime, setOpenTime] = useState('');
+
 
   return (
     <div className='seller-booth-form-container'>
@@ -69,7 +85,20 @@ function SellerBoothNameform() {
           <input type="time" className="time-open-booth" onChange={(e)=> setOpening(e.target.value)}/>
 
           <h5 className="time-close-booth-text">Time Close Booth:</h5>
-          <input type="time" className="time-open-booth" onChange={(e)=> setClosing(e.target.value)}/>
+          <input type="time" className="time-close-booth" onChange={(e)=> setClosing(e.target.value)}/>
+
+          <label htmlFor="productImage">Booth Image:</label>
+            <input
+              className='image-input'
+              type="file"
+              id="productImage"
+              name="productImage"
+              onChange={handleImageChange}
+              accept="image/*"
+            />
+            {formData.previewImage && (
+              <img src={formData.previewImage} alt="Product" className="product-image" />
+            )}
 
           <button className="submit-booth-btn">Submit</button>
         </form>

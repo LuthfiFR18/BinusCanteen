@@ -294,7 +294,6 @@ function Sellerpage() {
 
                         <h1 className="welcome-text">Welcome, {boothName}</h1>
                         <div className="button-group">
-                            <button className="edit-picture-btn" onClick={() => handleNavigate('/EditPictureSeller')}>Edit Picture</button>    
                             <button
                                 className="close-store-btn"
                                 onClick={handlePopupStoreStatus}
@@ -309,7 +308,7 @@ function Sellerpage() {
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="#" className="menu-item" onClick={() => navigate('/ListMenuSeller')}>
+                                <a href="#" className="menu-seller-active" onClick={() => navigate('/seller')}>
                                     {/* <FontAwesomeIcon icon={faUtensils} size="2x" /> */}
                                     <span className="menu-text">List Menu</span>
                                 </a>
@@ -412,8 +411,8 @@ function Sellerpage() {
                                             />  
 
                                             <div className="form-buttons">
-                                            <button className='button-admin-booth-save' type="submit">Save</button>
-                                            <button  className='button-admin-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
+                                            <button className='button-booth-save' type="submit">Save</button>
+                                            <button className='button-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
                                             </div>
                                         </form>
                                         </div>
@@ -421,7 +420,6 @@ function Sellerpage() {
                                 )}
                                 <button 
                                     className="delete-btn"
-                                    style={{ backgroundColor: 'black', color: 'white' }}
                                     onClick={() => handleDeleteMenu(menu.uuid)}
                                 >
                                     Delete

@@ -6,6 +6,12 @@
 
 }
 
+.drinkmenu-list p{
+  text-align: center;
+  margin: 10px auto;
+  margin-left: 51%;
+}
+
 .drink-item {
   margin-top: 2%;
   border-radius: 25px;

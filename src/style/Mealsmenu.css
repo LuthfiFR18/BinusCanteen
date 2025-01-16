@@ -2,19 +2,14 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  place-items: center;
   grid-template-columns: repeat(2, 1fr);
   margin: 10px auto;
-  width: 90%;
+  width: 100%;
 }
 
 .menu-item-empty{
-  display: grid;
-  place-items: center; /* Posisi konten di tengah secara vertikal dan horizontal */
-  grid-template-columns: 1fr; /* Satu kolom penuh saat tidak ada item */
-  text-align: center;
-  width: 100%;
-  font-size: 16px; /* Ukuran teks default */
+  font-size: 16px;
+  margin-left: 50%;
 }
 
 .meals-item {

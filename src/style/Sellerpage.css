@@ -94,15 +94,6 @@
     margin-right: 10px;
 }
   
-.menu-item {
-    display: flex;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 10px;
-    align-items: center;
-    gap: 10px;
-}
-  
 .menu-image {
     width: 100px;
     height: 100px;
@@ -159,7 +150,7 @@
 }
   
 .menu-edit button {
-    background-color: blue;
+    background-color: #2E7ADD;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -208,7 +199,6 @@
 
 .menu-image.out-of-stock{
     opacity: 0.5;
-    /* transition: opacity 0.3s ease; */
 }
   
   /* Popup styles */
@@ -246,7 +236,7 @@
 }
 
 .popup .yes-btn{
-    background-color: red;
+    background-color: #FF9D00;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -255,7 +245,7 @@
 }
 
 .popup .no-btn{
-    background-color: #FF9D00;
+    background-color: red;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -274,7 +264,7 @@
 }
   
 .popup-confirm-btn {
-    background-color: black;
+    background-color: #FF9D00;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -283,7 +273,7 @@
 }
   
 .popup-cancel-btn {
-    background-color: blue;
+    background-color: red;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -301,6 +291,16 @@
     cursor: pointer;
 }
 
+.button-booth-save:hover{
+    background-color: #245da8;
+}
+.button-booth-cancel{
+    background-color: red !important;
+}
+
+.button-booth-cancel:hover{
+    background-color: rgb(179, 3, 3) !important;
+}
 .navmenu{
     width: 100%;
     display: flex;
@@ -342,6 +342,24 @@
     justify-content: center;
 }
 
+.menu-item {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+}
+
+.menu-seller-active {
+    display: flex;
+    border: 2px solid #FF9D00;
+    border-radius: 15px;
+    padding: 10px;
+    align-items: center;
+    gap: 10px;
+}
+
 .menu ul li:hover{
     background-color: var(--btn-color);
 }
@@ -351,7 +369,7 @@
 }
 
 .menu-edit .delete-btn {
-    background-color: black;
+    background-color: red;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -382,7 +400,7 @@
 }
 
 .popup-delete .yes-btn {
-    background-color: black;
+    background-color: #FF9D00;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -391,7 +409,7 @@
 }
 
 .popup-delete .no-btn {
-    background-color: blue;
+    background-color: red;
     color: white;
     padding: 10px 20px;
     border: none;

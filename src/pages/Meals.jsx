@@ -3,13 +3,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Meals.css';
 import Mealsmenu from '../components/Mealsmenu';
-import { useNavigate } from 'react-router-dom';
 import { useLocation, useParams } from "react-router-dom";
 
-const ButtonStack = () => {
-    const [activeButton] = useState(1);
-    const navigate = useNavigate();
-    const { boothId} = useParams();
+const ButtonStack = ({ activeButton, handleTabClick }) => {
+
     const location = useLocation();
     const boothName = location.state?.boothName || "Unknown Booth";
     // console.log("Booth ID:", boothId);
@@ -17,20 +14,19 @@ const ButtonStack = () => {
     return (
       <div className="selector-btn">
         <button
-        className={`menu-button-meals meals-btn ${activeButton === 1 ? 'active' : 'menu-button-meals'}`}
-        onClick={() => navigate(`/meals/${boothId}`, { state: { boothName } })}
+        className={`menu-button-meals ${activeButton === "Meals" ? 'active' : ""}`}
+        onClick={() =>handleTabClick("Meals")}
 
         >Meals
         </button>
         <button
-        className={`menu-button-drink ${activeButton === 2 ? 'active' : 'menu-button-drink'}`}
-        onClick={() => navigate(`/drinks/${boothId}`, { state: { boothName } })}
-          
+        className={`menu-button-drink ${activeButton === "Drink" ? 'active' : ""}`}
+        onClick={() => handleTabClick("Drink")}
         >Drink
         </button>
         <button
-        className={`menu-button-dessert ${activeButton === 3 ? 'active' : 'menu-button-dessert'}`}
-        onClick={() => navigate(`/desserts/${boothId}`, { state: { boothName } })}
+        className={`menu-button-dessert ${activeButton === "Dessert" ? 'active' : ""}`}
+        onClick={() => handleTabClick("Dessert")}
         
         >Dessert
         </button>
@@ -39,6 +35,12 @@ const ButtonStack = () => {
   };
 
   const Meals = () => {
+    const [activeButton, setActivateButton] = useState("Meals");
+    
+    const handleTabClick = (tabName) => {
+      setActivateButton(tabName);
+    };
+
     const location = useLocation();
     const boothName = location.state?.boothName || "Unknown Booth";
 
@@ -50,9 +52,9 @@ const ButtonStack = () => {
     
         <h3 id='booth-name'>{boothName}</h3>
 
-        <ButtonStack />
+        <ButtonStack activeButton={activeButton} handleTabClick={handleTabClick} />
                     
-        <Mealsmenu/>
+        <Mealsmenu activeButton={activeButton} />
         
     </div>
     <Footer/>
