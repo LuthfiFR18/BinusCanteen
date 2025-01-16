@@ -3,17 +3,10 @@ import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Meals.css';
 import Mealsmenu from '../components/Mealsmenu';
-import { useNavigate } from 'react-router-dom';
 import { useLocation, useParams } from "react-router-dom";
 
-const ButtonStack = () => {
-    const [activeButton, setActivateButton] = useState("Meals");
+const ButtonStack = ({ activeButton, handleTabClick }) => {
 
-    const handleTabClick = (tabName) => {
-      setActivateButton(tabName);
-    };
-    const navigate = useNavigate();
-    const { boothId} = useParams();
     const location = useLocation();
     const boothName = location.state?.boothName || "Unknown Booth";
     // console.log("Booth ID:", boothId);
@@ -42,6 +35,12 @@ const ButtonStack = () => {
   };
 
   const Meals = () => {
+    const [activeButton, setActivateButton] = useState("Meals");
+    
+    const handleTabClick = (tabName) => {
+      setActivateButton(tabName);
+    };
+
     const location = useLocation();
     const boothName = location.state?.boothName || "Unknown Booth";
 
@@ -53,9 +52,9 @@ const ButtonStack = () => {
     
         <h3 id='booth-name'>{boothName}</h3>
 
-        <ButtonStack />
+        <ButtonStack activeButton={activeButton} handleTabClick={handleTabClick} />
                     
-        <Mealsmenu/>
+        <Mealsmenu activeButton={activeButton} />
         
     </div>
     <Footer/>

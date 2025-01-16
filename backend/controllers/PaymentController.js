@@ -1,6 +1,6 @@
 import Payment from "../models/PaymentModel.js";
 import Midtrans from "midtrans-client"
-
+import { snap } from "../config/Midtrans.js";
 // Mendapatkan semua pembayaran
 export const getPayments = async (req, res) => {
     try {
@@ -21,6 +21,8 @@ export const getPaymentById = async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 };
+
+
 
 // Membuat pembayaran baru
 export const createPayment = async (req, res) => {
@@ -73,3 +75,48 @@ export const deletePayment = async (req, res) => {
 };
 
 
+
+
+export const createPaymentToken = async (req, res) => {
+    const { orderId, items, totalAmount, paymentMethod } = req.body;
+    
+    try {
+
+        console.log('Environment variables check:');
+        console.log('Server Key:', process.env.SECRET ? 'Present' : 'Missing');
+        console.log('Client Key:', process.env.NEXT_PUBLIC_CLIENT ? 'Present' : 'Missing');
+
+        console.log('Received payment request:', {
+            orderId,
+            items,
+            totalAmount,
+            paymentMethod
+        });
+
+        const parameter = {
+            transaction_details: {
+                order_id: String(orderId),
+                gross_amount: parseInt(totalAmount)
+            },
+            item_details: items.map(item => ({
+                id: String(item.id),
+                price: parseInt(item.price),
+                quantity: parseInt(item.quantity),
+                name: item.name
+            })),
+            enabled_payments: [paymentMethod === 'BCA Virtual Account' ? 'bca_va' : 'qris']
+        };
+
+        console.log('Midtrans parameter:', parameter);
+
+        const token = await snap.createTransactionToken(parameter);
+        console.log('Token created:', token);
+        res.json({ token });
+    } catch (error) {
+        console.error('Midtrans Error:', error);
+        res.status(500).json({ 
+            error: error.message,
+            details: error.ApiResponse || error 
+        });
+    }
+};

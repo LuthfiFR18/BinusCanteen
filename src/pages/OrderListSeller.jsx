@@ -27,21 +27,21 @@ const OrderListSeller = () => {
 
     useEffect(() => {
         if (user && user.id) {
-            getOrderDetails();  
+            getPaidOrders();
         }
     }, [user]);
 
-    const getOrderDetails = async () => {
+    const getPaidOrders = async () => {
         try {
             if (!user || !user.id) {
                 console.error("User data is missing.");
                 return;
             }
-          const response = await axios.get(`http://localhost:5000/orderDetails?userId=${user.id}`);
-          setOrderList(response.data);
-          console.log(response.data);
+            const response = await axios.get(`http://localhost:5000/paidOrderDetails?userId=${user.id}`);
+            setOrderList(response.data);
+            console.log('Paid orders:', response.data);
         } catch (error) {
-          console.error("Failed to fetch order details:", error);
+            console.error("Failed to fetch paid orders:", error);
         }
     };
     
@@ -55,26 +55,38 @@ const OrderListSeller = () => {
         setPopupOpen(true);
     }
 
-    const handleConfirm = () => {
-        const confirmed = window.confirm(
-            "Are you sure this order is complete? This will notify the buyer that their order is finished and ready for delivery"
-        );
-        if (confirmed) {
-            setOrderList(orderList.filter((order) => orderList.id !== selectedOrder));
-            setPopupOpen(false);
-        }
-    }
+
+
+    const getCurrentDateTime = () => {
+        const now = new Date();
+        const days = ['Minggu', 'Senin', 'Selasa', 'Rabu', 'Kamis', 'Jumat', 'Sabtu'];
+        const dayName = days[now.getDay()];
+        const hours = now.getHours().toString().padStart(2, '0');
+        const minutes = now.getMinutes().toString().padStart(2, '0');
+        const date = now.getDate().toString().padStart(2, '0');
+        const month = (now.getMonth() + 1).toString().padStart(2, '0');
+        const year = now.getFullYear();
+
+        return {
+            dayTime: `${dayName} ${hours}:${minutes}`,
+            fullDate: `${date}/${month}/${year}`
+        };
+    };
+
+    const dateTime = getCurrentDateTime();
+
+
 
   return (
         <div className="order-list-container">
-            <Header/>
+            <button className="order-list-seller-back-button" onClick={() => navigate('/Sellerpage')}>
+                <span className="arrow-left">&#8592;</span>
+            </button>
                 <header>
-                    <h3>Jumat 8:50</h3>
-                    <p>20/09/2024</p>
+                    <h3>{dateTime.dayTime}</h3>
+                    <p>{dateTime.fullDate}</p>
                 </header>
-
-                
-                {/* <table className="order-table">
+                <table className="order-table">
                     <thead>
                     <tr>
                         <th>Nama</th>
@@ -85,37 +97,47 @@ const OrderListSeller = () => {
                     </tr>
                     </thead>
                     <tbody>
-                        {/* {orders.map((order, index) => (
-                        {order.map((order, index) => (
-                            // <tr key={index}>
+                    {orderList && orderList.length > 0 ? (
+                        orderList.map((order) => (
                             <tr key={order.id}>
-                                <td>name</td>
+                                <td>{order.name}</td>
                                 <td>
                                     <ul>
-                                    {order.items.map((item, idx) => (
-                                        <li key={idx}>{item.name}</li>
-                                    ))}
+                                        {order.items && order.items.map((item, idx) => (
+                                            <li key={idx}>
+                                                {item.name} (x{item.quantity})
+                                            </li>
+                                        ))}
                                     </ul>
                                 </td>
                                 <td>
                                     <ul>
-                                        {order.description.map((desc, idx) => (
+                                        {order.description && order.description.map((desc, idx) => (
                                             <li key={idx}>{desc}</li>
                                         ))}
                                     </ul>
                                 </td>
-                                <td>{order.time}</td>
-                                    <td>
-                                        <button className="done-button" onClick={() => handleDoneClick(order.id)}>
-                                            Done
-                                        </button>
-                                    </td>
+                                <td>{new Date(order.time).toLocaleTimeString('id-ID')}</td>
+                                <td>{order.paymentMethod}</td>
+                                <td>
+                                    <button 
+                                        className="done-button" 
+                                        onClick={() => handleDoneClick(order.id)}
+                                    >
+                                        Done
+                                    </button>
+                                </td>
                             </tr>
-                        ))}
-                    </tbody>
-                </table> */}
+                        ))
+                    ) : (
+                        <tr>
+                            <td colSpan="6" style={{textAlign: 'center'}}>Tidak ada pesanan yang sudah dibayar</td>
+                        </tr>
+                    )}
+                </tbody>
+                </table>
 
-                 <PopUpOrderDone
+                <PopUpOrderDone
                     isOpen={isPopupOpen}
                     onClose={() => setPopupOpen(false)}
                     // onConfirm={handleConfirm}
