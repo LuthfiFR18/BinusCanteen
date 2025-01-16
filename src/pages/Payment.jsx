@@ -60,7 +60,7 @@ const Payment = () => {
         setOrder([]); // Fallback to an empty array if carts is not found or not an array
       }
     } catch (error) {
-      console.error('Error fetching cart:', error);
+      console.error('Error fetching Order Details:', error);
       setOrder([]); // Fallback in case of error
     }
   };
