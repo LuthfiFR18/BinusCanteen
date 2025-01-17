@@ -61,7 +61,6 @@ const ProfileDropdown = () => {
     })
 
   return (
-    <div className="profile-dropdown">
     <div className="profile-box-customer" onClick={toggleDropdown} ref={domNode}>
         <FontAwesomeIcon icon={faUser} className='profile-icon'/>
 
@@ -93,7 +92,6 @@ const ProfileDropdown = () => {
                 </ul>
             </div>
         )}
-    </div>
     </div>
     )
 };

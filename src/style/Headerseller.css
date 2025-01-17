@@ -30,3 +30,39 @@
     margin-right: 5%;
 }
 
+@media screen and (max-width: 480px) {
+    .header-seller {
+        flex-direction: column; /* Mengatur elemen menjadi tumpuk */
+        justify-content: center;
+        gap: 15px; /* Mengurangi jarak antar elemen */
+        padding: 10px;
+    }
+
+    .logo-seller-text {
+        font-size: 18px; /* Mengurangi ukuran font */
+        margin-left: 0; /* Menyesuaikan margin untuk pusat */
+    }
+
+    .profile-box {
+        margin-right: 0; /* Menghapus margin kanan agar lebih sejajar */
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+    .header-seller {
+        flex-direction: row; /* Tetap dalam baris */
+        justify-content: space-between; /* Memberikan spasi antar elemen */
+        align-items: center;
+        gap: 5%; /* Mengurangi jarak antar elemen */
+        padding: 0 20px; /* Menambahkan padding kiri dan kanan */
+    }
+
+    .logo-seller-text {
+        font-size: 20px; /* Ukuran font yang lebih kecil dari default */
+        margin-left: 0; /* Menyesuaikan margin agar lebih proporsional */
+    }
+
+    .profile-box {
+        margin-right: 0; /* Menghapus margin tambahan */
+    }
+}

@@ -79,9 +79,11 @@ const OrderListSeller = () => {
 
   return (
         <div className="order-list-container">
-            <button className="order-list-seller-back-button" onClick={() => navigate('/Sellerpage')}>
-                <span className="arrow-left">&#8592;</span>
-            </button>
+            <div className="order-list">
+                <Header/>
+                <button className="order-list-seller-back-button" onClick={() => navigate('/Sellerpage')}>
+                    <span className="arrow-left">&#8592;</span>
+                </button>
                 <header>
                     <h3>{dateTime.dayTime}</h3>
                     <p>{dateTime.fullDate}</p>
@@ -142,8 +144,10 @@ const OrderListSeller = () => {
                     onClose={() => setPopupOpen(false)}
                     // onConfirm={handleConfirm}
                 />
+            </div>
+            <Footerseller/>
         </div>
-  );
+    );
 };
 
 export default OrderListSeller;
