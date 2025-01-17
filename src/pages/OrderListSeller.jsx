@@ -1,28 +1,21 @@
 import React, { useState, useEffect } from "react";
-import '../style/OrderListSeller.css';
-import PopUpOrderDone from "../components/PopUpOrderDone";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { BrowserRouter as Router, Routes, Route, Await } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import Header from '../components/Headerseller';
-import Footerseller from '../components/Footerseller';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils,faGlassWater} from '@fortawesome/free-solid-svg-icons'
 import axios from "axios";
-import { getMe } from '../features/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { getMe } from '../features/authSlice';
+import PopUpOrderDone from "../components/PopUpOrderDone";
 
 const OrderListSeller = () => {
     const navigate = useNavigate();
     const [orderList, setOrderList] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
+    const [selectedOrder, setSelectedOrder] = useState(null);
+    const [isPopupOpen, setPopupOpen] = useState(false);
 
     useEffect(() => {
-
         dispatch(getMe());
-
     }, [dispatch]);
 
     useEffect(() => {
@@ -33,29 +26,39 @@ const OrderListSeller = () => {
 
     const getPaidOrders = async () => {
         try {
-            if (!user || !user.id) {
-                console.error("User data is missing.");
-                return;
-            }
+            setIsLoading(true);
             const response = await axios.get(`http://localhost:5000/paidOrderDetails?userId=${user.id}`);
             setOrderList(response.data);
             console.log('Paid orders:', response.data);
         } catch (error) {
             console.error("Failed to fetch paid orders:", error);
+        } finally {
+            setIsLoading(false);
         }
     };
-    
 
-    
-    const [selectedOrder, setSelectedOrder] = useState(null);
-    const [isPopupOpen, setPopupOpen] = useState(false);
-
-    const handleDoneClick = (orderId) => {
+    const handleDoneClick = async (orderId) => {
         setSelectedOrder(orderId);
         setPopupOpen(true);
-    }
+    };
 
-
+    const handleConfirmDone = async () => {
+        try {
+            // Call API to update order status
+            await axios.put(`http://localhost:5000/updateOrderStatus/${selectedOrder}`, {
+                status: 'Completed'
+            });
+            
+            // Refresh the order list
+            await getPaidOrders();
+            
+            // Close popup
+            setPopupOpen(false);
+            setSelectedOrder(null);
+        } catch (error) {
+            console.error("Failed to update order status:", error);
+        }
+    };
 
     const getCurrentDateTime = () => {
         const now = new Date();
@@ -75,75 +78,84 @@ const OrderListSeller = () => {
 
     const dateTime = getCurrentDateTime();
 
-
-
-  return (
+    return (
         <div className="order-list-container">
             <button className="order-list-seller-back-button" onClick={() => navigate('/Sellerpage')}>
                 <span className="arrow-left">&#8592;</span>
             </button>
-                <header>
-                    <h3>{dateTime.dayTime}</h3>
-                    <p>{dateTime.fullDate}</p>
-                </header>
+            <header>
+                <h3>{dateTime.dayTime}</h3>
+                <p>{dateTime.fullDate}</p>
+            </header>
+            {isLoading ? (
+                <div className="loading">Loading orders...</div>
+            ) : (
                 <table className="order-table">
                     <thead>
-                    <tr>
-                        <th>Nama</th>
-                        <th>Item</th>
-                        <th>Description</th>
-                        <th>Jam Pengiriman</th>
-                        <th>Action</th>
-                    </tr>
+                        <tr>
+                            <th>Name</th>
+                            <th>Item</th>
+                            <th>Description</th>
+                            <th>Delivery Location</th>
+                            <th>Payment Method</th>
+                            <th>Payment Status</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    {orderList && orderList.length > 0 ? (
-                        orderList.map((order) => (
-                            <tr key={order.id}>
-                                <td>{order.name}</td>
-                                <td>
-                                    <ul>
-                                        {order.items && order.items.map((item, idx) => (
-                                            <li key={idx}>
-                                                {item.name} (x{item.quantity})
-                                            </li>
-                                        ))}
-                                    </ul>
-                                </td>
-                                <td>
-                                    <ul>
-                                        {order.description && order.description.map((desc, idx) => (
-                                            <li key={idx}>{desc}</li>
-                                        ))}
-                                    </ul>
-                                </td>
-                                <td>{new Date(order.time).toLocaleTimeString('id-ID')}</td>
-                                <td>{order.paymentMethod}</td>
-                                <td>
-                                    <button 
-                                        className="done-button" 
-                                        onClick={() => handleDoneClick(order.id)}
-                                    >
-                                        Done
-                                    </button>
+                        {orderList && orderList.length > 0 ? (
+                            orderList.map((order) => (
+                                <tr key={order.id}>
+                                    <td>{order.name}</td>
+                                    <td>
+                                        <ul>
+                                            {order.items.map((item, idx) => (
+                                                <li key={idx}>
+                                                    {item.name} (x{item.quantity})
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                    <td>
+                                        <ul>
+                                            {order.description.map((desc, idx) => (
+                                                <li key={idx}>{desc}</li>
+                                            ))}
+                                        </ul>
+                                    </td>
+                                    <td>{order.deliveryLocation}</td>
+                                    <td>{order.paymentMethod}</td>
+                                    <td>
+                                        <span className="payment-status paid">Paid</span>
+                                    </td>
+                                    <td>
+                                        <button 
+                                            className="done-button"
+                                            onClick={() => handleDoneClick(order.id)}
+                                        >
+                                            Done
+                                        </button>
+                                    </td>
+                                </tr>
+                            ))
+                        ) : (
+                            <tr>
+                                <td colSpan="7" className="no-orders">
+                                    Tidak ada pesanan yang sudah dibayar
                                 </td>
                             </tr>
-                        ))
-                    ) : (
-                        <tr>
-                            <td colSpan="6" style={{textAlign: 'center'}}>Tidak ada pesanan yang sudah dibayar</td>
-                        </tr>
-                    )}
-                </tbody>
+                        )}
+                    </tbody>
                 </table>
+            )}
 
-                <PopUpOrderDone
-                    isOpen={isPopupOpen}
-                    onClose={() => setPopupOpen(false)}
-                    // onConfirm={handleConfirm}
-                />
+            <PopUpOrderDone
+                isOpen={isPopupOpen}
+                onClose={() => setPopupOpen(false)}
+                onConfirm={handleConfirmDone}
+            />
         </div>
-  );
+    );
 };
 
 export default OrderListSeller;
