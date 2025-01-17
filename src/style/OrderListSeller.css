@@ -174,14 +174,27 @@ header p {
 
   .order-table {
     width: 100%;
-    font-size: 7px;
+    font-size: 4px;
     table-layout: fixed;
   }
 
   .order-table th, 
   .order-table td {
-    width: 100%;
     text-align: center;
+  }
+
+  .done-button {
+    width: 10px; /* Tetapkan lebar tetap */
+    /* padding: 5px;Padding yang sesuai */
+    font-size: 5px !important; /* Ukuran font proporsional */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    cursor: pointer;
+    /* margin-right: 20% !important; */
+    margin-left: -5px
   }
 
   .order-list-seller-back-button {
@@ -205,7 +218,7 @@ header p {
   .popup-no, 
   .done-button {
     padding: 8px 15px;
-    font-size: 14px;
+    font-size: 12px; /* Ukuran font seragam */
   }
 }
 
@@ -233,14 +246,29 @@ header p {
 
   .order-table {
     width: 95%;
-    font-size: 1rem;
+    font-size: 8px;
     margin: 20px auto;
+    table-layout: fixed;
   }
 
   .order-table th, 
   .order-table td {
     padding: 10px;
   }
+
+  .done-button {
+    width: 50px;
+    /* padding: 10px 10px; */
+    font-size: 8px !important;
+    margin: 10px auto;
+    text-align: center;
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+    border-radius: 4px; 
+    cursor: pointer;
+  }
+  
 
   .order-list-seller-back-button {
     width: 45px;
