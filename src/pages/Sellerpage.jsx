@@ -281,8 +281,8 @@ function Sellerpage() {
 
     
     return(
-        <div className='dashboard-seller'>
-            
+        <div className='dashboard-seller-container'>
+            <div className="dashboard-seller">
                 <Header/>
 
                 <div className="header-profile-seller">
@@ -308,7 +308,7 @@ function Sellerpage() {
                     <div class="menu">
                         <ul>
                             <li>
-                                <a href="#" className="menu-seller-active" onClick={() => navigate('/seller')}>
+                                <a href="#" className="menu-seller-active">
                                     {/* <FontAwesomeIcon icon={faUtensils} size="2x" /> */}
                                     <span className="menu-text">List Menu</span>
                                 </a>
@@ -323,155 +323,156 @@ function Sellerpage() {
                     </div>
                 </nav>
                 
-            <h2 className="list-menu-title">List Menu {boothName}</h2>
-            
-            <div className="menu-list">
+                <h2 className="list-menu-title">List Menu {boothName}</h2>
+                
+                <div className="menu-list">
 
-                {menus.map((menu) => (
-                    
-                    <div key={menu.id} className="menu-item">
+                    {menus.map((menu) => (
                         
-                        <img 
-                            src={`http://localhost:5000/uploads/${menu.image}`} 
-                            alt="Menu Item" 
-                            className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
-                            style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
-                        />
-                    
-                        <div className="menu-details">
-                            <div className="menu-info">
-                                <h4>{menu.name}</h4>
-                                
-                                <p>Type: {menu.producttype}</p>
-                            </div>
-                            <div className="menu-info">
-                                <h4>Harga</h4>
-                                <p>{menu.price}</p>
-                            </div>
-                            <div className="menu-edit">
-                                
-                                <button onClick={() => openPopup(menu)}>Edit</button>
+                        <div key={menu.id} className="menu-item">
+                            
+                            <img 
+                                src={`http://localhost:5000/uploads/${menu.image}`} 
+                                alt="Menu Item" 
+                                className={`menu-image ${menu.isOutOfStock ? 'out-of-stock' : ''} ${storeClosed ? 'store-closed' : ''}`}
+                                style={{ opacity: menu.isOutOfStock ? 0.5 : storeClosed ? 0.5 : 1 }}
+                            />
+                        
+                            <div className="menu-details">
+                                <div className="menu-info">
+                                    <h4>{menu.name}</h4>
+                                    
+                                    <p>Type: {menu.producttype}</p>
+                                </div>
+                                <div className="menu-info">
+                                    <h4>Harga</h4>
+                                    <p>{menu.price}</p>
+                                </div>
+                                <div className="menu-edit">
+                                    
+                                    <button onClick={() => openPopup(menu)}>Edit</button>
 
-                                {isPopupOpen && (
-                                    <div className="popup-overlay-update">
-                                        <div className="popup-content-admin-booth">
-                                        <span className="close" onClick={closePopup}>
-                                            &times;
-                                        </span>
-                                        <h2>Edit Menu</h2>
+                                    {isPopupOpen && (
+                                        <div className="popup-overlay-update">
+                                            <div className="popup-content-admin-booth">
+                                            <span className="close" onClick={closePopup}>
+                                                &times;
+                                            </span>
+                                            <h2>Edit Menu</h2>
 
-                                        {formData.previewImage && (
-                                        <img src={formData.previewImage} alt="Product" className="product-image" />
-                                        )}
+                                            {formData.previewImage && (
+                                            <img src={formData.previewImage} alt="Product" className="product-image" />
+                                            )}
 
-                                        <form onSubmit={handleUpdate}>
-                                            <label htmlFor="Productname">Name Product:</label>
-                                            <input className='input-update-booth-admin'
-                                            type="text"
-                                            id="productName"
-                                            name="productName"
-                                            value={formData.productName}
-                                            onChange={handleChange}
-                                            placeholder="Enter name Product"
-                                            />
+                                            <form onSubmit={handleUpdate}>
+                                                <label htmlFor="Productname">Name Product:</label>
+                                                <input className='input-update-booth-admin'
+                                                type="text"
+                                                id="productName"
+                                                name="productName"
+                                                value={formData.productName}
+                                                onChange={handleChange}
+                                                placeholder="Enter name Product"
+                                                />
 
-                                            <label htmlFor="price">Price:</label>
-                                            <input className='input-update-booth-admin'
-                                            type="text"
-                                            id="price"
-                                            name="price"
-                                            value={formData.price}
-                                            onChange={handleChange}
-                                            placeholder="Enter Price"
-                                            />
+                                                <label htmlFor="price">Price:</label>
+                                                <input className='input-update-booth-admin'
+                                                type="text"
+                                                id="price"
+                                                name="price"
+                                                value={formData.price}
+                                                onChange={handleChange}
+                                                placeholder="Enter Price"
+                                                />
 
-                                            <label htmlFor="productType">Product Type:</label>
-                                            <select className='select-type'
-                                            id="productType"
-                                            name="productType"
-                                            value={formData.productType}
-                                            onChange={handleChange}
-                                            placeholder='Select Type'
-                                            >
+                                                <label htmlFor="productType">Product Type:</label>
+                                                <select className='select-type'
+                                                id="productType"
+                                                name="productType"
+                                                value={formData.productType}
+                                                onChange={handleChange}
+                                                placeholder='Select Type'
+                                                >
 
-                                            <option value="Food">Food</option>
-                                            <option value="Drink">Drink</option>
-                                            <option value="Dessert">Dessert</option>
-                                            </select>
+                                                <option value="Food">Food</option>
+                                                <option value="Drink">Drink</option>
+                                                <option value="Dessert">Dessert</option>
+                                                </select>
 
-                                            <label htmlFor="productImage">Product Image:</label>
-                                            {/* <button type='file'></button> */}
-                                            <input
-                                            className='image-input'
-                                            type="file"
-                                            id="productImage"
-                                            name="productImage"
-                                            onChange={handleImageChange}
-                                            accept="image/*"
-                                            />  
+                                                <label htmlFor="productImage">Product Image:</label>
+                                                {/* <button type='file'></button> */}
+                                                <input
+                                                className='image-input'
+                                                type="file"
+                                                id="productImage"
+                                                name="productImage"
+                                                onChange={handleImageChange}
+                                                accept="image/*"
+                                                />  
 
-                                            <div className="form-buttons">
-                                            <button className='button-booth-save' type="submit">Save</button>
-                                            <button className='button-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
+                                                <div className="form-buttons">
+                                                <button className='button-booth-save' type="submit">Save</button>
+                                                <button className='button-booth-cancel' type="button" onClick={handleCancel}>Cancel</button>
+                                                </div>
+                                            </form>
                                             </div>
-                                        </form>
                                         </div>
-                                    </div>
-                                )}
-                                <button 
-                                    className="delete-btn"
-                                    onClick={() => handleDeleteMenu(menu.uuid)}
-                                >
-                                    Delete
-                                </button>
+                                    )}
+                                    <button 
+                                        className="delete-btn"
+                                        onClick={() => handleDeleteMenu(menu.uuid)}
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
                             </div>
                         </div>
+                    ))}
+                </div>
+
+                <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
+                
+                {isEditPopupOpen&&(
+                    <div className="popup-overlay">
+                    <div className="popup">
+                        <EditMenuSeller
+                        menu={selectedMenu}
+                        onClose={handleCloseEditPopup}/>
                     </div>
-                ))}
-            </div>
+                    </div>
+                )}
 
-            <button className="add-menu-btn" onClick={() => handleNavigate('/AddListMenuSeller')}>+</button>
+                {showPopupStoreStatus &&(
+                    
+                    <PopUp
+                    
+                    message={popupMessage}
+                    onConfirm={isClosingStore ? handleCloseStore : handleOpenStore}
+                    onCancel={() => setShowPopupStoreStatus(false)}
+                    isClosingStore={isClosingStore}
+                    
+                    />
             
-            {isEditPopupOpen&&(
-                <div className="popup-overlay">
-                <div className="popup">
-                    <EditMenuSeller
-                    menu={selectedMenu}
-                    onClose={handleCloseEditPopup}/>
-                </div>
-                </div>
-            )}
+                )}
 
-            {showPopupStoreStatus &&(
-                
-                <PopUp
-                
-                message={popupMessage}
-                onConfirm={isClosingStore ? handleCloseStore : handleOpenStore}
-                onCancel={() => setShowPopupStoreStatus(false)}
-                isClosingStore={isClosingStore}
-                
-                />
-        
-            )}
+                {showPopupOutOfStock &&(
+                    <PopUpOutOfStock
+                    message={popupMessageStock}
+                    onConfirm={confirmOutOfStock}
+                    onCancel={() => setShowPopupOutOfStock(false)}
+                    isOutOfStock={isOutOfStockAction}
+                    />
+                )}
 
-            {showPopupOutOfStock &&(
-                <PopUpOutOfStock
-                message={popupMessageStock}
-                onConfirm={confirmOutOfStock}
-                onCancel={() => setShowPopupOutOfStock(false)}
-                isOutOfStock={isOutOfStockAction}
-                />
-            )}
+                {showPopupDeleteMenu &&(
+                    <PopUpDeleteMenuSeller
+                        message="Are you sure you want to delete this menu permanently? There's no way to recover a deleted menu."
+                        onClose={() => setShowPopupDeleteMenu(false)}
+                        onConfirm={confirmDeleteMenu}
+                    />
+                )}
 
-            {showPopupDeleteMenu &&(
-                <PopUpDeleteMenuSeller
-                    message="Are you sure you want to delete this menu permanently? There's no way to recover a deleted menu."
-                    onClose={() => setShowPopupDeleteMenu(false)}
-                    onConfirm={confirmDeleteMenu}
-                />
-            )}
-
+            </div>
             <Footerseller/>
         </div>
     );

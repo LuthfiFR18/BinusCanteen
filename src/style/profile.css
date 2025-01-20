@@ -84,7 +84,7 @@
 }
 
 @media screen and (max-width: 480px) {
-  .profile-box-customer {
+  .profile-box-seller {
     width: 30px;
     height: 30px;
     margin-bottom: 2px;
@@ -98,23 +98,23 @@
     font-size: 8px ; /* Jika ikon berbasis font */
   }
 
-  .dropdown-menu-customer-profile {
+  .dropdown-menu-seller-profile {
     width: 130px; /* Lebar dropdown lebih kecil */
     top: 100px; /* Posisi lebih proporsional */
     right: 10px; /* Jarak dari tepi lebih kecil */
   }
 
-  .img-profile-customer {
+  .img-profile-seller {
     width: 20px; /* Ukuran gambar lebih kecil */
     height: 20px;
-    margin-left: 40%; /* Penyesuaian posisi gambar */
+    margin-left: 30%; /* Penyesuaian posisi gambar */
   }
 
-  .dropdown-menu-customer-profile p{
+  .dropdown-menu-seller-profile p{
     font-size: 8px !important;
   }
 
-  .dropdown-menu-customer-profile li button {
+  .dropdown-menu-seller-profile li button {
     font-size: 8px;
   }
 }

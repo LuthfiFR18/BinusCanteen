@@ -66,9 +66,9 @@ const SellerProfileDropdown = () => {
 
         {/* Dropdown Menu */}
         {isOpen && (
-            <div className="dropdown-menu-profile-seller">
+            <div className="dropdown-menu-seller-profile">
                 <div>
-                    <img className='img-profile-seller'
+                    <img className='img-seller-profile'
                     src={img1}/>
 
                     {user && <p>{user.name}</p>}

@@ -17,7 +17,7 @@
   color: #FF9D00;
 }
   
-.dropdown-menu-profile-seller {
+.dropdown-menu-seller-profile {
   position: absolute;
   width: 250px;
   top: 70px;
@@ -29,33 +29,33 @@
   z-index: 1;
 }
 
-.img-profile-seller {
+.img-seller-profile {
   width: 60px;
   height: 50px;
   border-radius: 50%;
   margin-left: 10px;
 }
 
-.dropdown-menu-profile-seller p {
+.dropdown-menu-seller-profile p {
   margin: 0;
   text-align: center;
 }
 
-.dropdown-menu-profile-seller hr {
+.dropdown-menu-seller-profile hr {
   margin: 10px 0;
 }
 
-.dropdown-menu-profile-seller ul {
+.dropdown-menu-seller-profile ul {
   list-style: none;
   padding: 0;
 }
 
-.dropdown-menu-profile-seller li {
+.dropdown-menu-seller-profile li {
   padding: 8px 0;
   text-align: center;
 }
 
-.dropdown-menu-profile-seller li button {
+.dropdown-menu-seller-profile li button {
   background: none;
   border: none;
   color: #000;

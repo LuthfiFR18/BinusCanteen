@@ -224,3 +224,78 @@ table tr:first-child th:last-child{
     margin-top: 10px;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .history-buyer-container {
+    display: flex;
+    flex-direction: column;
+    background: #ffff;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .history-buyer-title {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 1.5rem; /* Sedikit lebih besar dari versi mobile */
+  }
+
+  .history-buyer-date {
+    justify-content: flex-start;
+    margin-right: 15%; /* Kurangi margin agar tidak terlalu lebar */
+    font-size: 1rem; /* Ukuran font disesuaikan */
+  }
+
+  .table-container {
+    width: 95%; /* Lebar lebih kecil agar tidak memenuhi layar sepenuhnya */
+    margin: 10px auto;
+  }
+
+  .history-buyer-table {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: 0 0.1rem 0.5rem 0.1rem #D0CECE; /* Tambahkan sedikit shadow untuk desktop */
+  }
+
+  .history-buyer-table th,
+  .history-buyer-table td {
+    padding: 12px; /* Padding cukup besar untuk ukuran layar menengah */
+    font-size: 1rem; /* Ukuran font sedang */
+  }
+
+  .history-buyer-item {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    flex-direction: row; /* Tetap menggunakan baris */
+  }
+
+  .history-buyer-request {
+    font-size: 1rem;
+  }
+
+  .history-buyer-quantity, 
+  .history-buyer-price, 
+  .history-buyer-status {
+    text-align: center;
+    font-size: 1rem; /* Sedikit lebih besar untuk layar menengah */
+  }
+
+  .paid-button {
+    width: 40%; /* Lebar tombol lebih kecil daripada di mobile */
+    margin: 20px auto;
+    margin-left: 5%;
+    font-size: 1rem;
+  }
+
+  .history-buyer-divider {
+    border-top: 2px solid green;
+    height: 2px;
+  }
+
+  .history-buyer-value {
+    font-size: 1rem; /* Sesuaikan ukuran font */
+    margin-top: 10px;
+  }
+}

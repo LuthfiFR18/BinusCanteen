@@ -70,17 +70,6 @@ const Payment = () => {
           setOrderId(response.data.orderDetails[0].orderId);
           console.log("Order ID set to:", response.data.orderDetails[0].orderId);
         }
-
-        /* This code snippet is handling the response data received from a server request to fetch order details. Here's a breakdown of what it does: */
-        // const { orderDetails } = response.data;
-        
-        // if (orderDetails && Array.isArray(orderDetails)) {
-        //     console.log('Setting order details:', orderDetails);
-        //     setOrder(orderDetails);
-        // } else {
-        //     console.log('No valid order details found');
-        //     setOrder([]);
-        // }
     } catch (error) {
         console.error('Detailed error:', {
             message: error.message,
@@ -254,10 +243,7 @@ const Payment = () => {
 
         <h2 className='payment-title'>Payment Details</h2>
         <h5 className="countdown">Segera melakukan pembayaran sebelum {formatTime(timeLeft)}</h5>
-        {/* <span className="status">Status:<span className='status-text'> Done</span></span> */}
 
-
-        {/* Table Item Order to payment */}
         <table className="payment-table">
           <thead>
             <tr>
@@ -282,7 +268,7 @@ const Payment = () => {
                   </td>
 
                   <td>
-                    <input className="payment-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
+                    Tidak ada keterangan
                   </td>
 
                   <td>
@@ -300,7 +286,6 @@ const Payment = () => {
         </table>
 
         <p className='payment-error-message'>{msg}</p>
-        {/* Payment Method Selection */}
         <div className="payment-method-selection">
           <div className="payment-options">
             <div className="option">

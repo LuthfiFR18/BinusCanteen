@@ -100,13 +100,16 @@
     }
 
     .seller-booth-form-wrapper {
-        width: 95%; /* Menggunakan hampir seluruh lebar layar */
-        padding: 15px; /* Kurangi padding */
-        margin: 10px auto;
+        width: 90%;
+        padding: 15px;
         background-color: var(--text-color);
-        border-radius: 15px; /* Kurangi radius agar lebih rapi */
+        border-radius: 15px;
         text-align: center;
         align-items: center;
+    }
+
+    .booth-title{
+        font-size: 16px !important;
     }
 
     .booth-label, 
@@ -115,18 +118,18 @@
     .time-close-booth-text, 
     .image-booth-seller-text {
         text-align: left;
-        font-size: 0.85rem; /* Mengurangi ukuran font agar lebih sesuai */
-        margin-bottom: 5px; /* Tambahkan margin kecil agar elemen tidak berdesakan */
+        font-size: 12px; 
+        margin-bottom: 5px;
     }
 
     .booth-input, 
     .time-open-booth, 
     .time-close-booth, 
     .input-image-booth {
-        width: 100%; /* Pastikan elemen mengambil seluruh lebar */
-        padding: 10px; /* Sesuaikan padding untuk kenyamanan */
-        border-radius: 15px; /* Sesuaikan border-radius */
-        margin-bottom: 10px; /* Tambahkan jarak antar elemen */
+        width: 100%; 
+        padding: 10px;
+        border-radius: 15px; 
+        margin-bottom: 10px; 
         border: none;
     }
 
@@ -134,10 +137,71 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        border-radius: 20px; /* Sesuaikan border-radius */
-        width: 140px; /* Lebih kecil agar proporsional */
-        height: 38px; /* Sesuaikan tinggi tombol */
-        margin: 20px auto; /* Kurangi margin atas dan bawah */
+        border-radius: 20px; 
+        width: 140px; 
+        height: 38px; 
+        margin: 20px auto;
+        background-color: var(--btn-color);
+        color: var(--text-color);
+        font-weight: bold;
+        border-style: none;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .seller-booth-form-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--main-color), #0073e6);
+        padding: 0;
+        margin: 0;
+    }
+
+    .seller-booth-form-wrapper {
+        width: 90%; 
+        padding: 15px;        
+        background-color: var(--text-color);
+        border-radius: 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .booth-title{
+        font-size: 16px !important;
+    }
+
+    .booth-label, 
+    .date-booth-text, 
+    .time-open-booth-text, 
+    .time-close-booth-text, 
+    .image-booth-seller-text {
+        text-align: left;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .booth-input, 
+    .time-open-booth, 
+    .time-close-booth, 
+    .input-image-booth {
+        width: 100%;
+        padding: 12px;
+        border-radius: 18px;
+        margin-bottom: 15px;
+        border: none;
+    }
+
+    .submit-booth-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        width: 160px;
+        height: 40px;
+        margin: 30px auto;
         background-color: var(--btn-color);
         color: var(--text-color);
         font-weight: bold;
