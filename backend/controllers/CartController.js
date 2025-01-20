@@ -46,6 +46,7 @@ export const getCartByUserId = async (req, res) => {
                     attributes: ['id', 'name', 'uuid'], // Include user details (if needed)
                 },
             ],
+             attributes: ['id', 'quantity', 'productDescription']
         });
 
         if (!carts || carts.length === 0) {
@@ -132,13 +133,31 @@ export const updateCart = async (req, res) => {
         const cart = await Cart.findByPk(req.params.id);
         if (!cart) return res.status(404).json({ message: "Cart not found" });
         
-        const {quantity, productDescription } = req.body;
-        await cart.update({quantity, productDescription });
-        res.status(200).json(cart);
+        const { quantity, productDescription } = req.body;
+        
+        // Update cart with new values
+        const updatedCart = await cart.update({
+            quantity: quantity || cart.quantity,
+            productDescription: productDescription !== undefined ? productDescription : cart.productDescription
+        });
+
+        // Fetch updated cart with product details
+        const cartWithDetails = await Cart.findByPk(updatedCart.id, {
+            include: [
+                {
+                    model: Products,
+                    as: 'product',
+                    attributes: ['id', 'name', 'price'],
+                }
+            ]
+        });
+        
+        res.status(200).json(cartWithDetails);
     } catch (error) {
         res.status(400).json({ message: error.message });
     }
 };
+
 
 // Delete cart
 export const deleteCart = async (req, res) => {

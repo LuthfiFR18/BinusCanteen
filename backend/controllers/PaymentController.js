@@ -1,5 +1,5 @@
 import Payment from "../models/PaymentModel.js";
-import Midtrans from "midtrans-client"
+
 import { snap } from "../config/Midtrans.js";
 // Mendapatkan semua pembayaran
 export const getPayments = async (req, res) => {

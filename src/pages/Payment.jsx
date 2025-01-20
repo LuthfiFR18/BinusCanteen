@@ -183,8 +183,9 @@ const Payment = () => {
                 console.log('Payment success:', result);
                 await handlePaymentSuccess(result);
               },
-              onPending: (result) => {
+              onPending: async (result) => {
                 console.log('Payment pending:', result);
+                await handlePaymentPending(result);
                 setMsg("Pembayaran sedang diproses, silahkan lanjutkan pembayaran di history anda!");
               },
               onError: (error) => {
@@ -204,7 +205,7 @@ const Payment = () => {
 
   const handlePaymentSuccess = async (paymentResult) => {
     try {
-      // Update payment status in your database
+      
       await axios.post("http://localhost:5000/payment", {
         orderId,
         paymentAmount: total,
@@ -213,11 +214,33 @@ const Payment = () => {
         transactionId: paymentResult.transaction_id
       });
 
-      // Clear cart
+      
       await axios.delete("http://localhost:5000/cart");
       
-      // Navigate to success page
+      
       navigate("/paymentsuccess");
+    } catch (error) {
+      console.error("Error updating payment status:", error);
+      setMsg("Pembayaran berhasil tetapi terjadi kesalahan dalam memperbarui status");
+    }
+  };
+
+  const handlePaymentPending = async (paymentResult) => {
+    try {
+      
+      await axios.post("http://localhost:5000/payment", {
+        orderId,
+        paymentAmount: total,
+        paymentMethod: selectedPaymentMethod,
+        paymentStatus: "Pending",
+        transactionId: paymentResult.transaction_id
+      });
+
+      
+      await axios.delete("http://localhost:5000/cart");
+      
+      
+      //  navigate("/cart");
     } catch (error) {
       console.error("Error updating payment status:", error);
       setMsg("Pembayaran berhasil tetapi terjadi kesalahan dalam memperbarui status");

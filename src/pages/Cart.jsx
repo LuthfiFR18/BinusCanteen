@@ -18,6 +18,7 @@ const Cart = () => {
   const [userId, setUserId] = useState(null);
   const [orderId, setOrderId] = useState(null);
   const [msg, setMsg] = useState("");
+  const [descriptions, setDescriptions] = useState({});
 
 
   const { user } = useSelector((state) => state.auth);
@@ -67,7 +68,16 @@ const Cart = () => {
   
       // Access the carts array from the response
       if (response.data.carts && Array.isArray(response.data.carts)) {
-        setCart(response.data.carts); // Set the cart state to the array inside the response
+        setCart(response.data.carts);
+
+        const initialDescriptions = {};
+      response.data.carts.forEach(item => {
+        if (item.productDescription) {
+          initialDescriptions[item.id] = item.productDescription;
+        }
+      });
+      setDescriptions(initialDescriptions);
+      
       } else {
         setCart([]); // Fallback to an empty array if carts is not found or not an array
       }
@@ -146,6 +156,24 @@ const Cart = () => {
   
       return updatedCart; // Update the state
     });
+  };
+
+  const handleDescriptionChange = async (cartId, description) => {
+    try {
+      // Update state lokal
+      setDescriptions(prev => ({
+        ...prev,
+        [cartId]: description
+      }));
+  
+      // Update ke database
+      await axios.patch(`http://localhost:5000/cart/${cartId}`, {
+        productDescription: description
+      });
+    } catch (error) {
+      console.error("Error updating description:", error);
+      setMsg("Gagal menyimpan keterangan");
+    }
   };
 
   const saveOrder = async () => {
@@ -252,7 +280,7 @@ const Cart = () => {
     return grouped;
   }, [cart]);
 
-  const tax = 500;
+  const tax = 1000;
   const total = React.useMemo(() => subTotal + tax, [subTotal, tax]);
 
   return (
@@ -303,8 +331,14 @@ const Cart = () => {
                   </td>
 
                   <td>
-                    <input className="cart-description-input" type="text" placeholder="Tambah Keterangan (Optional)" />
-                  </td>
+                      <input 
+                        className="cart-description-input" 
+                        type="text" 
+                        placeholder="Tambah Keterangan (Optional)"
+                        value={descriptions[cart.id] || cart.productDescription || ''}
+                        onChange={(e) => handleDescriptionChange(cart.id, e.target.value)}
+                      />
+                    </td>
 
                   <td>
                     Rp.
