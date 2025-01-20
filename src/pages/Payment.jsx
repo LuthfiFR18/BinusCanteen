@@ -258,9 +258,10 @@ const Payment = () => {
             {order.length > 0 ? (
               order.map((order) => (
                 <tr key={order.id}>
-                  <td className="payment-item-cell">
-                    <img src={img1} alt="Product" />
-                    {order.product ? order.product.name : 'Unknown'}
+                  <td>
+                    <div className="payment-item-cell">
+                      {order.product ? order.product.name : 'Unknown'}
+                    </div>
                   </td>
 
                   <td>

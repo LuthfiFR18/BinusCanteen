@@ -303,9 +303,10 @@ const Cart = () => {
             {cart.length > 0 ? (
               groupedCartArray.map((cart) => (
                 <tr key={cart.id}>
-                  <td className="cart-item-cell">
-                    <img src={img1} alt="Product" />
-                    {cart.product ? cart.product.name : 'Unknown'}
+                  <td>
+                    <div className="cart-item-cell">
+                      {cart.product ? cart.product.name : 'Unknown'}
+                    </div>
                   </td>
 
                   <td>
