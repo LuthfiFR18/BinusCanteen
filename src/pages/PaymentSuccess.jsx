@@ -11,7 +11,7 @@ function PaymentSuccess() {
 
 
   const subtotal = 20000;
-  const tax = 500;
+  const tax = 1000;
   const total = subtotal + tax;
 
   return (

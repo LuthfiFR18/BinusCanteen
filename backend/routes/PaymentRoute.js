@@ -6,7 +6,8 @@ import {
     getPaymentById,
     getPayments,
     updatePayment,
-    createPaymentToken
+    createPaymentToken,
+    getLatestPaymentByUserId
 } from "../controllers/PaymentController.js";
 
 const router = express.Router();
@@ -17,6 +18,6 @@ router.post('/payment', createPayment); // Membuat pembayaran baru
 router.patch('/payment/:id', updatePayment); // Memperbarui pembayaran yang ada
 router.delete('/payment/:id', deletePayment); // Menghapus pembayaran
 router.post('/payment/token', createPaymentToken);
-
+router.get('/payment/latest/:userId', getLatestPaymentByUserId);
 
 export default router;

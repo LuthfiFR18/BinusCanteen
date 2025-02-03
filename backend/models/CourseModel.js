@@ -36,6 +36,14 @@ const Courses = db.define('course', {
             len: [3, 50] 
         }
     },
+    courseDate: {
+        type: DataTypes.DATE,
+        allowNull: true,
+        validate: {
+            notEmpty: false,
+            
+        }
+    },
     startTime: {
         type: DataTypes.TIME,
         allowNull: false,

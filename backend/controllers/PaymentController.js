@@ -1,6 +1,9 @@
 import Payment from "../models/PaymentModel.js";
-
 import { snap } from "../config/Midtrans.js";
+import Order from "../models/OrderModel.js";
+import OrderDetail from "../models/OrderDetailsModel.js"
+import Product from "../models/ProductsModel.js";
+
 // Mendapatkan semua pembayaran
 export const getPayments = async (req, res) => {
     try {
@@ -117,6 +120,56 @@ export const createPaymentToken = async (req, res) => {
         res.status(500).json({ 
             error: error.message,
             details: error.ApiResponse || error 
+        });
+    }
+};
+
+
+export const getLatestPaymentByUserId = async (req, res) => {
+    try {
+        const { userId } = req.params;
+        console.log('Fetching payment for userId:', userId);
+
+        // Basic validation
+        if (!userId) {
+            return res.status(400).json({ 
+                message: "User ID is required" 
+            });
+        }
+
+        // First try to find the payment without includes to isolate potential issues
+        const payment = await Payment.findOne({
+            where: { userId: parseInt(userId) },
+            order: [['createdAt', 'DESC']]
+        });
+
+        if (!payment) {
+            return res.status(404).json({ 
+                message: "No payment found for this user",
+                userId 
+            });
+        }
+
+        // Return basic payment info without related data
+        res.status(200).json({
+            id: payment.id,
+            userId: payment.userId,
+            paymentAmount: payment.paymentAmount,
+            paymentStatus: payment.paymentStatus,
+            orderId: payment.orderId,
+            createdAt: payment.createdAt
+        });
+
+    } catch (error) {
+        console.error('Detailed error in getLatestPaymentByUserId:', {
+            error: error.message,
+            stack: error.stack,
+            userId: req.params.userId
+        });
+        
+        res.status(500).json({ 
+            message: "Internal server error while fetching payment",
+            error: error.message
         });
     }
 };

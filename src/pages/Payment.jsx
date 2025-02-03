@@ -269,7 +269,7 @@ const Payment = () => {
                   </td>
 
                   <td>
-                    Tidak ada keterangan
+                    {order.productDescription || 'Tidak ada keterangan'}
                   </td>
 
                   <td>

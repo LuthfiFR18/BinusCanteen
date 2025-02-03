@@ -61,6 +61,18 @@ const Cart = () => {
     }
   }, [userId]); // Dependency on userId, only runs when userId changes
 
+  useEffect(() => {
+    if (cart && cart.length > 0) {
+      const initialDescriptions = {};
+      cart.forEach(item => {
+        if (item.productDescription) {
+          initialDescriptions[item.id] = item.productDescription;
+        }
+      });
+      setDescriptions(initialDescriptions);
+    }
+  }, [cart]);
+
   const getCartByUserId = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/cart/${userId}`);
@@ -68,16 +80,7 @@ const Cart = () => {
   
       // Access the carts array from the response
       if (response.data.carts && Array.isArray(response.data.carts)) {
-        setCart(response.data.carts);
-
-        const initialDescriptions = {};
-      response.data.carts.forEach(item => {
-        if (item.productDescription) {
-          initialDescriptions[item.id] = item.productDescription;
-        }
-      });
-      setDescriptions(initialDescriptions);
-      
+        setCart(response.data.carts); // Set the cart state to the array inside the response
       } else {
         setCart([]); // Fallback to an empty array if carts is not found or not an array
       }
@@ -158,21 +161,33 @@ const Cart = () => {
     });
   };
 
-  const handleDescriptionChange = async (cartId, description) => {
+  const updateDescription = async (cartId, newDescription) => {
     try {
-      // Update state lokal
       setDescriptions(prev => ({
         ...prev,
-        [cartId]: description
+        [cartId]: newDescription
       }));
   
-      // Update ke database
-      await axios.patch(`http://localhost:5000/cart/${cartId}`, {
-        productDescription: description
+      const response = await axios.patch(`http://localhost:5000/cart/${cartId}`, {
+        productDescription: newDescription
       });
+  
+      setCart(prevCart =>
+        prevCart.map(item =>
+          item.id === cartId
+            ? { ...item, productDescription: newDescription }
+            : item
+        )
+      );
+  
+      console.log("Description updated successfully:", response.data);
     } catch (error) {
       console.error("Error updating description:", error);
-      setMsg("Gagal menyimpan keterangan");
+      // Revert local state if update fails
+      setDescriptions(prev => ({
+        ...prev,
+        [cartId]: prev[cartId] || ""
+      }));
     }
   };
 
@@ -219,7 +234,7 @@ const Cart = () => {
         userId: userId,
         productId: cartItem.product?.id, // Ensure you get productId from cartItem.product
         quantity: cartItem.quantity, // Ensure you get quantity from cartItem
-        productDescription: cartItem.productDescription || "", // Assuming productDescription is optional
+        productDescription: descriptions[cartItem.id] || cartItem.productDescription || "", // Assuming productDescription is optional
         subTotal: cartItem.product?.price * cartItem.quantity, // Calculate subTotal if price is available
       };
   
@@ -307,6 +322,7 @@ const Cart = () => {
                     <div className="cart-item-cell">
                       {cart.product ? cart.product.name : 'Unknown'}
                     </div>
+                    
                   </td>
 
                   <td>
@@ -332,14 +348,15 @@ const Cart = () => {
                   </td>
 
                   <td>
-                      <input 
-                        className="cart-description-input" 
-                        type="text" 
-                        placeholder="Tambah Keterangan (Optional)"
-                        value={descriptions[cart.id] || cart.productDescription || ''}
-                        onChange={(e) => handleDescriptionChange(cart.id, e.target.value)}
-                      />
-                    </td>
+                    <input 
+                      className="cart-description-input" 
+                      type="text" 
+                      placeholder="Tambah Keterangan (Optional)"
+                      value={descriptions[cart.id] || cart.productDescription || ""}
+                      onChange={(e) => updateDescription(cart.id, e.target.value)}
+                    />
+
+                  </td>
 
                   <td>
                     Rp.
@@ -367,8 +384,8 @@ const Cart = () => {
                 >
                 <option value="">Tempat Pengantaran</option>
                 {course.map((course) => (
-                <option key={course.id} value={`${course.courseRoom},${course.endTime}`}>
-                {course.courseRoom} - {course.endTime}
+                <option key={course.id} value={`${course.name},${course.courseRoom},${course.endTime},${course.courseDate}`}>
+                {course.name}-{course.courseRoom} - {course.endTime} - {course.courseDate}
               </option>
               
                 ))}
