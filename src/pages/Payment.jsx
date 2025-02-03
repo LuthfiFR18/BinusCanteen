@@ -206,8 +206,8 @@ const Payment = () => {
       
       await axios.delete("http://localhost:5000/cart");
       
-      
-      navigate("/paymentsuccess");
+      navigate("/dashboard");
+      // navigate("/paymentsuccess");
     } catch (error) {
       console.error("Error updating payment status:", error);
       setMsg("Pembayaran berhasil tetapi terjadi kesalahan dalam memperbarui status");
