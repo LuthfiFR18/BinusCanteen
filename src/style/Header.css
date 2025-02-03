@@ -64,6 +64,18 @@
   color: #FF9D00;
 }
 
+.cart-notification {
+  position: absolute;
+  top: 5px;
+  right: 100px;
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 5px 10px;
+  font-weight: bold;
+}
+
 /* Media Queries */
 
 @media screen and (min-width:320px) and (max-width: 480px) {

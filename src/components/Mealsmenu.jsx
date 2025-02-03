@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import '../style/Mealsmenu.css';
 import img1 from '../img/nasigoreng.png';
 import axios from "axios";
@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getMe, reset } from '../features/authSlice';
 import { useParams } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../app/CartContext';
 
 
 const Mealsmenu = ({ activeButton }) => {
@@ -17,6 +18,9 @@ const Mealsmenu = ({ activeButton }) => {
   const dispatch = useDispatch();
   const [msg, setMsg] = useState("");
   const { user, isError, isLoading, message } = useSelector((state) => state.auth);
+
+  const { addItemToCart } = useContext(CartContext);
+
 
     useEffect(() => {
         dispatch(getMe()); // Fetch user data when component mounts
@@ -81,9 +85,11 @@ const Mealsmenu = ({ activeButton }) => {
   };
 
   // Handle adding items to the cart
-  const handleAddToCart = async (uuid, name) => {
+  const handleAddToCart = async (uuid, name, item) => {
     const product = products.find((p) => p.uuid === uuid);
-    alert(`You have added ${quantity[uuid] || 1} item(s) of ${name} to the cart!`);
+    // alert(`You have added ${quantity[uuid] || 1} item(s) of ${name} to the cart!`);1
+    addItemToCart(item);
+
 
     if (!product) return; // Avoid errors if product is not found
 
