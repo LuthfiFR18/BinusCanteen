@@ -77,9 +77,9 @@ Content-Type: application/json
   "name": "Data Structure", 
   "courseRoom": "A1403",
   "courseFloor": "A1403", 
-  "courseDate": "2025-01-25",
-  "startTime": "11:20:00",
-  "endTime": "12:50:00",
+  "courseDate": "2025-02-03",
+  "startTime": "13:20:00",
+  "endTime": "14:50:00",
   "userId": 13
 } 
 

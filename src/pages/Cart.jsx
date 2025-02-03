@@ -73,6 +73,21 @@ const Cart = () => {
     }
   }, [cart]);
 
+  const filterCoursesByTime = (courses) => {
+    return courses.filter(course => {
+      if (!course.courseDate || !course.endTime) return false;
+
+      const courseDateTime = new Date(`${course.courseDate} ${course.endTime}`);
+      
+      const currentTime = new Date();
+      
+      const sixHoursBefore = new Date(courseDateTime.getTime() - 6 * 60 * 60 * 1000);
+      
+      // Check if current time is within 6 hours before the course
+      return currentTime >= sixHoursBefore && currentTime <= courseDateTime;
+    });
+  };
+
   const getCartByUserId = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/cart/${userId}`);
@@ -96,7 +111,9 @@ const Cart = () => {
       console.log('Course data received:', response.data);
 
       if (response.data.courses && Array.isArray(response.data.courses)) {
-        setCourse(response.data.courses); // Set the cart state to the array inside the response
+        const filteredCourses = filterCoursesByTime(response.data.courses);
+        setCourse(filteredCourses);
+        console.log('Filtered courses:', filteredCourses);
       } else {
         setCourse([]); // Fallback to an empty array if carts is not found or not an array
       }
