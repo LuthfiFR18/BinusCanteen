@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import '../style/Cart.css';
 import HeaderCartPayment from '../components/HeaderCartPayment';
 import Footer from '../components/Footer';
@@ -7,10 +7,14 @@ import img1 from '../img/nasigoreng.png';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMe } from '../features/authSlice';
 import { useNavigate } from 'react-router-dom';
+import { CartContext } from '../app/CartContext';
 
 const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const { removeItemFromCart } = useContext(CartContext);
+  
 
   const [cart, setCart] = useState([]); // Ensure cart is an array
   const [course, setCourse] = useState([]);
@@ -61,33 +65,6 @@ const Cart = () => {
     }
   }, [userId]); // Dependency on userId, only runs when userId changes
 
-  useEffect(() => {
-    if (cart && cart.length > 0) {
-      const initialDescriptions = {};
-      cart.forEach(item => {
-        if (item.productDescription) {
-          initialDescriptions[item.id] = item.productDescription;
-        }
-      });
-      setDescriptions(initialDescriptions);
-    }
-  }, [cart]);
-
-  const filterCoursesByTime = (courses) => {
-    return courses.filter(course => {
-      if (!course.courseDate || !course.endTime) return false;
-
-      const courseDateTime = new Date(`${course.courseDate} ${course.endTime}`);
-      
-      const currentTime = new Date();
-      
-      const sixHoursBefore = new Date(courseDateTime.getTime() - 6 * 60 * 60 * 1000);
-      
-      // Check if current time is within 6 hours before the course
-      return currentTime >= sixHoursBefore && currentTime <= courseDateTime;
-    });
-  };
-
   const getCartByUserId = async () => {
     try {
       const response = await axios.get(`http://localhost:5000/cart/${userId}`);
@@ -95,7 +72,16 @@ const Cart = () => {
   
       // Access the carts array from the response
       if (response.data.carts && Array.isArray(response.data.carts)) {
-        setCart(response.data.carts); // Set the cart state to the array inside the response
+        setCart(response.data.carts);
+
+        const initialDescriptions = {};
+      response.data.carts.forEach(item => {
+        if (item.productDescription) {
+          initialDescriptions[item.id] = item.productDescription;
+        }
+      });
+      setDescriptions(initialDescriptions);
+      
       } else {
         setCart([]); // Fallback to an empty array if carts is not found or not an array
       }
@@ -111,9 +97,7 @@ const Cart = () => {
       console.log('Course data received:', response.data);
 
       if (response.data.courses && Array.isArray(response.data.courses)) {
-        const filteredCourses = filterCoursesByTime(response.data.courses);
-        setCourse(filteredCourses);
-        console.log('Filtered courses:', filteredCourses);
+        setCourse(response.data.courses); // Set the cart state to the array inside the response
       } else {
         setCourse([]); // Fallback to an empty array if carts is not found or not an array
       }
@@ -128,23 +112,23 @@ const Cart = () => {
       console.error("Invalid productId:", productId);
       return;
     }
-  
+
     setCart((prevCart) => {
       const updatedCart = [...prevCart];
       const index = updatedCart.findIndex((item) => item.productId === productId);
-  
+
       if (index === -1) {
         console.error("Product not found in cart:", productId);
         return prevCart; // No changes if the product is not found
       }
   
       const updatedQuantity = updatedCart[index].quantity + change;
-  
+
       if (updatedQuantity <= 0) {
         // Remove the item from the cart if quantity is 0
         const itemToRemove = updatedCart[index];
         updatedCart.splice(index, 1);
-  
+
         // Sync with backend to remove the item
         axios
           .delete(`http://localhost:5000/cart/${itemToRemove.id}`)
@@ -154,6 +138,8 @@ const Cart = () => {
           .catch((error) => {
             console.error("Error during item removal:", error);
           });
+          removeItemFromCart();
+
       } else {
         // Update the item quantity
         updatedCart[index] = {
@@ -178,33 +164,21 @@ const Cart = () => {
     });
   };
 
-  const updateDescription = async (cartId, newDescription) => {
+  const handleDescriptionChange = async (cartId, description) => {
     try {
+      // Update state lokal
       setDescriptions(prev => ({
         ...prev,
-        [cartId]: newDescription
+        [cartId]: description
       }));
   
-      const response = await axios.patch(`http://localhost:5000/cart/${cartId}`, {
-        productDescription: newDescription
+      // Update ke database
+      await axios.patch(`http://localhost:5000/cart/${cartId}`, {
+        productDescription: description
       });
-  
-      setCart(prevCart =>
-        prevCart.map(item =>
-          item.id === cartId
-            ? { ...item, productDescription: newDescription }
-            : item
-        )
-      );
-  
-      console.log("Description updated successfully:", response.data);
     } catch (error) {
       console.error("Error updating description:", error);
-      // Revert local state if update fails
-      setDescriptions(prev => ({
-        ...prev,
-        [cartId]: prev[cartId] || ""
-      }));
+      setMsg("Gagal menyimpan keterangan");
     }
   };
 
@@ -251,7 +225,7 @@ const Cart = () => {
         userId: userId,
         productId: cartItem.product?.id, // Ensure you get productId from cartItem.product
         quantity: cartItem.quantity, // Ensure you get quantity from cartItem
-        productDescription: descriptions[cartItem.id] || cartItem.productDescription || "", // Assuming productDescription is optional
+        productDescription: cartItem.productDescription || "", // Assuming productDescription is optional
         subTotal: cartItem.product?.price * cartItem.quantity, // Calculate subTotal if price is available
       };
   
@@ -339,7 +313,6 @@ const Cart = () => {
                     <div className="cart-item-cell">
                       {cart.product ? cart.product.name : 'Unknown'}
                     </div>
-                    
                   </td>
 
                   <td>
@@ -365,15 +338,14 @@ const Cart = () => {
                   </td>
 
                   <td>
-                    <input 
-                      className="cart-description-input" 
-                      type="text" 
-                      placeholder="Tambah Keterangan (Optional)"
-                      value={descriptions[cart.id] || cart.productDescription || ""}
-                      onChange={(e) => updateDescription(cart.id, e.target.value)}
-                    />
-
-                  </td>
+                      <input 
+                        className="cart-description-input" 
+                        type="text" 
+                        placeholder="Tambah Keterangan (Optional)"
+                        value={descriptions[cart.id] || cart.productDescription || ''}
+                        onChange={(e) => handleDescriptionChange(cart.id, e.target.value)}
+                      />
+                    </td>
 
                   <td>
                     Rp.
@@ -401,8 +373,8 @@ const Cart = () => {
                 >
                 <option value="">Tempat Pengantaran</option>
                 {course.map((course) => (
-                <option key={course.id} value={`${course.name},${course.courseRoom},${course.endTime},${course.courseDate}`}>
-                {course.name}-{course.courseRoom} - {course.endTime} - {course.courseDate}
+                <option key={course.id} value={`${course.courseRoom},${course.endTime}`}>
+                {course.courseRoom} - {course.endTime}
               </option>
               
                 ))}

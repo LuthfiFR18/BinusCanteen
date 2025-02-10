@@ -68,7 +68,9 @@ function HistoryBuyer() {
                 <tr>
                   <td colSpan="3" className="history-buyer-status">
                     <p className='status-label'>Status :
-                      <span className='status-order-unpaid'> UNPAID</span>
+                      <span className='status-order-unpaid'> UN
+                        
+                        PAID</span>
                       <button className='paid-button' type='submit' onClick={()=> navigate("/payment")}>Paid Now</button>
                     </p>
                   </td>

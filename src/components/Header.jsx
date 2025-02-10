@@ -31,7 +31,7 @@ function Header(){
                     <FontAwesomeIcon icon={faCartShopping} className="logo-icon" />
                     {cartItemCount > 0 && (
                         <div className="cart-notification">
-                            {cartItemCount}
+                            {/* {cartItemCount} */}
                         </div>
                     )}
                 </a>

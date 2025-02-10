@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import '../style/Payment.css';
 import HeaderCartPayment from '../components/HeaderCartPayment';
 import Footer from '../components/Footer';
@@ -9,12 +9,14 @@ import axios from 'axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { getMe } from '../features/authSlice';
 import { useNavigate } from 'react-router-dom';
-
+import { CartContext } from '../app/CartContext';
 
 
 const Payment = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { clearCart } = useContext(CartContext);
+
 
   const [order, setOrder] = useState([]); // Ensure cart is an array
   const [subTotal, setSubTotal] = useState(0);
@@ -207,6 +209,7 @@ const Payment = () => {
       await axios.delete("http://localhost:5000/cart");
       
       navigate("/dashboard");
+      clearCart();
       // navigate("/paymentsuccess");
     } catch (error) {
       console.error("Error updating payment status:", error);
