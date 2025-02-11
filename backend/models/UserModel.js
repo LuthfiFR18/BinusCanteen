@@ -2,6 +2,7 @@ import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
 import Roles from "./RolesModel.js";
 
+
 const {DataTypes} = Sequelize;
 
 const Users = db.define('user',{
@@ -43,11 +44,16 @@ const Users = db.define('user',{
    
 
     phonenumber:{
-        type: DataTypes.INTEGER,
+        type: DataTypes.STRING,
         allowNull: false,
         validate:{
             notEmpty: true
         }
+    },
+
+    image:{
+        type: DataTypes.STRING,
+        allowNull: true,
     },
 
     roleId:{
@@ -64,10 +70,6 @@ const Users = db.define('user',{
 },{
     freezeTableName: true
 })
-
-// Relationships
-Roles.hasMany(Users);
-Users.belongsTo(Roles, {foreignKey: 'roleId'});
 
 
 export default Users;

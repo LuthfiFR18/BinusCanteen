@@ -1,52 +1,64 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import '../style/Dessert.css';
 import Dessertmenu from '../components/Dessertmenu';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils,faGlassWater, faIceCream, } from '@fortawesome/free-solid-svg-icons'
+import { useLocation, useParams } from "react-router-dom";
 
-function Dessert() {
+const ButtonStack = () => {
+    const [activeButton] = useState(3);
     const navigate = useNavigate();
+    const { boothId } = useParams();
+    const location = useLocation();
+    const boothName = location.state?.boothName || "Unknown Booth";
+
+    // console.log("Booth ID:", boothId);
+  
+    return (
+      <div className="selector-btn">
+        <button
+        className={`menu-button-meals ${activeButton === 1 ? 'active' : 'menu-button'}`}
+        onClick={() => navigate(`/meals/${boothId}`, { state: { boothName } })}
+
+        >
+          Meals
+        </button>
+        <button
+        className={`menu-button-drink ${activeButton === 2 ? 'active' : 'menu-button'}`}
+        onClick={() => navigate(`/drinks/${boothId}`, { state: { boothName } })}
+          
+        >
+          Drink
+        </button>
+        <button
+        className={`menu-button-dessert dessert-btn ${activeButton === 3 ? 'active' : ''}`}
+        onClick={() => navigate(`/desserts/${boothId}`, { state: { boothName } })}
+        
+        >
+          Dessert
+        </button>
+      </div>
+    );
+  };
+
+const Dessert = () => {
+  const location = useLocation();
+  const boothName = location.state?.boothName || "Unknown Booth";
 
   return (
-    <div className='dessertpage'>
-            <Header/>
-            <nav>
-            <div class="menu">
-                <ul>
-                <li>
-                    <a href="#" onClick={()=>navigate('/meals')}>
-                    <FontAwesomeIcon icon={faUtensils} size='4x' />
-                    <p className='namenavbar'>Meals</p>
-                    </a>
-                </li>
-                <li>
-                    <a href="#" onClick={()=>navigate('/drink')}>
-                    <FontAwesomeIcon icon={faGlassWater} size='4x' />
-                    <p className='namenavbar'>Drink</p>
+    <div className="dessert-container">
+      <div className='dessertpage'>
+        <Header/>
+        
+        <h3 id='booth-name'>{boothName}</h3>
 
-                    </a>
-                </li>
-                <li>
-                    <a href="#" className='dessertnav'>
-                    <FontAwesomeIcon icon={faIceCream} size='4x'/>
-                    <p className='namenavbar'>Dessert</p>
-                    </a>
-                </li>
-                </ul>
-            </div>
-        </nav>
-        <Dessertmenu/>
-        <Dessertmenu/>
-        <Dessertmenu/>
-        <Dessertmenu/>
-        <Dessertmenu/>
+        <ButtonStack />
+
         <Dessertmenu/>
 
-        <Footer/>
+      </div>
+      <Footer/>
     </div>
   )
 }

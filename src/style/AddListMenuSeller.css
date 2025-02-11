@@ -1,0 +1,132 @@
+/* General Styles */
+.add-menu-form {
+    width: 90%;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .form-field {
+    margin-bottom: 1.5rem;
+  }
+  
+  label {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: #333;
+  }
+  
+  /* input[type="text"] {
+    width: 100%;
+    padding: 0.8rem;
+    padding-left: 30px;
+    font-size: 14px;
+    border-radius: 25px;
+    box-sizing: border-box;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #007bff;
+  } */
+  
+  /* Image Upload */
+  .image-upload-container {
+    width: 100%;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px dashed #ccc;
+    border-radius: 8px;
+    margin-bottom: 1.5rem;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+  
+  .image-upload-container:hover {
+    border-color: #007bff;
+  }
+  
+  .preview-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+  }
+  
+  .placeholder {
+    font-size: 1rem;
+    color: #888;
+    text-align: center;
+  }
+  
+  /* Radio Buttons */
+  .radio-buttons {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  .radio-buttons label {
+    display: flex;
+    align-items: center;
+    font-size: 0.95rem;
+    color: #333;
+    cursor: pointer;
+  }
+  
+  .radio-buttons input {
+    margin-right: 0.5rem;
+  }
+  
+  /* Save Button */
+  .save-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .save-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .save-button:active {
+    background-color: #004494;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .add-menu-form {
+      padding: 1rem;
+    }
+  
+    .radio-buttons {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+
+  .add-list-menu-seller-back-button {
+    position: absolute;
+    top: 50px;
+    left: 480px;
+    background-color: #4FC0FD;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}

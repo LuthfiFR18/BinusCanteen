@@ -1,64 +1,63 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
-
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
+.registerpage{
+    display: flex;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    padding: 0;
+    margin: 0;
 }
-
-body{
-    background-image: linear-gradient(180deg, var(--main-color), #2E7ADD);
-}
-
 
 .wrapperRegister{
-    
     width: 468px;
-    height:fit-content;
+    margin: 25px auto;
     background-color: var(--text-color);
     border-radius: 25px;
     align-items: center;
     text-align: center;
-    margin: 5px auto;
-    padding: 30px 30px 15px 25px;
+    padding: 30px 30px 18px 25px;
 }
 
-.regis-title{
-    margin-top: -4px;
+h1{
+    padding: 20px;
 }
 
-/* .radio{
-margin-left: 20px;
-} */
+.errorMsg{
+    margin-bottom: 10px;
+}
 
-/* .labelRadio{
+.radio{
+    display: flex;
+    align-items: center;
+    margin: 0 10px;
+    margin-left: 20px;
+}
+.labelRadio{
     font-size: 14px;
     text-align: center;
     padding-left: 5px;
     padding-right: 30px;
-} */
+}
 .regisform{
-    text-align: left;    
+    text-align: left;
+    padding-top: 18px;
 }
 
-form input{
+.input-register{
     outline: 0;
-    width: 360px;
+    width: 421px;
     height: 38px;
     border-radius: 25px;
     box-shadow:  0 0.3rem 1rem 0 #D0CECE;
     border-style: none;
     padding-left: 30px;
-    margin-top: -10px;
 }
 
 a{
     text-decoration: none;
 }
 
-.button{
+.button-register{
     position: relative;
     display: inline-block;
     border-radius: 25px;
@@ -74,26 +73,111 @@ a{
 }
 
 .role-options {
-    font-size: 15px;
     display: flex;
     flex-direction: row;
-    gap: 20px; /*Jarak antar elemen */
-    justify-content: space-between; /* Menempatkan item secara merata */
+    gap: 20px; /* Jarak antar elemen */
+    justify-content: space-around; /* Menempatkan item secara merata */
     align-items: center;
-    margin-bottom: 5px;
-    font-weight: 600;
-
-  }
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 7%;
+}
   
-  .role-options label {
-    /* font-size: 16px; */
-    margin-left: -1.6cm;
-    margin-right: 0.5cm;
-    letter-spacing: 1px;
+.role-options label {
+    font-size: 16px;
+    margin: 0;
+    padding: 5px 10px;
+    margin-right: 5%;
+    letter-spacing: -1px;
     
-  }
+}
 
-  #registerButton {
+.radio{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0 30px;
+    
+}
+
+.radio input[type="radio"]{
+    margin-right: 5px;
+}
+
+.radio label{
+    margin: 0;
+    font-size: 14px;
+    margin-left: 5px;
+    white-space: nowrap;
+    overflow: visible;
+}
+
+.category-options {
+    margin-top: 20px;
+    text-align: left;
+    padding-left: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px; /* Atur jarak antar radio button */
+    justify-content: space-around;
+    align-items: center;
+}
+
+.category-radios{
+    width: 100%;
+    max-width: 500px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.category-radios .radio{
+    flex: 1 1 auto;
+    display: flex;
+    align-items: center;
+    width: 100px;
+    overflow: visible;
+}
+
+.category-radios label{
+    font-size: 14px;
+    margin-left: 5px;
+    margin: 0;
+}
+  
+.category-options label {
+    font-size: 14px;
+    margin-right: 10px; /* Jarak antara radio button dan label */
+}
+  
+
+#user + label {
+    margin-left: -50px;
+}
+
+#seller + label {
+    margin-left: -50px;
+}
+
+#delivery + label {
+    margin-left: -50px;
+}
+
+#AllType + label{
+    margin-left: 30px;
+}
+
+#food + label{
+    margin-left: 20px;
+}
+
+#drink + label{
+    margin-left: 48px;
+}
+
+#registerButton {
     background-color: #4CAF50; /* Warna hijau */
     color: white;
     padding: 15px 32px;
@@ -101,70 +185,90 @@ a{
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-  }
-
-
-
-/* .select-menu{
-    width: 421px;
-    margin: auto;
 }
 
-.select-menu span{
-    color:#635d5d;
-    font-size: 16px;
-    font-weight: 300;
-    padding-left: 15px;
-}
+@media screen and (min-width: 320px) and (max-width: 481px) {
+    .registerpage {
+        flex-direction: column;
+        padding: 20px;
+    }
 
-.select-menu .select-btn{
-    display: flex;
-    height: 38px;
-    padding: 20px;
-    border-radius: 25px;
-    align-items: center;
-    cursor: pointer;
-    justify-content: space-between;
-    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
-}
+    .wrapperRegister {
+        width: 90%;
+        padding: 20px;
+        margin: 20px auto;
+        border-radius: 20px;
+    }
 
-.select-btn i{
-    font-size: 25px;
-    transition: 0.2s;
-}
-.select-menu.active .select-btn i{
-    transform: rotate(-180deg);
-}
-.select-menu .options{
-    display: none;
-    position: relative;
-    padding: 20px;
-    margin-top: 10px;
-    border-radius: 25px;
-    background: #fff;
-    box-shadow: 0 0 5px;
-    display: none;
-}
+    h1 {
+        font-size: 20px;
+        padding: 10px;
+    }
 
-.select-menu.active .options{
-    display: block;
-}
+    .errorMsg {
+        font-size: 12px;
+        margin-bottom: 15px;
+    }
 
-.options .option{
-    display: flex;
-    height: 38px;
-    cursor: pointer;
-    padding: 0 16px;
-    align-items: center;
-    border-radius: 25px;
-    background: #fff;
-}
+    .regisform {
+        padding-top: 15px;
+        text-align: center;
+    }
 
-.options .option:hover{
-    background: #2E7ADD;
-}
+    .input-register {
+        width: 100%;
+        height: 36px;
+        border-radius: 20px;
+        padding-left: 20px;
+    }
 
-.option .option-text{
-    font-size: 18px;
-    color: #000000;
-} */
+    .button-register {
+        width: 100%;
+        height: 45px;
+        margin-top: 30px;
+        font-size: 14px;
+    }
+
+    .role-options, 
+    .category-options {
+        flex-direction: row;
+        gap: 10px;
+        padding-left: 0;
+        justify-content: center;
+    }
+
+    .role-options label,
+    .category-options label {
+        font-size: 12px;
+        margin-right: 0;
+        padding: 5px 0;
+        text-align: center;
+    }
+
+    .category-radios {
+        flex-direction: column;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .category-radios .radio {
+        width: 100%;
+        justify-content: flex-start;
+    }
+
+    #user + label,
+    #seller + label,
+    #delivery + label,
+    #AllType + label,
+    #food + label,
+    #drink + label {
+        margin-left: 0;
+        text-align: left;
+    }
+
+    #registerButton {
+        width: 100%;
+        padding: 10px;
+        font-size: 14px;
+    }
+}

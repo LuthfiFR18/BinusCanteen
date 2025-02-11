@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faUtensils, faStore, faTruck} from '@fortawesome/free-solid-svg-icons'
+import {faCartShopping, faStore, faReceipt} from '@fortawesome/free-solid-svg-icons'
 import Mealsmenu from '../components/Mealsmenu';
 import Headeradmin from '../components/Headeradmin';
 import Footer from '../components/Footer';
@@ -11,50 +11,77 @@ import Userlist from '../components/Userlist';
 
 function Adminbuyerpage() {
 
-    const [activeTab, setActiveTab] = useState('Mahasiswa');
+  //const [activeTab, setActiveTab] = useState('');
 
-    const navigate = useNavigate();
-    return (
+  const [location, setLocation] = useState('');
+  const [isError, setIsError] = useState(false);
+  const [search, setSearch] = useState('');
+
+  // Function Dropdown
+  const locations = ['Customer', 'Seller', 'Delivery']; 
+  const handleLocationChange = (event) => {
+      setLocation(event.target.value);
+      setIsError(false);
+    };
+
+  const navigate = useNavigate();
+  return (
+    <div className="admin-container">
       <div className='adminpage'>
-              <Headeradmin/>
-              <nav>
-              <div class="menu">
-                  <ul>
-                  <li>
-                      <a href="#" className='buyernav'>
-                      <FontAwesomeIcon icon={faUtensils} size='4x' />
-                      <p className='namenavbar'>Buyer</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" onClick={()=>navigate('/adminseller')}>
-                      <FontAwesomeIcon icon={faStore} size='4x'/>
-                        <p className='namenavbar'>Seller</p>
-                      </a>
-                  </li>
-                  <li>
-                      <a href="#" onClick={()=>navigate('/admindelivery')}>
-                      <FontAwesomeIcon icon={faTruck} size='4x'/>
-                      <p className='namenavbar'>Delivery</p>
-                      </a>
-                  </li>
-                  </ul>
-              </div>
-          </nav>
-         <div className="toggle-navbar">
-            <div className={`toggle-option ${activeTab === 'Mahasiswa' ? 'active' : ''}`} onClick={() => setActiveTab('Mahasiswa')}>
-                Mahasiswa
-            </div>
-            <div className={`toggle-option ${activeTab === 'Dosen' ? 'active' : ''}`} onClick={() => setActiveTab('Dosen')}>
-                Dosen
-            </div>
+        <Headeradmin search={search} setSearch={setSearch}/>
+
+        {/* Navbar */}
+        <nav className='menu-admin'>
+          <ul>
+            <li>
+              <a href="#" className='activenav'>
+              <FontAwesomeIcon icon={faCartShopping} size='4x' />
+              <p className='namenavbar'>All Users</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" onClick={()=>navigate('/adminseller')}>
+              <FontAwesomeIcon icon={faStore} size='4x'/>
+                <p className='namenavbar'>Booth&Seller</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="#" onClick={()=>navigate('/admintranscation')}>
+              <FontAwesomeIcon icon={faReceipt} size='4x' />
+              <p className='namenavbar'>Transaction</p>
+              </a>
+            </li>
+          </ul>
+        </nav>
+
+        {/* Button Dropdown */}
+        <div className="admin-subcontainer">        
+          <div className="dropdown-admin-wrapper">
+            <select
+              value={location}
+              onChange={handleLocationChange}
+              className="admin-dropdown">
+              <option value="">All User</option>
+              {locations.map((loc, index) => (
+                <option key={index} value={loc}>
+                  {loc}
+                </option>
+              ))}
+            </select>
+          </div> 
+        </div> 
+
+        {/* Table */}
+        <div className="userlist-container">
+          <Userlist selectedLocation={location} search={search}/>
         </div>
 
-          <Userlist/>
- 
-  
-  <Footer/>
       </div>
-    );
+
+      <Footer/>
+    </div>
+  );
 }
 export default Adminbuyerpage;

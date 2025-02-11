@@ -1,107 +1,167 @@
-import React from 'react';
 import '../style/Register.css';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import axios from "axios";
+import React, { useState } from "react";
 import {useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+
 function Register(){
     const navigate = useNavigate();
 
-    const [selectedRole, setSelectedRole] = useState('user');
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const [confPassword, setConfPassword] = useState("");
+    const [phonenumber, setphonenumber] = useState("");
+    const [roleId, setRoleId] = useState();
+    const [setUserId] = useState();
+    const [msg, setMsg] = useState("");
 
+    const [role, setSelectedRole] = useState('');
     const handleRoleChange = (event) => {
-        setSelectedRole(event.target.value);
-    }
-
-    const sellerRadio = document.getElementById('seller');
-    const registerButton = document.getElementById('registerButton');
-
-    const handleRegisterClick = () => {
-        if (selectedRole === 'Seller') {
-          navigate('/register-booth'); // Replace with the actual path to your booth registration page
-        } else {
-          navigate('/');
+        const selectedRole = event.target.value;
+        setSelectedRole(selectedRole);
+    
+        if (selectedRole === "User") {
+            setRoleId(2);
+        } else if (selectedRole === "Seller") {
+            setRoleId(4);
+        } else if (selectedRole === "Delivery") {
+            setRoleId(3);
         }
-      };
+    };
+
+    const saveUser = async (e) => {
+        e.preventDefault();
+
+        console.log("saveUser called"); // To check if the function is being called
+
+        // Check if all fields are filled
+        if (!name || !email || !password || !phonenumber || !roleId) {
+            setMsg("Please fill in all the fields");
+            return;
+        }
+
+        if(isNaN(phonenumber)){
+            setMsg("Phone Number must only include digits!");
+            return;
+        }
+
+        if(phonenumber.length<10){
+            setMsg("Phone Number must be atleast 10 digits!");
+            return;
+        }
+
+        if(password.length < 6){
+            setMsg("Password must contain at least 6 characters!");
+            return;
+        }
+
+        if (password !== confPassword) {
+            setMsg("Passwords do not match");
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email) || !email.endsWith('.com')) {
+            setMsg("Invalid email format. Email must contain '@' and end with '.com'.");
+            return;
+        }
+
+        // try {
+        //     const emailResponse = await axios.get(`http://localhost:5000/user/${email}`);
+        //     console.log(emailResponse.data); // Log the user data if found
+            
+        //     if(emailResponse.data){
+        //         setMsg("This email has been used, please Log In!")
+        //         return;
+        //     }
+        // } catch (error) {
+        //     console.error(error);
+        //     setMsg("User not found.");
+        // }
+
+        try {
+            const response = await axios.post("http://localhost:5000/user", {
+            name: name,
+            email: email,
+            password: password,
+            phonenumber: phonenumber,
+            roleId: roleId,
+            });
+            console.log("Ready To be Submitted", response.data);
+            console.log("User saved successfully:", response.data);
+
+            if(roleId === 2 || roleId === 3){
+                navigate("/");
+            }else if(roleId === 4){
+                console.log("Navigating with userId:", response.data.id); // Use response.data.id directly
+                navigate("/sellerbooth", { state: { userId: response.data.id } });
+            }
+        } catch (error) {
+            if (error.response) {
+            setMsg(error.response.data.msg);
+            }
+        }
+    };
 
     return(
-        <div className='bodyloginregister'>
-            <section className="wrapperRegister">
+        <div className='registerpage'>
+            <div className="wrapperRegister">
                 <h1 className='regis-title'>Registration</h1>
-                {/* <input className='radio' type="radio"checked={true}/>
-                <label className='labelRadio'>User</label>
-                <input className='radio' type="radio"checked={false}/>
-                <label className='labelRadio'>Seller</label>
-                <input className='radio' type="radio"checked={false}/>
-                <label className='labelRadio'>Delivery</label> */}
-                
-        <div className="role-options">
-            <input
-                type="radio"
-                value="User"
-                checked={selectedRole === 'User'}
-                onChange={handleRoleChange}
-                id="user"
-            />
-            <label htmlFor="user">User</label>
-            <input
-                type="radio"
-                value="Seller"
-                checked={selectedRole === 'Seller'}
-                onChange={handleRoleChange}
-                id="seller"
-            />
-            <label htmlFor="seller">Seller</label>
-            <input
-                type="radio"
-                value="Delivery"
-                checked={selectedRole === 'Delivery'}
-                onChange={handleRoleChange}
-                id="delivery"
-            />
-            <label htmlFor="delivery">Delivery</label>
-        </div>      
-                <form action="#">
-                    <h5 className='regisform'>{selectedRole === 'Seller' ? 'Booth Name:' : 'Name:'}</h5>
-                    <input type="text" placeholder="Name"></input>
+                <p className='errorMsg'>{msg}</p>   
+
+                {/* Radio Button */}
+                <div className="role-options">
+                    <input
+                        type="radio"
+                        value="User"
+                        checked={role === 'User'}
+                        onChange={handleRoleChange}
+                        id="user"
+                    />
+                    <label htmlFor="user">User</label>
+                    <input
+                        type="radio"
+                        value="Seller"
+                        checked={role === 'Seller'}
+                        onChange={handleRoleChange}
+                        id="seller"
+                    />
+                    <label htmlFor="seller">Seller</label>
+                    <input
+                        type="radio"
+                        value="Delivery"
+                        checked={role === 'Delivery'}
+                        onChange={handleRoleChange}
+                        id="delivery"
+                    />
+                    <label htmlFor="delivery">Delivery</label>
+                </div> 
+
+                {/* From Register */}
+                <form onSubmit={saveUser}>
+                    <h5 className='regisform'>Name:</h5>
+                    <input className='input-register' type="text" value={name} onChange={(e)=> setName(e.target.value)} placeholder="Name"></input>
                     
                     <h5 className='regisform'>Phone Number:</h5>
-                    <input type="text" placeholder="Phone Number"></input>
+                    <input className='input-register' type="text" value={phonenumber} onChange={(e)=> setphonenumber(e.target.value)} placeholder="Phone Number"></input>
 
                     <h5 className='regisform'>Email:</h5>
-                    <input type="email" placeholder="Email"></input>
+                    <input className='input-register' type="email" value={email} onChange={(e)=> setEmail(e.target.value)} placeholder="Email"></input>
                     
                     <h5 className='regisform'>Password:</h5>
-                    <input type="password" placeholder="Password"></input>
+                    <input className='input-register' type="password" value={password} onChange={(e)=> setPassword(e.target.value)} placeholder="Password"></input>
                     
                     <h5 className='regisform'>Confirm Password:</h5>
-                    <input type="password" placeholder="Confirm Password"></input>
-                    
-                    {/* <h5>Role:</h5>
-                    <div className="select-menu">
-                        <div className="select-btn">
-                            <span class="sBtn-text">Select Role</span>
-                            <i class='bx bx-chevron-down'></i>
-                        </div>
-                        <ul class="options">
-                            <li className="option">
-                                <span class="option-text">Binusian</span>
-                            </li>
-                            <li className="option">
-                                <span class="option-text">Seller</span>
-                            </li>
-                            <li className="option">
-                                <span class="option-text">Delivery</span>
-                            </li>
-                        </ul>
-                    </div> */}
-        
-        
-            </form>
-            {/* <button className='button' onClick={()=>navigate('/')}>Register</button> */}
-            <button className="button" onClick={handleRegisterClick}>{selectedRole === 'Seller' ? 'Register Your Booth' : 'Register'}</button>
-            </section>
-    </div>
-    )
+                    <input className='input-register' type="password" value={confPassword} onChange={(e)=> setConfPassword(e.target.value)} placeholder="Confirm Password"></input>
+
+                    {/* Button Submit */}
+                    <button className="button-register" type='submit'>
+                        Register
+                    </button>
+                </form>
+            </div>
+        </div>
+    );
 }
 
 export default Register;

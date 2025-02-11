@@ -1,31 +1,60 @@
+.payment-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+}
+
 .payment-page{
-    width: 100%;
-    height: 100vh;
-    background: #fff;
+  flex: 1;
 }
 
 .payment-title {
-    width: 352px;
-    text-align: center;
-    margin-left: 41%;
-    margin-top: 3%;
-    padding-bottom: 2%;
-    border-bottom: 1px solid;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.payment-error-message {
+  color: red;
+  margin-bottom: 10px;
+  margin-left: 550px;
 }
 
 .countdown{
-    display: flex;
-    justify-content: space-around;
-    margin-left: 28.75%;
+  /* border-style: solid; */
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.status{
+  margin-left: 50px;
+  font-weight: bold;
+}
+
+.status-text{
+  font-weight: bold;
+  color: green;
 }
 
 .payment-table {
-    width: 100%;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
 }
 
 .payment-table th {
+  justify-content: center;
+  align-items: center;
   padding: 10px 75px 10px 0;
   text-align: center;
   border-bottom: 1px solid #ccc;
@@ -33,6 +62,8 @@
 }
 
 .payment-table th {
+  justify-content: center;
+  align-items: center;
   background-color: #0099ff;
   color: white;
 }
@@ -51,8 +82,10 @@
 }
 
 .payment-item-cell img{
-  width: 100px;
-  height: 120px;
+  width: 30%;
+  height: 20vh;
+  border-radius: 50%;
+  /* justify-content: left; */
 }
 
 .payment-quantity-control {
@@ -66,12 +99,10 @@
   margin: 0 5px;
   font-size: 24px;
   width: 50px ;
-  /* border-style: solid; */
 }
 
 .payment-quantity-control span{
   padding-top:10px;
-  /* border-style: solid; */
   width: 50px;
   height: 30px;
 }
@@ -86,6 +117,57 @@
   border-radius: 15px;
 }
 
+.payment-btn{
+  background-color: orange;
+  padding: 15px;
+  text-align: center;
+  margin-left: 40%;
+  margin-bottom: 20px;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  border-radius: 5px;
+  width: 20%;
+  border-style: none;
+}
+
+.payment:hover {
+  background-color: darkorange;
+}
+
+.payment-method-selection {
+  margin-top: 30px;
+  border-bottom: 1px solid #ccc;
+}
+
+.payment-options {
+  display: flex;
+  justify-content: space-around;
+}
+
+.option {
+  display: flex;
+  align-items: center;
+
+}
+
+.option label {
+  display: flex;
+  align-items: center;
+}
+
+.option input {
+  margin-right: 10px;
+}
+
+.logo-payment{
+  width: 169px;
+  height: 130px;
+  margin-right: 10px;
+  margin-bottom: 20px;
+}
+
+
 .payment-summary {
   display: flex;
   justify-content: flex-end;
@@ -94,55 +176,255 @@
   margin-right: 7%;
 }
 
-.payment-summary .summary-line {
+.payment-summary .payment-summary-line {
   display: flex;
   justify-content: space-between;
   margin-bottom: 10px;
   width: 300px;
 }
 
-.checkout {
-  background-color: orange;
-  padding: 15px;
-  text-align: center;
-  margin-left: 40%;
-  margin-top: 5%;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-  border-radius: 5px;
-  width: 20%;
+.payment-subcontainer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
 }
 
-.checkout:hover {
-  background-color: darkorange;
+.payment-right-section {
+  text-align: left;
 }
 
-.payment-method-selection {
-    margin-top: 30px;
+.payment-total-green-line {
+  border: 2px solid green;
+  width: 350px;
+}
+
+.payment-text{
+  font-size: 16px;
+  margin: 5px 0;
+}
+
+.right-section span {
+  float: right;
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .payment-container {
+    padding: 20px auto;
   }
-  
+
+  .payment-title {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .countdown {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 10px;
+  }
+
+  .status{
+    font-size: 10px;
+    margin: auto;
+    margin-left: 3%;
+  }
+  .payment-table {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 8px;
+    table-layout: fixed;
+  }
+
+  .payment-table th, .payment-table td {
+    padding: 5px;
+    text-align: center;
+  }
+
+  .payment-item-cell img {
+    width: 50%;
+    height: 80px;
+    border-radius: 5px;
+    font-size: 8px;
+  }
+
+  .payment-description-input {
+    width: 80px;
+    height: 30px;
+  }
+
+  .payment-btn {
+    width: 50%;
+    margin-left: 25%;
+    padding: 5px;
+    font-size: 10px;
+  }
+
   .payment-options {
     display: flex;
-    justify-content: space-around;
-  }
-  
-  .option {
-    display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap; /* Membungkus jika ruang tidak cukup */
+    width: 50%;
+    margin: auto;
   }
-  
-  .option label {
+
+  .logo-payment {
+    width: 30%;
+    height: auto; /* Pertahankan proporsi gambar */
+  }
+  .payment-method{
+    width: 100%;
+    font-size: 10px;
+  }
+
+  .payment-summary {
+    margin-right: 5%;
+    font-size: 14px;
+  }
+
+  .payment-summary .payment-summary-line {
+    width: 100%;
+    font-size: 10px;
+  }
+
+  .dropdown-payment-wrapper option{
     display: flex;
+    justify-content: center;
     align-items: center;
+    font-size: 10px;
   }
-  
-  .option input {
-    margin-right: 10px;
+
+  .payment-dropdown {
+    margin-bottom: 20px;
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    font-size: 8px;
   }
-  
-  .logo-payment{
-    width: 169px;
-    height: 130px;
-    margin-right: 10px;
+
+  .payment-error-message {
+    color: red;
+    margin: auto;
+    margin-right: 20%;
+    font-size: 10px;
   }
+
+  .payment-total-green-line {
+    width: 100%;
+    margin: auto;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .payment-container {
+    padding: 30px auto;
+  }
+
+  .payment-title {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 14px;
+  }
+
+  .countdown {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    font-size: 12px;
+  }
+
+  .status {
+    font-size: 12px;
+    margin: auto;
+    margin-left: 5%;
+  }
+
+  .payment-table {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 10px;
+    table-layout: auto;
+  }
+
+  .payment-table th, .payment-table td {
+    padding: 8px;
+    text-align: center;
+  }
+
+  .payment-item-cell img {
+    width: 30%;
+    height: 100px;
+    border-radius: 10px;
+    font-size: 10px;
+  }
+
+  .payment-description-input {
+    width: 150px;
+    height: 50px;
+    font-size: 12px;
+  }
+
+  .payment-btn {
+    width: 60%;
+    margin-left: 20%;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  .payment-options {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap; /* Membungkus jika ruang tidak cukup */
+    width: 100%;
+    margin: auto;
+  }
+
+  .logo-payment {
+    width: 40%;
+    height: auto; /* Pertahankan proporsi gambar */
+    margin: 5px;
+  }
+
+  .payment-method {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .payment-summary {
+    margin-right: 7%;
+    font-size: 16px;
+  }
+
+  .payment-summary .payment-summary-line {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .dropdown-payment-wrapper option {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 12px;
+  }
+
+  .payment-dropdown {
+    margin-bottom: 20px;
+    margin: auto;
+    width: 70%;
+    font-size: 12px;
+  }
+
+  .payment-error-message {
+    color: red;
+    margin: auto;
+    font-size: 12px;
+  }
+
+  .payment-total-green-line {
+    width: 100%;
+    margin: auto;
+  }
+}

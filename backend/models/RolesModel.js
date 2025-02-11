@@ -15,7 +15,7 @@ const Roles = db.define('roles',{
         }
     },
 
-    roletype:{
+    name:{
         type: DataTypes.STRING,
         allowNull: false,
         validate:{

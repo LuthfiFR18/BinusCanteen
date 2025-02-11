@@ -1,0 +1,301 @@
+.history-buyer-container {
+  display: flex;
+  flex-direction: column;
+  background: #ffff;
+  width: 100%;
+  min-height: 100vh;
+}
+
+.history-buyer-page {
+  flex: 1;
+  margin-bottom: 10px;
+}
+
+.history-buyer-title{
+  padding-top: 3%;
+  padding-bottom: 3%;
+  text-align: center;
+  font-weight: bold;
+}
+
+.history-buyer-date {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  margin-bottom: 10px;
+  margin-right: 85%;
+}
+
+.table-container{
+  border-radius: 20px;
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 15px;
+  margin-bottom: 20px;
+}
+
+.history-buyer-table {
+  width: 100%;
+  margin: 2% auto;
+  border-collapse: collapse;
+  box-shadow:  0 0.1rem 0.5rem 0.1rem #D0CECE;
+
+}
+
+table tr:first-child th:first-child{
+  border-top-left-radius: 5px ;
+}
+
+table tr:first-child th:last-child{
+  border-top-right-radius: 5px ;
+}
+
+.history-buyer-table td{
+  margin: 0;
+  padding: 12px;
+  align-items: center;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.history-buyer-table th {
+  width: 15%;
+  padding: 12px;
+  background-color: #FF9D00;
+  color: white;
+  vertical-align: middle;
+  align-items: center;
+  text-align: center;
+  border-bottom: none ;
+}
+
+.history-buyer-item {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: center; /* Mengatur gambar dan teks sejajar ke atas */
+
+}
+
+.history-buyer-image {
+  width: 150px; 
+  height: 130px;
+  border-radius: 50%;
+  margin-right: 20%;
+  margin-left: 10%;
+}
+
+.history-buyer-request {
+  font-size: 12px;
+  color: #777;
+}
+
+.history-buyer-quantity {
+  text-align: center;  
+}
+
+.history-buyer-price{
+  text-align: center;
+
+}
+
+.history-buyer-divider {
+  border-top: 2px solid green;
+  height: 2px;
+}
+
+.divider-row td {
+  border-bottom: 1px solid white;
+  padding: 0;
+}
+
+.row-details{
+  border-bottom: solid;
+}
+
+.history-buyer-status {
+  margin: 10px auto;
+  justify-content: center;
+  font-weight: bold;
+}
+
+.status-order-paid{
+  color: green;
+}
+.status-order-unpaid{
+  color: red;
+}
+
+.paid-button{
+  width: 10%;
+  height: 5vh;
+  margin-left: 5%;
+  border-radius: 10px;
+  border: none;
+  background-color: #0073e6;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.history-buyer-value{
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+@media screen and (max-width: 480px) {
+  .history-buyer-container {
+    display: flex;
+    flex-direction: column;
+    background: #ffff;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .history-buyer-title {
+    padding-top: 5%;
+    padding-bottom: 5%;
+    font-size: 1.2rem; /* Sesuaikan ukuran font */
+  }
+
+  .history-buyer-date {
+    justify-content: flex-start;
+    margin-right: 10%; /* Kurangi margin agar tidak terlalu melebar */
+    font-size: 0.9rem; /* Sesuaikan ukuran font */
+  }
+
+  .table-container {
+    width: 100%; /* Gunakan lebar penuh */
+    margin: 10px auto;
+  }
+
+  .history-buyer-table {
+    width: 100%;
+    margin: 5% auto;
+    box-shadow: none; /* Hilangkan shadow untuk kesederhanaan */
+  }
+
+  .history-buyer-table th,
+  .history-buyer-table td {
+    padding: 10px; /* Kurangi padding agar lebih cocok untuk layar kecil */
+    font-size: 0.9rem; /* Sesuaikan ukuran font */
+  }
+
+  .history-buyer-item {
+    flex-direction: column; /* Ubah menjadi kolom untuk layar kecil */
+    align-items: center;
+    text-align: center;
+  }
+
+  .history-buyer-image {
+    width: 100px;
+    height: 100px;
+    margin: 0 auto 10px auto; /* Sesuaikan margin agar lebih proporsional */
+  }
+
+  .history-buyer-request {
+    font-size: 10px; /* Sesuaikan ukuran font */
+    margin-bottom: 10px;
+  }
+
+  .history-buyer-quantity, 
+  .history-buyer-price, 
+  .history-buyer-status {
+    text-align: center;
+    font-size: 0.9rem; /* Kurangi ukuran font untuk layar kecil */
+  }
+
+  .paid-button {
+    width: 40%; /* Ubah ukuran tombol agar proporsional */
+    margin: 5px auto;
+    margin-left: 5%;
+    font-size: 0.9rem;
+  }
+
+  .history-buyer-divider {
+    border-top: 1px solid green;
+    height: 1px;
+  }
+
+  .history-buyer-value {
+    font-size: 0.9rem; /* Sesuaikan ukuran font */
+    margin-top: 10px;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .history-buyer-container {
+    display: flex;
+    flex-direction: column;
+    background: #ffff;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  .history-buyer-title {
+    padding-top: 3%;
+    padding-bottom: 3%;
+    font-size: 1.5rem; /* Sedikit lebih besar dari versi mobile */
+  }
+
+  .history-buyer-date {
+    justify-content: flex-start;
+    margin-right: 15%; /* Kurangi margin agar tidak terlalu lebar */
+    font-size: 1rem; /* Ukuran font disesuaikan */
+  }
+
+  .table-container {
+    width: 95%; /* Lebar lebih kecil agar tidak memenuhi layar sepenuhnya */
+    margin: 10px auto;
+  }
+
+  .history-buyer-table {
+    width: 100%;
+    margin: 3% auto;
+    box-shadow: 0 0.1rem 0.5rem 0.1rem #D0CECE; /* Tambahkan sedikit shadow untuk desktop */
+  }
+
+  .history-buyer-table th,
+  .history-buyer-table td {
+    padding: 12px; /* Padding cukup besar untuk ukuran layar menengah */
+    font-size: 1rem; /* Ukuran font sedang */
+  }
+
+  .history-buyer-item {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    flex-direction: row; /* Tetap menggunakan baris */
+  }
+
+  .history-buyer-request {
+    font-size: 1rem;
+  }
+
+  .history-buyer-quantity, 
+  .history-buyer-price, 
+  .history-buyer-status {
+    text-align: center;
+    font-size: 1rem; /* Sedikit lebih besar untuk layar menengah */
+  }
+
+  .paid-button {
+    width: 40%; /* Lebar tombol lebih kecil daripada di mobile */
+    margin: 20px auto;
+    margin-left: 5%;
+    font-size: 1rem;
+  }
+
+  .history-buyer-divider {
+    border-top: 2px solid green;
+    height: 2px;
+  }
+
+  .history-buyer-value {
+    font-size: 1rem; /* Sesuaikan ukuran font */
+    margin-top: 10px;
+  }
+}

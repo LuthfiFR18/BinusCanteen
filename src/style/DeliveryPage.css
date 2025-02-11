@@ -1,0 +1,100 @@
+.dashboard-delivery {
+    background-color: var(--text-color);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    min-height: 100vh;
+}
+
+.delivery-page {
+    flex: 1;
+}
+
+.toggle-navbar-delivery{
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 5% auto 2.5%;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* Elemen toggle button */
+.toggle-option-delivery{
+    padding: 10px;
+    flex: 1; /* Membagi ruang secara proporsional */
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+
+
+.toggle-option-delivery.active {
+    background-color: #FF9D00;
+    color: #fff;
+}
+
+.toggle-option-delivery:not(.active):hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Warna hover yang lebih halus */
+}
+
+.filter-box {
+    display: flex;
+    justify-content: center; /* Memastikan filter tetap di kanan */
+    align-items: center; /* Agar vertikal rata */
+    padding: 5px;
+}
+
+.filter-icon {
+    color: black;
+}
+
+.delivery-date {
+    margin-top: 10px;
+    margin-right: 40%;
+    margin-bottom: 25px;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    color: #000;
+}
+
+
+/* Media query untuk layar kecil */
+@media screen and (max-width: 768px) {
+
+    .dashboard-delivery{
+        flex-direction: column;
+    }
+
+    /* Pastikan elemen memenuhi lebar penuh */
+    .toggle-navbar-delivery-inprogress {
+        margin: 10px; /* Pusatkan secara horizontal */
+    }
+
+    .delivery-date {
+        text-align: center;
+        margin: 10px 0; /* Sesuaikan margin vertikal */
+    }
+
+    .filter-box {
+        display: flex; /* Gunakan flexbox */
+        flex-wrap: wrap; /* Pastikan elemen dalam baris baru jika ruang tidak cukup */
+        justify-content: center; /* Tengahkan konten */
+        gap: 10px; /* Tambahkan jarak antar elemen */
+        margin: 20px auto; /* Atur margin */
+        box-sizing: border-box; /* Hindari konflik ukuran */
+    }
+
+    .filter-icon {
+        margin-top: 5%;
+        margin-left: 30%;
+    }
+}

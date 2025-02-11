@@ -1,34 +1,94 @@
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
+.slider-bestoffer-container{
+  padding-top: 20px;
+  width: 100%;
+  align-items: center; /* Pusat secara vertikal */
+  justify-content: center; /* Pusat secara horizontal */
+  padding-right: 20px;
 }
 
-
-.slider-container{
-    width: 100%;
-    padding-top: 50px;
+.slider-bestoffer{
+  align-items: center;
+  justify-content: center;
 }
 
-.carousel-bestoffer img{
-  
-    margin-left: 15%;
-    width: 283px;
-    height: 180px;
+.bestofferText{
+  padding-left: 20px;
 }
+
 .carousel-bestoffer-text{
-    width: fit-content;
-    text-align: center;
-    padding-top: 15px;
-    margin-left: 28%;
+  display: flex;
+  font-size: 20px;
+  margin-top: 15px;
 }
 
-.carousel-bestoffer-text button{
-    background-color: var(--btn-color);
-    color: var(--text-color);
-    border-radius: 15px;
-    width: 181px;
-    height: 33px;
+.button-bestoffer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-style: none;
+  background-color: #FF9D00;
+  color: var(--text-color);
+  border-radius: 15px;
+  margin-top: 15px;
+  width: 181px;  
+  height: 33px;
+  cursor: pointer;
 }
 
+.food-drink-dessert-card{
+  border-style: solid;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+  
+.food-drink-dessert-image{
+  height: 180px;
+  transition: filter 0.3s;
+}
+  
+.food-drink-dessert-image.blur {
+  filter: blur(4px);
+}
+  
+.order-button:hover, .confirm-button:hover {
+  background-color: #d97706;
+}
+  
+.quantity-selector {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quantity-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e5e5e5;
+  border: none;
+  width: 70px;
+  /* padding: 10px; */
+  font-size: 1.2em;
+  /* margin: 0 5px; */  
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.quantity-number {
+  font-size: 2rem;
+  margin: 0 10px;
+}

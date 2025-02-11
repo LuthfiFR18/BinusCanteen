@@ -1,0 +1,211 @@
+.seller-booth-form-container{
+    display: flex;
+    align-items: center; /* Pusat secara vertikal */
+    justify-content: center; /* Pusat secara horizontal */
+    min-height: 100vh; /* Tinggi viewport penuh */
+    background: linear-gradient(180deg, var(--main-color), #0073e6); /* Background gradasi */
+    padding: 0;
+    margin: 0;
+}
+
+.seller-booth-form-wrapper{
+    width: 30%;
+    padding: 30px;
+    margin: 10px auto;
+    background-color: var(--text-color);
+    border-radius: 25px;
+    text-align: center;
+    align-items: center;
+}
+
+.booth-label{
+    text-align: left;
+    padding: 8px;
+}
+
+.booth-input{
+    border: none;
+    width: 100%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    padding: 8px;
+    padding-left: 10px;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+}
+
+.date-booth-text{
+    text-align: left;
+}
+
+.time-open-booth-text{
+    text-align: left;
+}
+.time-open-booth{
+    border: none;
+    padding: 8px;
+    padding-left: 5%;
+    width: 100%;
+    margin-bottom: 5%;
+    border-radius: 20px;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+}
+
+.time-close-booth-text{
+    text-align: left;
+}
+.time-close-booth{
+    border: none;
+    padding: 8px;
+    padding-left: 5%;
+    width: 100%;
+    border-radius: 20px;
+    margin-bottom: 5%;
+    box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+}
+
+.image-booth-seller-text{
+    text-align: left;
+}
+
+.input-image-booth{
+    padding: 8px;
+    width: 100%;
+}
+
+.submit-booth-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 25px;
+    width: 184px;
+    height: 41px;
+    margin: auto;
+    margin-top: 10%;
+    background-color: var(--btn-color);
+    color: var(--text-color);
+    font-weight: bold;
+    border-style: none;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 480px) {
+    .seller-booth-form-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--main-color), #0073e6);
+        padding: 0;
+        margin: 0;
+    }
+
+    .seller-booth-form-wrapper {
+        width: 90%;
+        padding: 15px;
+        background-color: var(--text-color);
+        border-radius: 15px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .booth-title{
+        font-size: 16px !important;
+    }
+
+    .booth-label, 
+    .date-booth-text, 
+    .time-open-booth-text, 
+    .time-close-booth-text, 
+    .image-booth-seller-text {
+        text-align: left;
+        font-size: 12px; 
+        margin-bottom: 5px;
+    }
+
+    .booth-input, 
+    .time-open-booth, 
+    .time-close-booth, 
+    .input-image-booth {
+        width: 100%; 
+        padding: 10px;
+        border-radius: 15px; 
+        margin-bottom: 10px; 
+        border: none;
+    }
+
+    .submit-booth-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px; 
+        width: 140px; 
+        height: 38px; 
+        margin: 20px auto;
+        background-color: var(--btn-color);
+        color: var(--text-color);
+        font-weight: bold;
+        border-style: none;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    .seller-booth-form-container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background: linear-gradient(180deg, var(--main-color), #0073e6);
+        padding: 0;
+        margin: 0;
+    }
+
+    .seller-booth-form-wrapper {
+        width: 90%; 
+        padding: 15px;        
+        background-color: var(--text-color);
+        border-radius: 20px;
+        text-align: center;
+        align-items: center;
+    }
+
+    .booth-title{
+        font-size: 16px !important;
+    }
+
+    .booth-label, 
+    .date-booth-text, 
+    .time-open-booth-text, 
+    .time-close-booth-text, 
+    .image-booth-seller-text {
+        text-align: left;
+        font-size: 12px;
+        margin-bottom: 10px;
+    }
+
+    .booth-input, 
+    .time-open-booth, 
+    .time-close-booth, 
+    .input-image-booth {
+        width: 100%;
+        padding: 12px;
+        border-radius: 18px;
+        margin-bottom: 15px;
+        border: none;
+    }
+
+    .submit-booth-btn {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 20px;
+        width: 160px;
+        height: 40px;
+        margin: 30px auto;
+        background-color: var(--btn-color);
+        color: var(--text-color);
+        font-weight: bold;
+        border-style: none;
+        cursor: pointer;
+    }
+}

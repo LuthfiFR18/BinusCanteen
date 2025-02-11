@@ -1,147 +1,172 @@
-
-.header{
-    width: 100%;
-    height: 65px;
-    align-items: center;
-    background-color: #2E7ADD;
-    border-radius: 0 0 15px 15px ;
+.header-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  min-height: 75px;
+  background-color: #2E7ADD;
+  border-radius: 0 0 15px 15px;
 }
 
-nav{
-    display: flex;
-    justify-content: space-around;
+.logo-text{
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 23px;
+  margin-bottom: 5px;
 }
 
-h4{
-    margin: 12.5px;
-    font-size: 24px;
-    font-weight: 800;
-    color: #000000;
+.logo-text-dashboard-span{
+  color: #FF9D00;
 }
 
-h4 span{
-    color: var(--btn-color);
+.search-bar{
+  margin: 1% auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.logo{
-    text-decoration: none;
+#search-bar-box{
+  outline: none;
+  border-style: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 20px;
+  width: 500px;
+  height: 30px;
+  border-radius: 20px;
 }
-
-.search-box{
-    width: 527px;
-    background: #ffff;
-    margin: 12.5px;
-    border-radius: 25px;
-}
-
-.row{
-    display: flex;
-    align-items: center;
-    padding: 5px 10px;
-}
-
-input{
-    padding-left: 20px;
-    flex: 1;
-    border-style: none;
-    outline: 0;
-}
-
-button{
-    background: transparent;
-    border-style: none;
-}
-
 .search-icon{
-    padding-top: 5px;
-    align-items: center;
-    cursor: pointer;
-    padding-right: 1em;
-    font-size: 16px;
+  cursor: pointer;
+  transform: translateX(-250%);
+  background-color: transparent;
+  border-style: none;
 }
 
-.result-box ul{
-    border-top: 1 solid #999;
-    padding: 15px 10px;
+.logo-cart-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 43px;
 }
-
-/* .result-box ul{
-    list-style: none;
-    border-radius: 3px;
-    padding: 15px 10px;
-    cursor: pointer;
-} */
 
 .logo-cart{
-    width: 34px;
-    height: 35px;
-    margin: 10px;
-    font-size: 30px;
-    cursor: pointer;
+  margin-right: 30px;
+  font-size: 30px;
+  color: white;
 }
 
-.logo-cart a{
-    color: var(--text-color);
+.logo-cart:hover{
+  color: #FF9D00;
 }
 
-.logo-cart a:hover{
-    color: var(--btn-color);
+.cart-notification {
+  position: absolute;
+  top: 3px; /* Sesuaikan jarak dari atas agar notifikasi tepat di pojok kanan atas */
+  right: -5px; /* Sesuaikan jarak dari kanan */
+  background-color: red;
+  /* color: white; */
+  font-size: 12px;
+  border-radius: 50%;
+  padding: 6px 6px;
 }
 
-.profile-box{
-    margin-top: 10px;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: var(--text-color);
-    text-decoration: none;
+/* Media Queries */
+
+@media screen and (min-width:320px) and (max-width: 480px) {
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Elemen terpusat di layar */
+    height: auto;
+    padding: 5px;
+  }
+
+  .logo-text {
+    font-size: 14px !important;
+    margin: 5px auto;
+  }
+
+  .logo-text-dashboard-span {
+    font-size: 12px;
+  }
+
+  .search-bar {
+    width: 60%; /* Lebar lebih kecil */
+  }
+
+  #search-bar-box {
+    height: 15px;
+    font-size: 10px;
+    padding: 10px auto;
+    border-radius: 20px;
+  }
+
+  .search-icon {
+    font-size: 8px; /* Ukuran ikon lebih kecil */
+    transform: translateX(-250%); /* Penyesuaian posisi */
+  }
+
+  .logo-cart-box {
+    gap: 15px; /* Jarak antar ikon */
+    margin: 5px auto;
+  }
+
+  .logo-cart {
+    font-size: 20px !important; /* Ukuran ikon cart lebih kecil */
+  }
 }
 
-.sub-menu-warp{
-    position: absolute;
-    top: 10%;
-    left: 78%;
-    width: 320px;
-    max-height: 0px;
-    border-radius: 25px;
-    overflow: hidden;
-    transition: max-height 0.5s;
-    background-image: linear-gradient(180deg, #ffff, #D0CECE);
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .header-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 
+  .logo-text {
+    font-size: 14px ;
+    font-weight: bold;
+    margin-left: 5px;
+  }
+
+  .search-bar {
+    width: 60%; 
+    margin: 20px auto; 
+    margin-left: 22%;
+  }
+
+  #search-bar-box {
+    width: 80%; 
+    height: 35px;   
+    padding-left: 15px; /* Padding lebih kecil */
+    border-radius: 15px; /* Border radius lebih kecil */
+  }
+
+  .search-icon {
+    transform: translateX(-200%); /* Sesuaikan posisi ikon */
+    font-size: 18px; /* Ikon lebih kecil */
+  }
+
+  .logo-cart-box {
+    margin: 0; /* Hilangkan margin kanan agar lebih rapi */
+    justify-content: flex-end; /* Ikon tetap di sebelah kanan */
+    width: auto; /* Pastikan fleksibilitas */
+    margin-bottom: 2%;
+  }
+
+  .logo-cart {
+    font-size: 25px; /* Ukuran ikon lebih kecil */
+    margin-right: 10px; /* Margin dikurangi */
+  }
+
+  .logo-cart:hover {
+    color: #FF9D00; /* Warna tetap sama */
+  }
 }
 
-.sub-menu-warp.open-menu{
-    box-shadow: 0 0 0.02rem 0.03rem #999;
-    max-height: 400px;
-}
-.sub-menu{
-    text-align: center;
-    padding-top: 30px;
-    height: 60vh;
-}
-.user-info img{
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-}
-
-.user-info h6{
-  font-weight: 400;
-}
-
-.sub-menu a{
-
-    text-decoration: none;
-    color: var(--bg-color);
-    margin: 12px 0;
-    transition: transform 0.3s;
-}
-
-.sub-menu p{
-    font-weight: 300;
-}
-
-.sub-menu a:hover p{
-    transform: translateY(-5px);
-    font-weight: 500;
-}

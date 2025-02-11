@@ -1,0 +1,82 @@
+.inprogress-delivery-container{
+    width: 100%;
+    height: fit-content;
+    background-color: #ffff;
+}
+
+.toggle-navbar-delivery{
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    margin: 5% auto 2.5%;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    background-color: #fff;
+    overflow: hidden;
+}
+
+/* Elemen toggle button */
+.toggle-option-delivery{
+    padding: 10px;
+    flex: 1; /* Membagi ruang secara proporsional */
+    text-align: center;
+    cursor: pointer;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+
+
+.toggle-option-delivery.active {
+    background-color: #FF9D00;
+    color: #fff;
+}
+
+.toggle-option-delivery:not(.active):hover {
+    background-color: rgba(0, 0, 0, 0.1); /* Warna hover yang lebih halus */
+}
+
+
+.toggle-navbar-delivery-inprogress {
+    font-size: 16px;
+    font-weight: 600;
+    display: flex;
+    width: 300px;
+    border: 2px solid #ccc;
+    border-radius: 25px;
+    overflow: hidden;
+    margin-left: 40%;
+    margin-top: 5%;
+    color: #0000;
+    background-color: #ffff;
+}
+
+.toggle-option-delivery-inprogress {
+    flex: 1;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+    background-color: #0000;
+    transition: background-color 0.3s ease;
+    color: #000000;
+}
+  
+.toggle-option-delivery-inprogress.active {
+    background-color: #FF9D00;
+    color: #fff;
+}
+  
+.toggle-option-delivery-inprogress:not(.active):hover {
+    background-color: #0000;
+}
+
+.filter-box{
+    display: flex;
+    justify-content: center;
+    margin-left: 40%;
+}
+.filter-icon{
+    color: black;
+}

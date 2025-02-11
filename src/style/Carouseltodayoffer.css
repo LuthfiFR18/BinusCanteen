@@ -1,32 +1,74 @@
-:root{
-    --main-color: #4FC0FD;
-    --text-color: #ffff;
-    --bg-color: #000000;
-    --btn-color:#FF9D00;
-}
-
-
-.slider-container{
-    padding-top: 50px;
-}
-
-.carousel-todayoffer img{
-    margin-left: 15%;
-    width: 283px;
-    height: 180px;
-}
+.todayofferText{
+    padding-left: 20px;
+  }
+.slider-todayoffer-container{
+    padding-top: 40px;
+    width: 100%;
+    padding-right: 20px;
+  }
+  
 .carousel-todayoffer-text{
+    font-size: 20px;
     width: fit-content;
     text-align: center;
-    padding-top: 15px;
-    margin-left: 28%;
+    margin-top: 15px;
+    margin-left: 37%;
 }
 
 
-.carousel-todayoffer-text button{
-    background-color: var(--btn-color);
+
+.button-todayoffer{
+    border-style: none;
+    background-color: #FF9D00;
     color: var(--text-color);
     border-radius: 15px;
+    margin-top: 15px;
+    margin-left: 20%;
     width: 181px;
     height: 33px;
+    cursor: pointer;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+}
+
+.food-drink-image{
+    margin-left: 10%;
+    height: 180px;
+    transition: filter 0.3s;
+}
+
+.food-drink-image.blur {
+    filter: blur(4px);
+}
+
+.order-button:hover, .confirm-button:hover {
+    background-color: #d97706;
+}
+
+.quantity-selector {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quantity-button {
+    background-color: #e5e5e5;
+    border: none;
+    padding: 10px;
+    font-size: 1.2em;
+    margin: 0 5px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.quantity-number {
+    font-size: 2rem;
+    margin: 0 10px;
 }

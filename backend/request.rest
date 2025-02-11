@@ -1,0 +1,146 @@
+### create role
+POST http://localhost:5000/roles
+Content-Type: application/json
+
+{
+    "name": "Seller"
+}
+
+
+### create user
+POST http://localhost:5000/user
+Content-Type: application/json
+
+{
+    "name" : "Rasela",
+    "email" : "Rasela@gmail.com",
+    "password" : "agusulatbulu",
+    "phonenumber" : "081234567811",
+    "roleId" : "4"
+}
+
+###
+//get all user
+GET http://localhost:5000/user
+
+###
+GET http://localhost:5000/me
+
+###
+// login user
+POST http://localhost:5000/login
+Content-Type: application/json
+
+{
+    "email" : "cst1@gmail.com",
+    "password" : "cst"
+}
+
+###
+//logout user
+DELETE http://localhost:5000/logout
+
+###
+//ADD Product
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+  "name": "Es Krim",
+  "price": 8000,
+  "producttype": "Dessert",
+  "boothId": 1,
+  "userId": 1
+}
+
+### Delete Product
+DELETE http://localhost:5000/product/bcb79db9-91ac-4747-9faf-48fbb9044c56
+Content-Type: application/json
+
+
+### Add Booth
+POST http://localhost:5000/Booth
+Content-Type: application/json
+
+    {
+  "name": "Rasela",
+  "openingTime": "09:00:00",
+  "closingTime": "17:00:00",
+  "userId": 3
+}
+
+### Membuat Course Baru
+POST http://localhost:5000/courses
+Content-Type: application/json
+
+{
+  "name": "Data Structure", 
+  "courseRoom": "A1403",
+  "courseFloor": "A1403", 
+  "courseDate": "2025-02-03",
+  "startTime": "13:20:00",
+  "endTime": "14:50:00",
+  "userId": 13
+} 
+
+### membuat order baru 
+POST http://localhost:5000/order
+Content-Type: application/json
+
+{
+  "userId": 4,
+  "deliveryLocation":"disini"
+}
+
+
+### membuat OrderDetails baru
+###
+GET http://localhost:5000/booth/1/products
+
+### delete order
+DELETE http://localhost:5000/orders/notPaid
+
+### get order
+GET http://localhost:5000/orders/notPaid
+
+### delete order
+DELETE http://localhost:5000/order
+
+### get cart from userId
+GET http://localhost:5000/cart/5
+
+### get total price from cart
+GET http://localhost:5000/cart/subTotal/5
+
+###
+GET http://localhost:5000/booth/1
+
+
+###
+POST http://localhost:5000/product
+Content-Type: application/json
+
+{
+
+    "name": "Sample Product",
+    "price": "50000",
+    "producttype": "Food"
+}
+
+###
+PATCH  http://localhost:5000/Booth/3
+Content-Type: multipart/form-data
+
+{
+  "image": "8072a6856398a45501ca2fc9b99f3074"
+}
+
+
+### update cart
+PATCH http://localhost:5000/cart/1506085f-95d4-452f-b163-42ea371c20e0
+Content-Type: application/json
+
+{
+  "quantity" : 7
+}
+

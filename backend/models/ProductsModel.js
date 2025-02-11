@@ -1,11 +1,12 @@
 import { Sequelize } from "sequelize";
 import db from "../config/Database.js";
-// import Seller from "./SellerModel.js";
 import Users from "./UserModel.js";
+import Booth from "./BoothModel.js";
 
 const {DataTypes} = Sequelize;
 
 const Products = db.define('product',{
+    
     uuid:{
         type: DataTypes.STRING,
         defaultValue: DataTypes.UUIDV4,
@@ -33,28 +34,37 @@ const Products = db.define('product',{
         }
     },
 
-    producttype:{
+    producttype: {
         type: DataTypes.STRING,
         allowNull: false,
+        validate: {
+            notEmpty: true
+        }
+    },
+
+    image: {
+        type: DataTypes.STRING,
+        allowNull: true,
+    },    
+
+    boothId:{
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        references: {
+            model: Booth,
+            key: 'id',
+        },
         validate:{
             notEmpty: true
         }
     },
 
-    // sellerId:{
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    //     validate:{
-    //         notEmpty: true
-    //     }
-    // }
-
     userId:{
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
-            model: Users, // Reference the Roles model
-            key: 'id', // Assuming Roles has a primary key called 'id'
+            model: Users,
+            key: 'id',
         },
         validate:{
             notEmpty: true
@@ -66,7 +76,6 @@ const Products = db.define('product',{
     freezeTableName: true
 });
 
-Users.hasMany(Products, { foreignKey: 'userId' });
-Products.belongsTo(Users, { foreignKey: 'userId' });
+
 
 export default Products;

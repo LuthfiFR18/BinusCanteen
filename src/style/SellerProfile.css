@@ -1,0 +1,78 @@
+
+.profile-box-seller {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+}
+  
+.profile-icon{
+  cursor: pointer;
+  height: 30px;
+  padding-top: 1px;
+  margin-left: 4%;
+  color: #FF9D00;
+}
+  
+.dropdown-menu-seller-profile {
+  position: absolute;
+  width: 250px;
+  top: 70px;
+  right: 50px;
+  background-color: hsl(231, 41%, 97%);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  padding: 10px;
+  z-index: 1;
+}
+
+.img-seller-profile {
+  width: 60px;
+  height: 50px;
+  border-radius: 50%;
+  margin-left: 10px;
+}
+
+.dropdown-menu-seller-profile p {
+  margin: 0;
+  text-align: center;
+}
+
+.dropdown-menu-seller-profile hr {
+  margin: 10px 0;
+}
+
+.dropdown-menu-seller-profile ul {
+  list-style: none;
+  padding: 0;
+}
+
+.dropdown-menu-seller-profile li {
+  padding: 8px 0;
+  text-align: center;
+}
+
+.dropdown-menu-seller-profile li button {
+  background: none;
+  border: none;
+  color: #000;
+  cursor: pointer;
+  text-align: center;
+}
+
+.changepicture-btn:hover{
+  color: #FF9D00;
+}
+.changepassword-btn:hover {
+  color: #FF9D00;
+}
+.history-btn:hover {
+  color: #FF9D00; 
+}
+
+.logOut-btn:hover{
+  color: red;
+}

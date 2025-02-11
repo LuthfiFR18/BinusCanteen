@@ -1,0 +1,199 @@
+.admin-container{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: #fff;
+}
+
+.menu-admin{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px auto;
+}
+  
+.menu-admin ul{
+  width: 248px;
+  height: 238px;
+  display: flex;
+  justify-content: center;
+  margin-top: 60px;
+  gap: 20px;
+}
+
+.menu-admin ul li{
+  display: flex;
+  width: 248px;
+  height: 230px;
+  text-align: center;
+  border-radius: 25px;
+  box-shadow:  0 0.3rem 1rem 0 #D0CECE;
+}
+
+.menu-admin ul li .activemenu{
+  border-radius: 25px;;
+  border-style: solid;
+  border-color: #FF9D00;
+}
+
+.menu-admin ul li a{
+  padding-top: 70px;
+  width: 248px;
+  display: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: var(--btn-color);
+  align-items: center;
+  justify-content: center;
+}
+
+.menu-admin ul li:hover{
+  background-color: var(--btn-color);
+}
+
+.menu-admin ul li a:hover{
+  color: var(--text-color);
+}
+
+.transaction-table{
+  width: 100%;
+  margin: 4% auto;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.transaction-table th {
+  border-bottom: 2px solid black;
+  text-align: center;
+  padding: 8px;
+  vertical-align: middle;
+}
+
+.transaction-table td {
+  border-bottom: 1px solid #ddd;
+  padding: 8px;
+}
+  /* Media Queries */
+@media screen and (min-width: 320px) and (max-width: 480px) {
+  .admin-container {
+    padding: 10px auto;
+  }
+
+  .menu-admin {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 10px auto;
+    margin-left: 2%;
+  }
+
+  .menu-admin ul {
+    width: 100%;
+    height: auto;
+    gap: 15px;
+    margin-top: 5%;
+  }
+
+  .menu-admin ul li {
+    width: 90%;
+    max-width: 230px;
+    height: auto;
+    box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
+    border-radius: 10px;
+  }
+
+  .menu-admin ul li .activenav {
+    border-radius: 10px;
+    border-color: #FF9D00;
+  }
+
+  .menu-admin ul li a {
+    font-size: 8px;
+    padding-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .menu-admin ul li:hover {
+    background-color: #FF9D00;
+  }
+
+  .menu-admin ul li a:hover {
+    color: #fff;
+  }
+
+  .transaction-table{
+    width: 100%;
+    padding: 10px auto;
+    margin-top: 6%;
+    table-layout: fixed;
+  }
+
+  .transaction-table th{
+    font-size: 6px;
+  }
+
+  .transaction-table td{
+    font-size: 6px;
+  }
+}
+
+@media screen and (min-width: 481px) and (max-width: 1024px) {
+  .admin-container {
+    padding: 15px auto;
+  }
+
+  .menu-admin {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .menu-admin ul {
+    margin-top: 5% !important;
+  }
+
+  .menu-admin ul li {
+    width: 130px !important;
+    height: 120px !important;
+    margin: 5px auto;
+    box-shadow: 0 0.2rem 0.8rem 0 #D0CECE;
+  }
+
+  .menu-admin ul li .activenav {
+    border-radius: 20px;
+    border-color: #FF9D00;
+  }
+
+  .menu-admin ul li a {
+    font-size: 12px !important; /* Slightly larger for better readability on tablets */
+    padding-top: 20% !important;
+    text-align: center;
+  }
+
+  .menu-admin ul li:hover {
+    background-color: #FF9D00;
+  }
+
+  .menu-admin ul li a:hover {
+    color: #fff;
+  }
+
+  .transaction-table{
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  .transaction-table th{
+    font-size: 10px;
+  }
+
+  .transaction-table td{
+    font-size: 10px;
+  }
+}
+

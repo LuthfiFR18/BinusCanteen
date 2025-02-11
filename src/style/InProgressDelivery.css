@@ -1,0 +1,52 @@
+.order-table-delivery {
+    margin-top: 20px;
+    padding: 10px;
+    border-radius: 12px;
+    background-color: #f9f9f9;
+}
+
+.inprogress-table {
+    margin: auto;
+    width: 98%;
+    border-collapse: collapse;
+    box-shadow:  0 0.1rem 0.5rem 0.1rem #D0CECE;
+}
+
+.inprogress-table thead th {
+    text-align: left;
+    padding: 10px;
+    background-color: #f2f2f2;
+}
+
+.inprogress-table tbody td {
+    padding: 10px;
+    border-top: 1px solid #ddd;
+}
+
+ul {
+    padding-left: 20px;
+}
+
+td ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.inporgress-table td {
+    vertical-align: top;
+}
+
+.button-status-delivery{
+    width: 70px;
+    height: 25px;
+    border-radius: 5px;
+    background: #FF9D00;
+    color: #ffff;
+    cursor: pointer;
+    
+}
+
+.button-status-delivery:hover{
+    background: darkorange;
+}
