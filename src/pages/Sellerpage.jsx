@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate, useParams } from "react-router-dom";
 import "slick-carousel/slick/slick-theme.css";
 import "slick-carousel/slick/slick.css";
-import Footerseller from '../components/Footerseller';
+import Footer from '../components/Footer';
 import Header from '../components/Headerseller';
 import PopUp from '../components/PopUpCloseSellerStore';
 import PopUpDeleteMenuSeller from '../components/PopUpDeleteMenuSeller';
@@ -473,7 +473,7 @@ function Sellerpage() {
                 )}
 
             </div>
-            <Footerseller/>
+            <Footer/>
         </div>
     );
 }

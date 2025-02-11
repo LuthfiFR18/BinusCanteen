@@ -13,7 +13,7 @@ const Cart = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const { removeItemFromCart } = useContext(CartContext);
+  const { removeItemFromCart, clearCart } = useContext(CartContext);
   
 
   const [cart, setCart] = useState([]); // Ensure cart is an array
@@ -239,6 +239,7 @@ const Cart = () => {
         console.error("Error saving order detail for product:", cartItem.product?.id, error);
       }
     }
+    clearCart();
   };
   
   
