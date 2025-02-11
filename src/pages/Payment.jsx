@@ -143,8 +143,11 @@ const Payment = () => {
     }
 
     try {
+
+      const uniqueOrderId = `${orderId}-${Date.now()}`;
+
       const payloadData = {
-        orderId: orderId,
+        orderId: uniqueOrderId,
         items: [
             
             ...order.map(item => ({
@@ -172,11 +175,17 @@ const Payment = () => {
             window.snap.pay(response.data.token, {
               onSuccess: async (result) => {
                 console.log('Payment success:', result);
-                await handlePaymentSuccess(result);
+                await handlePaymentSuccess({
+                  ...result,
+                  original_order_id: orderId // Tambahkan orderId asli
+                });
               },
               onPending: async (result) => {
                 console.log('Payment pending:', result);
-                await handlePaymentPending(result);
+                await handlePaymentPending({
+                  ...result,
+                  original_order_id: orderId // Tambahkan orderId asli
+                });
                 setMsg("Pembayaran sedang diproses, silahkan lanjutkan pembayaran di history anda!");
               },
               onError: (error) => {
@@ -198,7 +207,7 @@ const Payment = () => {
     try {
       
       await axios.post("http://localhost:5000/payment", {
-        orderId,
+        orderId: paymentResult.original_order_id,
         paymentAmount: total,
         paymentMethod: selectedPaymentMethod,
         paymentStatus: "Done",
@@ -221,7 +230,7 @@ const Payment = () => {
     try {
       
       await axios.post("http://localhost:5000/payment", {
-        orderId,
+        orderId: paymentResult.original_order_id,
         paymentAmount: total,
         paymentMethod: selectedPaymentMethod,
         paymentStatus: "Pending",

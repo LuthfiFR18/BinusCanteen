@@ -107,8 +107,16 @@ export const createPaymentToken = async (req, res) => {
                 quantity: parseInt(item.quantity),
                 name: item.name
             })),
-            enabled_payments: [paymentMethod === 'BCA Virtual Account' ? 'bca_va' : 'qris']
+            enabled_payments: ['bca_va', 'qris'], // Enable kedua metode pembayaran
+            payment_type: paymentMethod === 'QRIS' ? 'qris' : 'bank_transfer'
         };
+
+        if (paymentMethod === 'QRIS') {
+            parameter.payment_type = 'qris';
+            parameter.qris = {
+                acquirer: 'bca'
+            };
+        }
 
         console.log('Midtrans parameter:', parameter);
 

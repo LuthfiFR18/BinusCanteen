@@ -373,8 +373,8 @@ const Cart = () => {
                 >
                 <option value="">Tempat Pengantaran</option>
                 {course.map((course) => (
-                <option key={course.id} value={`${course.courseRoom},${course.endTime}`}>
-                {course.courseRoom} - {course.endTime}
+                <option key={course.id} value={`${course.name},${course.courseRoom},${course.endTime},${course.courseDate}`}> {course.name} -
+                {course.courseRoom} - {course.endTime} - {course.courseDate}
               </option>
               
                 ))}
